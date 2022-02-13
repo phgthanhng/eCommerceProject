@@ -48,3 +48,6 @@ In this project, our team will create an Ecommerce B2C platform that carries out
 ***Total of Features : 37 features***
 
 <mark>Some of these features might be deleted once we start working on the project; however, the final total of features will be at least 30 features.</makr>
+
+We will model our solution on the Amazon online buying tools and online store experiences. We
+estimate that we will spend a total of 210 hours building this product, i.e., 70 hours per team member.
