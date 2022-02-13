@@ -35,4 +35,4 @@ In this project, our team will create an Ecommerce B2C platfrom that carries out
 
 *Total of Features : 37 features*
 
-==Some of these feaetures might be deleted once we start working on the project; however, the final total of features will be at least 30 features.==
+<mark>Some of these feaetures might be deleted once we start working on the project; however, the final total of features will be at least 30 features.</makr>
