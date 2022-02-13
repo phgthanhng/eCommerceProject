@@ -27,10 +27,10 @@ In this project, our team will create an Ecommerce B2C platfrom that carries out
 19. As a user, I can add, modify and delete card and bank account (WALLET feature) (3 features)
 
 EXTRA FEATURES:
-Social Media Buttons (1 feature)
-Google Map (1 feature)
-Push notification (coupon or % off, etc) (1 feature)
-Subscribe newsletter (email account) (1 feature)
+20. Social Media Buttons (1 feature)
+21. Google Map (1 feature)
+22. Push notification (coupon or % off, etc) (1 feature)
+23. Subscribe newsletter (email account) (1 feature)
 
 
 *Total of Features : 37 features*
