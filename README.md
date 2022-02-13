@@ -26,7 +26,7 @@ In this project, our team will create an Ecommerce B2C platfrom that carries out
 18. As a user, I can track my order/shipping package (1 feature)
 19. As a user, I can add, modify and delete card and bank account (WALLET feature) (3 features)
 
-*EXTRA FEATURES:*
+### EXTRA FEATURES:
 20. Social Media Buttons (1 feature)
 21. Google Map (1 feature)
 22. Push notification (coupon or % off, etc) (1 feature)
