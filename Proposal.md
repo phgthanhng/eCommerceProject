@@ -31,21 +31,20 @@ In this project, our team will create an Ecommerce B2C platform that carries out
 12. As a user, I can checkout my order (1 feature) **Jiahui**
 13. As a user, I can add, modify and delete customer reviews (3 features) **Jiahui**
 14. As a user, I can communicate/chat with customer service/support (1 feature) **Chilka**
-15. As a user, I can communicate/chat with customer service/support (1 feature) **Chilka**
-16. As a user, I can see my order history (1 feature) **Chilka**
-17. As a user, I can delete an order and return a product (2 feature) **Jiahui**
-18. As a user, I can track my order/shipping package (1 feature) **Chilka**
-19. As a user, I can add, modify and delete card and bank account (WALLET feature) (3 features) **Thanh**
+15. As a user, I can see my order history (1 feature) **Chilka**
+16. As a user, I can delete an order and return a product (2 feature) **Jiahui**
+17. As a user, I can track my order/shipping package (1 feature) **Chilka**
+18. As a user, I can add, modify and delete card and bank account (WALLET feature) (3 features) **Thanh**
 
 ### EXTRA FEATURES:
-20. Social Media Buttons (1 feature) **Thanh**
-21. Google Map (1 feature) **Chilka**
-22. Push notification (coupon or % off, etc.) (1 feature) **Jiahui**
-23. Subscribe newsletter (email account) (1 feature) **Jiahui**
+19. Social Media Buttons (1 feature) **Thanh**
+20. Google Map (1 feature) **Chilka**
+21. Push notification (coupon or % off, etc.) (1 feature) **Jiahui**
+22. Subscribe newsletter (email account) (1 feature) **Jiahui**
 
 -------------------------------------------------------------
 
-***Total of Features : 37 features***
+***Total of Features : 36 features***
 
 <mark>Some of these features might be deleted once we start working on the project; however, the final total of features will be at least 30 features.</makr>
 
