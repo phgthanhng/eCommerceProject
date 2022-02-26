@@ -30,17 +30,16 @@ In this project, our team will create an Ecommerce B2C platform that carries out
 11. As a user I can add and delete products to my favorites (2 feature) **Thanh**
 12. As a user, I can checkout my order (1 feature) **Jiahui**
 13. As a user, I can add, modify and delete customer reviews (3 features) **Jiahui**
-14. As a user, I can communicate/chat with customer service/support (1 feature) **Chilka**
-15. As a user, I can see my order history (1 feature) **Chilka**
-16. As a user, I can delete an order and return a product (2 feature) **Jiahui**
-17. As a user, I can track my order/shipping package (1 feature) **Chilka**
-18. As a user, I can add, modify and delete card and bank account (WALLET feature) (3 features) **Thanh**
+14. As a user, I can see my order history (1 feature) **Chilka**
+15. As a user, I can delete an order and return a product (2 feature) **Jiahui**
+16. As a user, I can track my order/shipping package (1 feature) **Chilka**
+17. As a user, I can add, modify and delete card and bank account (WALLET feature) (3 features) **Thanh**
 
 ### EXTRA FEATURES:
-19. Social Media Buttons (1 feature) **Thanh**
-20. Google Map (1 feature) **Chilka**
-21. Push notification (coupon or % off, etc.) (1 feature) **Jiahui**
-22. Subscribe newsletter (email account) (1 feature) **Jiahui**
+18. Social Media Buttons (1 feature) **Thanh**
+29. Google Map (1 feature) **Chilka**
+20. Push notification (coupon or % off, etc.) (1 feature) **Jiahui**
+21. Subscribe newsletter (email account) (1 feature) **Jiahui**
 
 -------------------------------------------------------------
 
