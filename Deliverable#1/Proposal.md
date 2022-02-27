@@ -17,7 +17,7 @@ In this project, our team will build an Ecommerce B2C online bookstore where cus
 ## Features 
 (The names beside the features are for the Deliverable #2)
 1. As an admin, I can create, edit, delete books for sale and track sales of these products(4 features) **Thanh**
-2. As an admin, I can create and update about us page of the book store(1 feature) **Chilka**
+2. As an admin, I can create and update contact us page of the book store(1 feature) **Chilka**
 3. As an admin, I can read all the customer's account information(1 feature) **Thanh**
 4. As an admin, I can view product purchases and mark them as shipped or not (2 features) **Jiahui**
 5. As an admin, I can check the product reviews (1 feature) **Jiahui**
@@ -31,7 +31,7 @@ In this project, our team will build an Ecommerce B2C online bookstore where cus
 14. As a customer, I can edit my account's information.(1 feature) **Thanh**
 15. As an customer, I can search the product catalog and filter by products/browse by category (2 features) **Chilka**
 16. As a customer, I can add, modify and delete my reviews about the book (3 features) **Jiahui**
-17. As a customer, I can see my order history and check order detial. (2 feature) **Chilka**
+17. As a customer, I can see my order history and check order detail. (2 feature) **Chilka**
 18. As a customer, I can cancel an order and return a/many book (2 feature) **Jiahui**
       
 
