@@ -11,8 +11,7 @@
 
 ## Overview
 
-In this project, our team will create an Ecommerce B2C platform that carries out transaction between business owners to customers. With this platform, our purpose is to help connect buyers to small, family business as well as promote their business. We would like to create a place where anyone can open their own business and start making money. 
-
+In this project, our team will build an Ecommerce B2C online bookstore where customers can order books online. 
 ---------------
 
 ## Features
