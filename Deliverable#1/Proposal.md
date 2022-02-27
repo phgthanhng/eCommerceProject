@@ -32,7 +32,7 @@ In this project, our team will build an Ecommerce B2C online bookstore where cus
 15. As an customer, I can search the product catalog and filter by products/browse by category (2 features) **Chilka**
 16. As a customer, I can add, modify and delete my reviews about the book (3 features) **Jiahui**
 17. As a customer, I can see my order history and check order detial. (2 feature) **Chilka**
-18. As a customer, I can delete an order and return a/many book (2 feature) **Jiahui**
+18. As a customer, I can cancel an order and return a/many book (2 feature) **Jiahui**
       
 
 ### EXTRA FEATURES:
