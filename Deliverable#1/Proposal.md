@@ -1,6 +1,6 @@
 
 
-#NOName Bookstore(still thinking of a name)
+#All Booked UP! Online BookStore
 ### Ecommerce 420-411-VA  
 
 ### Teacher : Parth Shah
@@ -48,5 +48,5 @@ In this project, our team will build an Ecommerce B2C online bookstore where cus
 
 <mark>Some of these features might be deleted once we start working on the project; however, the final total of features will be at least 30 features.</makr>
 
-We will model our solution on the Amazon online buying tools and online store experiences. We
-estimate that we will spend a total of 210 hours building this product, i.e., 70 hours per team member.
+We will model our solution on the BookOutlet online buying tools and online store experiences. 
+We estimate that we will spend a total of 210 hours building this product, i.e., 70 hours per team member.
