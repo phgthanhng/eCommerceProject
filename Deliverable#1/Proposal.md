@@ -24,15 +24,15 @@ In this project, our team will build an Ecommerce B2C online bookstore where cus
 6. As an admin, I can check the return product request (1 feature) **Jiahui**
 7. As an admin, I can search the product catalog and filter by products/browse by category (2 features) **Chilka**
 8. As an admin, I can see the product details (1 feature) **Chilka**
-9. As a client, I can add, delete, modify quantities for products to my shopping cart (3 features) **Chilka**
-10. As a client, I can add and delete products to my wishlist (2 feature) **Thanh**  
-12. As a client, I can checkout my order (1 feature) **Jiahui**
-13. As a client, I can see the book details.(1 feature)
-14. As a client, I can update my profile.(1 feature)
-15. As an client, I can search the product catalog and filter by products/browse by category (2 features) **Chilka**
-16. As a client, I can add, modify and delete my reviews about the book (3 features) **Jiahui**
-17. As a client, I can see my order history and check order detial. (2 feature) **Chilka**
-18. As a client, I can delete an order and return a/many book (2 feature) **Jiahui**
+9. As a customer, I can add, delete, modify quantities for products to my shopping cart (3 features) **Chilka**
+10. As a customer, I can add and delete products to my wishlist (2 feature) **Thanh**  
+12. As a customer, I can checkout my order (1 feature) **Jiahui**
+13. As a customer, I can see the book details.(1 feature)
+14. As a customer, I can update my profile.(1 feature)
+15. As an customer, I can search the product catalog and filter by products/browse by category (2 features) **Chilka**
+16. As a customer, I can add, modify and delete my reviews about the book (3 features) **Jiahui**
+17. As a customer, I can see my order history and check order detial. (2 feature) **Chilka**
+18. As a customer, I can delete an order and return a/many book (2 feature) **Jiahui**
       
 
 ### EXTRA FEATURES:
