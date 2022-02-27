@@ -1,6 +1,6 @@
 
 
-#All Booked UP! Online BookStore
+# All Booked UP! Online BookStore
 ### Ecommerce 420-411-VA  
 
 ### Teacher : Parth Shah
@@ -14,8 +14,8 @@
 In this project, our team will build an Ecommerce B2C online bookstore where customers can order books online. 
 ---------------
 
-## Features
-
+## Features 
+(The names beside the features are for the Deliverable #2)
 1. As an admin, I can add, modify, delete books for sale and track sales of these products(4 features) **Thanh**
 2. As an admin, I can create and modify my store profile (1 feature) **Chilka**
 3. As an admin, I can read all the customer's account information(1 feature)
@@ -46,7 +46,7 @@ In this project, our team will build an Ecommerce B2C online bookstore where cus
 
 ***Total of Features : 30 features***
 
-<mark>Some of these features might be deleted once we start working on the project; however, the final total of features will be at least 30 features.</makr>
+<mark>Some of these features might be deleted once we start working on the project; however, the final total of features will be at least 30 features.</mark>
 
 We will model our solution on the BookOutlet online buying tools and online store experiences. 
 We estimate that we will spend a total of 210 hours building this product, i.e., 70 hours per team member.
