@@ -28,7 +28,7 @@ In this project, our team will build an Ecommerce B2C online bookstore where cus
 10. As a customer, I can add and delete products to my wishlist (2 feature) **Thanh**  
 12. As a customer, I can checkout my order (1 feature) **Jiahui**
 13. As a customer, I can see the book details.(1 feature)**Thanh**
-14. As a customer, I can update my account's information.(1 feature) **Thanh**
+14. As a customer, I can edit my account's information.(1 feature) **Thanh**
 15. As an customer, I can search the product catalog and filter by products/browse by category (2 features) **Chilka**
 16. As a customer, I can add, modify and delete my reviews about the book (3 features) **Jiahui**
 17. As a customer, I can see my order history and check order detial. (2 feature) **Chilka**
