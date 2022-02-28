@@ -9,12 +9,12 @@ Feature: add_book_sale
     Then I am on a"localhost/Project/Main/Product"
 
   Scenario: try getting the add new product form
-    Given I am on "localhost/Project/Main/Product"
+    Given I am on "localhost/Bookstore/Main/Product"
     When I click "Add" button 
     Then I see add new product form
 
   Scenario: try adding a new book
-    Given I am on "localhost/Project/Main/Product/AddBook"
+    Given I am on "localhost/Bookstore/Main/Product/AddBook"
     When I insert information of the new book in the form
     And I click the Add button in the bottom of the form
     Then I see a popup message says I have successfuly added the book
