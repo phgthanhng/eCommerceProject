@@ -4,6 +4,6 @@ Feature: track_book
   I need to go to Product page, where I can see a list of all books, in order to see the quantity of each book which is displayed under each book
 
   Scenario: try going to Product page
-    Given I am on admin's Home page
+    Given I am on "localhost/Bookstore/Main"
     When I click "Product" in the navigation bar
     Then I am on admin's Product page, where I can see the quantity of each book.
