@@ -4,12 +4,12 @@ Feature: delete_book
   I need to go to Product page and click on "Delete" button on a book, then I need to confirm that I want to delete the book
 
   Scenario: try going to Product page
-    Given I am on "localhost/Project/Main"
+    Given I am on "localhost/Bookstore/Main"
     When I click "Product" in the navigation bar
-    Then I am on "localhost/Project/Main/Product"
+    Then I am on "localhost/Bookstore/Main/Product"
 
   Scenario: try deleting a book from Product page
-    Given I am on "localhost/Project/Main/Product"
+    Given I am on "localhost/Bookstore/Main/Product"
     When I click "Delete" button on a book
     Then I see a popup message asking "Are you sure?"
   
