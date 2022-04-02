@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>ecommerce</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.reflowhq.com/v1/toolkit.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-    <link rel="stylesheet" href="assets/css/styles.min.css">
-</head>
+<?php require APPROOT . '/views/includes/header.php';  ?>
 
 <body>
     <nav class="navbar navbar-light navbar-expand-md text-center">
@@ -45,9 +32,9 @@
         </ul>
         <p class="copyright">Company Name © 2022</p>
     </footer>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="<?php echo URLROOT; ?>/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdn.reflowhq.com/v1/toolkit.min.js" data-reflow-store="267418190"></script>
-    <script src="assets/js/script.min.js"></script>
+    <script src="<?php echo URLROOT; ?>/js/script.min.js"></script>
 </body>
 
 </html>
