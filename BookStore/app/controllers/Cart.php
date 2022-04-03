@@ -1,5 +1,5 @@
 <?php
-class Category extends Controller
+class Cart extends Controller
 {
     public function __construct()
     {
@@ -7,6 +7,6 @@ class Category extends Controller
 
     public function index()
     {
-        // $this->view('Category/home');
+        $this->view('Cart/cart');
     }
 }

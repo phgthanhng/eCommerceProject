@@ -71,6 +71,10 @@ class Login extends Controller
         }
     }
 
+    public function signup() {
+        $this->view('Login/signup');
+    }
+
     public function create()
     {
         if(!isset($_POST['signup'])){
