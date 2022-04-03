@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <title>ecommerce</title>
     <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.reflowhq.com/v1/toolkit.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap" />
     <link rel="stylesheet" href="../assets/fonts/font-awesome.min.css" />
     <link rel="stylesheet" href="../assets/fonts/ionicons.min.css" />
@@ -14,9 +15,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md text-center" style="padding-bottom: 0">
+    <nav class="navbar navbar-light navbar-expand-md text-center">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#" style="font-size: 30px">AllBookedUp!</a
+            <a class="navbar-brand" href="index.html" style="font-size: 30px">AllBookedUp!</a
         ><button
           data-bs-toggle="collapse"
           class="navbar-toggler"
@@ -27,21 +28,20 @@
         </button>
         <div class="collapse navbar-collapse" id="navcol-1">
           <ul class="navbar-nav">
-            <li class="nav-item dropdown show">
+            <li class="nav-item dropdown">
               <a
                 class="dropdown-toggle nav-link"
-                aria-expanded="true"
+                aria-expanded="false"
                 data-bs-toggle="dropdown"
                 href="#"
                 >Categories</a
               >
-              <div class="dropdown-menu show">
+              <div class="dropdown-menu">
                 <a class="dropdown-item" href="../Categories/classic.html"
                   >Classic</a
                 ><a class="dropdown-item" href="../Categories/fiction.html"
                   >Fiction</a
-                ><a class="dropdown-item" href="../Categories/non_fiction.html"
-                  >Non-fiction</a
+                ><a class="dropdown-item" href="#">Non-fiction</a
                 ><a class="dropdown-item" href="../Categories/romance.html"
                   >Romance</a
                 ><a class="dropdown-item" href="../Categories/self_helf.html"
@@ -49,23 +49,12 @@
                 >
               </div>
             </li>
-            <li class="nav-item"></li>
             <li class="nav-item">
               <a class="nav-link" href="../Home/popularBooks.html"
-                >new york times best seller 2021</a
+                >Popular books</a
               >
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="../Home/contactUs.html">Contact us</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="#">dashboard</a></li>
-            <li class="nav-item">
-                <a class="nav-link" href="../Wishlist/wishlist.html"><i
-                  class="fa fa-heart-o fs-3 d-xxl-flex align-items-center align-content-center justify-content-xxl-start"
-                  style="margin: auto; margin-bottom: 0px; padding-bottom: 5px"
-                ></i
-              ></a>
-            </li>
+            <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
             </ul>
             <form class="d-flex me-auto navbar-form" target="_self">
                 <div class="d-flex align-items-center">
@@ -75,7 +64,6 @@
                 type="search"
                 id="search-field-1"
                 name="search"
-                placeholder="search by author or title"
               />
             </div>
           </form>
@@ -98,113 +86,18 @@
         </div>
       </div>
     </nav>
-    <div class="text-end" style="margin: 10px; margin-top: 30px">
-      <a
-        href="editProfile.html"
-        style="margin: auto; color: #000000; margin-right: 20px"
-        >edit profile</a
-      >
-    </div>
     <div class="container">
-      <h1 style="margin-bottom: 25px; margin-top: 50px; text-align: center">
-        Past orders
+      <h1 style="margin-bottom: 25px; margin-top: 30px">
+        NEW york times bestsellers 2021
       </h1>
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Column 1</th>
-              <th>Column 1</th>
-              <th>Column 2</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-            </tr>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-            </tr>
-            <tr>
-              <td>Cell 3</td>
-              <td>Cell 3</td>
-              <td>Cell 4</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div
+        data-reflow-type="product-list"
+        data-reflow-layout="cards"
+        data-reflow-order="date_desc"
+        data-reflow-product-link="/product.html?product={id}"
+      ></div>
     </div>
-    <div class="container">
-      <h1 style="margin-bottom: 25px; margin-top: 50px; text-align: center">
-        Return orders
-      </h1>
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Column 1</th>
-              <th>Column 1</th>
-              <th>Column 2</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-            </tr>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-            </tr>
-            <tr>
-              <td>Cell 3</td>
-              <td>Cell 3</td>
-              <td>Cell 4</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <div class="container">
-      <h1 style="margin-bottom: 25px; margin-top: 50px; text-align: center">
-        Reviews
-      </h1>
-      <div class="table-responsive">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Column 1</th>
-              <th>Column 1</th>
-              <th>Column 2</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-            </tr>
-            <tr>
-              <td>Cell 1</td>
-              <td>Cell 1</td>
-              <td>Cell 2</td>
-            </tr>
-            <tr>
-              <td>Cell 3</td>
-              <td>Cell 3</td>
-              <td>Cell 4</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-    <footer class="footer-basic">
+    <footer class="footer-basic" style="--bs-body-font-size: 0rem">
       <div class="social">
         <a href="#"><i class="icon ion-social-instagram"></i></a
         ><a href="#"><i class="icon ion-social-snapchat"></i></a
@@ -221,6 +114,10 @@
       <p class="copyright">Company Name © 2022</p>
     </footer>
     <script src="../assets/bootstrap/js/bootstrap.min.js"></script>
+    <script
+      src="https://cdn.reflowhq.com/v1/toolkit.min.js"
+      data-reflow-store="267418190"
+    ></script>
     <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
     <script src="../assets/js/script.min.js"></script>
