@@ -1,3 +1,7 @@
+.bootstrap_datatables {
+    min-height: 100vh
+}
+
 .footer-basic {
     padding: 40px 0;
     background-color: #fff;
