@@ -1,46 +1,33 @@
 <?php
-
     class loginModel{
         public function __construct(){
             $this->db = new Model;
         }
-    
-        public function getUser($username){
-            $this->db->query("SELECT * FROM credentials WHERE username = :username");
+
+        /*
+         * Gets a single customer 
+         */
+        public function getCustomer($username){
+            $this->db->query("SELECT * FROM customer WHERE username = :username");
             $this->db->bind(':username',$username);
             return $this->db->getSingle();
         }
 
-        public function createUser($data){
-            $this->db->query("INSERT INTO credentials (username, pass_hash) values (:username, :pass_hash)");
+        /*
+         * Create a customer
+         */ 
+        public function createCustomer($data){
+            $this->db->query("INSERT INTO customer (username, password, firstname, lastname, phone, address, email) values (:username, :password, :firstname, :lastname, :phone, :address, :email)");
             $this->db->bind(':username', $data['username']);
-            $this->db->bind(':pass_hash', $data['pass_hash']);
+            $this->db->bind(':password', $data['pass_hash']);
+            $this->db->bind(':firstname', $data['fname']);
+            $this->db->bind(':lastname', $data['lname']);
+            $this->db->bind(':phone', $data['phone']);
+            $this->db->bind(':address', $data['address']);
+            $this->db->bind(':email', $data['email']);
 
-
-            if($this->db->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-
+            return ($this->db->execute());
         }
-
-        public function updateUser($data){
-            $this->db->query("UPDATE credentials SET secret = :secret WHERE id = :userid");
-            $this->db->bind(':userid', $_SESSION['user_id']);
-            $this->db->bind(':secret', $data['secret']);
-
-
-            if($this->db->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
-
-        }
-
 
     }
 ?>

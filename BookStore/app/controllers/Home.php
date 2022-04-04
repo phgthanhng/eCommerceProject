@@ -11,7 +11,7 @@ class Home extends Controller
 
     }
 
-    public function popularBooks() {
-        $this->view('Home/popularBooks');
+    public function bestSellers() {
+        $this->view('Home/bestSellers');
     }
 }

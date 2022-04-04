@@ -1,5 +1,5 @@
 <?php
-class Admin extends Controller
+class Contact extends Controller
 {
     public function __construct()
     {
@@ -7,6 +7,7 @@ class Admin extends Controller
 
     public function index()
     {
-        $this->view('Admin/index');
+        $this->view('Contact/contactUs');
+
     }
 }

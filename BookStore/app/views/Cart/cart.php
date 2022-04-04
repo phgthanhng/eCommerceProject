@@ -5,4 +5,4 @@
     <div data-reflow-type="shopping-cart" data-reflow-success-url="/success.html" data-reflow-cancel-url="/cancel.html">
     </div>
 </div>
-<?php require APPROOT . '/views/includes/footerV2.php';  ?>
+<?php require APPROOT . '/views/includes/footer.php';  ?>

@@ -5,13 +5,7 @@ class Categories extends Controller
     {
     }
 
-    // Chilka: we dont have index
-    // public function index()
-    // {
-    //     $this->view('Categories/index');
-    // }
-
-    public function index()
+    public function classic()
     {
         $this->view('Categories/classic');
     }
