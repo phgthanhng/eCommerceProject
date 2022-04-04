@@ -90,7 +90,7 @@
                     <a class="login" href="<?php echo URLROOT; ?>/Login/index" style="margin: 20px">Log
                         In</a></span><span class="navbar-text">
                     <!-- SIGN UP -->
-                    <a class="login" href="<?php echo URLROOT; ?>/Login/signup" style="margin: 10px">Sign up</a></span>
+                    <a class="login" href="<?php echo URLROOT; ?>/Login/signup" style="margin: 20px">Sign up</a></span>
             </div>
         </div>
     </nav>

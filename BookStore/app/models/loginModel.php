@@ -13,6 +13,12 @@
             return $this->db->getSingle();
         }
 
+        public function getAdmin($username){
+            $this->db->query("SELECT * FROM admin WHERE username = :username");
+            $this->db->bind(':username',$username);
+            return $this->db->getSingle();
+        }
+
         /*
          * Create a customer
          */ 
