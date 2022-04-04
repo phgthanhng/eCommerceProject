@@ -57,7 +57,7 @@
                     else {
                        // Check username --> $SESSION username and see if the username is the admin
                     } 
-                    ?>;
+                    ?>
 
                     <?php 
                     if (!isLoggedIn()) { 
@@ -81,16 +81,18 @@
                     </div>
                 </form>
                 <!-- CART -->
-                <button class="btn btn-primary" type="button">
-                    <a href="<?php echo URLROOT; ?>/Cart/cart.php" style="margin: auto"><i
-                            class="fa fa-shopping-cart text-center d-xl-flex"
-                            style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></a></button><span
-                    class="navbar-text">
+
+                <a href="<?php echo URLROOT; ?>/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
+                        type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
+                            style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>
+                <span class="navbar-text">
                     <!-- LOGIN -->
                     <a class="login" href="<?php echo URLROOT; ?>/Login/index" style="margin: 20px">Log
-                        In</a></span><span class="navbar-text">
+                        In</a>
+                </span><span class="navbar-text">
                     <!-- SIGN UP -->
-                    <a class="login" href="<?php echo URLROOT; ?>/Login/signup" style="margin: 20px">Sign up</a></span>
+                    <a class="login" href="<?php echo URLROOT; ?>/Login/signup" style="margin: 20px">Sign up</a>
+                </span>
             </div>
         </div>
     </nav>
