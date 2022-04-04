@@ -45,7 +45,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo URLROOT; ?>/Contact/contactUs">Contact us</a>
                     </li>
-                    <li class="nav-item"><a class="nav-link" href="#">dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
                 </ul>
                 <form class="d-flex me-auto navbar-form" target="_self">
                     <div class="d-flex align-items-center">
@@ -56,7 +56,8 @@
                 </form>
                 <a href="<?php echo URLROOT; ?>/Cart/cart"><button class="btn btn-primary" type="submit">
                         style="margin: auto">
-                        <i class="fa fa-shopping-cart text-center d-xl-flex" style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)">
+                        <i class="fa fa-shopping-cart text-center d-xl-flex"
+                            style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)">
                         </i>
                     </button>
                 </a>
