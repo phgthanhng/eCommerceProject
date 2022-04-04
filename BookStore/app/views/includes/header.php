@@ -52,7 +52,7 @@
                     <?php 
                     if (!isLoggedIn()) { 
                     echo ' 
-                    <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Login/login">dashboard</a></li>
+                    <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Login/index">dashboard</a></li>
                     '; }
                     else {
                        // Check username --> $SESSION username and see if the username is the admin
@@ -63,7 +63,7 @@
                     if (!isLoggedIn()) { 
                     echo '
                     <li class="nav-item">
-                        <a class="nav-link" href="'.URLROOT.'/Login/login">
+                        <a class="nav-link" href="'.URLROOT.'/Login/index">
                               <i class="fa fa-heart-o fs-3 d-xxl-flex align-items-center align-content-center justify-content-xxl-start" style="margin: auto; margin-bottom: 0px; padding-bottom: 5px">
                               </i>
                         </a>
@@ -90,7 +90,7 @@
                     <a class="login" href="<?php echo URLROOT; ?>/Login/index" style="margin: 20px">Log
                         In</a></span><span class="navbar-text">
                     <!-- SIGN UP -->
-                    <a class="login" href="<?php echo URLROOT; ?>/Login/signup" style="margin: 10px">Sign up</a></span>
+                    <a class="login" href="<?php echo URLROOT; ?>/Login/signup" style="margin: 20px">Sign up</a></span>
             </div>
         </div>
     </nav>

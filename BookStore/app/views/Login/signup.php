@@ -1,4 +1,5 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
+<form class="px-4 py-3" method="post" action="">
 <div class="container">
     <div class="d-flex flex-column justify-content-center" id="login-box">
         <div class="login-box-header">
@@ -9,7 +10,7 @@
                 class="password-input form-control" style="margin-top:10px;" required="" placeholder="Password"
                 minlength="6"></div>
         <div class="submit-row" style="margin-bottom:8px;padding-top:0px;"><button
-                class="btn btn-primary d-block box-shadow w-100" id="submit-id-submit" type="submit">sign
+                class="btn btn-primary d-block box-shadow w-100" id="submit-id-submit" name="signup" type="submit">sign
                 up</button>
             <div class="d-flex justify-content-between">
                 <div class="form-check form-check-inline" id="form-check-rememberMe"><input class="form-check-input"
@@ -23,5 +24,6 @@
         </div>
     </div>
 </div>
+</form>
 
 <?php require APPROOT . '/views/includes/footer.php';  ?>
