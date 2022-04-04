@@ -5,12 +5,12 @@
             $this->db = new Model;
         }
         public function getUsers(){
-            $this->db->query("SELECT * FROM users");
+            $this->db->query("SELECT * FROM customer");
             return $this->db->getResultSet();
         }
 
         public function getUser($user_id){
-            $this->db->query("SELECT * FROM users WHERE ID = :user_id");
+            $this->db->query("SELECT * FROM customer WHERE ID = :user_id");
             $this->db->bind(':user_id',$user_id);
             return $this->db->getSingle();
         }

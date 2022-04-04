@@ -19,7 +19,7 @@
             </div>
         </div>
         <div id="login-box-footer" style="padding:10px 20px;padding-bottom:23px;padding-top:18px;">
-            <p style="margin-bottom:0px;">Already have an account?<a id="register-link" href="login.html">LogIn!</a></p>
+            <p style="margin-bottom:0px;">Already have an account?<a id="register-link" href="<?php echo URLROOT; ?>/Login/index">LogIn!</a></p>
         </div>
     </div>
 </div>

@@ -87,7 +87,7 @@
                             style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></a></button><span
                     class="navbar-text">
                     <!-- LOGIN -->
-                    <a class="login" href="<?php echo URLROOT; ?>/Login/login" style="margin: 20px">Log
+                    <a class="login" href="<?php echo URLROOT; ?>/Login/index" style="margin: 20px">Log
                         In</a></span><span class="navbar-text">
                     <!-- SIGN UP -->
                     <a class="login" href="<?php echo URLROOT; ?>/Login/signup" style="margin: 10px">Sign up</a></span>
