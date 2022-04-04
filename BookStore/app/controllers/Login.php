@@ -41,33 +41,38 @@ class Login extends Controller
         }
     }
 
-    public function create()
+    public function signup()
     {
         if(!isset($_POST['signup'])){
-            $this->view('Login/create');
+            $this->view('Login/signup');
         }
         else{
-            $user = $this->loginModel->getUser($_POST['username']);
+            $user = $this->loginModel->getCustomer($_POST['username']);
             if($user == null){
                 $data = [
                     'username' => trim($_POST['username']),
                     'email' => $_POST['email'],
                     'pass' => $_POST['password'],
-                    'pass_verify' => $_POST['verify_password'],
+                    'fname' => $_POST['fname'],
+                    'lname' => $_POST['lname'],
+                    'phone' => $_POST['phone'],
+                    'address' => $_POST['address'],
+
+                    // 'pass_verify' => $_POST['verify_password'],
                     'pass_hash' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-                    'username_error' => '',
-                    'password_error' => '',
-                    'password_match_error' => '',
-                    'password_len_error' => '',
-                    'msg' => '',
-                    'email_error' => ''
+                    // 'username_error' => '',
+                    // 'password_error' => '',
+                    // 'password_match_error' => '',
+                    // 'password_len_error' => '',
+                    // 'msg' => '',
+                    // 'email_error' => ''
                 ];
-                if($this->validateData($data)){
-                    if($this->loginModel->createUser($data)){
+                // if($this->validateData($data)){
+                    if($this->loginModel->createCustomer($data)){
                         echo 'Please wait creating the account for '.trim($_POST['username']);
-                        echo '<meta http-equiv="Refresh" content="2; url=/MVC/Login/">';
+                        echo '<meta http-equiv="Refresh" content="2; url=/BookStore/Home/index">';
                  }
-                } 
+                // } 
             }
             else{
                 $data = [
