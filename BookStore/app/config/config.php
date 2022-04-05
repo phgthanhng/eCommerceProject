@@ -3,7 +3,6 @@
   define('APPROOT', dirname(dirname(__FILE__)));
 
   // URL Root
-  //  define('URLROOT', 'http://localhost/BookStore'); ORIGINAL ONE
   define('URLROOT', 'http://localhost/BookStore'); 
 
   // Site Name

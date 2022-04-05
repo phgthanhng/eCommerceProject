@@ -10,8 +10,6 @@ class Admin extends Controller
         $this->view('Admin/index');
     }
 
-
-    
     public function imageUpload(){
         //default value for the picture
         $filename=false;
