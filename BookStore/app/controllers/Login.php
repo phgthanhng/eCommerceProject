@@ -15,20 +15,39 @@ class Login extends Controller
             $user = $this->loginModel->getUser($_POST['username']);
             
             if($user != null){
-                $hashed_pass = $user->password;
-                $password = $_POST['password'];
-                if(password_verify($password,$hashed_pass)){
-                    $this->createSession($user);
-                    $data = [
-                        'msg' => "Welcome, $user->username!",
-                    ];
-                    $this->view('Home/index',$data);
+                if ($user->userID != null) {
+                    // $hashed_pass = $user->password;
+                    $password = $_POST['password'];
+                    if($password == $user->password){
+                        $this->createSession($user);
+                        $data = [
+                            'msg' => "Welcome, $user->username!",
+                        ];
+                        $this->view('Home/index',$data);
+                    }
+                    else{
+                        $data = [
+                            'msg' => "Password incorrect! for $user->username",
+                        ];
+                        $this->view('Login/index',$data);
+                    }
                 }
-                else{
-                    $data = [
-                        'msg' => "Password incorrect! for $user->username",
-                    ];
-                    $this->view('Login/index',$data);
+                else {
+                    $hashed_pass = $user->password;
+                    $password = $_POST['password'];
+                    if(password_verify($password,$hashed_pass)){
+                        $this->createSession($user);
+                        $data = [
+                            'msg' => "Welcome, $user->username!",
+                        ];
+                        $this->view('Home/index',$data);
+                    }
+                    else{
+                        $data = [
+                            'msg' => "Password incorrect! for $user->username",
+                        ];
+                        $this->view('Login/index',$data);
+                    }
                 }
             }
             else{
@@ -60,7 +79,7 @@ class Login extends Controller
                 ];
                 if ($this->loginModel->createUser($data)) {
                     echo 'Please wait creating the account for ' . trim($_POST['username']);
-                    echo '<meta http-equiv="Refresh" content="2; url=/BookStore/Home/index">';
+                    echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
                 }
             } else if ($user == null) {
                 $data = [
@@ -76,7 +95,7 @@ class Login extends Controller
                 ];
                 if ($this->loginModel->createUser($data)) {
                     echo 'Please wait creating the account for ' . trim($_POST['username']);
-                    echo '<meta http-equiv="Refresh" content="2; url=/BookStore/Home/index">';
+                    echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
                 }
             } else {
                 $data = [
@@ -96,6 +115,6 @@ class Login extends Controller
     public function logout(){
         unset($_SESSION['user_id']);
         session_destroy();
-        echo '<meta http-equiv="Refresh" content="1; url=/MVC/Login/">';
+        echo '<meta http-equiv="Refresh" content="1; url=Home/index">';
     }
 }

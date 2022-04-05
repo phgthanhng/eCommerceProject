@@ -54,11 +54,18 @@
                     echo ' 
                     <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Login/index">dashboard</a></li>
                     '; }
-                    else {
-                       // Check username --> $SESSION username and see if the username is the admin
+                    // logged in as user
+                    else if (isLoggedIn() && !isAdmin()) {
+                        echo ' 
+                        <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/User/userprofile">dashboard</a></li>
+                        ';
                     } 
+                    else if (isLoggedIn() && isAdmin()){
+                        echo ' 
+                        <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Admin/index">dashboard</a></li>
+                        ';
+                    }
                     ?>
-
                     <?php 
                     if (isLoggedIn() && !isAdmin() || !isLoggedIn()) { 
                     echo '
@@ -82,17 +89,23 @@
                 </form>
                 <!-- CART -->
                 <?php
-                if (isLoggedIn() && !isAdmin() || !isLoggedIn()) { 
+                if (isLoggedIn() && !isAdmin()) { 
                     echo '
                         <a href="<?php echo URLROOT; ?>/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
                         type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
                             style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
                 }
+                else {
+                    echo '
+                    <a href="<?php echo URLROOT; ?>/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
+                    type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
+                        style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
+                }
                 ?>
                 
                 <?php
                     if (isLoggedIn()) {
-                        echo '<span class="navbar-text"> <a class="nav-link" href="/Bookstore/Login/logout"><i class="fa-solid fa-sign-out"></i> Logout  ' . $_SESSION['user_username'] . '</a></span>';
+                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/logout" style="margin: 10px">Logout  ' . $_SESSION['user_username'] . '</a></span>';
                     } else {
                         echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/index" style="margin: 10px">Log
                         In</a></span><span class="navbar-text">
