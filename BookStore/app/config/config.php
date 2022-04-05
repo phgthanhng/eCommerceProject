@@ -2,7 +2,9 @@
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root
-  define('URLROOT', 'http://localhost/BookStore');
+  define('URLROOT', 'http://localhost/eCommerceProjectBookStore');
+  // define('URLROOT', 'http://localhost/BookStore');
+
 
   // Site Name
   define('SITENAME', 'All Booked UP!');
