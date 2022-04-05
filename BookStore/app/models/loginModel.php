@@ -7,23 +7,18 @@
         /*
          * Gets a single customer 
          */
-        public function getCustomer($username){
-            $this->db->query("SELECT * FROM customer WHERE username = :username");
+        public function getUser($username){
+            $this->db->query("SELECT * FROM user WHERE username = :username");
             $this->db->bind(':username',$username);
             return $this->db->getSingle();
         }
 
-        public function getAdmin($username){
-            $this->db->query("SELECT * FROM admin WHERE username = :username");
-            $this->db->bind(':username',$username);
-            return $this->db->getSingle();
-        }
-
+      
         /*
          * Create a customer
          */ 
-        public function createCustomer($data){
-            $this->db->query("INSERT INTO customer (username, password, firstname, lastname, phone, address, email) values (:username, :password, :firstname, :lastname, :phone, :address, :email)");
+        public function createUser($data){
+            $this->db->query("INSERT INTO user (username, password, firstname, lastname, phone, address, email, newsletter) values (:username, :password, :firstname, :lastname, :phone, :address, :email, :newsletter)");
             $this->db->bind(':username', $data['username']);
             $this->db->bind(':password', $data['pass_hash']);
             $this->db->bind(':firstname', $data['fname']);
@@ -31,6 +26,7 @@
             $this->db->bind(':phone', $data['phone']);
             $this->db->bind(':address', $data['address']);
             $this->db->bind(':email', $data['email']);
+            $this->db->bind(':newsletter', $data['newsletter']);
 
             return ($this->db->execute());
         }

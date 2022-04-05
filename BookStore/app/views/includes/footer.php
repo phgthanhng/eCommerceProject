@@ -1,7 +1,7 @@
 <footer class="footer-basic">
     <div class="social">
-      <a href="#"><i class="icon ion-social-instagram"></i></a><a href="#"><i
-          class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i
+      <a href="https://www.instagram.com/"><i class="icon ion-social-instagram"></i></a><a href="https://www.snapchat.com/"><i
+          class="icon ion-social-snapchat"></i></a><a href="https://twitter.com/?lang=en"><i class="icon ion-social-twitter"></i></a><a href="https://www.facebook.com/"><i
           class="icon ion-social-facebook"></i></a>
     </div>
     <ul class="list-inline">
@@ -19,4 +19,5 @@
   <script src="https://cdn.reflowhq.com/v1/toolkit.min.js" data-reflow-store="267418190"></script>
   <script src="<?php echo URLROOT; ?>/js/script.min.js"></script>
 </body>
+
 </html>
