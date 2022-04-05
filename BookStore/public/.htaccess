@@ -2,7 +2,7 @@ Options -MultiViews
 
 RewriteEngine on
 
-RewriteBase /Bookstore/public
+RewriteBase /eCommerceProject/Bookstore/public
 
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f

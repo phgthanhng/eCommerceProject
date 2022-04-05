@@ -4,7 +4,7 @@
 
   // URL Root
   //  define('URLROOT', 'http://localhost/BookStore'); ORIGINAL ONE
-  define('URLROOT', 'http://localhost/eCommerceProject/BookStore'); // for collborating purpose for now
+  define('URLROOT', 'http://localhost/BookStore'); 
 
   // Site Name
   define('SITENAME', 'All Booked UP!');
