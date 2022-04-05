@@ -85,21 +85,14 @@
                 <a href="<?php echo URLROOT; ?>/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
                         type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
                             style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>
-                <!-- <span class="navbar-text"> -->
-                    <!-- LOGIN -->
-                    <!-- <a class="login" href="<?php echo URLROOT; ?>/Login/index" style="margin: 20px">Log
-                        In</a>
-                </span><span class="navbar-text"> -->
-                    <!-- SIGN UP -->
-                    <!-- <a class="login" href="<?php echo URLROOT; ?>/Login/signup" style="margin: 20px">Sign up</a>
-                </span> -->
+              
                 <?php
                     if (isLoggedIn()) {
-                        echo '<a class="nav-link" href="/Bookstore/Login/logout"><i class="fa-solid fa-sign-out"></i> Logout  ' . $_SESSION['user_username'] . '</a>';
+                        echo '<span class="navbar-text"> <a class="nav-link" href="/Bookstore/Login/logout"><i class="fa-solid fa-sign-out"></i> Logout  ' . $_SESSION['user_username'] . '</a></span>';
                     } else {
-                        echo '<span class="navbar-text"> <a class="login" href="<?php echo URLROOT; ?>/Login/index" style="margin: 20px">Log
+                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/index" style="margin: 10px">Log
                         In</a></span><span class="navbar-text">
-                    <a class="login" href="<?php echo URLROOT; ?>/Login/signup" style="margin: 20px">Sign up</a></span>';
+                    <a class="login" href="'.URLROOT.'/Login/signup" style="margin: 10px">Sign up</a></span>';
                     }
                     ?>
             </div>
