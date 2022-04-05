@@ -91,7 +91,7 @@
                 <?php
                 if (isLoggedIn() && !isAdmin()) { 
                     echo '
-                        <a href="<?php echo URLROOT; ?>/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
+                        <a href="'.URLROOT.'/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
                         type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
                             style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
                 }
@@ -102,7 +102,6 @@
                         style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
                 }
                 ?>
-                
                 <?php
                     if (isLoggedIn()) {
                         echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/logout" style="margin: 10px">Logout  ' . $_SESSION['user_username'] . '</a></span>';

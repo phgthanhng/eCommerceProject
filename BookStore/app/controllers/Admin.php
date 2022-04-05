@@ -62,4 +62,8 @@ class Admin extends Controller
                 }
             }
         }
+
+    public function manageProduct() {
+        $this->view('Admin/editProduct');
+    }
 }
