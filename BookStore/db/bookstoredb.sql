@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2022 at 05:29 AM
--- Server version: 10.4.24-MariaDB
--- PHP Version: 7.4.28
+-- Generation Time: Apr 05, 2022 at 07:51 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,30 +24,6 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
---
-
-CREATE TABLE `admin` (
-  `adminID` int(11) NOT NULL,
-  `username` varchar(15) NOT NULL,
-  `password` varchar(10) NOT NULL,
-  `firstname` varchar(15) NOT NULL,
-  `lastname` varchar(15) NOT NULL,
-  `email` varchar(30) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`adminID`, `username`, `password`, `firstname`, `lastname`, `email`) VALUES
-(1, 'chilcj', 'password', 'Chilka', 'Castro', 'chilcj@gmail.com'),
-(2, 'phgthanhng', '123456', 'Phuong Thanh', 'Nguyen', '123456');
-(3, 'jiahui', '123456', 'Jiahui', 'Xia', 'hui@gmail.com');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `book`
 --
 
@@ -56,15 +32,12 @@ CREATE TABLE `book` (
   `bookname` varchar(50) NOT NULL,
   `isbn` varchar(20) NOT NULL,
   `author` varchar(30) NOT NULL,
-  -- change to varchar
-  `publisher` varchar(50) NOT NULL, 
-  `publisheddate` date NOT NULL,
+  `publisher` varchar(50) NOT NULL,
   `retailprice` decimal(10,0) NOT NULL,
   `availablequantity` int(11) NOT NULL,
   `soldquantity` int(11) NOT NULL,
   `image` varchar(100) NOT NULL,
   `description` varchar(500) NOT NULL,
-  -- the new one 
   `category` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -76,7 +49,7 @@ CREATE TABLE `book` (
 
 CREATE TABLE `cart` (
   `cartID` int(11) NOT NULL,
-  `customerID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `totalprice` decimal(10,0) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -97,36 +70,12 @@ CREATE TABLE `cartitem` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `customer`
---
-
-CREATE TABLE `customer` (
-  `customerID` int(11) NOT NULL,
-  `username` varchar(20) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `firstname` varchar(20) NOT NULL,
-  `lastname` varchar(20) NOT NULL,
-  `phone` varchar(11) NOT NULL,
-  `address` varchar(50) NOT NULL,
-  `email` varchar(40) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `customer`
---
-
-INSERT INTO `customer` (`customerID`, `username`, `password`, `firstname`, `lastname`, `phone`, `address`, `email`) VALUES
-(1, 'phgthanhng', '$2y$10$qac/ytqiJKwfm9u0DBJY6O4JaRKRnP5/ZPg.rhCelEVnuXLQTgOmC', 'Phuong Thanh', 'Nguyen', '438-680-289', '5062 Avenue Victoria', 'anc@gmail.com');
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `order`
 --
 
 CREATE TABLE `order` (
   `orderID` int(11) NOT NULL,
-  `customerID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `cartID` int(11) NOT NULL,
   `orderdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `orderstatus` varchar(10) NOT NULL,
@@ -158,11 +107,38 @@ CREATE TABLE `return` (
 CREATE TABLE `review` (
   `reviewID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL,
-  `customerID` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
   `reviewdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `reviewcontent` varchar(300) NOT NULL,
   `reviewmark` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `userID` int(11) NOT NULL,
+  `username` varchar(20) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `firstname` varchar(20) NOT NULL,
+  `lastname` varchar(20) NOT NULL,
+  `phone` varchar(15) NOT NULL,
+  `address` varchar(50) NOT NULL,
+  `email` varchar(40) NOT NULL,
+  `newsletter` varchar(5) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`userID`, `username`, `password`, `firstname`, `lastname`, `phone`, `address`, `email`, `newsletter`) VALUES
+(1, 'phgthanhng', '123456', 'Phuong Thanh', 'Nguyen', '438-680-289', '5062 Avenue Victoria', 'anc@gmail.com', 'no'),
+(2, 'chilcj', 'password', 'Chilka', 'Castro', '438-397-6747', '7704 ruer Verdier Saint Leonard Quebec H12S2H9', 'chilcjcastro@yahoo.ca', 'no'),
+(3, 'jiahui', '123456', 'Jiahui', 'Xia', '438-132-6727', '821 Sainte Croix Ave, Saint-Laurent, Quebec H4L 3X', 'jiahuixia@gmail.com', 'no');
 
 -- --------------------------------------------------------
 
@@ -172,7 +148,7 @@ CREATE TABLE `review` (
 
 CREATE TABLE `wishlist` (
   `wishlistID` int(11) NOT NULL,
-  `customerID` int(11) NOT NULL
+  `userID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -192,12 +168,6 @@ CREATE TABLE `wishlistitem` (
 --
 
 --
--- Indexes for table `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`adminID`);
-
---
 -- Indexes for table `book`
 --
 ALTER TABLE `book`
@@ -208,7 +178,7 @@ ALTER TABLE `book`
 --
 ALTER TABLE `cart`
   ADD PRIMARY KEY (`cartID`),
-  ADD KEY `FK_cart_customer` (`customerID`);
+  ADD KEY `FK_cart_customer` (`userID`);
 
 --
 -- Indexes for table `cartitem`
@@ -219,17 +189,11 @@ ALTER TABLE `cartitem`
   ADD KEY `FK_cartitem_book` (`bookID`);
 
 --
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`customerID`);
-
---
 -- Indexes for table `order`
 --
 ALTER TABLE `order`
   ADD PRIMARY KEY (`orderID`),
-  ADD KEY `FK_order_customer` (`customerID`),
+  ADD KEY `FK_order_customer` (`userID`),
   ADD KEY `FK_order_cart` (`cartID`);
 
 --
@@ -244,15 +208,21 @@ ALTER TABLE `return`
 --
 ALTER TABLE `review`
   ADD PRIMARY KEY (`reviewID`),
-  ADD KEY `FK_review_customer` (`customerID`),
+  ADD KEY `FK_review_customer` (`userID`),
   ADD KEY `FK_review_book` (`bookID`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`userID`);
 
 --
 -- Indexes for table `wishlist`
 --
 ALTER TABLE `wishlist`
   ADD PRIMARY KEY (`wishlistID`),
-  ADD KEY `FK_wishlist_customer` (`customerID`);
+  ADD KEY `FK_wishlist_customer` (`userID`);
 
 --
 -- Indexes for table `wishlistitem`
@@ -265,12 +235,6 @@ ALTER TABLE `wishlistitem`
 --
 -- AUTO_INCREMENT for dumped tables
 --
-
---
--- AUTO_INCREMENT for table `admin`
---
-ALTER TABLE `admin`
-  MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `book`
@@ -291,12 +255,6 @@ ALTER TABLE `cartitem`
   MODIFY `cartitemID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `customer`
---
-ALTER TABLE `customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `order`
 --
 ALTER TABLE `order`
@@ -313,6 +271,12 @@ ALTER TABLE `return`
 --
 ALTER TABLE `review`
   MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
@@ -334,7 +298,7 @@ ALTER TABLE `wishlistitem`
 -- Constraints for table `cart`
 --
 ALTER TABLE `cart`
-  ADD CONSTRAINT `FK_cart_customer` FOREIGN KEY (`customerID`) REFERENCES `customer` (`customerID`);
+  ADD CONSTRAINT `FK_cart_user` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 
 --
 -- Constraints for table `cartitem`
@@ -348,7 +312,7 @@ ALTER TABLE `cartitem`
 --
 ALTER TABLE `order`
   ADD CONSTRAINT `FK_order_cart` FOREIGN KEY (`cartID`) REFERENCES `cart` (`cartID`),
-  ADD CONSTRAINT `FK_order_customer` FOREIGN KEY (`customerID`) REFERENCES `customer` (`customerID`);
+  ADD CONSTRAINT `FK_order_user` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 
 --
 -- Constraints for table `return`
@@ -361,13 +325,13 @@ ALTER TABLE `return`
 --
 ALTER TABLE `review`
   ADD CONSTRAINT `FK_review_book` FOREIGN KEY (`bookID`) REFERENCES `book` (`bookID`),
-  ADD CONSTRAINT `FK_review_customer` FOREIGN KEY (`customerID`) REFERENCES `customer` (`customerID`);
+  ADD CONSTRAINT `FK_review_user` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 
 --
 -- Constraints for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  ADD CONSTRAINT `FK_wishlist_customer` FOREIGN KEY (`customerID`) REFERENCES `customer` (`customerID`);
+  ADD CONSTRAINT `FK_wishlist_user` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 
 --
 -- Constraints for table `wishlistitem`

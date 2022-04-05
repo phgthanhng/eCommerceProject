@@ -60,7 +60,7 @@
                     ?>
 
                     <?php 
-                    if (!isLoggedIn()) { 
+                    if (isLoggedIn() && !isAdmin() || !isLoggedIn()) { 
                     echo '
                     <li class="nav-item">
                         <a class="nav-link" href="'.URLROOT.'/Login/index">
@@ -81,11 +81,15 @@
                     </div>
                 </form>
                 <!-- CART -->
-
-                <a href="<?php echo URLROOT; ?>/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
+                <?php
+                if (isLoggedIn() && !isAdmin() || !isLoggedIn()) { 
+                    echo '
+                        <a href="<?php echo URLROOT; ?>/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
                         type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
-                            style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>
-              
+                            style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
+                }
+                ?>
+                
                 <?php
                     if (isLoggedIn()) {
                         echo '<span class="navbar-text"> <a class="nav-link" href="/Bookstore/Login/logout"><i class="fa-solid fa-sign-out"></i> Logout  ' . $_SESSION['user_username'] . '</a></span>';

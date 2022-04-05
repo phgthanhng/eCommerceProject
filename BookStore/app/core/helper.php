@@ -6,14 +6,13 @@
 
     session_start();
 
-    function isLoggedIn(){
-        if(isset($_SESSION['user_id'])){
-          return true;
-        } else {
-          return false;
-        }
-      }
+    function isLoggedIn() {
+        return (isset($_SESSION['user_id']));
+    }
 
+    function isAdmin() {
+      return (isset($_SESSION['user_id']) == 1 || isset($_SESSION['user_id']) == 2 || isset($_SESSION['user_id']) == 3);
+    }
     // function check($secret, $code){
     //     $g = new \Sonata\GoogleAuthenticator\GoogleAuthenticator();
     //     if($g->checkCode($secret, $code)){
