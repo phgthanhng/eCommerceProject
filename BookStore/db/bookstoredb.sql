@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 02, 2022 at 10:20 PM
+-- Generation Time: Apr 05, 2022 at 02:35 AM
 -- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- PHP Version: 8.1.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -41,7 +41,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`adminID`, `username`, `password`, `firstname`, `lastname`, `email`) VALUES
-(1, 'chilcj', 'password', 'Chilka', 'Castro', 'chilcj@gmail.com');
+(1, 'chilcj', 'password', 'Chilka', 'Castro', 'chilcj@gmail.com'),
+(2, 'phgthanhng', '123456', 'Phuong Thanh', 'Nguyen', '123456');
 
 -- --------------------------------------------------------
 
@@ -105,6 +106,13 @@ CREATE TABLE `customer` (
   `address` varchar(50) NOT NULL,
   `email` varchar(40) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `customer`
+--
+
+INSERT INTO `customer` (`customerID`, `username`, `password`, `firstname`, `lastname`, `phone`, `address`, `email`) VALUES
+(1, 'phgthanhng', '$2y$10$qac/ytqiJKwfm9u0DBJY6O4JaRKRnP5/ZPg.rhCelEVnuXLQTgOmC', 'Phuong Thanh', 'Nguyen', '438-680-289', '5062 Avenue Victoria', 'anc@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -258,7 +266,7 @@ ALTER TABLE `wishlistitem`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `book`
@@ -282,7 +290,7 @@ ALTER TABLE `cartitem`
 -- AUTO_INCREMENT for table `customer`
 --
 ALTER TABLE `customer`
-  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `customerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order`
