@@ -55,7 +55,7 @@ CREATE TABLE `book` (
   `bookname` varchar(50) NOT NULL,
   `isbn` varchar(20) NOT NULL,
   `author` varchar(30) NOT NULL,
-  `publisher` int(30) NOT NULL,
+  `publisher` varchar(50) NOT NULL,
   `publisheddate` date NOT NULL,
   `retailprice` decimal(10,0) NOT NULL,
   `availablequantity` int(11) NOT NULL,
