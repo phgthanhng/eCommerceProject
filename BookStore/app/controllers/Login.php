@@ -15,15 +15,14 @@ class Login extends Controller
             $user = $this->loginModel->getCustomer($_POST['username']);
             
             if($user != null){
-                $hashed_pass = $user->pass_hash;
+                $hashed_pass = $user->password;
                 $password = $_POST['password'];
                 if(password_verify($password,$hashed_pass)){
-                    //echo '<meta http-equiv="Refresh" content="2; url=/MVC/">';
                     $this->createSession($user);
                     $data = [
                         'msg' => "Welcome, $user->username!",
                     ];
-                    $this->view('Home/home',$data);
+                    $this->view('Home/index',$data);
                 }
                 else{
                     $data = [
@@ -41,13 +40,7 @@ class Login extends Controller
         }
     }
 
-
-    public function signup() {
-        $this->view('Login/signup');
-    }
-
-
-    public function create()
+    public function signup()
     {
         if(!isset($_POST['signup'])){
             $this->view('Login/signup');
@@ -84,7 +77,7 @@ class Login extends Controller
                 $data = [
                     'msg' => "User: ". $_POST['username'] ." already exists",
                 ];
-                $this->view('Login/signup',$data);
+                $this->view('Login/create',$data);
             }
             
         }
@@ -113,7 +106,7 @@ class Login extends Controller
     }
 
     public function createSession($user){
-        $_SESSION['user_id'] = $user->id;
+        $_SESSION['user_id'] = $user->customer_ID;
         $_SESSION['user_username'] = $user->username;
     }
 
