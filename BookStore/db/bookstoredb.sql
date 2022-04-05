@@ -61,7 +61,8 @@ CREATE TABLE `book` (
   `availablequantity` int(11) NOT NULL,
   `soldquantity` int(11) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `description` varchar(500) NOT NULL
+  `description` varchar(500) NOT NULL，
+  `category` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
