@@ -43,6 +43,7 @@ CREATE TABLE `admin` (
 INSERT INTO `admin` (`adminID`, `username`, `password`, `firstname`, `lastname`, `email`) VALUES
 (1, 'chilcj', 'password', 'Chilka', 'Castro', 'chilcj@gmail.com'),
 (2, 'phgthanhng', '123456', 'Phuong Thanh', 'Nguyen', '123456');
+(3, 'jiahui', '123456', 'Jiahui', 'Xia', 'hui@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -55,13 +56,15 @@ CREATE TABLE `book` (
   `bookname` varchar(50) NOT NULL,
   `isbn` varchar(20) NOT NULL,
   `author` varchar(30) NOT NULL,
-  `publisher` varchar(50) NOT NULL,
+  -- change to varchar
+  `publisher` varchar(50) NOT NULL, 
   `publisheddate` date NOT NULL,
   `retailprice` decimal(10,0) NOT NULL,
   `availablequantity` int(11) NOT NULL,
   `soldquantity` int(11) NOT NULL,
   `image` varchar(100) NOT NULL,
   `description` varchar(500) NOT NULL,
+  -- the new one 
   `category` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
