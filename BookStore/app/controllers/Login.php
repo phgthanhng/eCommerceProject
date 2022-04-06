@@ -108,7 +108,15 @@ class Login extends Controller
 
     public function logout(){
         echo '<meta http-equiv="Refresh" content="5; /eCommerceProject/BookStore/Login/logout">';
-        echo 'Logging out user';
+        echo '
+        <div style="position: absolute;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;">
+            <h1>Logging out, '.$_SESSION['user_username'].'<h1>
+        </div>
+        ';
         unset($_SESSION['user_id']);
         session_destroy();
         echo '<meta http-equiv="Refresh" content="1; /eCommerceProject/BookStore/Login/index">';

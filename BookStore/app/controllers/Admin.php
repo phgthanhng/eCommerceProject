@@ -9,10 +9,16 @@ class Admin extends Controller
 
     public function index()
     {
-        $this->view('Admin/index');
+        if (isLoggedIn()) {
+            $this->view('Admin/index');
+        }
+        else {
+            $this->view('Home/index');
+        }
     }
 
     public function imageUpload(){
+        if (isLoggedIn()) {
         //default value for the picture
         $filename=false;
         
@@ -38,9 +44,14 @@ class Admin extends Controller
             move_uploaded_file($file['tmp_name'], "$folder/$filename");
         }
         return $filename;
+        }
+        else {
+            $this->view('Home/index');
+        }
     }
 
     public function addBook(){
+        if (isLoggedIn()) {
             if(!isset($_POST['addBook'])){
                 $this->view('Admin/addBook');
             }
@@ -64,17 +75,23 @@ class Admin extends Controller
                 }
             }
         }
+    }
 
     public function manageProducts() {
-        // $this->view('Admin/manageProducts');
-        $books = $this->bookModel->getAllBooks();
-        
-        if (!empty($books)) {
-            $data = [
-                "books" => $books
-            ];
+        if (isLoggedIn()){
+            // $this->view('Admin/manageProducts');
+            $books = $this->bookModel->getAllBooks();
+            
+            if (!empty($books)) {
+                $data = [
+                    "books" => $books
+                ];
 
-            $this->view('Admin/manageProducts', $data);
+                $this->view('Admin/manageProducts', $data);
+            }
+        }
+        else {
+            $this->view('Home/index');
         }
     }
 
@@ -88,17 +105,27 @@ class Admin extends Controller
     // }
 
     public function delete($bookID) {
-        $data = [
-            'bookID' => $bookID
-        ];
-        if ($this->bookModel->delete($data)) {
-            echo 'Please wait we are deleting the book for you!';
-            echo '<meta http-equiv="Refresh" content=".2; url='.URLROOT.'/Admin/manageProducts">';
+        if (isLoggedIn()) {
+            $data = [
+                'bookID' => $bookID
+            ];
+            if ($this->bookModel->delete($data)) {
+                echo 'Please wait we are deleting the book for you!';
+                echo '<meta http-equiv="Refresh" content=".2; url='.URLROOT.'/Admin/manageProducts">';
+            }
+        }
+        else {
+            $this->view('Home/index');
         }
     }
 
     public function editProfile() {
+        if (isLoggedIn()) {
         // just take sessionid as the data 
         $this->view('Admin/editProfile');
+        }
+        else {
+            $this->view('Home/index');
+        }
     }
 }
