@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
 <!-- <form class="px-4 py-3" method="post" action=""> -->
-<div class="container" style="margin-top: 50px;">
+<div class="container" style="margin-top: 50px; margin-bottom:50px">
     <div class="d-flex flex-column justify-content-center" id="login-box" style="margin-top: 100px;">
         <div class="login-box-header">
             <h4 style="color:rgb(139,139,139);margin-bottom:0px;font-weight:400;font-size:27px;">Login</h4>

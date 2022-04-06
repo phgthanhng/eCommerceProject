@@ -101,11 +101,11 @@
                 ?>
                 <?php
                     if (isLoggedIn()) {
-                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/logout" style="margin: 10px">Logout  ' . $_SESSION['user_username'] . '</a></span>';
+                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/logout" style="margin: 10px"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                    Logout  ' . $_SESSION['user_username'] . '</a></span>';
                     } else {
-                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/index" style="margin: 10px">Log
-                        In</a></span><span class="navbar-text">
-                    <a class="login" href="'.URLROOT.'/Login/signup" style="margin: 10px">Sign up</a></span>';
+                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/index" style="margin: 10px"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></span><span class="navbar-text">
+                    <a class="login" href="'.URLROOT.'/Login/signup" style="margin: 10px"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a></span>';
                     }
                     ?>
             </div>
