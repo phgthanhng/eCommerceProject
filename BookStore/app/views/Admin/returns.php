@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/includes/adminheader.php';  ?>
+<?php require APPROOT . '/views/includes/header.php';  ?>
     <div class="text-center d-lg-flex flex-column justify-content-center align-content-center align-items-lg-center"
         style="
         min-height: 100vh;
@@ -8,4 +8,4 @@
       ">
     </div>
 
-    <?php require APPROOT . '/views/includes/adminfooter.php';  ?>
+    <?php require APPROOT . '/views/includes/footer.php';  ?>

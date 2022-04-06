@@ -22,7 +22,9 @@
             <button class="btn btn-primary d-block box-shadow w-100" id="submit-id-submit" name="signup" type="submit">sign
                     up</button>
                 <div class="d-flex justify-content-between">
-                    <div class="form-check form-check-inline" id="form-check-rememberMe"><input class="form-check-input" type="checkbox" id="formCheck-1" for="remember" style="cursor:pointer;" name="newsletter" value="yes" checked><label class="form-check-label" for="formCheck-1"><span class="label-text">Subscribe to our newsletter</span></label></div>
+                    <div class="form-check form-check-inline" id="form-check-rememberMe"><input class="form-check-input" type="checkbox" id="formCheck-1" for="remember" 
+                    style="cursor:pointer;" name="newsletter" value="yes" checked>
+                    <label class="form-check-label" for="formCheck-1"><span class="label-text">Subscribe to our newsletter</span></label></div>
                 </div>
             </div>
             <div id="login-box-footer" style="padding:10px 20px;padding-bottom:23px;padding-top:18px;">

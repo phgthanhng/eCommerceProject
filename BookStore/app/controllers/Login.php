@@ -6,43 +6,52 @@ class Login extends Controller
         $this->loginModel = $this->model('loginModel');
     }
 
-    public function index()
+     public function index()
     {
         if(!isset($_POST['login'])){
             $this->view('Login/index');
         }
         else{
             $user = $this->loginModel->getUser($_POST['username']);
-            
+            // user exists
             if($user != null){
+                // if user is admin
                 if ($user->userID == 1 || $user->userID == 2 || $user->userID == 3) {
-                    // $hashed_pass = $user->password;
+                    $hashed_pass = $user->password;
                     $password = $_POST['password'];
-                    if($password == $user->password){
+                    // if admin password correct
+                    if ($password == $hashed_pass){
                         $this->createSession($user);
                         $data = [
                             'msg' => "Welcome, $user->username!",
                         ];
-                        $this->view('Home/index',$data);
+                        header('Location: /eCommerceProject/BookStore/Admin/index');
+                        $this->view('Admin/index',$data);
                     }
-                    else{
+                    // if admin password incorrect
+                    else {
                         $data = [
                             'msg' => "Password incorrect! for $user->username",
                         ];
                         $this->view('Login/index',$data);
                     }
                 }
+                // if not admin
                 else {
                     $hashed_pass = $user->password;
                     $password = $_POST['password'];
-                    if(password_verify($password,$hashed_pass)){
+                    
+                    // if user password correct
+                    if (password_verify($password,$hashed_pass)){
                         $this->createSession($user);
                         $data = [
                             'msg' => "Welcome, $user->username!",
                         ];
-                        $this->view('Home/index',$data);
+                        header('Location: /eCommerceProject/BookStore/User/index');
+                        $this->view('User/index',$data);
                     }
-                    else{
+                    // if user password incorrect
+                    else {
                         $data = [
                             'msg' => "Password incorrect! for $user->username",
                         ];
@@ -50,6 +59,7 @@ class Login extends Controller
                     }
                 }
             }
+            // user null
             else{
                 $data = [
                     'msg' => "User: ". $_POST['username'] ." does not exists",
@@ -97,8 +107,12 @@ class Login extends Controller
     }
 
     public function logout(){
+        echo '<meta http-equiv="Refresh" content="5; /eCommerceProject/BookStore/Login/logout">';
+        echo 'Logging out user';
         unset($_SESSION['user_id']);
         session_destroy();
-        echo '<meta http-equiv="Refresh" content="1; url=Home/index">';
+        echo '<meta http-equiv="Refresh" content="1; /eCommerceProject/BookStore/Login/index">';
+        // header('Location: /eCommerceProject/BookStore/Login/index');   // change later if
+        // header('Location: /BookStore/Login/index');   // change later if
     }
 }
