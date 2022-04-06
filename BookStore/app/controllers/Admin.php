@@ -65,7 +65,16 @@ class Admin extends Controller
             }
         }
 
-    public function manageProduct() {
-        $this->view('Admin/editProduct');
+    public function manageProducts() {
+        // $this->view('Admin/manageProducts');
+        $books = $this->bookModel->getAllBooks();
+        
+        if (!empty($books)) {
+            $data = [
+                "books" => $books
+            ];
+
+            $this->view('Admin/manageProducts', $data);
+        }
     }
 }
