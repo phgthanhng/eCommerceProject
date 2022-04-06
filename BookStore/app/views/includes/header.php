@@ -23,7 +23,7 @@
     <nav class="navbar navbar-light navbar-expand-md text-center" style="padding-bottom: 0; background: #bdc696">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index"
-                style="font-size: 30px">AllBookedUp!</a><button data-bs-toggle="collapse" class="navbar-toggler"
+                style="font-size: 28px">AllBookedUp!</a><button data-bs-toggle="collapse" class="navbar-toggler"
                 data-bs-target="#navcol-1">
                 <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
             </button>
