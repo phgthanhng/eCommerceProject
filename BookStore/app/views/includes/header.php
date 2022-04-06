@@ -17,11 +17,10 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
         crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.reflowhq.com/v1/toolkit.min.css">
-
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md text-center" style="padding-bottom: 0">
+    <nav class="navbar navbar-light navbar-expand-md text-center" style="padding-bottom: 0; background: #bdc696">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index"
                 style="font-size: 30px">AllBookedUp!</a><button data-bs-toggle="collapse" class="navbar-toggler"
@@ -48,22 +47,26 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo URLROOT; ?>/Contact/contactUs">Contact us</a>
                     </li>
+
                     <!-- Check if logged in | Still havent implemented the code here -->
                     <?php 
                     if (!isLoggedIn()) { 
-                    echo ' 
-                    <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Login/index">dashboard</a></li>
-                    '; }
+                        echo ' 
+                        <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Login/index">dashboard</a></li>
+                        '; 
+                    }
                     // logged in as user
-                    else if (isLoggedIn() && !isAdmin()) {
-                        echo ' 
-                        <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/User/userprofile">dashboard</a></li>
-                        ';
-                    } 
-                    else if (isLoggedIn() && isAdmin()){
-                        echo ' 
-                        <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Admin/index">dashboard</a></li>
-                        ';
+                    else {
+                        if (!isAdmin()) {
+                            echo ' 
+                            <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/User/index">dashboard</a></li>
+                            ';
+                        } 
+                        else {
+                            echo ' 
+                            <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Admin/index">dashboard</a></li>
+                            ';
+                        }
                     }
                     ?>
                     <?php 
@@ -89,17 +92,11 @@
                 </form>
                 <!-- CART -->
                 <?php
-                if (isLoggedIn() && !isAdmin()) { 
+                if (!isLoggedIn() || isLoggedIn() && !isAdmin()) { 
                     echo '
                         <a href="'.URLROOT.'/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
                         type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
                             style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
-                }
-                else {
-                    echo '
-                    <a href="<?php echo URLROOT; ?>/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
-                    type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
-                        style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
                 }
                 ?>
                 <?php
