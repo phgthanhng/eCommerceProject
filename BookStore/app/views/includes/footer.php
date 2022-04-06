@@ -1,5 +1,5 @@
-<footer class="footer-basic" style="background: #bdc696; left:0; bottom:0; width:100%;">
-    <div class="social">
+<footer class="footer-basic" style="background: #bdc696;height: 178.3px; ">
+      <div class="social" style="padding-bottom: 10px; height: 49px">
       <a href="https://www.instagram.com/"><i class="icon ion-social-instagram"></i></a><a href="https://www.snapchat.com/"><i
           class="icon ion-social-snapchat"></i></a><a href="https://twitter.com/?lang=en"><i class="icon ion-social-twitter"></i></a><a href="https://www.facebook.com/"><i
           class="icon ion-social-facebook"></i></a>
@@ -18,5 +18,5 @@
   <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
   <script src="https://cdn.reflowhq.com/v1/toolkit.min.js" data-reflow-store="267418190"></script>
   <script src="<?php echo URLROOT; ?>/js/script.min.js"></script>
-
-
+  </body>
+<html>

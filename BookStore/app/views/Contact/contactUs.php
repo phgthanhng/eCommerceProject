@@ -132,27 +132,13 @@
                                                         placeholder="Primary Phone"></div>
                                             </div>
                                         </div>
-                                        <div class="col-12 col-sm-6 col-md-12 col-lg-6">
-                                            <div class="form-group mb-3"><label class="form-label"
-                                                    for="from-calltime">Best Time to Call</label>
-                                                <div class="input-group">
-                                                    <div class="input-group-prepend"><span class="input-group-text"><i
-                                                                class="fa fa-clock-o"></i></span></div><select
-                                                        class="form-select" id="from-calltime-2" name="call time">
-                                                        <optgroup label="Best Time to Call">
-                                                            <option value="Morning" selected="">Morning</option>
-                                                            <option value="Afternoon">Afternoon</option>
-                                                            <option value="Evening">Evening</option>
-                                                        </optgroup>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                        </div>
+                                       
                                     </div>
                                     <div class="form-group mb-3"><label class="form-label"
-                                            for="from-comments">Comments</label><textarea class="form-control"
+                                            for="from-comments">Comments</label>
+                                            <textarea class="form-control" style="overflow-y: scroll;"
                                             id="from-comments-2" name="comments" placeholder="Enter Comments"
-                                            rows="5"></textarea></div>
+                                            rows="5""></textarea></div>
                                     <div class="form-group mb-3">
                                         <div class="row">
                                             <div class="col"><button class="btn btn-primary d-block w-100"
