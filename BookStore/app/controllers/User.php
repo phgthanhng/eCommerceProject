@@ -4,7 +4,7 @@
         public function __construct(){
             $this->userModel = $this->model('userModel');
             if(!isLoggedIn()){
-                header('Location: /BookStore/Login');
+                header('Location: /eCommerceProject/BookStore/Login');
             }
         }
 
