@@ -56,7 +56,7 @@ class bookModel
 
 
     // update a book
-    public function updateBook($data){
+    public function editBook($data){
         $this->db->query("UPDATE book SET bookname=:bookname, isbn=:isbn, author=:author, publisher=:publisher, 
         retailprice=:retailprice, availablequantity=:availablequantity, 
         image =:image,  description=:description, category=:category
@@ -70,6 +70,7 @@ class bookModel
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':category', $data['category']);
+        $this->db->bind(':bookID', $data['bookID']);
         if($this->db->execute()){
             return true;
         }

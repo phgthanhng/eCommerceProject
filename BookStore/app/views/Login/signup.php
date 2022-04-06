@@ -15,7 +15,7 @@
             <input type="text" name="fname" id="fname" class="form-control" style="margin-top:10px;" required="" placeholder="First Name" minlength="1">
             <input type="text" name="lname" id="lname" class="form-control" style="margin-top:10px;" required="" placeholder="Last Name" minlength="1">
             <input type="text" name="address" id="address" class="form-control" style="margin-top:10px;" required="" placeholder="Address" minlength="6">
-            <input type="tel" name="phone" id="phone" class="form-control" style="margin-top:10px;" pattern="^\d{3}-\d{3}-\d{4}$" required="" placeholder="Phone xxx-xxx-xxxx" minlength="10">
+            <input type="tel" name="phone" id="phone" class="form-control" style="margin-top:10px;" pattern="^\d{3}-\d{3}-\d{4}$" required="" placeholder="Phone xxx-xxx-xxxx" minlength="12">
             </div>   
 
             <div class="submit-row" style="margin-bottom:8px;padding-top:0px;">

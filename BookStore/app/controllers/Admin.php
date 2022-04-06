@@ -104,9 +104,35 @@ class Admin extends Controller
        
     }
 
+    public function editBook($bookID) {
+        $book = $this->bookModel->getSingleBook($bookID);
+        if(!isset($_POST['addBook'])){
+            $this->view('Admin/editBook', $book);
+        }
+        else{
+            $filename= $this->imageUpload();
+            $data=[
+                'bookname' => trim($_POST['title']),
+                'isbn' => trim($_POST['isbn']),
+                'author' => trim($_POST['author']),
+                'publisher' => trim($_POST['publisher']),
+                'retailprice' => trim($_POST['price']),
+                'availablequantity' => trim($_POST['quantity']),
+                'image' => $filename,
+                'description' => trim($_POST['desc']),
+                'category' => trim($_POST['category']),
+                'bookID' => $bookID
+            ];
+            
+            if($this->bookModel->editBook($data)){
+                echo 'Update book successfull!';
+                echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Admin/index">';
+            }
+        }
+    }
+
     public function editProfile() {
         // just take sessionid as the data 
         $this->view('Admin/editProfile');
-        
     }
 }
