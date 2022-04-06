@@ -8,7 +8,7 @@
         <div class="login-box-content"></div>
         <form class="px-4 py-3" method="post" action="">
             <div class="email-login" style="background-color:#ffffff;">
-                <input class="email-imput form-control" id="username" name="username" style="margin-top:10px;" required="" placeholder="Username" minlength="6">
+                <input class="email-imput form-control" id="username" name="username" style="margin-top:10px;" required="" placeholder="Username">
                 <input type="password" id="password" name="password" class="password-input form-control" style="margin-top:10px;" required="" placeholder="Password" minlength="6">
             </div>
             <div class="submit-row" style="margin-bottom:8px;padding-top:0px;">

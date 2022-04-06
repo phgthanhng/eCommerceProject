@@ -15,7 +15,7 @@ class Login extends Controller
             $user = $this->loginModel->getUser($_POST['username']);
             
             if($user != null){
-                if ($user->userID != null) {
+                if ($user->userID == 1 || $user->userID == 2 || $user->userID == 3) {
                     // $hashed_pass = $user->password;
                     $password = $_POST['password'];
                     if($password == $user->password){
