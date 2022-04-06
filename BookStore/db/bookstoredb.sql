@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2022 at 03:57 AM
+-- Generation Time: Apr 06, 2022 at 05:45 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 7.4.28
 
@@ -33,7 +33,7 @@ CREATE TABLE `book` (
   `isbn` varchar(20) NOT NULL,
   `author` varchar(30) NOT NULL,
   `publisher` varchar(50) NOT NULL,
-  `retailprice` decimal(10,0) NOT NULL,
+  `retailprice` decimal(10,2) NOT NULL,
   `availablequantity` int(11) NOT NULL,
   `image` varchar(100) NOT NULL,
   `description` varchar(10000) NOT NULL,
@@ -45,7 +45,10 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`bookID`, `bookname`, `isbn`, `author`, `publisher`, `retailprice`, `availablequantity`, `image`, `description`, `category`) VALUES
-(1, 'Lessons In Chemistry: A Novel', '9780593556672', 'Bonnie Garmus', 'Diversified Publishing', '41', 43, '195801.png', 'A delight for readers of Where\'\'d You Go, Bernadette, this blockbuster debut set in 1960s California features the singular voice of Elizabeth Zott, a scientist whose career takes a detour when she becomes the star of a beloved TV cooking show.\r\n\r\nChemist Elizabeth Zott is not your average woman. In fact, Elizabeth Zott would be the first to point out that there is no such thing as an average woman. But it\'\'s the early 1960s and her all-male team at Hastings Research Institute takes a very unscientific view of equality. Except for one: Calvin Evans, the lonely, brilliant, Nobel Prize–nominated grudge holder who falls in love with—of all things—her mind. True chemistry results. \r\n \r\nLike science, though, life is unpredictable. Which is why a few years later Eizabeth Zott finds herself not only a single mother but also the reluctant star of America\'\'s most beloved cooking show, Supper at Six. Elizabeth\'\'s unusual approach to cooking (\"combine one tablespoon acetic acid with a pinch of sodium chloride\") proves revolutionary. But as her following grows, not everyone is happy. Because, as it turns out, Elizabeth Zott isn\'\'t just teaching women how to cook. She\'\'s daring them to change the status quo.  \r\n \r\nLaugh-out-loud funny, shrewdly observant and studded with a dazzling cast of supporting characters, Lessons in Chemistry is as original and vibrant as its protagonist.', 'fiction');
+(1, 'Lessons In Chemistry: A Novel', '9780593556672', 'Bonnie Garmus', 'Diversified Publishing', '41.99', 43, '195801.png', 'A delight for readers of Where\'\'d You Go, Bernadette, this blockbuster debut set in 1960s California features the singular voice of Elizabeth Zott, a scientist whose career takes a detour when she becomes the star of a beloved TV cooking show.\r\n\r\nChemist Elizabeth Zott is not your average woman. In fact, Elizabeth Zott would be the first to point out that there is no such thing as an average woman. But it\'\'s the early 1960s and her all-male team at Hastings Research Institute takes a very unscientific view of equality. Except for one: Calvin Evans, the lonely, brilliant, Nobel Prize–nominated grudge holder who falls in love with—of all things—her mind. True chemistry results. \r\n \r\nLike science, though, life is unpredictable. Which is why a few years later Eizabeth Zott finds herself not only a single mother but also the reluctant star of America\'\'s most beloved cooking show, Supper at Six. Elizabeth\'\'s unusual approach to cooking (\"combine one tablespoon acetic acid with a pinch of sodium chloride\") proves revolutionary. But as her following grows, not everyone is happy. Because, as it turns out, Elizabeth Zott isn\'\'t just teaching women how to cook. She\'\'s daring them to change the status quo.  \r\n \r\nLaugh-out-loud funny, shrewdly observant and studded with a dazzling cast of supporting characters, Lessons in Chemistry is as original and vibrant as its protagonist.', 'fiction'),
+(3, 'BE A TRIANGLE (SIGNED EDITION): HOW I WENT FROM BE', '9780385684194', 'Lilly Singh', 'Doubleday Canada', '24.99', 60, '624d026ed50d3.png', 'From the New York Times bestselling author of How to Be a Bawse comes an honest, funny, and inspiring primer on learning to come home to your truest and happiest self.\r\n\r\n“It’s time to flip right side up. It’s time for this book title to make sense. It’s time to be a triangle.”\r\n \r\nEveryone knows that sometimes, life just sucks—even world-famous actress, author, and creator Lilly Singh. In this book, Lilly provides a safe space where readers can learn how to create a sense of peace within themselves. Without sugarcoating what it’s like to face adversity—including Lilly’s intensely personal struggles with identity, success, and self-doubt—she teaches readers to “unsubscribe” from cookie-cutter ideals.\r\n \r\nWith her signature blend of vulnerability, insight, and humor, Lilly instructs readers to “be a triangle”: You must build a solid foundation for your life, one that can be built upon, but never fundamentally changed or destroyed. As she puts it, we must always find a way to come home to ourselves—“we must create a place, a set of beliefs, a simple set of priorities to come back to should life lead us astray, which it will.”\r\n \r\nLike a wise, empathetic friend who always keeps you honest, Lilly pushes you to adjust your mindset and change the conversations you have with yourself. The result is a deeply humane, entertaining, and uplifting guide to befriending yourself and becoming a true “miracle for the world.”', 'fiction'),
+(4, 'Freezing Order: A True Story Of Money Laundering, ', '9781982153281', 'Bill Browder', 'Simon & Schuster', '38.88', 78, '624d085dac16b.png', 'Following his explosive New York Times bestseller Red Notice, Bill Browder returns with another gripping thriller chronicling how he became Vladimir Putin’s number one enemy by exposing Putin’s campaign to steal and launder hundreds of billions of dollars and kill anyone who stands in his way.\r\n\r\nWhen Bill Browder’s young Russian lawyer, Sergei Magnitsky, was beaten to death in a Moscow jail, Browder made it his life’s mission to go after his killers and make sure they faced justice. The first step of that mission was to uncover who was behind the $230 million tax refund scheme that Magnitsky was killed over. As Browder and his team tracked the money as it flowed out of Russia through the Baltics and Cyprus and on to Western Europe and the Americas, they were shocked to discover that Vladimir Putin himself was a beneficiary of the crime.', 'fiction'),
+(5, 'AGAIN, RACHEL', '9780385675376', 'Marian Keyes', 'Doubleday Canada', '37.99', 98, '624d0a4576b25.png', 'From internationally bestselling author Marian Keyes comes the eagerly awaited sequel to Rachel\'\'s Holiday.\r\n\r\nBack in the long ago nineties, Rachel Walsh was a mess.\r\n \r\nBut a spell in rehab transformed everything. Life became very good, very quickly. These days, Rachel has love, family, a great job as an addiction counsellor, she even gardens. Her only bad habit is a fondness for expensive sneakers.\r\n \r\nBut with the sudden reappearance of a man she\'\'d once loved, her life wobbles.\r\n \r\nShe\'\'d thought she was settled. Fixed forever. Is she about to discover that no matter what our age, everything can change?\r\n \r\nIs it time to think again, Rachel?', 'fiction');
 
 -- --------------------------------------------------------
 
@@ -246,7 +249,7 @@ ALTER TABLE `wishlistitem`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cart`

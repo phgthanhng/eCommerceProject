@@ -32,7 +32,7 @@
                 name="publisher" />
             <div><label class="form-label float-start"
                     style="font-size: 22px;width: 227px;height: 28.5px;color: rgb(0,0,0);font-weight: bold;text-align: center;margin-top: -1px;">Retail
-                    Price</label><input class="form-control float-end" type="number"
+                    Price</label><input class="form-control float-end" type="text"
                     style="width: 364px;padding: 0px 0px 0px 0px;padding-top: 2px;margin-right: 10px;margin-top: -34px;font-size: 12px;height: 29px;padding-right: 2px;padding-bottom: 2px;padding-left: 2px;margin-bottom: 13px;"
                     name="price" /></div>
         </div>

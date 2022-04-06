@@ -58,14 +58,13 @@ class bookModel
     // update a book
     public function updateBook($data){
         $this->db->query("UPDATE book SET bookname=:bookname, isbn=:isbn, author=:author, publisher=:publisher, 
-        publisheddate=:publisheddate, retailprice=:retailprice, availablequantity=:availablequantity, 
+        retailprice=:retailprice, availablequantity=:availablequantity, 
         image =:image,  description=:description, category=:category
         WHERE bookID=:bookID");
         $this->db->bind(':bookname', $data['bookname']);
         $this->db->bind(':isbn', $data['isbn']);
         $this->db->bind(':author', $data['author']);
         $this->db->bind(':publisher', $data['publisher']);
-        $this->db->bind(':publisheddate', $data['publisheddate']);
         $this->db->bind(':retailprice', $data['retailprice']);
         $this->db->bind(':availablequantity', $data['availablequantity']);
         $this->db->bind(':image', $data['image']);
