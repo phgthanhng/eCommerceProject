@@ -3,6 +3,8 @@ class Admin extends Controller
 {
     public function __construct()
     {
+        $this->bookModel = $this->model('bookModel');
+
     }
 
     public function index()
@@ -15,7 +17,7 @@ class Admin extends Controller
         $filename=false;
         
         //save the file that gets sent as a picture
-        $file = $_FILES['picture'];
+        $file = $_FILES['image'];
         
         $acceptedTypes = ['image/jpeg'=>'jpg',
             'image/gif'=>'gif',
@@ -38,27 +40,27 @@ class Admin extends Controller
         return $filename;
     }
 
-    public function addProduct(){
-            if(!isset($_POST['add'])){
-                $this->view('Admin/addProduct');
+    public function addBook(){
+            if(!isset($_POST['addBook'])){
+                $this->view('Admin/addBook');
             }
             else{
                 $filename= $this->imageUpload();
                 $data=[
-                    'bookname' => trim($_POST['bookname']),
+                    'bookname' => trim($_POST['title']),
                     'isbn' => trim($_POST['isbn']),
                     'author' => trim($_POST['author']),
                     'publisher' => trim($_POST['publisher']),
-                    'publisheddate' => trim($_POST['publisheddate']),
-                    'retailprice' => trim($_POST['retailprice']),
-                    'availablequantity' => trim($_POST['availablequantity']),
-                    'picture' => $filename,
-                    'description' => trim($_POST['description']),
+                    'retailprice' => trim($_POST['price']),
+                    'availablequantity' => trim($_POST['quantity']),
+                    'image' => $filename,
+                    'description' => trim($_POST['desc']),
+                    'category' => trim($_POST['category'])
                 ];
                
-                if($this->userModel->addBook($data)){
+                if($this->bookModel->addBook($data)){
                     echo 'Book Addded!';
-                    echo '<meta http-equiv="Refresh" content="2; url=/BookStore/Admin/addProduct">';
+                    echo '<meta http-equiv="Refresh" content="2; url=/BookStore/Admin/index">';
                 }
             }
         }

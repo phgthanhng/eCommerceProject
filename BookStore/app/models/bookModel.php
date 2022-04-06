@@ -25,23 +25,21 @@ class bookModel
 
 
     // create a book
-    public function createBook($data){
-        $this->db->query("INSERT INTO book (bookname, isbn, author, publisher, publisheddate, retailprice, availablequantity, soldquantity, image, description, category)
-         values  (:bookname, :isbn, :author, :publisher, :publisheddate, :retailprice, :availablequantity, :soldquantity, :image, :description, :category)");
+    public function addBook($data){
+        $this->db->query("INSERT INTO book (bookname, isbn, author, publisher, retailprice, availablequantity, image, description, category)
+         values  (:bookname, :isbn, :author, :publisher, :retailprice, :availablequantity, :image, :description, :category)");
         $this->db->bind(':bookname', $data['bookname']);
         $this->db->bind(':isbn', $data['isbn']);
         $this->db->bind(':author', $data['author']);
         $this->db->bind(':publisher', $data['publisher']);
-        $this->db->bind(':publisheddate', $data['publisheddate']);
         $this->db->bind(':retailprice', $data['retailprice']);
         $this->db->bind(':availablequantity', $data['availablequantity']);
-        $this->db->bind(':soldquantity', $data['soldquantity']);
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':category', $data['category']);
 
-
         return ($this->db->execute());
+      
     }
 
 

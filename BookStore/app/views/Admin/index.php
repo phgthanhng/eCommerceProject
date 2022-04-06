@@ -10,7 +10,7 @@
         <a href="<?php echo URLROOT; ?>/Admin/manageProducts" style="margin: auto;margin-top: 30pxpx;margin-bottom: 30px;">
         <button class="btn btn-primary" type="button" style="background: #3e6259;margin: 0px;width: 192px;">Manage Products</button>
         </a>
-        <a href="<?php echo URLROOT; ?>/Admin/addProduct" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
+        <a href="<?php echo URLROOT; ?>/Admin/addBook" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
         <button class="btn btn-primary" type="button" style="background: #3e6259;margin: 0px;width: 192px;">Add a product</button>
         </a>
         <a href="<?php echo URLROOT; ?>/Admin/manageOrder" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
