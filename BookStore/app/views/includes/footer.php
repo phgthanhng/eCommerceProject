@@ -1,11 +1,11 @@
- <footer class="footer-basic" style="background: #bdc696; position:fixed; left:0; bottom:0; width:100%;">
-    <div class="social"">
+ <footer class="footer-basic" style="background: #bdc696; position:fixed; left:0; bottom:0; width:100%; padding: 3px;">
+    <div class="social" style="padding-top: 0px; margin:0px;">
       <a href="https://www.instagram.com/"><i class="icon ion-social-instagram"></i></a><a href="https://www.snapchat.com/"><i
           class="icon ion-social-snapchat"></i></a><a href="https://twitter.com/?lang=en"><i class="icon ion-social-twitter"></i></a><a href="https://www.facebook.com/"><i
           class="icon ion-social-facebook"></i></a>
     </div>
    
-    <p class="copyright" style="color: #ffffff;">AllBookedUp © 2022</p>
+    <p class="copyright" style="color: #ffffff; margin: 0px; padding: 0px">AllBookedUp © 2022</p>
   </footer>
   <script src="<?php echo URLROOT; ?>/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
