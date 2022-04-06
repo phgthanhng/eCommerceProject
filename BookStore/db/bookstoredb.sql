@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.1
+-- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 05, 2022 at 07:51 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.1.2
+-- Generation Time: Apr 06, 2022 at 03:57 AM
+-- Server version: 10.4.24-MariaDB
+-- PHP Version: 7.4.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,11 +35,17 @@ CREATE TABLE `book` (
   `publisher` varchar(50) NOT NULL,
   `retailprice` decimal(10,0) NOT NULL,
   `availablequantity` int(11) NOT NULL,
-  `soldquantity` int(11) NOT NULL,
   `image` varchar(100) NOT NULL,
-  `description` varchar(500) NOT NULL,
+  `description` varchar(10000) NOT NULL,
   `category` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `book`
+--
+
+INSERT INTO `book` (`bookID`, `bookname`, `isbn`, `author`, `publisher`, `retailprice`, `availablequantity`, `image`, `description`, `category`) VALUES
+(1, 'Lessons In Chemistry: A Novel', '9780593556672', 'Bonnie Garmus', 'Diversified Publishing', '41', 43, '195801.png', 'A delight for readers of Where\'\'d You Go, Bernadette, this blockbuster debut set in 1960s California features the singular voice of Elizabeth Zott, a scientist whose career takes a detour when she becomes the star of a beloved TV cooking show.\r\n\r\nChemist Elizabeth Zott is not your average woman. In fact, Elizabeth Zott would be the first to point out that there is no such thing as an average woman. But it\'\'s the early 1960s and her all-male team at Hastings Research Institute takes a very unscientific view of equality. Except for one: Calvin Evans, the lonely, brilliant, Nobel Prize–nominated grudge holder who falls in love with—of all things—her mind. True chemistry results. \r\n \r\nLike science, though, life is unpredictable. Which is why a few years later Eizabeth Zott finds herself not only a single mother but also the reluctant star of America\'\'s most beloved cooking show, Supper at Six. Elizabeth\'\'s unusual approach to cooking (\"combine one tablespoon acetic acid with a pinch of sodium chloride\") proves revolutionary. But as her following grows, not everyone is happy. Because, as it turns out, Elizabeth Zott isn\'\'t just teaching women how to cook. She\'\'s daring them to change the status quo.  \r\n \r\nLaugh-out-loud funny, shrewdly observant and studded with a dazzling cast of supporting characters, Lessons in Chemistry is as original and vibrant as its protagonist.', 'fiction');
 
 -- --------------------------------------------------------
 
@@ -240,7 +246,7 @@ ALTER TABLE `wishlistitem`
 -- AUTO_INCREMENT for table `book`
 --
 ALTER TABLE `book`
-  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `bookID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `cart`

@@ -3,10 +3,15 @@ class Book extends Controller
 {
     public function __construct()
     {
+        $this->bookModel = $this->model('bookModel');
     }
 
     public function index()
     {
-        $this->view('Book/viewBooks');
+        $books = $this->bookModel->getAllBooks();
+        $data = [  
+            "books" => $books
+        ];
+        $this->view('Book/viewBooks', $data);
     }
 }

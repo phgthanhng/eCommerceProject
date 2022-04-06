@@ -7,7 +7,7 @@ class bookModel
     }
 
     // get all the books
-    public function getBooks()
+    public function getAllBooks()
     {
         $this->db->query("SELECT * FROM book");
         return $this->db->getResultSet();
@@ -26,8 +26,8 @@ class bookModel
 
     // create a book
     public function createBook($data){
-        $this->db->query("INSERT INTO book (bookname, isbn, author, publisher, publisheddate, retailprice, availablequantity, soldquantity, image, description, category)
-         values  (:bookname, :isbn, :author, :publisher, :publisheddate, :retailprice, :availablequantity, :soldquantity, :image, :description, :category)");
+        $this->db->query("INSERT INTO book (bookname, isbn, author, publisher, publisheddate, retailprice, availablequantity, image, description, category)
+         values  (:bookname, :isbn, :author, :publisher, :publisheddate, :retailprice, :availablequantity, :image, :description, :category)");
         $this->db->bind(':bookname', $data['bookname']);
         $this->db->bind(':isbn', $data['isbn']);
         $this->db->bind(':author', $data['author']);
@@ -35,7 +35,6 @@ class bookModel
         $this->db->bind(':publisheddate', $data['publisheddate']);
         $this->db->bind(':retailprice', $data['retailprice']);
         $this->db->bind(':availablequantity', $data['availablequantity']);
-        $this->db->bind(':soldquantity', $data['soldquantity']);
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':category', $data['category']);
@@ -61,7 +60,7 @@ class bookModel
     public function updateBook($data){
         $this->db->query("UPDATE book SET bookname=:bookname, isbn=:isbn, author=:author, publisher=:publisher, 
         publisheddate=:publisheddate, retailprice=:retailprice, availablequantity=:availablequantity, 
-        soldquantity=:soldquantity, image =:image,  description=:description, category=:category
+        image =:image,  description=:description, category=:category
         WHERE bookID=:bookID");
         $this->db->bind(':bookname', $data['bookname']);
         $this->db->bind(':isbn', $data['isbn']);
@@ -70,7 +69,6 @@ class bookModel
         $this->db->bind(':publisheddate', $data['publisheddate']);
         $this->db->bind(':retailprice', $data['retailprice']);
         $this->db->bind(':availablequantity', $data['availablequantity']);
-        $this->db->bind(':soldquantity', $data['soldquantity']);
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':category', $data['category']);
