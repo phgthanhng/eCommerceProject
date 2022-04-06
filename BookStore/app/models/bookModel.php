@@ -7,7 +7,7 @@ class bookModel
     }
 
     // get all the books
-    public function getBooks()
+    public function getAllBooks()
     {
         $this->db->query("SELECT * FROM book");
         return $this->db->getResultSet();
@@ -59,7 +59,7 @@ class bookModel
     public function updateBook($data){
         $this->db->query("UPDATE book SET bookname=:bookname, isbn=:isbn, author=:author, publisher=:publisher, 
         publisheddate=:publisheddate, retailprice=:retailprice, availablequantity=:availablequantity, 
-        soldquantity=:soldquantity, image =:image,  description=:description, category=:category
+        image =:image,  description=:description, category=:category
         WHERE bookID=:bookID");
         $this->db->bind(':bookname', $data['bookname']);
         $this->db->bind(':isbn', $data['isbn']);
@@ -68,7 +68,6 @@ class bookModel
         $this->db->bind(':publisheddate', $data['publisheddate']);
         $this->db->bind(':retailprice', $data['retailprice']);
         $this->db->bind(':availablequantity', $data['availablequantity']);
-        $this->db->bind(':soldquantity', $data['soldquantity']);
         $this->db->bind(':image', $data['image']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':category', $data['category']);
