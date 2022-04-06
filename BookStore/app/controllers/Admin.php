@@ -60,7 +60,7 @@ class Admin extends Controller
                
                 if($this->bookModel->addBook($data)){
                     echo 'Book Addded!';
-                    echo '<meta http-equiv="Refresh" content="2; url=/BookStore/Admin/index">';
+                    echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Admin/index">';
                 }
             }
         }
