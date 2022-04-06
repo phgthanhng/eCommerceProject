@@ -65,7 +65,7 @@ class Login extends Controller
             $this->view('Login/signup');
         } else {
             $user = $this->loginModel->getUser($_POST['username']);
-            if (!isset($_POST['newsletter']) && $user == null) {
+            if ($user == null) {
                 $data = [
                     'username' => trim($_POST['username']),
                     'email' => $_POST['email'],
@@ -74,23 +74,7 @@ class Login extends Controller
                     'lname' => $_POST['lname'],
                     'phone' => $_POST['phone'],
                     'address' => $_POST['address'],
-                    'newsletter' => 'no',
-                    'pass_hash' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-                ];
-                if ($this->loginModel->createUser($data)) {
-                    echo 'Please wait creating the account for ' . trim($_POST['username']);
-                    echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
-                }
-            } else if ($user == null) {
-                $data = [
-                    'username' => trim($_POST['username']),
-                    'email' => $_POST['email'],
-                    'pass' => $_POST['password'],
-                    'fname' => $_POST['fname'],
-                    'lname' => $_POST['lname'],
-                    'phone' => $_POST['phone'],
-                    'address' => $_POST['address'],
-                    'newsletter' => $_POST['newsletter'],
+                    'newsletter' => isset($_POST['newsletter'])? $_POST['newsletter'] : 'no',
                     'pass_hash' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 ];
                 if ($this->loginModel->createUser($data)) {
