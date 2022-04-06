@@ -96,4 +96,9 @@ class Admin extends Controller
             echo '<meta http-equiv="Refresh" content=".2; url='.URLROOT.'/Admin/manageProducts">';
         }
     }
+
+    public function editProfile() {
+        // just take sessionid as the data 
+        $this->view('Admin/editProfile');
+    }
 }

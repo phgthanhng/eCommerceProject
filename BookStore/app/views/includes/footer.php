@@ -1,4 +1,4 @@
- <footer class="footer-basic" style="background: #bdc696; position:fixed; left:0; bottom:0; width:100%">
+ <footer class="footer-basic" style="background: #bdc696; left:0; bottom:0; width:100%;">
     <div class="social">
       <a href="https://www.instagram.com/"><i class="icon ion-social-instagram"></i></a><a href="https://www.snapchat.com/"><i
           class="icon ion-social-snapchat"></i></a><a href="https://twitter.com/?lang=en"><i class="icon ion-social-twitter"></i></a><a href="https://www.facebook.com/"><i
