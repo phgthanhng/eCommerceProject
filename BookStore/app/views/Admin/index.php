@@ -22,7 +22,8 @@
         <a href="<?php echo URLROOT; ?>/Admin/reviews" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
         <button class="btn btn-primary" type="button" style="margin: 0px;width: 192px;background: #3e6259;">View reviews</button>
         </a>
-        <a href="<?php echo URLROOT; ?>/Admin/editContactUs" style="margin: auto;margin-top: 0px;"><button class="btn btn-primary" type="button" style="margin: 0px;width: 192px;background: #3e6259;">Edit contact us</button>
+        <a href="<?php echo URLROOT; ?>/Admin/editProfile" style="margin: auto;margin-top: 0px;">
+        <button class="btn btn-primary" type="button" style="margin: 0px;width: 192px;background: #3e6259;">Edit Profile</button>
         </a>
     </div>
 </div>

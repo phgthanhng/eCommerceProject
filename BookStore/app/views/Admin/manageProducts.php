@@ -30,13 +30,13 @@
                         </td>";
 
                         echo "<td style='background: #ffffff;'>
-                        <a href='/Blog/Profile/delete/$book->bookID'>Details</a>
+                        <a href='/eCommerceProject/BookStore/Admin/details/$book->bookID'>Details</a>
                         </td>";
                         echo "<td style='background: #ffffff;'>
-                        <a href='/Blog/Profile/delete/$book->bookID'>Edit</a>
+                        <a href='/eCommerceProject/BookStore/Admin/editBook/$book->bookID'>Edit</a>
                         </td>";
                         echo "<td style='background: #ffffff;'>
-                        <a href='/Blog/Profile/delete/$book->bookID'>Delete</a>
+                        <a href='/eCommerceProject/BookStore/Admin/delete/$book->bookID'>Delete</a>
                         </td>";
                         echo "</tr>";
 
