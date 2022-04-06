@@ -65,7 +65,35 @@ class Admin extends Controller
             }
         }
 
-    public function manageProduct() {
-        $this->view('Admin/editProduct');
+    public function manageProducts() {
+        // $this->view('Admin/manageProducts');
+        $books = $this->bookModel->getAllBooks();
+        
+        if (!empty($books)) {
+            $data = [
+                "books" => $books
+            ];
+
+            $this->view('Admin/manageProducts', $data);
+        }
+    }
+
+    public function details($bookID) {
+
+    }
+
+    // public function editBook($bookID) {
+    //     $book = $this->bookMdel->getSingleBook($bookID) ;
+    //     if 
+    // }
+
+    public function delete($bookID) {
+        $data = [
+            'bookID' => $bookID
+        ];
+        if ($this->bookModel->delete($data)) {
+            echo 'Please wait we are deleting the book for you!';
+            echo '<meta http-equiv="Refresh" content=".2; url='.URLROOT.'/Admin/manageProducts">';
+        }
     }
 }
