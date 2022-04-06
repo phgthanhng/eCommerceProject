@@ -8,7 +8,7 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th style="background: #ffffff;border-color: #000000;border-top-color: rgb(85,;border-right-color: 89,;border-bottom-color: 92);border-left-color: 89,;">Title</th>
+                        <th style="background: #ffffff;border-color: #000000;">Title</th>
                         <th style="background: #ffffff;border-bottom-color: #000000;">Author</th>
                         <th style="background: #ffffff;">Category</th>
                         <th colspan="3" style="background: #ffffff;">Action</th>
