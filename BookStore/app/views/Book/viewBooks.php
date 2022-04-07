@@ -14,7 +14,8 @@
     .parent {
 
         max-width: 80%;
-        overflow:hidden;zoom:1;
+        overflow: hidden;
+        zoom: 1;
         margin: 0 auto;
         display: flex;
         justify-content: space-around;
@@ -23,7 +24,7 @@
 
     .item {
         /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
-        width: 210px;
+        width: 230px;
         float: left;
         height: auto;
         text-align: center;
@@ -75,13 +76,12 @@
         <?php
         if (!empty($data["books"])) {
             foreach ($data["books"] as $book) {
+                $id = $book->bookID;
+                $name = substr($book->bookname, 0, 20) . "...";
                 echo '<div class = "item">';
-                echo '<img src="' . URLROOT . '/public/img/' . $book->image . '" style="width:200px; height 80px;"';
-                if (strlen($book->bookname) > 30) {
-                    echo ' <p><a href= "' . URLROOT . '/Book/bookdetail/'.$book->bookID.'"> '. $book->bookname.'</p>';
-                }  else {
-                    echo ' <p><a href= "' . URLROOT . '/Book/bookdetail/'.$book->bookID. '">'. $book->bookname.'</p>';
-                }
+                echo '<img src="' . URLROOT . '/public/img/' . $book->image . '" style="width:210px; height:300px;"';
+                // echo "<a href='http://localhost/eCommerceProject/BookStore/Book/bookdetail/$id'>$book->bookname</a>";
+                echo '<p><a href="' . URLROOT . '/Book/bookdetail/' . $id . '"> ' . $name . '</a></p>';
                 echo '<p class="author"> by ' . $book->author . '</p>';
                 echo '<p class="price"> $' . $book->retailprice . "</p>";
                 echo '<p><button>Add to Cart</button></p>';
