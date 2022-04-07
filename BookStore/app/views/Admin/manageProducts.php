@@ -11,6 +11,7 @@
                         <th style="background: #ffffff;border-color: #000000;">Title</th>
                         <th style="background: #ffffff;border-bottom-color: #000000;">Author</th>
                         <th style="background: #ffffff;">Category</th>
+                        <th style="background: #ffffff;">Quantity</th>
                         <th colspan="3" style="background: #ffffff;">Action</th>
                     </tr>
                 </thead>
@@ -27,6 +28,9 @@
                         </td>";
                         echo "<td style='background: #ffffff;'>
                         $book->category</a>
+                        </td>";
+                        echo "<td style='background: #ffffff;'>
+                        $book->availablequantity</a>
                         </td>";
 
                         echo "<td style='background: #ffffff;'>

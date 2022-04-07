@@ -74,7 +74,7 @@
                     echo '
                     <li class="nav-item">
                         <a class="nav-link" href="'.URLROOT.'/Login/index">
-                              <i class="fa fa-heart-o fs-3 d-xxl-flex align-items-center align-content-center justify-content-xxl-start" style="margin: auto; margin-bottom: 0px; padding-bottom: 5px">
+                              <i class="fa fa-heart-o fs-3 d-xxl-flex align-items-center align-content-center justify-content-xxl-start" style="margin: auto;  padding-bottom: 5px">
                               </i>
                         </a>
                     </li> ';
@@ -86,7 +86,7 @@
                 <form class="d-flex me-auto navbar-form" target="_self">
                     <div class="d-flex align-items-center">
                         <label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search"
-                                style="margin: 10px"></i></label><input class="form-control search-field" type="search"
+                                style="margin: 10px"></i></label><input class="form-control search-field" type="search" style="margin-bottom: 10px;"
                             id="search-field-1" name="search" placeholder="search by author or title" />
                     </div>
                 </form>
@@ -94,7 +94,7 @@
                 <?php
                 if (!isLoggedIn() || isLoggedIn() && !isAdmin()) { 
                     echo '
-                        <a href="'.URLROOT.'/Cart/cart.php" style="margin: auto"> <button class="btn btn-primary"
+                        <a href="'.URLROOT.'/Cart/cart.php" style="margin: 10px"> <button class="btn btn-primary"
                         type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
                             style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
                 }
