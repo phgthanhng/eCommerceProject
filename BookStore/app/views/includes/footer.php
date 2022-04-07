@@ -11,7 +11,7 @@
       <li class="list-inline-item"><a href="#">Terms</a></li>
       <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
     </ul>
-    <p class="copyright">AllBookedUp © 2022</p>
+    <p class="copyright" style="color: #ffffff;">AllBookedUp © 2022</p>
   </footer>
   <script src="<?php echo URLROOT; ?>/bootstrap/js/bootstrap.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
