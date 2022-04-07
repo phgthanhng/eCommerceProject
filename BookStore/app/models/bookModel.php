@@ -22,8 +22,6 @@ class bookModel
         return $this->db->getSingle();
     }
 
-
-
     // create a book
     public function addBook($data){
         $this->db->query("INSERT INTO book (bookname, isbn, author, publisher, retailprice, availablequantity, image, description, category)

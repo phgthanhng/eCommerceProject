@@ -432,6 +432,11 @@ $book = $data['book'];
 ?>
 
 <body>
+    <div>
+    <?php
+        var_dump($book);
+    ?>
+    </div>
     <section id="services" class="services section-bg">
         <div class="container-fluid">
 
@@ -445,6 +450,7 @@ $book = $data['book'];
                     </div>
                 </div>
                 <div class="col-md-6">
+
                     <div class="products-details-container">
                         <div class="_product-detail-content">
                             <p class="_p-name"> <?php echo $book->bookname ?> </p>
@@ -452,6 +458,7 @@ $book = $data['book'];
                                 <div class="p-list">
                                     <!-- <span> M.R.P. : <i class="fa fa-inr"></i> <del> 1399  </del>   </span> -->
                                     <span class="price"> <?php echo "$" . $book->retailprice ?> </span>
+
                                 </div>
                                 <div class="_p-add-cart">
                                     <div class="_p-qty">
@@ -807,7 +814,4 @@ $book = $data['book'];
     </script>
 
 
-</body>
-
-</html>
 <?php require APPROOT . '/views/includes/footer.php';  ?>

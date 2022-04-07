@@ -42,7 +42,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="<?php echo URLROOT; ?>/Home/bestSellers">NYT Best Sellers </a>
+                        <a class="nav-link" href="<?php echo URLROOT; ?>/API/index">NYT Best Sellers </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo URLROOT; ?>/Contact/contactUs">Contact us</a>

@@ -15,8 +15,6 @@ class Book extends Controller
         $this->view('Book/viewBooks', $data);
     }
 
-
-
     public function bookdetail($bookID)
     {
         // For the publication part
