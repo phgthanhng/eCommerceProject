@@ -86,17 +86,32 @@ class Login extends Controller
                     'address' => $_POST['address'],
                     'newsletter' => isset($_POST['newsletter'])? $_POST['newsletter'] : 'no',
                     'pass_hash' => password_hash($_POST['password'], PASSWORD_DEFAULT),
+                    'pass_verify' => $_POST['verify_password']
                 ];
+                if ($this->validateSignupData($data)) {
                 if ($this->loginModel->createUser($data)) {
                     echo 'Please wait creating the account for ' . trim($_POST['username']);
                     echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
                 }
+            }
             } else {
                 $data = [
                     'msg' => "User: " . $_POST['username'] . " already exists",
                 ];
                 $this->view('Login/index', $data);
             }
+        }
+    }
+
+    public function validateSignupData($data) {
+        if ($data['pass'] != $data['pass_verify']) {
+            $data['password_match_error'] = 'Password does not match';
+        } 
+        if (empty($data['password_match_error'])) {
+            return true;
+        }
+        else {
+            $this->view('Login/signup', $data);
         }
     }
 
