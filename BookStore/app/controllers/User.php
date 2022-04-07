@@ -12,14 +12,6 @@
             $this->view('User/index');
         }
 
-        // public function getUsers(){
-        //     $users = $this->userModel->getUsers();
-        //     $data = [
-        //         "users" => $users
-        //     ];
-        //     $this->view('User/getUsers',$data);
-        // }
-
         public function editProfile($userID) {
             $user = $this->userModel->getUser($userID);
 
@@ -46,7 +38,5 @@
         public function editCredentials($userID) {
 
         }
-        
-
       
     }

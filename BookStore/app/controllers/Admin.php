@@ -4,6 +4,7 @@ class Admin extends Controller
     public function __construct()
     {
         $this->bookModel = $this->model('bookModel');
+        $this->userModel = $this->model('userModel');
         if (!isLoggedIn()) {
             header('Location: /eCommerceProject/BookStore/Login');
         }
@@ -131,8 +132,14 @@ class Admin extends Controller
         }
     }
 
-    public function editProfile() {
-        // just take sessionid as the data 
-        $this->view('Admin/editProfile');
+    public function displayUsers() {
+        $users = $this->userModel->getUsers();
+        if (!empty($users)) {
+            $data = [
+                "users" => $users
+            ];
+
+            $this->view('Admin/displayUsers', $data);
+        }
     }
 }

@@ -5,7 +5,7 @@
             $this->db = new Model;
         }
         public function getUsers(){
-            $this->db->query("SELECT * FROM user");
+            $this->db->query("SELECT * FROM user where userID > 3");
             return $this->db->getResultSet();
         }
 

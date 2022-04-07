@@ -22,6 +22,9 @@
         <a href="<?php echo URLROOT; ?>/Admin/reviews" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
         <button class="btn btn-primary" type="button" style="margin: 0px;width: 192px;background: #3e6259;">View reviews</button>
         </a>
+        <a href="<?php echo URLROOT; ?>/Admin/displayUsers" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
+        <button class="btn btn-primary" type="button" style="margin: 0px;width: 192px;background: #3e6259;">Display all Customers</button>
+        </a>
         
     </div>
 </div>
