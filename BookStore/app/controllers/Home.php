@@ -10,8 +10,4 @@ class Home extends Controller
         $this->view('Home/index');
 
     }
-
-    public function bestSellers() {
-        $this->view('Home/bestSellers');
-    }
 }

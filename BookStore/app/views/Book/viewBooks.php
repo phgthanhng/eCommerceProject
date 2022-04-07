@@ -3,7 +3,7 @@
 <html lang="en">
 
 <style>
-    /* html {
+/* html {
         position: relative;
         min-height: 100%;
     } */
@@ -11,61 +11,62 @@
 
 
 
-    .parent {
+.parent {
 
-        max-width: 80%;
-        overflow:hidden;zoom:1;
-        margin: 0 auto;
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
-    }
+    max-width: 80%;
+    overflow: hidden;
+    zoom: 1;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
 
-    .item {
-        /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
-        width: 210px;
-        float: left;
-        height: auto;
-        text-align: center;
-        font-family: arial;
-    }
+.item {
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+    width: 230px;
+    float: left;
+    height: auto;
+    text-align: center;
+    font-family: arial;
+}
 
-    .bookname {
-        color: black;
-        font-size: 18px;
-        /* line-height: 10px; */
+.bookname {
+    color: black;
+    font-size: 18px;
+    /* line-height: 10px; */
 
-    }
+}
 
-    .author {
-        color: black;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 10px;
+.author {
+    color: black;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 10px;
 
-    }
+}
 
-    .price {
-        color: black;
-        font-size: 16px;
-        line-height: 10px;
-    }
+.price {
+    color: black;
+    font-size: 16px;
+    line-height: 10px;
+}
 
-    .item button {
-        border: none;
-        outline: 0;
-        padding: 8px;
-        color: white;
-        background-color: #8BAD57;
-        text-align: center;
-        cursor: pointer;
-        width: 100%;
-        font-size: 18px;
-    }
+.item button {
+    border: none;
+    outline: 0;
+    padding: 8px;
+    color: white;
+    background-color: #8BAD57;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+}
 
-    .card button:hover {
-        opacity: 0.7;
-    }
+.card button:hover {
+    opacity: 0.7;
+}
 </style>
 
 <body>
@@ -75,13 +76,11 @@
         <?php
         if (!empty($data["books"])) {
             foreach ($data["books"] as $book) {
+                $id = $book->bookID;
+                $name = substr($book->bookname, 0, 20) . "...";
                 echo '<div class = "item">';
-                echo '<img src="' . URLROOT . '/public/img/' . $book->image . '" style="width:200px; height 80px;"';
-                if (strlen($book->bookname) > 30) {
-                    echo '<p class="bookname"> <br></br>' . substr($book->bookname, 0, 30) . "...</p>";
-                }  else {
-                    echo '<p class="bookname"> <br></br>' . $book->bookname . "</p>";
-                }
+                echo '<img src="' . URLROOT . '/public/img/' . $book->image . '" style="width:210px; height:300px;"';
+                                echo '<p><a href="' . URLROOT . '/Book/bookdetail/' . $id . '"> ' . $name . '</a></p>';
                 echo '<p class="author"> by ' . $book->author . '</p>';
                 echo '<p class="price"> $' . $book->retailprice . "</p>";
                 echo '<p><button>Add to Cart</button></p>';
