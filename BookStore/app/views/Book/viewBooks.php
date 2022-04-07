@@ -78,9 +78,9 @@
                 echo '<div class = "item">';
                 echo '<img src="' . URLROOT . '/public/img/' . $book->image . '" style="width:200px; height 80px;"';
                 if (strlen($book->bookname) > 30) {
-                    echo ' <p><a href= "' . URLROOT . '/Book/bookdetail/$book->bookID'.substr($book->bookname, 0, 30). '"> '. $book->bookname.'</a></p>';
+                    echo ' <p><a href= "' . URLROOT . '/Book/bookdetail/'.$book->bookID.'"> '. $book->bookname.'</p>';
                 }  else {
-                    echo ' <p><a href= "' . URLROOT . '/Book/bookdetail/$book->bookID'.$book->bookname. '"> '. $book->bookname.'</a></p>';
+                    echo ' <p><a href= "' . URLROOT . '/Book/bookdetail/'.$book->bookID. '">'. $book->bookname.'</p>';
                 }
                 echo '<p class="author"> by ' . $book->author . '</p>';
                 echo '<p class="price"> $' . $book->retailprice . "</p>";
