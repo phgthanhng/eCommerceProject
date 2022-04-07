@@ -23,7 +23,7 @@
         public function editProfile($userID) {
             $user = $this->userModel->getUser($userID);
 
-            if(!isset($_POST[''])) {
+            if(!isset($_POST['editProfile'])) {
                 $this->view('/User/editProfile', $user);
             }
             else {
@@ -33,8 +33,13 @@
                     'lname' => $_POST['lname'],
                     'phone' => $_POST['phone'],
                     'address' => $_POST['address'],
-                    'newsletter' => isset($_POST['newsletter'])? $_POST['newsletter'] : 'no'
+                    'newsletter' => isset($_POST['newsletter'])? $_POST['newsletter'] : 'no',
+                    'userID' => $userID
                 ];
+                if ($this->userModel->editProfile($data)) {
+                    echo 'Please wait we are uploading your publication!';
+                    echo '<meta http-equiv="Refresh" content="2; url=/EcommerceProject/Bookstore/User/editProfile/'.$userID.'">';
+                }
             }
         }
 
@@ -42,39 +47,6 @@
 
         }
         
-
-        
-
-        // public function details($user_id){
-        //     $user = $this->userModel->getUser($user_id);
-
-           
-        //         $this->view('User/details',$user);
-            
-        // }
-
-        // public function update($user_id){
-        //     $user = $this->userModel->getUser($user_id);
-        //     if(!isset($_POST['update'])){
-        //         $this->view('User/updateUser',$user);
-        //     }
-        //     else{
-        //         $filename= $this->imageUpload();
-        //         $data=[
-        //             'name' => trim($_POST['name']),
-        //             'city' => trim($_POST['city']),
-        //             'phone' => trim($_POST['phone']),
-        //             'picture' => $filename,
-        //             'ID' => $user_id
-        //         ];
-        //         if($this->userModel->updateUser($data)){
-        //             echo 'Please wait we are upating the user for you!';
-        //             //header('Location: /MVC/User/getUsers');
-        //             echo '<meta http-equiv="Refresh" content="2; url=/MVC/User/getUsers">';
-        //         }
-                
-        //     }
-        // }
 
       
     }
