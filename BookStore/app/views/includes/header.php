@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="https://cdn.reflowhq.com/v1/toolkit.min.css">
 </head>
 
-<body style=" height: 100%; width: 100%; position: absolute;">
+<body>
     <nav  class="navbar navbar-light navbar-expand-md text-center" style="padding-bottom: 0; background: #bdc696; height: 100px; width: 100%;">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index"
