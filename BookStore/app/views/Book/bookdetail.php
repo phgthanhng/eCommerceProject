@@ -415,6 +415,11 @@
 
 
 <body>
+    <div>
+    <?php
+        var_dump($book);
+    ?>
+    </div>
     <section id="services" class="services section-bg">
         <div class="container-fluid">
 
@@ -431,7 +436,7 @@
                 </div>
                 <div class="col-md-6">
                     <div class="_product-detail-content">
-                        <p class="_p-name"> <?php echo $book->bookname ?> </p>
+                        <p class="_p-name"><?php echo $book->bookname ?> </p>
                         <div class="_p-price-box">
                             <div class="p-list">
                                 <!-- <span> M.R.P. : <i class="fa fa-inr"></i> <del> 1399  </del>   </span> -->
@@ -790,7 +795,4 @@
     </script>
 
 
-</body>
-
-</html>
 <?php require APPROOT . '/views/includes/footer.php';  ?>
