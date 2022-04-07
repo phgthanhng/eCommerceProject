@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
 
-    <div class="text-end" style="margin: 10px;margin-top: 30px;"><a href="'.URLROOT.'/User/editProfile"
+    <div class="text-end" style="margin: 10px;margin-top: 30px;"><a href="<?php echo URLROOT;?>/User/editProfile/<?php echo $_SESSION['user_id'];?>"
             style="margin: auto;color: #000000;margin-right: 20px;">edit profile</a></div>
     <div class="container">
         <h1 style="margin-bottom: 25px;margin-top: 50px;text-align: center;">Past orders</h1>

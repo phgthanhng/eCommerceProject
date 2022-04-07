@@ -9,13 +9,7 @@
                 </div>
 
                 <div class="email-login" style="background-color:#ffffff;">
-                    <input type="email" name="email" id="email" class="email-imput form-control"
-                        style="margin-top:10px;" required="" placeholder="Email" minlength="6">
-                    <input type="text" name="username" id="username" class="email-imput form-control"
-                        style="margin-top:10px;" required="" placeholder="Username" minlength="4">
-                    <input type="password" name="password" id="password" class="password-input form-control"
-                        style="margin-top:10px;" required="" placeholder="Password" minlength="6">
-                </div>
+                   
                 <div class="email-login" style="background-color:#ffffff;">
                     <input type="text" name="fname" id="fname" class="form-control" style="margin-top:10px;" required=""
                         placeholder="First Name" minlength="1">
