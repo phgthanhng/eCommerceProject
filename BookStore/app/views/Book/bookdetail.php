@@ -19,7 +19,8 @@
 <style>
     .picZoomer {
         position: relative;
-        margin-left: 40px;
+        margin-left: 100px;
+        width: 200px;
         padding: 15px;
     }
 
@@ -112,26 +113,26 @@
         padding: 60px 0;
     }
 
-    .row-sm .col-md-6 {
+    /* .row-sm .col-md-6 {
         padding-left: 5px;
         padding-right: 5px;
-    }
+    } */
 
     /*===pic-Zoom===*/
-    ._boxzoom .zoom-thumb {
+    /* ._boxzoom .zoom-thumb {
         width: 90px;
         display: inline-block;
         vertical-align: top;
         margin-top: 0px;
-    }
+    } */
 
-    ._boxzoom .zoom-thumb ul.piclist {
+    /* ._boxzoom .zoom-thumb ul.piclist {
         padding-left: 0px;
         top: 0px;
-    }
+    } */
 
     ._boxzoom ._product-images {
-        width: 80%;
+        width: 50%;
         display: inline-block;
     }
 
@@ -147,13 +148,24 @@
         width: 100%;
     }
 
-    .piclist li img {
+    /* .piclist li img {
         height: 100px;
         object-fit: cover;
-    }
+    } */
 
     /*======products-details=====*/
+    /* .col-md-6{
+        margin-right: 100px;
+    } */
+
+    .products-details-container {
+        /* margin-right: 300px; */
+    }
+
     ._product-detail-content {
+        /* display: flex;
+        justify-content: center; */
+        /* margin-right: 100px; */
         background: #fff;
         padding: 15px;
         border: 1px solid lightgray;
@@ -413,6 +425,11 @@
     }
 </style>
 
+<?php
+
+$book = $data['book'];
+
+?>
 
 <body>
     <section id="services" class="services section-bg">
@@ -420,9 +437,7 @@
 
             <div class="row row-sm">
                 <div class="col-md-6 _boxzoom">
-                    <div class="zoom-thumb">
 
-                    </div>
                     <div class="_product-images">
                         <div class="picZoomer">
                             <img class="my_img" src="http://localhost/eCommerceProject/BookStore/public/img/<?php echo $book->image ?>" alt="">
@@ -430,59 +445,61 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="_product-detail-content">
-                        <p class="_p-name"> <?php echo $book->bookname ?> </p>
-                        <div class="_p-price-box">
-                            <div class="p-list">
-                                <!-- <span> M.R.P. : <i class="fa fa-inr"></i> <del> 1399  </del>   </span> -->
-                                <span class="price"> $ 699 </span>
-                            </div>
-                            <div class="_p-add-cart">
-                                <div class="_p-qty">
-                                    <span>Add Quantity</span>
-                                    <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                                    <input type="number" name="qty" id="number" value="1" />
-                                    <div class="value-button increase_" id="" value="Increase Value">+</div>
+                    <div class="products-details-container">
+                        <div class="_product-detail-content">
+                            <p class="_p-name"> <?php echo $book->bookname ?> </p>
+                            <div class="_p-price-box">
+                                <div class="p-list">
+                                    <!-- <span> M.R.P. : <i class="fa fa-inr"></i> <del> 1399  </del>   </span> -->
+                                    <span class="price"> <?php echo "$" . $book->retailprice ?> </span>
                                 </div>
-                            </div>
-                            <div class="_p-features">
-                                <span> Description About this product:- </span>
-                                Solid color polyester/linen full blackout thick sunscreen floor curtain
-                                Type: General Pleat
-                                Applicable Window Type: Flat Window
-                                Format: Rope
-                                Opening and Closing Method: Left and Right Biparting Open
-                                Processing Accessories Cost: Included
-                                Installation Type: Built-in
-                                Function: High Shading(70%-90%)
-                                Material: Polyester / Cotton
-                                Style: Classic
-                                Pattern: Embroidered
-                                Location: Window
-                                Technics: Woven
-                                Use: Home, Hotel, Hospital, Cafe, Office
-                                Feature: Blackout, Insulated, Flame Retardant
-                                Place of Origin: huoxing
-                                Name: Curtain
-                                Usage: Window Decoration
-                                Keywords: Ready Made Blackout Curtain
-                            </div>
-                            <form action="" method="post" accept-charset="utf-8">
-                                <ul class="spe_ul"></ul>
-                                <div class="_p-qty-and-cart">
-                                    <div class="_p-add-cart">
-                                        <button class="btn-theme btn buy-btn" tabindex="0">
-                                            <i class="fa fa-shopping-cart"></i> Buy Now
-                                        </button>
-                                        <button class="btn-theme btn btn-success" tabindex="0">
-                                            <i class="fa fa-shopping-cart"></i> Add to Cart
-                                        </button>
-                                        <input type="hidden" name="pid" value="18" />
-                                        <input type="hidden" name="price" value="850" />
-                                        <input type="hidden" name="url" value="" />
+                                <div class="_p-add-cart">
+                                    <div class="_p-qty">
+                                        <span>Add Quantity</span>
+                                        <div class="value-button decrease_" id="" value="Decrease Value">-</div>
+                                        <input type="number" name="qty" id="number" value="1" />
+                                        <div class="value-button increase_" id="" value="Increase Value">+</div>
                                     </div>
                                 </div>
-                            </form>
+                                <div class="_p-features">
+                                    <span> Description About this product:- </span>
+                                    Solid color polyester/linen full blackout thick sunscreen floor curtain
+                                    Type: General Pleat
+                                    Applicable Window Type: Flat Window
+                                    Format: Rope
+                                    Opening and Closing Method: Left and Right Biparting Open
+                                    Processing Accessories Cost: Included
+                                    Installation Type: Built-in
+                                    Function: High Shading(70%-90%)
+                                    Material: Polyester / Cotton
+                                    Style: Classic
+                                    Pattern: Embroidered
+                                    Location: Window
+                                    Technics: Woven
+                                    Use: Home, Hotel, Hospital, Cafe, Office
+                                    Feature: Blackout, Insulated, Flame Retardant
+                                    Place of Origin: huoxing
+                                    Name: Curtain
+                                    Usage: Window Decoration
+                                    Keywords: Ready Made Blackout Curtain
+                                </div>
+                                <form action="" method="post" accept-charset="utf-8">
+                                    <ul class="spe_ul"></ul>
+                                    <div class="_p-qty-and-cart">
+                                        <div class="_p-add-cart">
+                                            <button class="btn-theme btn buy-btn" tabindex="0">
+                                                <i class="fa fa-shopping-cart"></i> Buy Now
+                                            </button>
+                                            <button class="btn-theme btn btn-success" tabindex="0">
+                                                <i class="fa fa-shopping-cart"></i> Add to Cart
+                                            </button>
+                                            <input type="hidden" name="pid" value="18" />
+                                            <input type="hidden" name="price" value="850" />
+                                            <input type="hidden" name="url" value="" />
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -645,7 +662,7 @@
         </div>
     </section> -->
     <script>
-        //放大镜控件
+        // zoom tool放大镜控件
 
         (function($) {
             $.fn.picZoomer = function(options) {
@@ -676,7 +693,7 @@
                     h: opts.zoomHeight / 2
                 };
 
-                //初始化zoom容器大小
+                //intinial zoom cantainer size 初始化zoom容器大小
                 $zoomWP.css({
                     'width': opts.zoomWidth + 'px',
                     'height': opts.zoomHeight + 'px'
