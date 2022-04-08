@@ -83,8 +83,15 @@
                                 echo '<p><a href="' . URLROOT . '/Book/bookdetail/' . $id . '"> ' . $name . '</a></p>';
                 echo '<p class="author"> by ' . $book->author . '</p>';
                 echo '<p class="price"> $' . $book->retailprice . "</p>";
-                if (!isAdmin()) {
+                // if not logged in 
+                if (!isLoggedIn()) {
                     echo '<p><button>Add to Cart</button></p>';
+                }
+                else {
+                    if (!isAdmin()) {
+                        echo '<p><button>Add to Cart</button></p>';
+                    }
+                    
                 }
                 echo '</div>';
             }
