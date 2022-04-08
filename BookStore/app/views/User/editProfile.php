@@ -1,5 +1,5 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
-<div class="container" style="min-height: 100vh;">
+<div class="container" >
     <form class="px-4 py-3" method="post" action="" style="margin-top:50px;">
         <div class="container">
             <div class="d-flex flex-column justify-content-center" id="login-box">
@@ -33,4 +33,4 @@
     </form>
 </div>
 
-<?php require APPROOT . '/views/includes/footer.php';  ?>
+<?php require APPROOT . '/views/includes/fixed_footer.php';  ?>
