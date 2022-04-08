@@ -307,10 +307,13 @@ $book = $data['book'];
                             <form action="" method="post">
 
                                 <div class="_p-add-cart">
-
-                                    <button class="btn-wishlist" tabindex="0">
-                                        <i class="fa fa-heart"></i> Add to Wish List
-                                    </button>
+                                    <?php
+                                    if (!isAdmin()) {
+                                        '<button class="btn-wishlist" tabindex="0">
+                                            <i class="fa fa-heart"></i> Add to Wish List
+                                        </button>';   
+                                    }
+                                    ?>
                                 </div>
 
                             </form>
@@ -343,9 +346,13 @@ $book = $data['book'];
                                     <ul class="spe_ul"></ul>
                                     <div class="_p-qty-and-cart">
                                         <div class="_p-add-cart">
-                                            <button class="btn-theme btn btn-success" tabindex="0">
+                                            <?php
+                                            if (!isAdmin()) {
+                                           ' <button class="btn-theme btn btn-success" tabindex="0">
                                                 <i class="fa fa-shopping-cart"></i> Add to Cart
-                                            </button>
+                                            </button>';   
+                                            }
+                                            ?>
                                             <input type="hidden" name="pid" value="18" />
                                             <input type="hidden" name="price" value="850" />
                                             <input type="hidden" name="url" value="" />

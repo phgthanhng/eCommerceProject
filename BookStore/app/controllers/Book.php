@@ -20,9 +20,9 @@ class Book extends Controller
         // For the publication part
         $book = $this->bookModel->getSingleBook($bookID);
       
-       $data = [
+        $data = [
            'book' => $book
-       ];
+        ];
     
         $this->view('Book/bookdetail',  $data);
     

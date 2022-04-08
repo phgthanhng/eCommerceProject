@@ -83,7 +83,9 @@
                                 echo '<p><a href="' . URLROOT . '/Book/bookdetail/' . $id . '"> ' . $name . '</a></p>';
                 echo '<p class="author"> by ' . $book->author . '</p>';
                 echo '<p class="price"> $' . $book->retailprice . "</p>";
-                echo '<p><button>Add to Cart</button></p>';
+                if (!isAdmin()) {
+                    echo '<p><button>Add to Cart</button></p>';
+                }
                 echo '</div>';
             }
         } ?>
