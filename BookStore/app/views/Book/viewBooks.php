@@ -87,7 +87,9 @@
                 if (!isLoggedIn()) {
                     echo '<p><button>Add to Cart</button></p>';
                 }
+                // if is logged in
                 else {
+                    // if users -> show the Add to Cart
                     if (!isAdmin()) {
                         echo '<p><button>Add to Cart</button></p>';
                     }

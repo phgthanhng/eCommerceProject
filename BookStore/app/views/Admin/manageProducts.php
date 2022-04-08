@@ -34,7 +34,7 @@
                         </td>";
 
                         echo "<td style='background: #ffffff;'>
-                        <a href='/eCommerceProject/BookStore/Admin/details/$book->bookID'>Details</a>
+                        <a href='/eCommerceProject/BookStore/Book/bookdetail/$book->bookID'>Details</a>
                         </td>";
                         echo "<td style='background: #ffffff;'>
                         <a href='/eCommerceProject/BookStore/Admin/editBook/$book->bookID'>Edit</a>
@@ -43,7 +43,6 @@
                         <a href='/eCommerceProject/BookStore/Admin/delete/$book->bookID'>Delete</a>
                         </td>";
                         echo "</tr>";
-
                       } 
                     }
                   ?>
