@@ -49,26 +49,27 @@ class User extends Controller
                 'username' => $_POST['username'],
                 'password' => $_POST['password'],
                 'pass_hash' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-                'pass_verify' => $_POST['verify_password']
+                'userID' => $userID
+                // 'pass_verify' => $_POST['verify_password']
             ];
-            if ($this->validateEditCredentialsData($data)) {
+            // if ($this->validateEditCredentialsData($data)) {
                 if ($this->userModel->editCredentials($data)) {
                     echo 'Please wait we are editing your information!';
                     echo '<meta http-equiv="Refresh" content="2; url=/EcommerceProject/Bookstore/User/index">';
                 }
-            }
+            // }
         }
     }
 
-    public function validateEditCredentialsData($data)
-    {
-        if ($data['password'] != $data['pass_verify']) {
-            $data['edit_password_match_error'] = 'Password does not match';
-        }
-        if (empty($data['edit_password_match_error'])) {
-            return true;
-        } else {
-            $this->view('User/editCredentials', $data);
-        }
+    // public function validateEditCredentialsData($data)
+    // {
+    //     if ($data['password'] != $data['pass_verify']) {
+    //         $data['edit_password_match_error'] = 'Password does not match';
+    //     }
+    //     if (empty($data['edit_password_match_error'])) {
+    //         return true;
+    //     } else {
+    //         $this->view('User/editCredentials', $data);
+    //     }
     }
-}
+// }

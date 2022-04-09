@@ -10,7 +10,6 @@
 
                 <div class="email-login" style="background-color:#ffffff;">
                     <input type="email" name="email" id="email" class="email-imput form-control" style="margin-top:10px;" required="" placeholder="Email" value="<?php echo $data->email ?>">
-
                     <input type="text" name="fname" id="fname" class="form-control" style="margin-top:10px;" required="" placeholder="First Name" value="<?php echo $data->firstname ?>">
                     <input type="text" name="lname" id="lname" class="form-control" style="margin-top:10px;" required="" placeholder="Last Name" value="<?php echo $data->lastname ?>">
                     <input type="text" name="address" id="address" class="form-control" style="margin-top:10px;" required="" placeholder="Address" minlength="6" value="<?php echo $data->address ?>">
