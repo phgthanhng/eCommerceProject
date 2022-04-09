@@ -5,7 +5,8 @@
     if($data != null){
 ?>
 
-<div class="card mx-auto mt-3" style="width: 60%;">  <!-- background-color:#9EADA4; -->
+<div class="card mx-auto mt-3" style="width: 60%;">
+    <!-- background-color:#9EADA4; -->
     <h4 class="text-center mt-3">New York Times BestSellers</h4>
     <h6 class="text-center mt-3">Total bestsellers: <?php echo count($data->results) ?></h6>
     <table class="table table-striped table-dark">
@@ -18,7 +19,7 @@
             </tr>
         </thead>
 
-        <tbody> 
+        <tbody>
             <?php 
             foreach ($data->results as $book) {
                 echo '<tr>';
@@ -37,9 +38,6 @@
             }   
                 ?>
         </tbody>
-
-
-    
     </table>
 </div>
 <?php 
@@ -48,6 +46,4 @@
         echo 'No data';
     }
 ?>
-
-
 <?php require APPROOT . '/views/includes/footer.php';  ?>
