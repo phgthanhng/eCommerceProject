@@ -36,7 +36,11 @@
         }
 
         public function editCredentials($userID) {
+            $user = $this->userModel->getUser($userID);
 
+            if(!isset($_POST['editCredentials'])) {
+                $this->view('/User/editCredentials', $userID);
+            }
         }
       
     }
