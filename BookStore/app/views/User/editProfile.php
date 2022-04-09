@@ -33,4 +33,4 @@
     </form>
 </div>
 
-<?php require APPROOT . '/views/includes/fixed_footer.php';  ?>
+<?php require APPROOT . '/views/includes/footer.php';  ?>
