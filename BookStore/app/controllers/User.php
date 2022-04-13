@@ -8,47 +8,6 @@ class User extends Controller
         if (!isLoggedIn()) {
             header('Location: /eCommerceProject/BookStore/Login');
         }
-<<<<<<< HEAD
-
-        public function index(){
-            $this->view('User/index');
-        }
-
-        public function editProfile($userID) {
-            $user = $this->userModel->getUser($userID);
-
-            if(!isset($_POST['editProfile'])) {
-                $this->view('/User/editProfile', $user);
-            }
-            else {
-                $data = [                   
-                    'email' => $_POST['email'],
-                    'fname' => $_POST['fname'],
-                    'lname' => $_POST['lname'],
-                    'phone' => $_POST['phone'],
-                    'address' => $_POST['address'],
-                    'newsletter' => isset($_POST['newsletter'])? $_POST['newsletter'] : 'no',
-                    'userID' => $userID
-                ];
-                if ($this->userModel->editProfile($data)) {
-                    echo 'Please wait we are uploading your publication!';
-                    echo '<meta http-equiv="Refresh" content="2; url=/EcommerceProject/Bookstore/User/editProfile/'.$userID.'">';
-                }
-            }
-        }
-
-        public function editCredentials($userID) {
-            $user = $this->userModel->getUser($userID);
-            $data=[
-                'user' => $user
-            ];
-            if(!isset($_POST['editCredentials'])) {
-                $this->view('/User/editCredentials', $data);
-            }
-        }
-      
-=======
->>>>>>> 9f1fec2be280b71cafa64f711f991385662a6e5d
     }
 
     public function index()

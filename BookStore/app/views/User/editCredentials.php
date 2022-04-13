@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-<?php require APPROOT . '/views/includes/header.php';?>
-<form class="px-4 py-3" method="post" action="">
-=======
 <?php require APPROOT . '/views/includes/header.php';  ?>
 <script>
 function validateForm() {
@@ -14,7 +10,6 @@ function validateForm() {
 }
 </script>
 <form class="px-4 py-3" name="edidtCredentials" method="post" onsubmit="return validateForm()" action="" style="margin-top: 30px; margin-bottom: 30px">
->>>>>>> 9f1fec2be280b71cafa64f711f991385662a6e5d
     <div class="container">
         <div class="d-flex flex-column justify-content-center" id="login-box">
             <div class="login-box-header">
