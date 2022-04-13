@@ -37,9 +37,11 @@
 
         public function editCredentials($userID) {
             $user = $this->userModel->getUser($userID);
-
+            $data=[
+                'user' => $user
+            ];
             if(!isset($_POST['editCredentials'])) {
-                $this->view('/User/editCredentials', $userID);
+                $this->view('/User/editCredentials', $data);
             }
         }
       

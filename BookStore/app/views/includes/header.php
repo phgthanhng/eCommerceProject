@@ -20,11 +20,12 @@
 </head>
 
 <body>
-    <nav  class="navbar navbar-light navbar-expand-md text-center" style="padding-bottom: 0; background: #bdc696; height: 100px; width: 100%;">
+    <nav class="navbar navbar-light navbar-expand-md text-center"
+        style="padding-bottom: 0; background: #bdc696; height: 100px; width: 100%;">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index"
-                style="margin-bottom:10px; font-size: 28px">AllBookedUp!</a><button data-bs-toggle="collapse" class="navbar-toggler"
-                data-bs-target="#navcol-1">
+                style="margin-bottom:10px; font-size: 28px">AllBookedUp!</a><button data-bs-toggle="collapse"
+                class="navbar-toggler" data-bs-target="#navcol-1">
                 <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
@@ -86,8 +87,9 @@
                 <form class="d-flex me-auto navbar-form" target="_self">
                     <div class="d-flex align-items-center">
                         <label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search"
-                                style="margin: 10px"></i></label><input class="form-control search-field" type="search" style="margin-bottom: 10px;"
-                            id="search-field-1" name="search" placeholder="search by author or title" />
+                                style="margin: 10px"></i></label><input class="form-control search-field" type="search"
+                            style="margin-bottom: 10px;" id="search-field-1" name="search"
+                            placeholder="search by author or title" />
                     </div>
                 </form>
                 <!-- CART -->
@@ -104,8 +106,9 @@
                         echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/logout" style="margin: 10px"><i class="fa fa-sign-out" aria-hidden="true"></i>
                     Logout  ' . $_SESSION['user_username'] . '</a></span>';
                     } else {
-                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/index" style="margin: 10px"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></span><span class="navbar-text">
-                    <a class="login" href="'.URLROOT.'/Login/signup" style="margin: 10px"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a></span>';
+                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/index" style="margin: 10px; text-decoration: none;">
+                        <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></span><span class="navbar-text">
+                        <a class="login" href="'.URLROOT.'/Login/signup" style="margin: 10px;text-decoration: none;"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a></span>';
                     }
                     ?>
             </div>
