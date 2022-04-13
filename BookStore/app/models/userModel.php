@@ -28,6 +28,15 @@
             return $this->db->execute();
         }
 
+        public function editCredentials($data) {
+            $this->db->query("UPDATE user SET password=:password WHERE userID=:userID");
+            $this->db->bind(':password', $data['pass_hash']);
+            $this->db->bind(':userID',$data['userID']);
+            return $this->db->execute();
+        }
+
+
+
         public function delete($data){
             $this->db->query("DELETE FROM users WHERE ID=:user_id");
             $this->db->bind('user_id',$data['ID']);
