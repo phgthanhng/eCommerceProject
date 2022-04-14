@@ -40,15 +40,15 @@ class bookModel
       
     }
 
-
     // get books by category
     public function getAllBooksByCategory($category)
     {   
         $this->db->query(
             "SELECT * 
             FROM book
-            WHERE category = '$category';"
+            WHERE category = :category"
         );
+        $this->db->bind(':category', $category);
         return $this->db->getResultSet(); 
     }
 

@@ -25,8 +25,28 @@
             return $this->db->getSingle();
         }
 
+        /*
+         * Create a cart item
+         */
         public function createCartItem($data) {
+            $this->db->query("INSERT INTO cartitem(cartID, bookID, quantity, cartitemprice) 
+            values (:cartID, :bookID, :quantity, :cartitemprice)");
 
+            $this->db->bind(':cartID', $_SESSION['cart_id']);
+            $this->db->bind(':bookID', $data['bookID']);
+            $this->db->bind(':quantity', $data['quantity']);
+            $this->db->bind(':cartitemprice', $data['subtotalPrice']);
+
+            return ($this->db->execute());
+        }
+
+        /*
+         * Retrieves all cart items based on the cart ID
+         */
+        public function getAllCartItem() {
+            $this->db->query("SELECT * FROM cartitem WHERE cartID = :cartID");
+            $this->db->bind(':cartID', $_SESSION['cart_id']);
+            return $this->db->getResultSet(); 
         }
     }
 

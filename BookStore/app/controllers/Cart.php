@@ -28,9 +28,14 @@ class Cart extends Controller
         if (!$this->cartModel->getUserCart()) { // if return is false then create a cart
             $this->createCart();  
         }
-        // else return the cart that exist already
-        return $this->cartModel->getUserCart();
+        // else
+        //retrieve, createsession and return the existing cart
+        $cart = $this->cartModel->getUserCart();
+        $this->createSession($cart);
+        return $cart;
     }
+
+// NOTE: Might combine addCartItem method with createCartItem
 
     /*
      * Adds an item to the cart
@@ -41,22 +46,21 @@ class Cart extends Controller
         
         // Step 2: Add item to CartItems table (associate book item with $userID a)
         // Create cartitem first
-
-        $this->createCartItem($cart->cartID, $quantity, $bookID);
+        $this->createCartItem($quantity, $bookID);
     }
 
     /*
      * Create cartItem 
      */
-    public function createCartItem($cartID, $quantity, $bookID) {
+    public function createCartItem($quantity, $bookID) {
         $data = [
-            'cartID' => $cartID,
+            'cartID' => $_SESSION['cart_id'],
             'bookID' => $bookID,
             'quantity' => $quantity,
             'subtotalPrice' =>  $this->calcSubtotal($quantity, $bookID),
         ];
         
-        $this->cartModel->createCartItem($data); // pass the bookID 
+        return $this->cartModel->createCartItem($data); // pass the bookID 
     }
 
 
@@ -72,8 +76,15 @@ class Cart extends Controller
      * Retrieves all items of user in the database
      */
     public function getAllCartItems() {
+        // call the getUserCart 
+
         // will call the view to show all cartitems
-        $this->cartModel->getAllCartItems($)
+        $items = $this->cartModel->getAllCartItems();
+
+        $data = [  
+            "items" => $items
+        ];
+        $this->view('Cart/index', $data); // data to display the cart items in the view
     }
 
     /*
@@ -87,14 +98,13 @@ class Cart extends Controller
 
     }
 
-    public function editCartItemQuantity() {
-
+    public function editCartItemQuantity() {  
+            // recalculate here the pricing
     }
 
     public function createSession($cart) {
-        $_SESSION['user_id'] = $cart->cartID;
+        $_SESSION['cart_id'] = $cart->cartID;
     }
- 
 }
 
 ?>

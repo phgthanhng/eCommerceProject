@@ -138,6 +138,7 @@ class Login extends Controller
         </div>
         ';
         unset($_SESSION['user_id']);
+        unset($_SESSION['user_username']);
         session_destroy();
         echo '<meta http-equiv="Refresh" content="1; /eCommerceProject/BookStore/Login/index">';
         // header('Location: /eCommerceProject/BookStore/Login/index');   // change later if
