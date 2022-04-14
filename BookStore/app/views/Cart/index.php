@@ -2,7 +2,8 @@
 
 <!-- <body style="min-height: 100vh;"> -->
 <div class="container">
-    <div data-reflow-type="shopping-cart" data-reflow-success-url="/success.html" data-reflow-cancel-url="/cancel.html">
-    </div>
+  <p style="background-color:red">
+    Testing
+  </p>
 </div>
 <?php require APPROOT . '/views/includes/footer.php';  ?>

@@ -63,7 +63,7 @@
                                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2796.5662545669616!2d-73.5815356839947!3d45.49867857910134!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4cc91a4022e6f657%3A0x172d60ddcb77f441!2s1380%20Sherbrooke%20St%20W%2C%20Montreal%2C%20QC%20H3G%201J5!5e0!3m2!1sen!2sca!4v1639350545790!5m2!1sen!2sca"
                                         width="500" height="300" style="border:0;" allowfullscreen=""
                                         loading="lazy"></iframe>
-                            </div>
+                                </div>
                             </div>
                             <div class="col-sm-6 col-md-12 col-lg-6">
                                 <h2 class="h4"><i class="fa fa-user"></i> Our Info</h2>
@@ -132,14 +132,13 @@
                                                         placeholder="Primary Phone"></div>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
                                     <div class="form-group mb-3"><label class="form-label"
                                             for="from-comments">Comments</label>
-                                            <textarea class="form-control" style="overflow-y: scroll;"
-                                            id="from-comments-2" name="comments" placeholder="Enter Comments"
-                                            rows="5""></textarea></div>
-                                    <div class="form-group mb-3">
+                                        <textarea class="form-control" style="overflow-y: scroll;" id="from-comments-2"
+                                            name="comments" placeholder="Enter Comments" rows="5""></textarea></div>
+                                    <div class=" form-group mb-3">
                                         <div class="row">
                                             <div class="col"><button class="btn btn-primary d-block w-100"
                                                     type="reset"><i class="fa fa-undo"></i> Reset</button></div>

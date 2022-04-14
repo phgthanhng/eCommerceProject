@@ -70,11 +70,14 @@ class Login extends Controller
     }
 
     public function signup()
-    {
+    {   
+        // if SIGNUP button is NOT clicked
         if (!isset($_POST['signup'])) {
             $this->view('Login/signup');
+        // if signup button is clicked
         } else {
             $user = $this->loginModel->getUser($_POST['username']);
+            // if user does not exist in the system
             if ($user == null) {
                 $data = [
                     'username' => trim($_POST['username']),
@@ -88,12 +91,14 @@ class Login extends Controller
                     'pass_hash' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                     'pass_verify' => $_POST['verify_password']
                 ];
+                // validate data first
                 if ($this->validateSignupData($data)) {
-                if ($this->loginModel->createUser($data)) {
-                    echo 'Please wait creating the account for ' . trim($_POST['username']);
-                    echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
+                    if ($this->loginModel->createUser($data)) {
+                        echo 'Please wait creating the account for ' . trim($_POST['username']);
+                        echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
+                    }
                 }
-            }
+            // if user exists in the system
             } else {
                 $data = [
                     'msg' => "User: " . $_POST['username'] . " already exists",

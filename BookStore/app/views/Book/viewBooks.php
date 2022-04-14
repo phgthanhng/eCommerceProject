@@ -85,13 +85,18 @@
                 echo '<p class="price"> $' . $book->retailprice . "</p>";
                 // if not logged in 
                 if (!isLoggedIn()) {
-                    echo '<p><button>Add to Cart</button></p>';
+                    echo '<p>
+                        <a href="' .URLROOT. '/Login/index/"><button>Add to Cart</button></a>
+                        </p>';
                 }
                 // if is logged in
                 else {
                     // if users -> show the Add to Cart
                     if (!isAdmin()) {
-                        echo '<p><button>Add to Cart</button></p>';
+                        $singleBook = 1;
+                        echo '<p>
+                            <a href="' .URLROOT. '/addCartItem/'.$singleBook.'/'.$id.'"><button>Add to Cart</button></a>
+                            </p>';
                     }
                     
                 }
