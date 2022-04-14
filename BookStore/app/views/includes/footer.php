@@ -1,4 +1,4 @@
-<footer class="footer-basic" style="background: #bdc696;height: auto; ">
+<footer class="footer-basic mt-auto" style="background: #bdc696;height: auto; ">
     <div class="social" style="padding-bottom: 10px; height: 49px">
         <a href="https://www.instagram.com/"><i class="icon ion-social-instagram"></i></a><a
             href="https://www.snapchat.com/"><i class="icon ion-social-snapchat"></i></a><a
@@ -17,7 +17,6 @@
 <script src="<?php echo URLROOT; ?>/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-<script src="https://cdn.reflowhq.com/v1/toolkit.min.js" data-reflow-store="267418190"></script>
 <script src="<?php echo URLROOT; ?>/js/script.min.js"></script>
 </body>
-<html>
+</html>

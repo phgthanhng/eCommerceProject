@@ -9,7 +9,6 @@ class Cart extends Controller
 
     public function index() 
     {
-        $this->view('Cart/index');
         $this->getAllCartItems();
     }
 
@@ -92,10 +91,9 @@ class Cart extends Controller
         if (!empty($this->cartModel->getAllCartItems())) {
         // will call the view to show all cartitems
             $items = $this->cartModel->getAllCartItems();
-
-            $this->view('Cart/index', $data);
+            
             $data = [  
-                "items" => $items
+                'items' => $items
             ];
            
         }
@@ -119,7 +117,7 @@ class Cart extends Controller
     }
 
     public function editCartItemQuantity() {  
-            // recalculate here the pricing
+        // recalculate here the pricing
     }
 
     public function createSession($cart) {

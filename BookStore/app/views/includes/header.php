@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.reflowhq.com/v1/toolkit.min.css">
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100">
     <nav class="navbar navbar-light navbar-expand-md text-center" style="padding-bottom: 0; background: #bdc696; height: 100px; width: 100%;">
         <div class="container-fluid">
             <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index" style="margin-bottom:10px; font-size: 28px">AllBookedUp!</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">

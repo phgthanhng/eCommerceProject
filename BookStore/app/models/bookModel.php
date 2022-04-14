@@ -77,7 +77,6 @@ class bookModel
 
     }
 
-
     // delete a book
     public function delete($data){
         $this->db->query("DELETE FROM book WHERE bookID=:bookID");
@@ -91,6 +90,4 @@ class bookModel
         }
 
     }
-
-
 }

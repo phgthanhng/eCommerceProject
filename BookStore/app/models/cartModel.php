@@ -44,11 +44,24 @@
          * Retrieves all cart items based on the cart ID
          */
         public function getAllCartItems() {
-            $this->db->query("SELECT * FROM cartitem WHERE cartID = :cartID");
+            $this->db->query(
+                    "SELECT cart.cartID, 
+                    cartitem.cartitemID, cartitem.cartID, cartitem.bookID, cartitem.quantity, cartitem.cartitemprice, 
+                    book.bookID, book.bookname, book.retailprice, book.image
+                    FROM cart
+                    JOIN cartitem
+                    ON cartitem.cartID = cart.cartID
+                    JOIN book
+                    ON cartitem.bookID = book.bookID
+                    WHERE cartitem.cartID = :cartID");
+
             $this->db->bind(':cartID', $_SESSION['cart_id']);
             return $this->db->getResultSet(); 
         }
 
+        /*
+         * Checks if a cartitem exist already in the cartitem table
+         */
         public function isExistInCartItem($bookID) {
             $this->db->query(
                 "SELECT * 
