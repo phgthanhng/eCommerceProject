@@ -43,10 +43,22 @@
         /*
          * Retrieves all cart items based on the cart ID
          */
-        public function getAllCartItem() {
+        public function getAllCartItems() {
             $this->db->query("SELECT * FROM cartitem WHERE cartID = :cartID");
             $this->db->bind(':cartID', $_SESSION['cart_id']);
             return $this->db->getResultSet(); 
+        }
+
+        public function isExistInCartItem($bookID) {
+            $this->db->query(
+                "SELECT * 
+                FROM cartitem 
+                WHERE (cartID = :cartID) 
+                AND (bookID = :bookID)");
+            
+            $this->db->bind(':cartID', $_SESSION['cart_id']);
+            $this->db->bind(':bookID', $bookID);
+            return $this->db->getSingle();
         }
     }
 

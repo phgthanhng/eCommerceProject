@@ -95,7 +95,7 @@
                     if (!isAdmin()) {
                         $singleBook = 1;
                         echo '<p>
-                            <a href="' .URLROOT. '/addCartItem/'.$singleBook.'/'.$id.'"><button>Add to Cart</button></a>
+                            <a href="' .URLROOT. '/Cart/addCartItem/'.$singleBook.'/'.$id.'"><button>Add to Cart</button></a>
                             </p>';
                     }
                     

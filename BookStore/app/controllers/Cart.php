@@ -14,13 +14,6 @@ class Cart extends Controller
     }
 
     /*
-     * Create a cart object
-     */
-    public function createCart() {
-        $this->cartModel->createCart();
-    }
-
-    /*
      * Retrieves the user cart 
      */
     public function getUserCart() {
@@ -35,6 +28,14 @@ class Cart extends Controller
         return $cart;
     }
 
+    /*
+     * Create a cart object
+     */
+    public function createCart() {
+        $this->cartModel->createCart();
+    }
+
+
 // NOTE: Might combine addCartItem method with createCartItem
 
     /*
@@ -43,48 +44,67 @@ class Cart extends Controller
     public function addCartItem($quantity, $bookID) {
         // Step 1: Get user cart from the cart table
         $cart = $this->getUserCart();
+
+        $isItemInCart = $this->cartModel->isExistInCartItem($bookID);
         
-        // Step 2: Add item to CartItems table (associate book item with $userID a)
-        // Create cartitem first
-        $this->createCartItem($quantity, $bookID);
+        // to avoid repetition of item in database
+        if (!$isItemInCart) { 
+            // Step 2: Add item to CartItems table (associate book item with $userID a)
+            // Create cartitem first
+            $this->createCartItem($quantity, $bookID);
+        }
+        else {
+            header('Location: /eCommerceProject/BookStore/Cart/index');
+        }
     }
 
     /*
      * Create cartItem 
      */
     public function createCartItem($quantity, $bookID) {
+        $subtotal = $this->calcSubtotal($quantity, $bookID);
+    
         $data = [
             'cartID' => $_SESSION['cart_id'],
             'bookID' => $bookID,
             'quantity' => $quantity,
-            'subtotalPrice' =>  $this->calcSubtotal($quantity, $bookID),
+            'subtotalPrice' => $subtotal,
         ];
         
         return $this->cartModel->createCartItem($data); // pass the bookID 
     }
-
 
     /*
      * Calculates subtotal of an item
      */
     public function calcSubtotal($quantity, $bookID) {
         $book = $this->bookModel->getSingleBook($bookID);
-        return $quantity * $bookID->retailprice;
+        return number_format($quantity * $book->retailprice, 2, '.', '');
     }
 
     /*
      * Retrieves all items of user in the database
      */
     public function getAllCartItems() {
-        // call the getUserCart 
+        // call the getUserCart to create cart and a session 
+        $this->getUserCart();
 
+        if (!empty($this->cartModel->getAllCartItems())) {
         // will call the view to show all cartitems
-        $items = $this->cartModel->getAllCartItems();
+            $items = $this->cartModel->getAllCartItems();
 
-        $data = [  
-            "items" => $items
-        ];
-        $this->view('Cart/index', $data); // data to display the cart items in the view
+            $this->view('Cart/index', $data);
+            $data = [  
+                "items" => $items
+            ];
+           
+        }
+        else {
+            $data = [
+             'msg' => "There is no items in the cart"
+            ];
+        }
+        $this->view('Cart/index', $data);
     }
 
     /*
