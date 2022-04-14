@@ -14,31 +14,26 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/font-awesome.min.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/ionicons.min.css" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.min.css" />
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
-        crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.reflowhq.com/v1/toolkit.min.css">
 </head>
 
 <body>
-    <nav class="navbar navbar-light navbar-expand-md text-center"
-        style="padding-bottom: 0; background: #bdc696; height: 100px; width: 100%;">
+    <nav class="navbar navbar-light navbar-expand-md text-center" style="padding-bottom: 0; background: #bdc696; height: 100px; width: 100%;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index"
-                style="margin-bottom:10px; font-size: 28px">AllBookedUp!</a><button data-bs-toggle="collapse"
-                class="navbar-toggler" data-bs-target="#navcol-1">
+            <a class="navbar-brand" href="<?php echo URLROOT; ?>/Home/index" style="margin-bottom:10px; font-size: 28px">AllBookedUp!</a><button data-bs-toggle="collapse" class="navbar-toggler" data-bs-target="#navcol-1">
                 <span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navcol-1">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="dropdown-toggle nav-link" aria-expanded="false"
-                            data-bs-toggle="dropdown">Categories</a>
+                        <a class="dropdown-toggle nav-link" aria-expanded="false" data-bs-toggle="dropdown">Categories</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="<?php echo URLROOT;?>/Categories/classic">Classic</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT;?>/Categories/fiction">Fiction</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT;?>/Categories/non_fiction">Non-fiction</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT;?>/Categories/romance">Romance</a>
-                            <a class="dropdown-item" href="<?php echo URLROOT;?>/Categories/self_help">Self-help &amp;
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Categories/classic">Classic</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Categories/fiction">Fiction</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Categories/non_fiction">Non-fiction</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Categories/romance">Romance</a>
+                            <a class="dropdown-item" href="<?php echo URLROOT; ?>/Categories/self_help">Self-help &amp;
                                 wellness</a>
                         </div>
                     </li>
@@ -50,31 +45,30 @@
                     </li>
 
                     <!-- Check if logged in | Still havent implemented the code here -->
-                    <?php 
-                    if (!isLoggedIn()) { 
+                    <?php
+                    if (!isLoggedIn()) {
                         echo ' 
-                        <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Login/index">dashboard</a></li>
-                        '; 
+                        <li class="nav-item"><a class="nav-link" href="' . URLROOT . '/Login/index">dashboard</a></li>
+                        ';
                     }
                     // logged in as user
                     else {
                         if (!isAdmin()) {
                             echo ' 
-                            <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/User/index">dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="' . URLROOT . '/User/index">dashboard</a></li>
                             ';
-                        } 
-                        else {
+                        } else {
                             echo ' 
-                            <li class="nav-item"><a class="nav-link" href="'.URLROOT.'/Admin/index">dashboard</a></li>
+                            <li class="nav-item"><a class="nav-link" href="' . URLROOT . '/Admin/index">dashboard</a></li>
                             ';
                         }
                     }
                     ?>
-                    <?php 
-                    if (isLoggedIn() && !isAdmin() || !isLoggedIn()) { 
-                    echo '
+                    <?php
+                    if (isLoggedIn() && !isAdmin() || !isLoggedIn()) {
+                        echo '
                     <li class="nav-item">
-                        <a class="nav-link" href="'.URLROOT.'/Login/index">
+                        <a class="nav-link" href="' . URLROOT . '/Login/index">
                               <i class="fa fa-heart-o fs-3 d-xxl-flex align-items-center align-content-center justify-content-xxl-start" style="margin: auto;  padding-bottom: 5px">
                               </i>
                         </a>
@@ -86,31 +80,29 @@
                 <!-- SEARCH BAR -->
                 <form class="d-flex me-auto navbar-form" target="_self">
                     <div class="d-flex align-items-center">
-                        <label class="form-label d-flex mb-0" for="search-field"><i class="fa fa-search"
-                                style="margin: 10px"></i></label><input class="form-control search-field" type="search"
-                            style="margin-bottom: 10px;" id="search-field-1" name="search"
-                            placeholder="search by author or title" />
+                        <label class="form-label d-flex mb-0" for="search-field"><button style=" background-color: transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden;outline: none;"><i class="fa fa-search" style="margin: 10px"></i></button></label>
+                        <input class="form-control search-field" type="search" style="margin-bottom: 10px;" id="search-field-1" name="search" placeholder="search by author or title" />
                     </div>
                 </form>
                 <!-- CART -->
                 <?php
-                if (!isLoggedIn() || isLoggedIn() && !isAdmin()) { 
+                if (!isLoggedIn() || isLoggedIn() && !isAdmin()) {
                     echo '
-                        <a href="'.URLROOT.'/Cart/cart.php" style="margin: 10px"> <button class="btn btn-primary"
+                        <a href="' . URLROOT . '/Cart/cart.php" style="margin: 10px"> <button class="btn btn-primary"
                         type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
                             style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
                 }
                 ?>
                 <?php
-                    if (isLoggedIn()) {
-                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/logout" style="margin: 10px"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                if (isLoggedIn()) {
+                    echo '<span class="navbar-text"> <a class="login" href="' . URLROOT . '/Login/logout" style="margin: 10px"><i class="fa fa-sign-out" aria-hidden="true"></i>
                     Logout  ' . $_SESSION['user_username'] . '</a></span>';
-                    } else {
-                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/index" style="margin: 10px; text-decoration: none;">
+                } else {
+                    echo '<span class="navbar-text"> <a class="login" href="' . URLROOT . '/Login/index" style="margin: 10px; text-decoration: none;">
                         <i class="fa fa-sign-in" aria-hidden="true"></i> Login</a></span><span class="navbar-text">
-                        <a class="login" href="'.URLROOT.'/Login/signup" style="margin: 10px;text-decoration: none;"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a></span>';
-                    }
-                    ?>
+                        <a class="login" href="' . URLROOT . '/Login/signup" style="margin: 10px;text-decoration: none;"><i class="fa fa-user-plus" aria-hidden="true"></i> Sign up</a></span>';
+                }
+                ?>
             </div>
         </div>
     </nav>
