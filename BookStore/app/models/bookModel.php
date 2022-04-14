@@ -47,11 +47,10 @@ class bookModel
         $this->db->query(
             "SELECT * 
             FROM book
-            WHERE category = $category;"
+            WHERE category = '$category';"
         );
         return $this->db->getResultSet(); 
     }
-
 
     // update a book
     public function editBook($data){
