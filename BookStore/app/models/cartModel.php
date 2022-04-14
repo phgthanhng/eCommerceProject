@@ -24,6 +24,10 @@
             $this->db->bind(':userID',  $_SESSION['user_id']);
             return $this->db->getSingle();
         }
+
+        public function createCartItem($data) {
+
+        }
     }
 
 ?>
