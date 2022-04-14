@@ -86,16 +86,25 @@
                 </form>
                 <!-- CART -->
                 <?php
-                if (!isLoggedIn() || isLoggedIn() && !isAdmin()) {
+                // if is NOT logged in  -> If anyone clicks the cart then it throw to Login page
+                if (!isLoggedIn()) { 
                     echo '
-                        <a href="' . URLROOT . '/Cart/cart.php" style="margin: 10px"> <button class="btn btn-primary"
+                        <a href="'.URLROOT.'/Login/index.php" style="margin: 10px"> <button class="btn btn-primary"
                         type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
                             style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
                 }
+                // if is logged in and is a user(not an admin) -> can see the cart icon
+                if (isLoggedIn() && !isAdmin()) {
+                     echo '
+                        <a href="'.URLROOT.'/Cart/index.php" style="margin: 10px"> <button class="btn btn-primary"
+                        type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
+                        style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
+                }
+
                 ?>
                 <?php
-                if (isLoggedIn()) {
-                    echo '<span class="navbar-text"> <a class="login" href="' . URLROOT . '/Login/logout" style="margin: 10px"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                    if (isLoggedIn()) {
+                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/logout" style="margin: 10px;text-decoration: none;"><i class="fa fa-sign-out" aria-hidden="true"></i>
                     Logout  ' . $_SESSION['user_username'] . '</a></span>';
                 } else {
                     echo '<span class="navbar-text"> <a class="login" href="' . URLROOT . '/Login/index" style="margin: 10px; text-decoration: none;">
