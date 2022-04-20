@@ -65,15 +65,28 @@
                     }
                     ?>
                     <?php
-                    if (isLoggedIn() && !isAdmin() || !isLoggedIn()) {
+                    if (!isLoggedIn()) {
                         echo '
-                    <li class="nav-item">
-                        <a class="nav-link" href="' . URLROOT . '/Login/index">
-                              <i class="fa fa-heart-o fs-3 d-xxl-flex align-items-center align-content-center justify-content-xxl-start" style="margin: auto;  padding-bottom: 5px">
-                              </i>
-                        </a>
-                    </li> ';
+                        <li class="nav-item">
+                            <a class="nav-link" href="' . URLROOT . '/Login/index">
+                                <i class="fa fa-heart-o fs-3 d-xxl-flex align-items-center align-content-center justify-content-xxl-start" style="margin: auto;  padding-bottom: 5px">
+                                </i>
+                            </a>
+                        </li> ';
                     }
+                    else {
+                        if (!isAdmin()) {
+                            echo '
+                            <li class="nav-item">
+                            <a class="nav-link" href="' . URLROOT . '/Wishlist/index">
+                                <i class="fa fa-heart-o fs-3 d-xxl-flex align-items-center align-content-center justify-content-xxl-start" style="margin: auto;  padding-bottom: 5px">
+                                </i>
+                            </a>
+                        </li> ';
+                        }
+                    }
+                        
+                
                     ?>
 
                 </ul>
