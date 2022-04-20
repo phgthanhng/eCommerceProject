@@ -1,6 +1,5 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
 
-
 <?php 
     if($data != null){
 ?>
