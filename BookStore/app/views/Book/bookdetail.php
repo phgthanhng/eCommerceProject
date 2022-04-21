@@ -314,7 +314,7 @@ $book = $data['book'];
                                     if (!isLoggedIn()) {
                                         echo '<button class="btn-wishlist" tabindex="0">
                                         <i class="fa fa-heart"></i> Add to Wish List
-                                    </button>';
+                                        </button>';
                                     }
                                     // if is logged in 
                                     else {
@@ -340,25 +340,14 @@ $book = $data['book'];
                             </div>
 
                             <div class="_p-add-cart">
-                                <?php
-                                if (!isLoggedIn()) {
-                                    echo '<div class="_p-qty">
-                                            <span>Add Quantity</span>
-                                            <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                                            <input type="number" name="qty" id="number" value="1" />
-                                            <div class="value-button increase_" id="" value="Increase Value">+</div>
-                                        </div>';
-                                } else {
-                                    if (!isAdmin()) {
-                                        echo '<div class="_p-qty">
-                                            <span>Add Quantity</span>
-                                            <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                                            <input type="number" name="qty" id="number" value="1" />
-                                            <div class="value-button increase_" id="" value="Increase Value">+</div>
-                                        </div>';
-                                    }
-                                }
-                                ?>
+                                <div class="_p-qty">
+                                    <span>Add Quantity</span>
+                                    <div class="value-button decrease_" id="" value="Decrease Value">-</div>
+                                    <input type="number" name="qty" id="number" value="1" />
+                                    <div class="value-button increase_" id="" value="Increase Value">+</div>
+                            </div>
+                           
+                        
                             </div>
 
                             <div class="_p-features">
@@ -392,8 +381,16 @@ $book = $data['book'];
                                         } else { // if is logged in 
                                             // if not admin-> customer only
                                             if (!isAdmin()) {
-                                                echo '<button class="btn-theme btn btn-success" tabindex="0">
+                                                    
+                                                echo '
+                                                    <button class="btn-theme btn btn-success" tabindex="0">
+                                                    <a href="'.URLROOT.'/Cart/addCartItem/
+                                                    <script>
+                                                        document.getElementById("number").value
+                                                    </script>
+                                                    /'.$book->bookID.'">
                                                     <i class="fa fa-shopping-cart"></i> Add to Cart
+                                                    </a>
                                                     </button>';
                                             }
                                         }
@@ -527,6 +524,8 @@ $book = $data['book'];
                 value = isNaN(value) ? 1 : value;
                 value++;
                 $(_this).siblings('input#number').val(value);
+                // document.getElementById('number').value=value;
+            
             }
 
             function decreaseValue(_this) {
@@ -534,11 +533,10 @@ $book = $data['book'];
                 value--;
                 value < 1 ? value = 1 : '';
                 value = isNaN(value) ? 1 : value;
-
                 $(_this).siblings('input#number').val(value);
+                //  document.getElementById('number').value=value;
+            
             }
         });
     </script>
-
-
     <?php require APPROOT . '/views/includes/footer.php';  ?>
