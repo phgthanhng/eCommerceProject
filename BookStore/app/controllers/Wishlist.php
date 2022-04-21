@@ -13,7 +13,8 @@ class Wishlist extends Controller
     }
 
     public function addBook($bookID) {
-        echo "Book added to wishlist";
-        header('Location: /eCommerceProject/BookStore/Book/bookdetail/'. $bookID);
+        echo "Wishlist added message test";
+        //header('Location: /eCommerceProject/BookStore/Book/bookdetail/'. $bookID);  // redirects to the same page
+
     }
 }

@@ -23,17 +23,28 @@ $book = $data['book'];
                             <div class="_p-add-cart">
                                 <?php
                                     if (!isLoggedIn()) {
-                                        echo '<button class="btn-wishlist" tabindex="0">
-                                        <i class="fa fa-heart"></i> Add to Wish List
-                                        </button>';
+                                        echo '
+                                            <button class="btn-wishlist" tabindex="0">
+                                                <a href="'.URLROOT.'/Login/index">
+                                                <i class="fa fa-heart" style="color:red;">
+                                                 Add to Wish List</i>
+                                                 </a>
+                                            </button>
+                                            
+                                      ';
                                     }
                                     // if is logged in 
                                     else {
                                         // if users -> show the wishlist heart icon
                                         if (!isAdmin()) {
-                                            echo  '<button class="btn-wishlist" tabindex="0">
-                                            <i class="fa fa-heart"></i> Add to Wish List
-                                            </button>';
+                                           echo '
+                                            <button class="btn-wishlist" tabindex="0">
+                                                <a href="'.URLROOT.'/Wishlist/addBook/'.$book->bookID.'">
+                                                    <i class="fa fa-heart" style="color:red;">
+                                                    Add to Wish List</i>
+                                                 </a>
+                                            </button>  
+                                        ';
                                         } else {
                                             echo '<p><a href="' . URLROOT . '/Admin/editBook/' . $book->bookID . '"> Edit Book </a></p>';
                                             echo '<p><a href="' . URLROOT . '/Admin/delete/' . $book->bookID . '"> Delete Book </a></p>';
