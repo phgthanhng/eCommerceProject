@@ -51,6 +51,7 @@ class Cart extends Controller
             // Step 2: Add item to CartItems table (associate book item with $userID a)
             // Create cartitem first
             $this->createCartItem($quantity, $bookID);
+            header('Location: /eCommerceProject/BookStore/Book/bookdetail/'. $bookID);
         }
         else {
             header('Location: /eCommerceProject/BookStore/Cart/index');

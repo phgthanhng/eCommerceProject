@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/styles.min.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdn.reflowhq.com/v1/toolkit.min.css">
+
+    <!-- for bookdetails page -->
+    <link href="https://w3learnpoint.com/cdn/jquery-picZoomer.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?php echo URLROOT; ?>/css/style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 </head>
 
 <body class="d-flex flex-column min-vh-100">
@@ -109,9 +114,12 @@
                 // if is logged in and is a user(not an admin) -> can see the cart icon
                 if (isLoggedIn() && !isAdmin()) {
                      echo '
-                        <a href="'.URLROOT.'/Cart/index.php" style="margin: 10px"> <button class="btn btn-primary"
-                        type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
-                        style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
+                        <a href="'.URLROOT.'/Cart/index.php" style="margin: 10px"> 
+                            <button class="btn btn-primary" type="submit">
+                                <i class="fa fa-shopping-cart text-center d-xl-flex" style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)">
+                                </i>
+                            </button>
+                        </a>';
                 }
 
                 ?>

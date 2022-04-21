@@ -11,4 +11,9 @@ class Wishlist extends Controller
     {
         $this->view('Wishlist/index');
     }
+
+    public function addBook($bookID) {
+        echo "Book added to wishlist";
+        header('Location: /eCommerceProject/BookStore/Book/bookdetail/'. $bookID);
+    }
 }
