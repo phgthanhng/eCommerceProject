@@ -52,6 +52,19 @@ class bookModel
         return $this->db->getResultSet(); 
     }
 
+    // search book by title or author
+    public function getBooksByAuthorOrTitle($keyword){
+        $this->db->query(
+            "SELECT * 
+            FROM book
+            WHERE lower(author) like '%$keyword%' 
+            OR lower(bookname) like '%$keyword%' ;"
+        );
+
+        return $this->db->getResultSet(); 
+
+    }
+
     // update a book
     public function editBook($data){
         $this->db->query("UPDATE book SET bookname=:bookname, isbn=:isbn, author=:author, publisher=:publisher, 

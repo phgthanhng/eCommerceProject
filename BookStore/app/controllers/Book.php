@@ -9,7 +9,7 @@ class Book extends Controller
     public function index()
     {
         $books = $this->bookModel->getAllBooks();
-        $data = [  
+        $data = [
             "books" => $books
         ];
         $this->view('Book/viewBooks', $data);
@@ -19,12 +19,29 @@ class Book extends Controller
     {
         // For the publication part
         $book = $this->bookModel->getSingleBook($bookID);
-      
+
         $data = [
-           'book' => $book
+            'book' => $book
         ];
-    
+
         $this->view('Book/bookdetail',  $data);
-    
+    }
+
+    public function searchBook()
+    {
+        if (isset($_POST['submit'])) {
+
+            // get the keyword
+            $keywords = trim($_POST['keywords']);
+
+            $books = $this -> bookModel->getBooksByAuthorOrTitle($keywords);
+
+            $data = [
+                'books' => $books
+            ];
+
+            $this->view('Book/viewBooks', $data);
+
+        }
     }
 }

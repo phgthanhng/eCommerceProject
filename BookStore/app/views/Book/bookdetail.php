@@ -9,9 +9,7 @@ $book = $data['book'];
             <div class="col-md-6 _boxzoom">
                 <div class="_product-images">
                     <div class="picZoomer">
-                        <img class="my_img"
-                            src="http://localhost/eCommerceProject/BookStore/public/img/<?php echo $book->image ?>"
-                            alt="">
+                        <img class="my_img" src="http://localhost/eCommerceProject/BookStore/public/img/<?php echo $book->image ?>" alt="">
                     </div>
                 </div>
             </div>
@@ -22,34 +20,34 @@ $book = $data['book'];
                         <form action="" method="post">
                             <div class="_p-add-cart">
                                 <?php
-                                    if (!isLoggedIn()) {
-                                        echo '
+                                if (!isLoggedIn()) {
+                                    echo '
                                             <button class="btn-wishlist" tabindex="0">
-                                                <a href="'.URLROOT.'/Login/index">
+                                                <a href="' . URLROOT . '/Login/index">
                                                 <i class="fa fa-heart" style="color:red;">
                                                  Add to Wish List</i>
                                                  </a>
                                             </button>
                                             
                                       ';
-                                    }
-                                    // if is logged in 
-                                    else {
-                                        // if users -> show the wishlist heart icon
-                                        if (!isAdmin()) {
-                                           echo '
+                                }
+                                // if is logged in 
+                                else {
+                                    // if users -> show the wishlist heart icon
+                                    if (!isAdmin()) {
+                                        echo '
                                             <button class="btn-wishlist" tabindex="0">
-                                                <a href="'.URLROOT.'/Wishlist/addBook/'.$book->bookID.'">
+                                                <a href="' . URLROOT . '/Wishlist/addBook/' . $book->bookID . '">
                                                     <i class="fa fa-heart" style="color:red;">
                                                     Add to Wish List</i>
                                                  </a>
                                             </button>  
                                         ';
-                                        } else {
-                                            echo '<p><a href="' . URLROOT . '/Admin/editBook/' . $book->bookID . '"> Edit Book </a></p>';
-                                            echo '<p><a href="' . URLROOT . '/Admin/delete/' . $book->bookID . '"> Delete Book </a></p>';
-                                        }
+                                    } else {
+                                        echo '<p><a href="' . URLROOT . '/Admin/editBook/' . $book->bookID . '"> Edit Book </a></p>';
+                                        echo '<p><a href="' . URLROOT . '/Admin/delete/' . $book->bookID . '"> Delete Book </a></p>';
                                     }
+                                }
                                 ?>
                             </div>
                         </form>
@@ -63,7 +61,7 @@ $book = $data['book'];
                                 <span>Add Quantity</span>
                                 <input type="hidden" id="bookId" value="<?php echo $book->bookID ?>">
                                 <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                                <input type="text" name="qty" id="number" value="1" onkeypress="onlyNum(this.evt)"/>
+                                <input type="text" name="qty" id="number" value="1" onkeypress="onlyNum(this.evt)" />
                                 <div class="value-button increase_" id="" value="Increase Value">+</div>
                             </div>
                         </div>
@@ -76,7 +74,6 @@ $book = $data['book'];
                                 </summary>
                                 <span class=>
                                     <p class="p_detail"> ABOUT:</p>
-                                   
                                     <p class="about"> <?php print($book->description)  ?> </p>
                                 </span>
                             </details>
@@ -85,26 +82,25 @@ $book = $data['book'];
                         <div class="_p-qty-and-cart">
                             <div class="_p-add-cart">
                                 <?php
-                                    // if NOT logged in 
-                                    if (!isLoggedIn()) {
-                                        echo '
-                                            <a href="'.URLROOT.'/Login/index">
+                                // if NOT logged in 
+                                if (!isLoggedIn()) {
+                                    echo '
+                                            <a href="' . URLROOT . '/Login/index">
                                                 <button class="btn-theme btn btn-success" tabindex="0">
                                                     <i class="fa fa-shopping-cart"></i> 
                                                     Add to Cart
                                                 </button>
                                             </a>';
-                                    } 
-                                    else { // if is logged in 
-                                        // if not admin-> customer only
-                                        if (!isAdmin()) {
-                                            echo '
+                                } else { // if is logged in 
+                                    // if not admin-> customer only
+                                    if (!isAdmin()) {
+                                        echo '
                                                 <button class="btn-theme btn btn-success" tabindex="0" onclick="addcartitem()">
                                                     <i class="fa fa-shopping-cart"></i> 
                                                         Add to Cart
                                                 </button>';
-                                        }
                                     }
+                                }
                                 ?>
                                 <input type="hidden" name="pid" value="18" />
                                 <input type="hidden" name="price" value="850" />

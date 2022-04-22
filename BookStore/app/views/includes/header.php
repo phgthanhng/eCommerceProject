@@ -78,8 +78,7 @@
                                 </i>
                             </a>
                         </li> ';
-                    }
-                    else {
+                    } else {
                         if (!isAdmin()) {
                             echo '
                             <li class="nav-item">
@@ -90,31 +89,35 @@
                         </li> ';
                         }
                     }
-                        
-                
+
+
                     ?>
 
                 </ul>
                 <!-- SEARCH BAR -->
-                <form class="d-flex me-auto navbar-form" target="_self">
+                <form class="d-flex me-auto navbar-form"  action="/eCommerceProject/BookStore/Book/searchBook" method="post">
                     <div class="d-flex align-items-center">
-                        <label class="form-label d-flex mb-0" for="search-field"><button style=" background-color: transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden;outline: none;"><i class="fa fa-search" style="margin: 10px"></i></button></label>
-                        <input class="form-control search-field" type="search" style="margin-bottom: 10px;" id="search-field-1" name="search" placeholder="search by author or title" />
+                        <label class="form-label d-flex mb-0" for="search-field">
+                            <button name="submit" style=" background-color: transparent; background-repeat: no-repeat; border: none; cursor: pointer; overflow: hidden;outline: none;">
+                                <i class="fa fa-search" style="margin: 10px"></i>
+                            </button>
+                        </label>
+                        <input class="form-control search-field" type="search" name="keywords" style="margin-bottom: 10px;" id="search-field-1"  placeholder="search by author or title" />
                     </div>
                 </form>
                 <!-- CART -->
                 <?php
                 // if is NOT logged in  -> If anyone clicks the cart then it throw to Login page
-                if (!isLoggedIn()) { 
+                if (!isLoggedIn()) {
                     echo '
-                        <a href="'.URLROOT.'/Login/index.php" style="margin: 10px"> <button class="btn btn-primary"
+                        <a href="' . URLROOT . '/Login/index.php" style="margin: 10px"> <button class="btn btn-primary"
                         type="submit"><i class="fa fa-shopping-cart text-center d-xl-flex"
                             style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"></i></button></a>';
                 }
                 // if is logged in and is a user(not an admin) -> can see the cart icon
                 if (isLoggedIn() && !isAdmin()) {
-                     echo '
-                        <a href="'.URLROOT.'/Cart/index.php" style="margin: 10px"> 
+                    echo '
+                        <a href="' . URLROOT . '/Cart/index.php" style="margin: 10px"> 
                             <button class="btn btn-primary" type="submit">
                                 <i class="fa fa-shopping-cart text-center d-xl-flex" style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)">
                                 </i>
@@ -124,8 +127,8 @@
 
                 ?>
                 <?php
-                    if (isLoggedIn()) {
-                        echo '<span class="navbar-text"> <a class="login" href="'.URLROOT.'/Login/logout" style="margin: 10px;text-decoration: none;"><i class="fa fa-sign-out" aria-hidden="true"></i>
+                if (isLoggedIn()) {
+                    echo '<span class="navbar-text"> <a class="login" href="' . URLROOT . '/Login/logout" style="margin: 10px;text-decoration: none;"><i class="fa fa-sign-out" aria-hidden="true"></i>
                     Logout  ' . $_SESSION['user_username'] . '</a></span>';
                 } else {
                     echo '<span class="navbar-text"> <a class="login" href="' . URLROOT . '/Login/index" style="margin: 10px; text-decoration: none;">
