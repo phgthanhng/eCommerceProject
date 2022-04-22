@@ -106,7 +106,6 @@ $(document).ready(function() {
         value++;
         $(_this).siblings('input#number').val(value);
 
-
     }
 
     function decreaseValue(_this) {
@@ -122,8 +121,25 @@ $(document).ready(function() {
 
 // will redirect to php method addCartItem
 function addcartitem() {
-    var quantity = document.getElementById("number").value
-    var id = document.getElementById("bookId").value
+    var quantity = document.getElementById("number").value;
+    var id = document.getElementById("bookId").value;
     urlRoot = window.location.origin + "/eCommerceProject/Bookstore/";
     window.location.href = urlRoot + "Cart/addCartItem/" + quantity + "/" + id;
+}
+
+function onlyNum(evt) {
+    evt = evt ? evt : window.event;
+    var charCode = evt.which ? evt.which : evt.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+        evt.preventDefault();
+    } else {
+        return true;
+    }
+}
+
+function updateQuantity() {
+    var quantity = document.getElementById("number").value;
+    var cartitemid = document.getElementById("cart_item_id").value;
+    urlRoot = window.location.origin + "/eCommerceProject/Bookstore/";
+    window.location.href = urlRoot + "Cart/editCartItemQuantity/" + quantity + "/" + cartitemid;
 }

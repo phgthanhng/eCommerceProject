@@ -23,7 +23,7 @@ class Cart extends Controller
         // else
         //retrieve, createsession and return the existing cart
         $cart = $this->cartModel->getUserCart();
-        $this->createSession($cart);
+        $this->createSession($cart); // cart object for the user
         return $cart;
     }
 
@@ -45,7 +45,8 @@ class Cart extends Controller
         $cart = $this->getUserCart();
 
         $isItemInCart = $this->cartModel->isExistInCartItem($bookID);
-        
+    
+    // NOTE: need to change this to delete if exist so that it could be updated
         // to avoid repetition of item in database
         if (!$isItemInCart) { 
             // Step 2: Add item to CartItems table (associate book item with $userID a)
@@ -110,17 +111,56 @@ class Cart extends Controller
      * Calculates the total price
      */
     public function calcTotal() {
+        // get all cart items of a specific user and get the subtotal of all of them
+        $cartItems = $this->cartModel->getAllCartItems();
 
+        foreach ($cartItems as $item) {
+            $cartTotal += $item->cartitemprice;
+        }
+        
+        return $cartTotal;
     }
 
-    public function removeCartItem() {
+    /*
+     * Removes a specific cart item based on the cart item ID
+     */ 
+    public function removeCartItem($cartitemID) {
+        $this->cartModel->deleteCartItem($cartitemID);
 
+         header('Location: /eCommerceProject/BookStore/Cart/index');
+        // NOTE: put msg here to be sent to view
     }
 
-    public function editCartItemQuantity() {  
+    /*
+     * Updates the cart item's quantity and recalculates the price too
+     */
+    public function editCartItemQuantity($quantity, $cartitemID) {  
         // recalculate here the pricing
+        $item = $this->cartModel->getCartItem($cartitemID);
+
+        $data = [
+            'quantity' => $quantity,
+            'cartitemID' => $cartitemID,
+            'subtotal' => $this->calcSubtotal($quantity, $item->bookID)
+            ];
+
+        if($this->cartModel->updateCartItemQuantity($data)){
+            $items = $this->cartModel->getAllCartItems();
+            
+            $data = [  
+                'items' => $items
+            ];
+            $this->view('Cart/index',$data);
+        }
+        else{
+
+        }
+        //var_dump($data);
     }
 
+    /*
+     * Creates a session of the user cart
+     */
     public function createSession($cart) {
         $_SESSION['cart_id'] = $cart->cartID;
     }

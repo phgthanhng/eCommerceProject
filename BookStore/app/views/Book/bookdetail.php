@@ -63,7 +63,7 @@ $book = $data['book'];
                                 <span>Add Quantity</span>
                                 <input type="hidden" id="bookId" value="<?php echo $book->bookID ?>">
                                 <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                                <input type="number" name="qty" id="number" value="1" />
+                                <input type="text" name="qty" id="number" value="1" onkeypress="onlyNum(this.evt)"/>
                                 <div class="value-button increase_" id="" value="Increase Value">+</div>
                             </div>
                         </div>
@@ -111,7 +111,6 @@ $book = $data['book'];
                                 <input type="hidden" name="url" value="" />
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

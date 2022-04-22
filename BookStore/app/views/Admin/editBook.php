@@ -28,7 +28,7 @@
                 </div>
 
                 <div><label class="form-label float-start" style="font-size: 22px;width: 128px;height: 29.5px;color: rgb(0,0,0);font-weight: bold;text-align: center;margin-top: 72px;margin-left: -186px;margin-right: -1px;">Description</label>
-                        <input type="file" name="image" class="form-control float-end" value="<?php echo $data->image?>" style="width: 364px;padding: 0px 0px 0px 0px;padding-top: 2px;margin-right: 9px;margin-top: 15px;font-size: 12px;height: 29px;padding-right: 2px;padding-bottom: 2px;padding-left: 2px;background: rgb(193,196,175);" />
+                        <input type="file" name="image" class="form-control float-end"  " style="width: 364px;padding: 0px 0px 0px 0px;padding-top: 2px;margin-right: 9px;margin-top: 15px;font-size: 12px;height: 29px;padding-right: 2px;padding-bottom: 2px;padding-left: 2px;background: rgb(193,196,175);" />
                 </div>
                 <div><label class="form-label float-start" style="font-size: 22px;width: 65px;height: 14.5px;color: rgb(0,0,0);font-weight: bold;text-align: center;margin-top: 14px;margin-left: 66px;margin-right: 8px;">Image</label>
                         <textarea name="desc" required="" minlength="5" class="form-control float-end" style="overflow-y: scroll;width: 364px;height: 159px;margin-top: 20px;margin-right: 10px;padding: 0px 0px 0px 0px;padding-top: 2px;padding-right: 2px;padding-bottom: 2px;padding-left: 2px;"><?php echo $data->description?>"</textarea>
