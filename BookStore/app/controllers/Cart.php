@@ -127,6 +127,7 @@ class Cart extends Controller
     public function removeCartItem($cartitemID) {
         $this->cartModel->deleteCartItem($cartitemID);
 
+         header('Location: /eCommerceProject/BookStore/Cart/index');
         // NOTE: put msg here to be sent to view
     }
 
