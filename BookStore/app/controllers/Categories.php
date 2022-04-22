@@ -38,7 +38,7 @@ class Categories extends Controller
 
     public function non_fiction()
     {
-        $category = 'non_fiction';
+        $category = 'non-fiction';
         $non_fiction_books = $this->bookModel->getAllBooksByCategory($category);
         $data = [  
             "non_fiction_books" => $non_fiction_books
@@ -48,7 +48,7 @@ class Categories extends Controller
         
     public function self_help()
     {
-        $category = 'self_help';
+        $category = 'self-help';
         $self_help_books = $this->bookModel->getAllBooksByCategory($category);
         $data = [  
             "self_help_books" => $self_help_books

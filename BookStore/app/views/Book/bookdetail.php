@@ -76,8 +76,8 @@ $book = $data['book'];
                                 </summary>
                                 <span class=>
                                     <p class="p_detail"> ABOUT:</p>
-
-                                    <p class="about"> <?php echo $book->description ?> </p>
+                                   
+                                    <p class="about"> <?php print($book->description)  ?> </p>
                                 </span>
                             </details>
                         </div>

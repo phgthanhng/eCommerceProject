@@ -64,8 +64,8 @@
     <h1 style="margin-bottom: 25px;margin-top: 30px;text-align: center;">Classic Books</h1>
     <div class="parent">
         <?php
-        if (!empty($data["books"])) {
-            foreach ($data["books"] as $book) {
+        if (!empty($data["classic_books"])) {
+            foreach ($data["classic_books"] as $book) {
                 $id = $book->bookID;
                 $name = substr($book->bookname, 0, 20) . "...";
                 echo '<div class = "item">';
