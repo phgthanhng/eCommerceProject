@@ -36,7 +36,7 @@ class bookModel
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':category', $data['category']);
 
-        return ($this->db->execute());
+        return $this->db->execute();
       
     }
 
@@ -68,12 +68,8 @@ class bookModel
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':category', $data['category']);
         $this->db->bind(':bookID', $data['bookID']);
-        if($this->db->execute()){
-            return true;
-        }
-        else{
-            return false;
-        }
+
+        return $this->db->execute();
 
     }
 
@@ -82,12 +78,7 @@ class bookModel
         $this->db->query("DELETE FROM book WHERE bookID=:bookID");
         $this->db->bind('bookID',$data['bookID']);
 
-        if($this->db->execute()){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return $this->db->execute();
 
     }
 }

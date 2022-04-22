@@ -20,7 +20,11 @@
                     <img src=" ' . URLROOT . '/public/img/' . $item->image .' " style="width:210px; height:300px">
                     </td>';
                 echo '<td>'.$item->bookname.'</td>';
-                echo '<td>'.$item->quantity.'</td>';
+                echo '<td>'.$item->quantity.
+                        '<a href="' . URLROOT . '/Cart/removeCartItem/' . $item->cartitemID. '">
+                            <button type="button" class="btn btn-danger">Delete</button>
+                        </a>
+                    </td>';
                 echo '<td>'.$item->retailprice.'</td>';
                 echo '<td>'.$item->cartitemprice.'</td>';
             }  
