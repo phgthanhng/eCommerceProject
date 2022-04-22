@@ -111,7 +111,6 @@ $book = $data['book'];
                                 <input type="hidden" name="url" value="" />
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>

@@ -93,7 +93,7 @@
             $this->db->query("SELECT * FROM cartitem WHERE cartitemID = :cartitemID");
             $this->db->bind(':cartitemID', $cartItemID);
         
-            return $this->db->execute();
+             return $this->db->getSingle();
         }
 
         /* 
@@ -101,11 +101,13 @@
          */
         public function updateCartItemQuantity($data) {  // quantity and cartitemid
             $this->db->query("UPDATE cartitem 
-                        SET quantity=:quantity 
+                        SET quantity = :quantity,
+                        cartitemprice = :cartitemprice
                         WHERE cartitemID=:cartitemID");
 
             $this->db->bind(':quantity', $data['quantity']);
             $this->db->bind(':cartitemID', $data['cartitemID']);
+            $this->db->bind(':cartitemprice', $data['subtotal']);
             
             return $this->db->execute();
         }

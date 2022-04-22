@@ -20,9 +20,11 @@
                     <img src=" ' . URLROOT . '/public/img/' . $item->image .' " style="width:210px; height:300px">
                     </td>';
                 echo '<td>'.$item->bookname.'</td>';
-                echo '<td>'.$item->quantity.
-                        '<a href="' . URLROOT . '/Cart/removeCartItem/' . $item->cartitemID. '">
-                            <button type="button" class="btn btn-danger">Delete</button>
+                echo '<td>
+                        <input type="number" name="qty" id="number" value="'.$item->quantity.'" min="1" onkeypress="onlyNum(this.evt)" onchange="updateQuantity()" style="width: 50px;"/>
+                        <input type="hidden" id="cart_item_id" value="'.$item->cartitemID.'">
+                        <a href="' . URLROOT . '/Cart/removeCartItem/' . $item->cartitemID. '" style="text-decoration:none;">
+                            <i class="fa fa-window-close fa-lg" aria-hidden="true"></i>
                         </a>
                     </td>';
                 echo '<td>'.$item->retailprice.'</td>';

@@ -136,12 +136,26 @@ class Cart extends Controller
      */
     public function editCartItemQuantity($quantity, $cartitemID) {  
         // recalculate here the pricing
+        $item = $this->cartModel->getCartItem($cartitemID);
+
         $data = [
             'quantity' => $quantity,
-            'cartitemID' => $cartitemID
+            'cartitemID' => $cartitemID,
+            'subtotal' => $this->calcSubtotal($quantity, $item->bookID)
             ];
 
-        $this->cartModel->updateCartItemQuantity($data);
+        if($this->cartModel->updateCartItemQuantity($data)){
+            $items = $this->cartModel->getAllCartItems();
+            
+            $data = [  
+                'items' => $items
+            ];
+            $this->view('Cart/index',$data);
+        }
+        else{
+
+        }
+        //var_dump($data);
     }
 
     /*
