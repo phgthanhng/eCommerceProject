@@ -27,12 +27,21 @@
                             <i class="fa fa-window-close fa-lg" aria-hidden="true"></i>
                         </a>
                     </td>';
-                echo '<td>'.$item->retailprice.'</td>';
-                echo '<td>'.$item->cartitemprice.'</td>';
+                echo '<td>$ '.$item->retailprice.' CAD </td>';
+                echo '<td>$ '.$item->cartitemprice.' CAD</td>';
             }  
           
         echo '</tbody>';
         echo '</table>';
+        
+        echo '<div class="d-flex justify-content-end">
+                <p>PRICE
+                <br>GST (5%): $ '.$data['gst'].'<br>
+                QST (9.975%): $ '.$data['qst'].'<br>
+                Sales Taxes (14.975%): $ '.$data['salesTaxes'].'<br>
+                Total Price: $ '.$data['finalPrice'].' CAD
+                <p> 
+            </div>';
     }
     else {
         echo '<div><p class="text-center" style="height:auto;">No items in the cart</p></div>';

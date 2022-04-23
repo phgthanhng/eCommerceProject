@@ -71,7 +71,7 @@
             
             $this->db->bind(':cartID', $_SESSION['cart_id']);
             $this->db->bind(':bookID', $bookID);
-            return $this->db->getSingle();
+            return $this->db->getSingle();  // returns a cartitem object
         }
 
         /*
@@ -93,7 +93,7 @@
             $this->db->query("SELECT * FROM cartitem WHERE cartitemID = :cartitemID");
             $this->db->bind(':cartitemID', $cartItemID);
         
-             return $this->db->getSingle();
+            return $this->db->getSingle();
         }
 
         /* 

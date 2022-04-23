@@ -44,10 +44,8 @@ class Cart extends Controller
         // Step 1: Get user cart from the cart table
         $cart = $this->getUserCart();
 
-        $isItemInCart = $this->cartModel->isExistInCartItem($bookID);
+        $isItemInCart = $cartItem = $this->cartModel->isExistInCartItem($bookID);
     
-    // NOTE: need to change this to delete if exist so that it could be updated
-        // to avoid repetition of item in database
         if (!$isItemInCart) { 
             // Step 2: Add item to CartItems table (associate book item with $userID a)
             // Create cartitem first
@@ -55,6 +53,8 @@ class Cart extends Controller
             header('Location: /eCommerceProject/BookStore/Book/bookdetail/'. $bookID);
         }
         else {
+            $newQuantity = $cartItem->quantity + $quantity;
+            $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID);  // trying to add the new update number
             header('Location: /eCommerceProject/BookStore/Cart/index');
         }
     }
@@ -92,12 +92,20 @@ class Cart extends Controller
 
         if (!empty($this->cartModel->getAllCartItems())) {
         // will call the view to show all cartitems
-            $items = $this->cartModel->getAllCartItems();
-            
+            $items = $this->cartModel->getAllCartItems(); 
+            $noTaxPrice = $this->calcTotal($items); 
+            $gst = $noTaxPrice * 0.05;
+            $qst = $noTaxPrice *  0.09975;
+            $salesTaxes = $qst + $gst;
+            $withTaxPrice = $salesTaxes + $noTaxPrice;
             $data = [  
-                'items' => $items
-            ];
-           
+                'items' => $items,
+                'cartTotal' => $noTaxPrice,
+                'gst' => number_format($gst, 2, '.', ''),
+                'qst' => number_format($qst, 2, '.', ''),
+                'salesTaxes' => number_format($salesTaxes, 2, '.', ''),
+                'finalPrice' =>  number_format($withTaxPrice, 2, '.', '')
+            ];  
         }
         else {
             $data = [
@@ -110,15 +118,15 @@ class Cart extends Controller
     /*
      * Calculates the total price
      */
-    public function calcTotal() {
+    public function calcTotal($cartItems) {
         // get all cart items of a specific user and get the subtotal of all of them
-        $cartItems = $this->cartModel->getAllCartItems();
-
+        // $cartItems = $this->cartModel->getAllCartItems();
+        $cartTotal = 0;
         foreach ($cartItems as $item) {
             $cartTotal += $item->cartitemprice;
         }
-        
-        return $cartTotal;
+
+        return number_format($cartTotal, 2, '.', '');
     }
 
     /*
@@ -127,7 +135,7 @@ class Cart extends Controller
     public function removeCartItem($cartitemID) {
         $this->cartModel->deleteCartItem($cartitemID);
 
-         header('Location: /eCommerceProject/BookStore/Cart/index');
+        header('Location: /eCommerceProject/BookStore/Cart/index');
         // NOTE: put msg here to be sent to view
     }
 
@@ -150,12 +158,10 @@ class Cart extends Controller
             $data = [  
                 'items' => $items
             ];
-            $this->view('Cart/index',$data);
-        }
-        else{
-
-        }
-        //var_dump($data);
+            header('Location: /eCommerceProject/BookStore/Cart/index');
+            $this->view('Cart/index', $data);
+        }  
+        //var_dump($data); 
     }
 
     /*
