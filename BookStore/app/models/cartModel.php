@@ -12,15 +12,16 @@
             $this->db->query("INSERT INTO cart(userID, totalprice) values(:userID, :totalprice)");
             $this->db->bind(':userID', $_SESSION['user_id']);
             $this->db->bind(':totalprice', 0);
-
-            return ($this->db->execute());
+ 
+            return $this->db->execute();
         }
 
         /*
          * Retrieves cart based on the userID
          */
         public function getUserCart() {
-            $this->db->query("SELECT * FROM cart WHERE userID = :userID");
+            $this->db->query("SELECT * FROM cart 
+                WHERE (userID = :userID AND cartstatus='not checkout')");
             $this->db->bind(':userID',  $_SESSION['user_id']);
             return $this->db->getSingle();
         }
@@ -37,6 +38,32 @@
             $this->db->bind(':quantity', $data['quantity']);
             $this->db->bind(':cartitemprice', $data['subtotalPrice']);
 
+            return $this->db->execute();
+        }
+
+        /*
+         * Update cart column totalprice
+         */
+        public function updateCartTotalPrice($totalPrice) {
+            $this->db->query("UPDATE cart
+                        SET totalprice = :totalprice
+                        WHERE cartID=:cartID");
+
+            $this->db->bind(':totalprice', $totalPrice);
+            $this->db->bind(':cartID', $_SESSION['cart_id']);
+            
+            return $this->db->execute();
+        }
+
+        /*
+         * Deletes a cart 
+         */
+        public function deleteCart() {
+            $this->db->query(
+                    "DELETE 
+                    FROM cart 
+                    WHERE cartID=:cartID");
+            $this->db->bind(':cartID', $_SESSION['cart_id']);
             return $this->db->execute();
         }
 

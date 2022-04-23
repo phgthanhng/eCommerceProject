@@ -5,6 +5,7 @@ class Cart extends Controller
     {
         $this->cartModel = $this->model('cartModel');  
         $this->bookModel = $this->model('bookModel');
+        $this->orderModel = $this->model('orderModel');
     }
 
     public function index() 
@@ -69,7 +70,7 @@ class Cart extends Controller
             'cartID' => $_SESSION['cart_id'],
             'bookID' => $bookID,
             'quantity' => $quantity,
-            'subtotalPrice' => $subtotal,
+            'subtotalPrice' => $subtotal
         ];
         
         return $this->cartModel->createCartItem($data); // pass the bookID 
@@ -93,18 +94,15 @@ class Cart extends Controller
         if (!empty($this->cartModel->getAllCartItems())) {
         // will call the view to show all cartitems
             $items = $this->cartModel->getAllCartItems(); 
-            $noTaxPrice = $this->calcTotal($items); 
-            $gst = $noTaxPrice * 0.05;
-            $qst = $noTaxPrice *  0.09975;
-            $salesTaxes = $qst + $gst;
-            $withTaxPrice = $salesTaxes + $noTaxPrice;
+            $price = $this->calcTotal($items); 
+            
             $data = [  
                 'items' => $items,
-                'cartTotal' => $noTaxPrice,
-                'gst' => number_format($gst, 2, '.', ''),
-                'qst' => number_format($qst, 2, '.', ''),
-                'salesTaxes' => number_format($salesTaxes, 2, '.', ''),
-                'finalPrice' =>  number_format($withTaxPrice, 2, '.', '')
+                'cartTotal' => $price[0],
+                'gst' => $price[1],
+                'qst' => $price[2],
+                'salesTaxes' => $price[3],
+                'finalPrice' =>  $price[4]
             ];  
         }
         else {
@@ -121,12 +119,19 @@ class Cart extends Controller
     public function calcTotal($cartItems) {
         // get all cart items of a specific user and get the subtotal of all of them
         // $cartItems = $this->cartModel->getAllCartItems();
-        $cartTotal = 0;
+        $noTaxPrice = 0;
         foreach ($cartItems as $item) {
-            $cartTotal += $item->cartitemprice;
+            $noTaxPrice += $item->cartitemprice;
         }
+        $gst = number_format($noTaxPrice * 0.05, 2, '.', '');
+        $qst = number_format($noTaxPrice *  0.09975, 2, '.', '');
+        $salesTaxes = number_format($qst + $gst, 2, '.', '');
+        $withTaxPrice = number_format($salesTaxes + $noTaxPrice, 2, '.', '');
+        
+        // set CART total to with tax price
+        $this->cartModel->updateCartTotalPrice($withTaxPrice);
 
-        return number_format($cartTotal, 2, '.', '');
+        return array($noTaxPrice, $gst, $qst, $salesTaxes, $withTaxPrice);
     }
 
     /*
@@ -161,7 +166,28 @@ class Cart extends Controller
             header('Location: /eCommerceProject/BookStore/Cart/index');
             $this->view('Cart/index', $data);
         }  
-        //var_dump($data); 
+
+    }
+
+    /*
+     * Checks out the cart of the user
+     */
+    public function checkout() {
+        // if user clicks the checkout button an d the cart item is not empty(uses the session for cartidp)
+        if (isset($_POST['checkout']) && !empty($this->cartModel->getAllCartItems())) {
+            // get cart object
+            $cart = $this->cartModel->getUserCart(); 
+            $data = [
+                "shippingaddress" => $_POST['shippingaddress'],
+                'totalprice' => $cart->totalprice,
+                'paymentmethod' => $_POST['paymentmethod'],
+            ];
+            // create order object
+            $this->orderModel->createOrder($data); // uses session var cartid
+            echo 'Transaction completed successfully';
+            destroySession();
+            // create new cart
+        }
     }
 
     /*
@@ -169,6 +195,11 @@ class Cart extends Controller
      */
     public function createSession($cart) {
         $_SESSION['cart_id'] = $cart->cartID;
+    }
+
+    public function destroySession() {
+        unset($_SESSION['cart_id']);
+        session_destroy();
     }
 }
 

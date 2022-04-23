@@ -42,6 +42,15 @@
                 Total Price: $ '.$data['finalPrice'].' CAD
                 <p> 
             </div>';
+        echo '
+            <form class="" method="post" action="">
+            <div class="d-flex justify-content-end">
+                <a href="' . URLROOT . '/Cart/checkout/' . $item->cartID. '" 
+                    <button type="button" class="btn btn-success" name="checkout">Checkout</button>
+                </a>
+            </div>
+            </form>';
+            
     }
     else {
         echo '<div><p class="text-center" style="height:auto;">No items in the cart</p></div>';
