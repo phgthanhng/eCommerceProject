@@ -20,8 +20,11 @@
          * Retrieves cart based on the userID
          */
         public function getUserCart() {
-            $this->db->query("SELECT * FROM cart 
-                WHERE (userID = :userID AND cartstatus='not checkout')");
+            $this->db->query(
+                "SELECT * 
+                FROM cart 
+                WHERE (userID = :userID 
+                AND cartstatus='not checkout')");
             $this->db->bind(':userID',  $_SESSION['user_id']);
             return $this->db->getSingle();
         }
@@ -45,9 +48,10 @@
          * Update cart column totalprice
          */
         public function updateCartTotalPrice($totalPrice) {
-            $this->db->query("UPDATE cart
-                        SET totalprice = :totalprice
-                        WHERE cartID=:cartID");
+            $this->db->query(
+                    "UPDATE cart
+                    SET totalprice = :totalprice
+                    WHERE cartID=:cartID");
 
             $this->db->bind(':totalprice', $totalPrice);
             $this->db->bind(':cartID', $_SESSION['cart_id']);
@@ -105,7 +109,8 @@
          * Count the number of cart items in the cart
          */
         public function getCartItemCount() {
-            $this->db->query("SELECT * 
+            $this->db->query(
+                    "SELECT * 
                     FROM cartitem 
                     WHERE cartID = :cartID");
             $this->bind(':cartID', $_SESSION['cart_id']);
@@ -117,7 +122,10 @@
          * Get a specific cartitem based on the cartitemid
          */
         public function getCartItem($cartItemID) {
-            $this->db->query("SELECT * FROM cartitem WHERE cartitemID = :cartitemID");
+            $this->db->query(
+                    "SELECT * 
+                    FROM cartitem 
+                    WHERE cartitemID = :cartitemID");
             $this->db->bind(':cartitemID', $cartItemID);
         
             return $this->db->getSingle();
@@ -127,7 +135,8 @@
          * Updates a cart item quantity
          */
         public function updateCartItemQuantity($data) {  // quantity and cartitemid
-            $this->db->query("UPDATE cartitem 
+            $this->db->query(
+                        "UPDATE cartitem 
                         SET quantity = :quantity,
                         cartitemprice = :cartitemprice
                         WHERE cartitemID=:cartitemID");

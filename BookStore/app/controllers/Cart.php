@@ -46,7 +46,6 @@ class Cart extends Controller
         $cart = $this->getUserCart();
 
         $isItemInCart = $cartItem = $this->cartModel->isExistInCartItem($bookID);
-    
         if (!$isItemInCart) { 
             // Step 2: Add item to CartItems table (associate book item with $userID a)
             // Create cartitem first
@@ -56,7 +55,13 @@ class Cart extends Controller
         else {
             $newQuantity = $cartItem->quantity + $quantity;
             $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID);  // trying to add the new update number
-            header('Location: /eCommerceProject/BookStore/Cart/index');
+    
+                // $cartCount = $this->cartModel->getCartItemCount();
+                // $data = [
+                //     'count' => $cartCount
+                // ];
+                $this->view('Cart/index', $data);           
+            header('Location: /eCommerceProject/BookStore/Book/bookdetail'. $bookID);
         }
     }
 
@@ -123,6 +128,7 @@ class Cart extends Controller
         foreach ($cartItems as $item) {
             $noTaxPrice += $item->cartitemprice;
         }
+
         $gst = number_format($noTaxPrice * 0.05, 2, '.', '');
         $qst = number_format($noTaxPrice *  0.09975, 2, '.', '');
         $salesTaxes = number_format($qst + $gst, 2, '.', '');
@@ -173,7 +179,7 @@ class Cart extends Controller
      * Checks out the cart of the user
      */
     public function checkout() {
-        // if user clicks the checkout button an d the cart item is not empty(uses the session for cartidp)
+        // if user clicks the checkout button an d the cart item is not empty(uses the session for cartid)
         if (isset($_POST['checkout']) && !empty($this->cartModel->getAllCartItems())) {
             // get cart object
             $cart = $this->cartModel->getUserCart(); 
@@ -186,7 +192,7 @@ class Cart extends Controller
             $this->orderModel->createOrder($data); // uses session var cartid
             echo 'Transaction completed successfully';
             destroySession();
-            // create new cart
+        
         }
     }
 
@@ -197,6 +203,9 @@ class Cart extends Controller
         $_SESSION['cart_id'] = $cart->cartID;
     }
 
+    /*
+     * Deletes a session of the user cart
+     */ 
     public function destroySession() {
         unset($_SESSION['cart_id']);
         session_destroy();
