@@ -1,0 +1,242 @@
+.picZoomer {
+    position: relative;
+    margin-left: 100px;
+    width: 200px;
+    padding: 15px;
+}
+
+.picZoomer-pic-wp {
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.picZoomer-pic-wp:hover .picZoomer-cursor {
+    display: block;
+}
+
+.picZoomer-zoom-pic {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.picZoomer-pic {
+    width: 100%;
+    height: 100%;
+}
+
+.picZoomer-zoom-wp {
+    display: none;
+    position: absolute;
+    z-index: 999;
+    overflow: hidden;
+    border: 1px solid #eee;
+    height: 460px;
+    margin-top: -19px;
+}
+
+.picZoomer-cursor {
+    display: none;
+    cursor: crosshair;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    border: 1px solid #eee;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.my_img {
+    vertical-align: middle;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 100%;
+}
+
+
+/* custom style */
+
+.picZoomer-pic-wp,
+.picZoomer-zoom-wp {
+    border: 1px solid #eee;
+}
+
+.section-bg {
+    background-color: #fff1e0;
+}
+
+section {
+    padding: 60px 0;
+}
+
+.row-sm .col-md-6 {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+
+/*===pic-Zoom===*/
+
+._boxzoom ._product-images {
+    width: 100%;
+    display: inline-block;
+}
+
+._boxzoom ._product-images .picZoomer {
+    width: 75%;
+}
+
+._boxzoom ._product-images .picZoomer .picZoomer-pic-wp img {
+    left: 0px;
+}
+
+._boxzoom ._product-images .picZoomer img.my_img {
+    width: 70%;
+}
+
+
+/*======products-details=====*/
+
+.products-details-container {
+    float: left;
+    width: 90%;
+}
+
+._product-detail-content {
+    background: #fff;
+    padding: 15px;
+    border: 1px solid lightgray;
+}
+
+._product-detail-content p._p-name {
+    color: black;
+    font-size: 24px;
+    border-bottom: 1px solid lightgray;
+    padding-bottom: 12px;
+}
+
+._product-detail-content p.author {
+    color: #000;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+span.price {
+    font-size: 25px;
+    color: #318234;
+}
+
+._p-qty>span {
+    color: black;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+._p-qty .value-button {
+    display: inline-flex;
+    border: 0px solid #ddd;
+    margin: 0px;
+    width: 30px;
+    height: 35px;
+    justify-content: center;
+    align-items: center;
+    background: #fd7f34;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    color: #fff;
+}
+
+._p-qty .value-button {
+    border: 0px solid #fe0000;
+    height: 35px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+/* input[type=number] {
+        -moz-appearance: textfield;
+    } */
+
+._p-qty input#number {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #fe0000;
+    border-bottom: 1px solid #fe0000;
+    margin: 0px;
+    width: 50px;
+    height: 35px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+._p-add-cart {
+    margin-left: 0px;
+    margin-bottom: 15px;
+}
+
+.p_detail {
+    border-bottom: 1px solid lightgray;
+    color: black;
+    margin-right: 15px;
+    font-weight: 500;
+}
+
+.about {
+    color: black;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+._p-add-cart .btn {
+    text-transform: capitalize;
+    padding: 6px 20px;
+    /* width: 200px; */
+    margin: 0px 8px;
+    border-radius: 52px;
+}
+
+.btn-wishlist {
+    /* text-transform: capitalize; */
+    padding: 6px 20px;
+    /* width: 200px; */
+    margin: 0px 8px;
+    border: none;
+    background-color: #C7E3FF;
+    color: #FF6E73;
+    border-radius: 52px;
+    font-size: 15px;
+}
+
+
+/*====== wist list=====  */
+
+.wishlist {
+    /* default */
+    color: #adb5bd;
+    font-size: 30px;
+}
+
+.wishlist i:hover {
+    color: #fe0000;
+}
+
+
+/* .wishlist i:visited {
+
+        color: #318234;
+    } */
