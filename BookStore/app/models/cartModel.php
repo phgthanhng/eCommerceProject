@@ -9,10 +9,13 @@
          * Creates a cart for a user
          */
         public function createCart() {
-            $this->db->query("INSERT INTO cart(userID, totalprice) values(:userID, :totalprice)");
+            $this->db->query(
+                "INSERT INTO cart(userID, totalprice)
+                values(:userID, :totalprice)");
+
             $this->db->bind(':userID', $_SESSION['user_id']);
             $this->db->bind(':totalprice', 0);
- 
+
             return $this->db->execute();
         }
 
@@ -25,7 +28,9 @@
                 FROM cart 
                 WHERE (userID = :userID 
                 AND cartstatus='not checkout')");
+
             $this->db->bind(':userID',  $_SESSION['user_id']);
+
             return $this->db->getSingle();
         }
 
@@ -33,8 +38,9 @@
          * Create a cart item
          */
         public function createCartItem($data) {
-            $this->db->query("INSERT INTO cartitem(cartID, bookID, quantity, cartitemprice) 
-            values (:cartID, :bookID, :quantity, :cartitemprice)");
+            $this->db->query(
+                "INSERT INTO cartitem(cartID, bookID, quantity, cartitemprice) 
+                values (:cartID, :bookID, :quantity, :cartitemprice)");
 
             $this->db->bind(':cartID', $_SESSION['cart_id']);
             $this->db->bind(':bookID', $data['bookID']);
@@ -49,9 +55,9 @@
          */
         public function updateCartTotalPrice($totalPrice) {
             $this->db->query(
-                    "UPDATE cart
-                    SET totalprice = :totalprice
-                    WHERE cartID=:cartID");
+                "UPDATE cart
+                SET totalprice = :totalprice
+                WHERE cartID = :cartID");
 
             $this->db->bind(':totalprice', $totalPrice);
             $this->db->bind(':cartID', $_SESSION['cart_id']);
@@ -64,9 +70,24 @@
          */
         public function deleteCart() {
             $this->db->query(
-                    "DELETE 
-                    FROM cart 
-                    WHERE cartID=:cartID");
+                "DELETE 
+                FROM cart 
+                WHERE cartID = :cartID");
+
+            $this->db->bind(':cartID', $_SESSION['cart_id']);
+            return $this->db->execute();
+        }
+
+        /*
+         * Updates a cart status to checkout
+         */
+        public function updateCartStatus() {
+            $this->db->query(
+                "UPDATE cart
+                SET cartstatus = :cartstatus
+                WHERE cartID = :cartID");
+
+            $this->db->bind(':cartstatus', 'checkout');
             $this->db->bind(':cartID', $_SESSION['cart_id']);
             return $this->db->execute();
         }
@@ -76,17 +97,18 @@
          */
         public function getAllCartItems() {
             $this->db->query(
-                    "SELECT cart.cartID, 
-                    cartitem.cartitemID, cartitem.cartID, cartitem.bookID, cartitem.quantity, cartitem.cartitemprice, 
-                    book.bookID, book.bookname, book.retailprice, book.image
-                    FROM cart
-                    JOIN cartitem
-                    ON cartitem.cartID = cart.cartID
-                    JOIN book
-                    ON cartitem.bookID = book.bookID
-                    WHERE cartitem.cartID = :cartID");
+                "SELECT cart.cartID, 
+                cartitem.cartitemID, cartitem.cartID, cartitem.bookID, cartitem.quantity, cartitem.cartitemprice, 
+                book.bookID, book.bookname, book.retailprice, book.image
+                FROM cart
+                JOIN cartitem
+                ON cartitem.cartID = cart.cartID
+                JOIN book
+                ON cartitem.bookID = book.bookID
+                WHERE cartitem.cartID = :cartID");
 
             $this->db->bind(':cartID', $_SESSION['cart_id']);
+
             return $this->db->getResultSet(); 
         }
 
@@ -102,6 +124,7 @@
             
             $this->db->bind(':cartID', $_SESSION['cart_id']);
             $this->db->bind(':bookID', $bookID);
+
             return $this->db->getSingle();  // returns a cartitem object
         }
 
@@ -110,9 +133,9 @@
          */
         public function getCartItemCount() {
             $this->db->query(
-                    "SELECT * 
-                    FROM cartitem 
-                    WHERE cartID = :cartID");
+                "SELECT * 
+                FROM cartitem 
+                WHERE cartID = :cartID");
             $this->bind(':cartID', $_SESSION['cart_id']);
 
             return count($this->db->getResultSet());
@@ -139,7 +162,7 @@
                         "UPDATE cartitem 
                         SET quantity = :quantity,
                         cartitemprice = :cartitemprice
-                        WHERE cartitemID=:cartitemID");
+                        WHERE cartitemID = :cartitemID");
 
             $this->db->bind(':quantity', $data['quantity']);
             $this->db->bind(':cartitemID', $data['cartitemID']);
@@ -156,7 +179,9 @@
                     "DELETE 
                     FROM cartitem 
                     WHERE cartitemID=:cartitemID");
+
             $this->db->bind(':cartitemID', $cartitemID);
+
             return $this->db->execute();
         }
 

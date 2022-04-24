@@ -31,6 +31,7 @@
                 "UPDATE order 
                 SET orderstatus=:orderstatus
                 WHERE orderID=:orderID");
+                
             $this->db->bind(':orderstatus', "cancelled");
             $this->db->bind(':orderID', $data['orderID']);
 
@@ -55,10 +56,12 @@
          */
         public function getSingleOrder($orderID) {
             $this->db->query(
-                    "SELECT * 
-                    FROM order 
-                    WHERE orderID = :orderID");
+                "SELECT * 
+                FROM order 
+                WHERE orderID = :orderID");
+
             $this->db->bind(':orderID', $orderID);
+
             return $this->db->getSingle();
         }
 

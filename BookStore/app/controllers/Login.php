@@ -1,12 +1,18 @@
 <?php
 class Login extends Controller
 {
+    /*
+     * Default constructor of the login class
+     */
     public function __construct()
     {
         $this->loginModel = $this->model('loginModel');
     }
 
-     public function index()
+    /*
+     * Displays login page and process login inputs
+     */
+    public function index()
     {
         if(!isset($_POST['login'])){
             $this->view('Login/index');
@@ -69,6 +75,9 @@ class Login extends Controller
         }
     }
 
+    /*
+     * Creates a new user
+     */
     public function signup()
     {   
         // if SIGNUP button is NOT clicked
@@ -108,6 +117,9 @@ class Login extends Controller
         }
     }
 
+    /*
+     * Validates sign up input
+     */
     public function validateSignupData($data) {
         if ($data['pass'] != $data['pass_verify']) {
             $data['password_match_error'] = 'Password does not match';
@@ -120,12 +132,18 @@ class Login extends Controller
         }
     }
 
+    /*
+     * Create a session of a specific user
+     */
     public function createSession($user)
     {
         $_SESSION['user_id'] = $user->userID;
         $_SESSION['user_username'] = $user->username;
     }
 
+    /*
+     * Logouts a user and destroys a session
+     */
     public function logout(){
         echo '<meta http-equiv="Refresh" content="5; /eCommerceProject/BookStore/Login/logout">';
         echo '

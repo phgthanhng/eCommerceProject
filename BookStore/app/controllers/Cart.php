@@ -55,12 +55,12 @@ class Cart extends Controller
         else {
             $newQuantity = $cartItem->quantity + $quantity;
             $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID);  // trying to add the new update number
-    
+            // NOTE: For the cart count beside the icon
                 // $cartCount = $this->cartModel->getCartItemCount();
                 // $data = [
                 //     'count' => $cartCount
                 // ];
-                $this->view('Cart/index', $data);           
+                // $this->view('Cart/index', $data);           
             header('Location: /eCommerceProject/BookStore/Book/bookdetail'. $bookID);
         }
     }
@@ -188,11 +188,11 @@ class Cart extends Controller
                 'totalprice' => $cart->totalprice,
                 'paymentmethod' => $_POST['paymentmethod'],
             ];
+            $this->cartModel->updateCartStatus();
             // create order object
             $this->orderModel->createOrder($data); // uses session var cartid
-            echo 'Transaction completed successfully';
             destroySession();
-        
+            echo 'Transaction completed successfully';
         }
     }
 

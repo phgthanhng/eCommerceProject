@@ -1,20 +1,29 @@
 <?php
-
     class userModel{
         public function __construct(){
             $this->db = new Model;
         }
+
+        /*
+         * Retrieves all users
+         */
         public function getUsers(){
             $this->db->query("SELECT * FROM user where userID > 3");
             return $this->db->getResultSet();
         }
 
+        /*
+         * Retrives a specific user based on the user ID
+         */
         public function getUser($userID){
             $this->db->query("SELECT * FROM user WHERE userID = :userID");
-            $this->db->bind(':userID',$userID);
+            $this->db->bind(':userID', $userID);
             return $this->db->getSingle();
         }
 
+        /*
+         * Updates a user profile of the user
+         */
         public function editProfile($data) {
             $this->db->query("UPDATE user SET email =:email, firstname=:firstname,
             lastname=:lastname, phone=:phone, address=:address, newsletter=:newsletter WHERE userID=:userID");
@@ -28,6 +37,9 @@
             return $this->db->execute();
         }
 
+        /*
+         * Updates a user credentials(username and password)
+         */
         public function editCredentials($data) {
             $this->db->query("UPDATE user SET password=:password WHERE userID=:userID");
             $this->db->bind(':password', $data['pass_hash']);
@@ -35,18 +47,17 @@
             return $this->db->execute();
         }
 
-
-
+        /*
+         * Deletes a user from the database
+         */
         public function delete($data){
-            $this->db->query("DELETE FROM users WHERE ID=:user_id");
-            $this->db->bind('user_id',$data['ID']);
+            $this->db->query(
+                "DELETE 
+                FROM user
+                WHERE userID = :userID");
+            $this->db->bind('user_id', $data['ID']);
 
-            if($this->db->execute()){
-                return true;
-            }
-            else{
-                return false;
-            }
+            return $this->db->execute();
 
         }
     }
