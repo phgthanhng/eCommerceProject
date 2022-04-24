@@ -1,10 +1,11 @@
 <?php
 class Cart extends Controller
-{
+{   
     public function __construct()
     {
         $this->cartModel = $this->model('cartModel');  
         $this->bookModel = $this->model('bookModel');
+        $this->orderModel = $this->model('orderModel');
     }
 
     public function index() 
@@ -18,24 +19,18 @@ class Cart extends Controller
     public function getUserCart() {
         // If there is no cart in the database then create a cart for the user
         if (!$this->cartModel->getUserCart()) { // if return is false then create a cart
-            $this->createCart();  
+            $this->createCart($_SESSION['user_id']);  
         }
-        // else
-        //retrieve, createsession and return the existing cart
         $cart = $this->cartModel->getUserCart();
-        $this->createSession($cart); // cart object for the user
         return $cart;
     }
 
     /*
      * Create a cart object
      */
-    public function createCart() {
-        $this->cartModel->createCart();
+    public function createCart($userID) {
+        $this->cartModel->createCart($userID);
     }
-
-
-// NOTE: Might combine addCartItem method with createCartItem
 
     /*
      * Adds an item to the cart
@@ -43,33 +38,35 @@ class Cart extends Controller
     public function addCartItem($quantity, $bookID) {
         // Step 1: Get user cart from the cart table
         $cart = $this->getUserCart();
-
-        $isItemInCart = $cartItem = $this->cartModel->isExistInCartItem($bookID);
-    
+        $data = [
+            'cartID' => $cart->cartID,
+            'bookID' => $bookID
+        ];
+        $isItemInCart = $cartItem = $this->cartModel->isExistInCartItem($data);
         if (!$isItemInCart) { 
             // Step 2: Add item to CartItems table (associate book item with $userID a)
             // Create cartitem first
-            $this->createCartItem($quantity, $bookID);
+            $this->createCartItem($cart->cartID, $quantity, $bookID);
             header('Location: /eCommerceProject/BookStore/Book/bookdetail/'. $bookID);
         }
         else {
             $newQuantity = $cartItem->quantity + $quantity;
-            $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID);  // trying to add the new update number
-            header('Location: /eCommerceProject/BookStore/Cart/index');
+            $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID);  // trying to add the new update number         
+            header('Location: /eCommerceProject/BookStore/Book/bookdetail'. $bookID);
         }
     }
 
     /*
      * Create cartItem 
      */
-    public function createCartItem($quantity, $bookID) {
+    public function createCartItem($cartID, $quantity, $bookID) {
         $subtotal = $this->calcSubtotal($quantity, $bookID);
     
         $data = [
-            'cartID' => $_SESSION['cart_id'],
+            'cartID' => $cartID,
             'bookID' => $bookID,
             'quantity' => $quantity,
-            'subtotalPrice' => $subtotal,
+            'subtotalPrice' => $subtotal
         ];
         
         return $this->cartModel->createCartItem($data); // pass the bookID 
@@ -88,23 +85,20 @@ class Cart extends Controller
      */
     public function getAllCartItems() {
         // call the getUserCart to create cart and a session 
-        $this->getUserCart();
+        $cart = $this->getUserCart();
 
-        if (!empty($this->cartModel->getAllCartItems())) {
+        if (!empty($this->cartModel->getAllCartItems($cart->cartID))) {
         // will call the view to show all cartitems
-            $items = $this->cartModel->getAllCartItems(); 
-            $noTaxPrice = $this->calcTotal($items); 
-            $gst = $noTaxPrice * 0.05;
-            $qst = $noTaxPrice *  0.09975;
-            $salesTaxes = $qst + $gst;
-            $withTaxPrice = $salesTaxes + $noTaxPrice;
+            $items = $this->cartModel->getAllCartItems($cart->cartID); 
+            $price = $this->calcTotal($items); 
+            
             $data = [  
                 'items' => $items,
-                'cartTotal' => $noTaxPrice,
-                'gst' => number_format($gst, 2, '.', ''),
-                'qst' => number_format($qst, 2, '.', ''),
-                'salesTaxes' => number_format($salesTaxes, 2, '.', ''),
-                'finalPrice' =>  number_format($withTaxPrice, 2, '.', '')
+                'cartTotal' => $price[0],
+                'gst' => $price[1],
+                'qst' => $price[2],
+                'salesTaxes' => $price[3],
+                'finalPrice' =>  $price[4]
             ];  
         }
         else {
@@ -120,13 +114,25 @@ class Cart extends Controller
      */
     public function calcTotal($cartItems) {
         // get all cart items of a specific user and get the subtotal of all of them
-        // $cartItems = $this->cartModel->getAllCartItems();
-        $cartTotal = 0;
+        $cart = $this->cartModel->getUserCart();
+        $noTaxPrice = 0;
         foreach ($cartItems as $item) {
-            $cartTotal += $item->cartitemprice;
+            $noTaxPrice += $item->cartitemprice;
         }
 
-        return number_format($cartTotal, 2, '.', '');
+        $gst = number_format($noTaxPrice * 0.05, 2, '.', '');
+        $qst = number_format($noTaxPrice *  0.09975, 2, '.', '');
+        $salesTaxes = number_format($qst + $gst, 2, '.', '');
+        $withTaxPrice = number_format($salesTaxes + $noTaxPrice, 2, '.', '');
+        
+        // set CART total to with tax price
+        $data = [
+            'withTaxPrice' => $withTaxPrice,
+            'cartID' => $cart->cartID
+        ];
+        $this->cartModel->updateCartTotalPrice($data);
+
+        return array($noTaxPrice, $gst, $qst, $salesTaxes, $withTaxPrice);
     }
 
     /*
@@ -145,7 +151,7 @@ class Cart extends Controller
     public function editCartItemQuantity($quantity, $cartitemID) {  
         // recalculate here the pricing
         $item = $this->cartModel->getCartItem($cartitemID);
-
+        $cart = $this->getUserCart();
         $data = [
             'quantity' => $quantity,
             'cartitemID' => $cartitemID,
@@ -153,7 +159,7 @@ class Cart extends Controller
             ];
 
         if($this->cartModel->updateCartItemQuantity($data)){
-            $items = $this->cartModel->getAllCartItems();
+            $items = $this->cartModel->getAllCartItems($cart->$cartID);
             
             $data = [  
                 'items' => $items
@@ -161,14 +167,41 @@ class Cart extends Controller
             header('Location: /eCommerceProject/BookStore/Cart/index');
             $this->view('Cart/index', $data);
         }  
-        //var_dump($data); 
+
     }
 
-    /*
-     * Creates a session of the user cart
-     */
-    public function createSession($cart) {
-        $_SESSION['cart_id'] = $cart->cartID;
+    // /*
+    //  * Checks out the cart of the user
+    //  */
+    // public function checkout() {
+    //     $cart = $this->getUserCart();
+    //     // if user clicks the checkout button an d the cart item is not empty(uses the session for cartid)
+    //     if (isset($_POST['checkout']) && !empty($this->cartModel->getAllCartItems($cart->cartID))) {
+    //         // get cart object
+  
+    //         $data = [
+    //             "shippingaddress" => $_POST['shippingaddress'],
+    //             'totalprice' => $cart->totalprice,
+    //             'paymentmethod' => $_POST['paymentmethod'],
+    //         ];
+    //         $this->cartModel->updateCartStatus($cart->cartID);
+    //         // create order object
+    //         $this->orderModel->createOrder($data); // uses session var cartid
+    //         echo 'Transaction completed successfully';
+    //     }
+    // }
+
+    public function checkout($cartID) {
+        // 1. create order
+        $data = [
+            "cartID" => $cartID
+        ];
+        // $this->orderModel->createOrder($data); 
+
+        // 2. create new cart 
+        $this->cartModel->createCart($_SESSION['user_id']);
+        echo '<meta http-equiv="Refresh" content="5; /eCommerceProject/BookStore/Cart/success>';
+        echo "Checkout Successful!";
     }
 }
 

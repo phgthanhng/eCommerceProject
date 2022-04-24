@@ -6,6 +6,9 @@ class Categories extends Controller
         $this->bookModel = $this->model('bookModel');
     }
 
+    /*
+     * Displays all books with classic category
+     */
     public function classic()
     {
         $category = 'classic';
@@ -16,6 +19,9 @@ class Categories extends Controller
         $this->view('Categories/classic', $data);
     }
 
+    /*
+     * Displays all books with romance category
+     */
     public function romance()
     {
         $category = 'romance';
@@ -26,6 +32,9 @@ class Categories extends Controller
         $this->view('Categories/romance', $data);
     }
 
+    /*
+     * Displays all books with fiction category
+     */
     public function fiction()
     {
         $category = 'fiction';
@@ -36,6 +45,9 @@ class Categories extends Controller
         $this->view('Categories/fiction', $data);
     }
 
+    /*
+     * Displays all books with non-fiction category
+     */
     public function non_fiction()
     {
         $category = 'non-fiction';
@@ -45,7 +57,10 @@ class Categories extends Controller
         ];
         $this->view('Categories/non_fiction', $data);
     }
-        
+    
+    /*
+     * Displays all books with self help category
+     */
     public function self_help()
     {
         $category = 'self-help';

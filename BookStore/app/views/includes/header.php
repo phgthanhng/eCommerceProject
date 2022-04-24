@@ -117,12 +117,13 @@
                 // if is logged in and is a user(not an admin) -> can see the cart icon
                 if (isLoggedIn() && !isAdmin()) {
                     echo '
-                        <a href="' . URLROOT . '/Cart/index.php" style="margin: 10px"> 
+                        <a href="' . URLROOT . '/Cart/index" style="margin: 10px"> 
                             <button class="btn btn-primary" type="submit">
-                                <i class="fa fa-shopping-cart text-center d-xl-flex" style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)">
+                                <i class="fa fa-shopping-cart text-center d-xl-flex" style="font-size: 20px; margin: auto; color: rgb(241, 236, 236)"> (' . getCartCount(). ')
                                 </i>
                             </button>
                         </a>';
+            
                 }
 
                 ?>

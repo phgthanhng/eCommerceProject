@@ -17,9 +17,15 @@
             foreach ($data['items'] as $item) {
                 echo '<tr>';
                 echo '<td> 
+                    <a href="'.URLROOT.'/Book/bookdetail/'.$item->bookID.'">
                     <img src=" ' . URLROOT . '/public/img/' . $item->image .' " style="width:210px; height:300px">
+                    </a>
                     </td>';
-                echo '<td>'.$item->bookname.'</td>';
+                echo '<td>
+                    <a href="'.URLROOT.'/Book/bookdetail/'.$item->bookID.'" style="text-decoration:none;">
+                    '.$item->bookname.'
+                    </a>
+                    </td>';
                 echo '<td>
                         <input type="number" name="qty" id="number" value="'.$item->quantity.'" min="1" onkeypress="onlyNum(this.evt)" onchange="updateQuantity()" style="width: 50px;"/>
                         <input type="hidden" id="cart_item_id" value="'.$item->cartitemID.'">
@@ -42,6 +48,15 @@
                 Total Price: $ '.$data['finalPrice'].' CAD
                 <p> 
             </div>';
+        echo '
+            <form class="" method="post" action="">
+            <div class="d-flex justify-content-end">
+                <a href="' . URLROOT . '/Cart/checkout/' . $item->cartID. '" 
+                    <button type="button" class="btn btn-success" name="checkout">Checkout</button>
+                </a>
+            </div>
+            </form>';
+            
     }
     else {
         echo '<div><p class="text-center" style="height:auto;">No items in the cart</p></div>';

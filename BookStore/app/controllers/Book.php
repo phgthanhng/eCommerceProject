@@ -6,6 +6,9 @@ class Book extends Controller
         $this->bookModel = $this->model('bookModel');
     }
 
+    /* 
+     *  Takes all the books and dislay it
+     */
     public function index()
     {
         $books = $this->bookModel->getAllBooks();
@@ -15,6 +18,9 @@ class Book extends Controller
         $this->view('Book/viewBooks', $data);
     }
 
+    /*
+     * Display a specific book
+     */
     public function bookdetail($bookID)
     {
         // For the publication part
@@ -27,6 +33,9 @@ class Book extends Controller
         $this->view('Book/bookdetail',  $data);
     }
 
+    /*
+     * Searches a book/s depending on the input keywords
+     */
     public function searchBook()
     {
         if (isset($_POST['submit'])) {
@@ -39,7 +48,6 @@ class Book extends Controller
             $data = [
                 'books' => $books
             ];
-
             $this->view('Book/viewBooks', $data);
 
         }

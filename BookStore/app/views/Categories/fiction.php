@@ -79,8 +79,10 @@
                 $id = $book->bookID;
                 $name = substr($book->bookname, 0, 20) . "...";
                 echo '<div class = "item">';
-                echo '<img src="' . URLROOT . '/public/img/' . $book->image . '" style="width:210px; height:300px;"';
-                                echo '<p><a href="' . URLROOT . '/Book/bookdetail/' . $id . '"> ' . $name . '</a></p>';
+                echo '<a href="' . URLROOT . '/Book/bookdetail/'.$id.'">
+                        <img src="' . URLROOT . '/public/img/' . $book->image . '" style="width:210px; height:300px;"
+                    </a>';
+                echo '<p><a href="' . URLROOT . '/Book/bookdetail/' . $id . '" style="text-decoration:none;"> ' . $name . '</a></p>';
                 echo '<p class="author"> by ' . $book->author . '</p>';
                 echo '<p class="price"> $' . $book->retailprice . "</p>";
                 // if not logged in 

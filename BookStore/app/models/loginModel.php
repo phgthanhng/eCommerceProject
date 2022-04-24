@@ -5,20 +5,27 @@
         }
 
         /*
-         * Gets a single customer 
+         * Retrieves a specific user based on the username
          */
         public function getUser($username){
-            $this->db->query("SELECT * FROM user WHERE username = :username");
-            $this->db->bind(':username',$username);
+            $this->db->query(
+                "SELECT * 
+                FROM user 
+                WHERE username = :username");
+
+            $this->db->bind(':username', $username);
+            
             return $this->db->getSingle();
         }
 
-      
         /*
-         * Create a customer
+         * Creates a user
          */ 
         public function createUser($data){
-            $this->db->query("INSERT INTO user (username, password, firstname, lastname, phone, address, email, newsletter) values (:username, :password, :firstname, :lastname, :phone, :address, :email, :newsletter)");
+            $this->db->query(
+                "INSERT INTO user (username, password, firstname, lastname, phone, address, email, newsletter) 
+                values (:username, :password, :firstname, :lastname, :phone, :address, :email, :newsletter)");
+
             $this->db->bind(':username', $data['username']);
             $this->db->bind(':password', $data['pass_hash']);
             $this->db->bind(':firstname', $data['fname']);
@@ -30,6 +37,5 @@
 
             return ($this->db->execute());
         }
-
     }
 ?>

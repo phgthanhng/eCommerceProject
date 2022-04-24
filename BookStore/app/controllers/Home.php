@@ -5,6 +5,9 @@ class Home extends Controller
     {
     }
 
+    /*
+     * Displays home
+     */
     public function index()
     {
         $this->view('Home/index');

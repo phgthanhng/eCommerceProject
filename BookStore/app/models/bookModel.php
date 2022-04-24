@@ -6,26 +6,40 @@ class bookModel
         $this->db = new Model;
     }
 
-    // get all the books
+    /*
+     * Retrieves all book from the database
+     */
     public function getAllBooks()
     {
-        $this->db->query("SELECT * FROM book");
+        $this->db->query(
+            "SELECT * 
+            FROM book");
         return $this->db->getResultSet();
     }
 
     
-    // Get a single book 
-    public function getSingleBook($bookID)
-    {
-        $this->db->query("SELECT * FROM book WHERE bookID = :bookID");
+    /*
+     *  Retrieves a specific book from the database based on the bookID
+     */
+    public function getSingleBook($bookID) {
+        $this->db->query(
+            "SELECT * 
+            FROM book 
+            WHERE bookID = :bookID");
+
         $this->db->bind(':bookID', $bookID);
+
         return $this->db->getSingle();
     }
 
-    // create a book
+    /*
+     * Creates a new book that will be inserted into the database
+     */
     public function addBook($data){
-        $this->db->query("INSERT INTO book (bookname, isbn, author, publisher, retailprice, availablequantity, image, description, category)
-         values  (:bookname, :isbn, :author, :publisher, :retailprice, :availablequantity, :image, :description, :category)");
+        $this->db->query(
+            "INSERT INTO book (bookname, isbn, author, publisher, retailprice, availablequantity, image, description, category)
+            values  (:bookname, :isbn, :author, :publisher, :retailprice, :availablequantity, :image, :description, :category)");
+
         $this->db->bind(':bookname', $data['bookname']);
         $this->db->bind(':isbn', $data['isbn']);
         $this->db->bind(':author', $data['author']);
@@ -37,40 +51,47 @@ class bookModel
         $this->db->bind(':category', $data['category']);
 
         return $this->db->execute();
-      
     }
 
-    // get books by category
+    /*
+     * Retrieves all books depending on the category
+     */
     public function getAllBooksByCategory($category)
     {   
         $this->db->query(
             "SELECT * 
             FROM book
-            WHERE category = :category"
-        );
+            WHERE category = :category");
+
         $this->db->bind(':category', $category);
+
         return $this->db->getResultSet(); 
     }
 
-    // search book by title or author
+    /*
+     * Retrieves a book based on the keywords
+     */
     public function getBooksByAuthorOrTitle($keyword){
         $this->db->query(
             "SELECT * 
             FROM book
             WHERE lower(author) like '%$keyword%' 
-            OR lower(bookname) like '%$keyword%' ;"
-        );
+            OR lower(bookname) like '%$keyword%' ;");
 
         return $this->db->getResultSet(); 
-
     }
 
-    // update a book
+    /*
+     * Updates a specific book 
+     */
     public function editBook($data){
-        $this->db->query("UPDATE book SET bookname=:bookname, isbn=:isbn, author=:author, publisher=:publisher, 
-        retailprice=:retailprice, availablequantity=:availablequantity, 
-        image =:image,  description=:description, category=:category
-        WHERE bookID=:bookID");
+        $this->db->query(
+            "UPDATE book 
+            SET bookname=:bookname, isbn=:isbn, author=:author, publisher=:publisher, 
+            retailprice=:retailprice, availablequantity=:availablequantity, 
+            image =:image,  description=:description, category=:category
+            WHERE bookID=:bookID");
+
         $this->db->bind(':bookname', $data['bookname']);
         $this->db->bind(':isbn', $data['isbn']);
         $this->db->bind(':author', $data['author']);
@@ -83,15 +104,19 @@ class bookModel
         $this->db->bind(':bookID', $data['bookID']);
 
         return $this->db->execute();
-
     }
 
-    // delete a book
+    /*
+     * Deletes a specific book
+     */
     public function delete($data){
-        $this->db->query("DELETE FROM book WHERE bookID=:bookID");
-        $this->db->bind('bookID',$data['bookID']);
+        $this->db->query(
+            "DELETE 
+            FROM book 
+            WHERE bookID=:bookID");
+
+        $this->db->bind('bookID', $data['bookID']);
 
         return $this->db->execute();
-
     }
 }

@@ -2,6 +2,9 @@
 
 class User extends Controller
 {
+    /*
+     * Default constructor of the user class
+     */
     public function __construct()
     {
         $this->userModel = $this->model('userModel');
@@ -10,11 +13,17 @@ class User extends Controller
         }
     }
 
+    /*
+     * Displays user profile
+     */
     public function index()
     {
         $this->view('User/index');
     }
 
+    /*
+     * Updates a user profile
+     */
     public function editProfile($userID)
     {
         $user = $this->userModel->getUser($userID);
@@ -38,6 +47,9 @@ class User extends Controller
         }
     }
 
+    /*
+     * Updates user credentials: username and password
+     */
     public function editCredentials($userID)
     {
         $user = $this->userModel->getUser($userID);

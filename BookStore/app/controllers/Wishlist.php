@@ -2,10 +2,13 @@
 
 class Wishlist extends Controller
 {
+    
     public function __construct()
     {
+
         $this->wishlishModel = $this->model('wishlishModel');  
         $this->bookModel = $this->model('bookModel');
+
     }
 
     public function index()

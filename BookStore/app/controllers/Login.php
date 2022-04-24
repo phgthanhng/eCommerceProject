@@ -1,12 +1,19 @@
 <?php
 class Login extends Controller
 {
+    /*
+     * Default constructor of the login class
+     */
     public function __construct()
     {
         $this->loginModel = $this->model('loginModel');
+        $this->cartModel = $this->model('cartModel');
     }
 
-     public function index()
+    /*
+     * Displays login page and process login inputs
+     */
+    public function index()
     {
         if(!isset($_POST['login'])){
             $this->view('Login/index');
@@ -69,6 +76,9 @@ class Login extends Controller
         }
     }
 
+    /*
+     * Creates a new user
+     */
     public function signup()
     {   
         // if SIGNUP button is NOT clicked
@@ -93,7 +103,9 @@ class Login extends Controller
                 ];
                 // validate data first
                 if ($this->validateSignupData($data)) {
-                    if ($this->loginModel->createUser($data)) {
+                    if ($this->loginModel->createUser($data)) { 
+                        $newUser = $this->loginModel->getUser($data['username']);
+                        $this->cartModel->createCart($newUser->userID); //create cart for user
                         echo 'Please wait creating the account for ' . trim($_POST['username']);
                         echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
                     }
@@ -108,6 +120,9 @@ class Login extends Controller
         }
     }
 
+    /*
+     * Validates sign up input
+     */
     public function validateSignupData($data) {
         if ($data['pass'] != $data['pass_verify']) {
             $data['password_match_error'] = 'Password does not match';
@@ -120,12 +135,18 @@ class Login extends Controller
         }
     }
 
+    /*
+     * Create a session of a specific user
+     */
     public function createSession($user)
     {
         $_SESSION['user_id'] = $user->userID;
         $_SESSION['user_username'] = $user->username;
     }
 
+    /*
+     * Logouts a user and destroys a session
+     */
     public function logout(){
         echo '<meta http-equiv="Refresh" content="5; /eCommerceProject/BookStore/Login/logout">';
         echo '
@@ -141,7 +162,5 @@ class Login extends Controller
         unset($_SESSION['user_username']);
         session_destroy();
         echo '<meta http-equiv="Refresh" content="1; /eCommerceProject/BookStore/Login/index">';
-        // header('Location: /eCommerceProject/BookStore/Login/index');   // change later if
-        // header('Location: /BookStore/Login/index');   // change later if
     }
 }
