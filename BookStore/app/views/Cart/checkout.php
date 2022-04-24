@@ -5,36 +5,21 @@
             <div class="col-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-item-center">
                     <span class="text-muted">Your Cart</span>
-                    <span class="badge bg-secondary rounded-pill">3</span>
+                    <span class="badge bg-secondary rounded-pill"><?php echo getCartCount() ?></span>
                 </h4>
                 <ul class="list-group">
-                    <li class="list-group-item d-flex justify-content-between">
+                    <?php foreach ($data['items'] as $item) {
+                    
+                    echo '<li class="list-group-item d-flex justify-content-between">
                         <div>
-                            <h6>Product name</h6>
-                            <span class="text-muted">Brief Description</span>
+                            <h6>'.$item->bookname.'</h6>
+                            <h6> $'.$item->retailprice.' CAD X '.$item->quantity.' QTY </h6>
                         </div>
-                        <span class="text-muted">Rs 500</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <div>
-                            <h6>Second Product</h6>
-                            <span class="text-muted">Brief Description</span>
-                        </div>
-                        <span class="text-muted">Rs 200</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <div>
-                            <h6>Third Product</h6>
-                            <span class="text-muted">Brief Description</span>
-                        </div>
-                        <span class="text-muted">Rs 600</span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                        <div>
-                            <h6>Total (Rs)</h6>
-                        </div>
-                        <span class="text-muted">Rs 1200</span>
-                    </li>
+                     
+                    </li>';
+                    }
+                    ?>
+                 
                 </ul>
             </div>
             <div class="col-8">
@@ -108,7 +93,7 @@
                             <small class="text-muted">Full name as displayed on card</small>
                         </div>
                         <div class="col-6">
-                            <label class="form-label" for="creditcard">Credit Card Number </label>
+                            <label class="form-label" for="creditcard">Card Number </label>
                             <input type="text" id="creditcard" class="form-control" required>
                         </div>
                         <div class="col-3">
@@ -121,7 +106,7 @@
                         </div>
                     </div>
                     <hr>
-                    <button type="submit" class="btn btn-primary btn-block mb-4" name="checkoutBtn">Continue To Checkout</button>
+                    <button type="submit" class="btn btn-primary btn-block mb-4" name="checkoutBtn">PLACE ORDER</button>
                 </form>
             </div>
         </div>

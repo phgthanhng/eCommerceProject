@@ -87,7 +87,7 @@ class Cart extends Controller
         // call the getUserCart to create cart and a session 
         $cart = $this->getUserCart();
 
-        if (!empty($this->cartModel->getAllCartItems($cart->cartID))) {
+        if (!empty($this->cartModel->getAllCartItems($cart->cartID))) { //model
         // will call the view to show all cartitems
             $items = $this->cartModel->getAllCartItems($cart->cartID); 
             $price = $this->calcTotal($items); 
@@ -107,6 +107,8 @@ class Cart extends Controller
             ];
         }
         $this->view('Cart/index', $data);
+
+        return $data;
     }
 
     /*
@@ -160,7 +162,6 @@ class Cart extends Controller
 
         if($this->cartModel->updateCartItemQuantity($data)){
             $items = $this->cartModel->getAllCartItems($cart->$cartID);
-            
             $data = [  
                 'items' => $items
             ];
@@ -170,38 +171,27 @@ class Cart extends Controller
 
     }
 
-    // /*
-    //  * Checks out the cart of the user
-    //  */
-    // public function checkout() {
-    //     $cart = $this->getUserCart();
-    //     // if user clicks the checkout button an d the cart item is not empty(uses the session for cartid)
-    //     if (isset($_POST['checkout']) && !empty($this->cartModel->getAllCartItems($cart->cartID))) {
-    //         // get cart object
-  
-    //         $data = [
-    //             "shippingaddress" => $_POST['shippingaddress'],
-    //             'totalprice' => $cart->totalprice,
-    //             'paymentmethod' => $_POST['paymentmethod'],
-    //         ];
-    //         $this->cartModel->updateCartStatus($cart->cartID);
-    //         // create order object
-    //         $this->orderModel->createOrder($data); // uses session var cartid
-    //         echo 'Transaction completed successfully';
-    //     }
-    // }
+    /* 
+     * Displays the checkout page
+     */
+    public function checkout() {
 
-    public function checkout($cartID) {
-        // 1. create order
-        $data = [
-            "cartID" => $cartID
-        ];
-        // $this->orderModel->createOrder($data); 
+        $cart = $this->getUserCart();
 
-        // 2. create new cart 
-        $this->cartModel->createCart($_SESSION['user_id']);
-        echo '<meta http-equiv="Refresh" content="5; /eCommerceProject/BookStore/Cart/success>';
-        echo "Checkout Successful!";
+        // if (!empty($this->cartModel->getAllCartItems($cart->cartID))) { 
+            $items = $this->cartModel->getAllCartItems($cart->cartID); 
+            $price = $this->calcTotal($items); 
+            
+            $data = [  
+                'items' => $items,
+                'cartTotal' => $price[0],
+                'gst' => $price[1],
+                'qst' => $price[2],
+                'salesTaxes' => $price[3],
+                'finalPrice' =>  $price[4]
+            ];  
+        // }
+        $this->view('Cart/checkout', $data); // returns a $data
     }
 }
 

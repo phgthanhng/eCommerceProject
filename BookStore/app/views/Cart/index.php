@@ -51,7 +51,7 @@
         echo '
             <form class="" method="post" action="">
             <div class="d-flex justify-content-end">
-                <a href="' . URLROOT . '/Cart/checkout/' . $item->cartID. '" 
+                <a href="' . URLROOT . '/Cart/checkout">
                     <button type="button" class="btn btn-success" name="checkout">Checkout</button>
                 </a>
             </div>
