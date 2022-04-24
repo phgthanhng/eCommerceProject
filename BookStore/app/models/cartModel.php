@@ -8,12 +8,12 @@
         /*
          * Creates a cart for a user
          */
-        public function createCart() {
+        public function createCart($userID) {
             $this->db->query(
                 "INSERT INTO cart(userID, totalprice)
                 values(:userID, :totalprice)");
 
-            $this->db->bind(':userID', $_SESSION['user_id']);
+            $this->db->bind(':userID', $userID);
             $this->db->bind(':totalprice', 0);
 
             return $this->db->execute();
@@ -26,8 +26,8 @@
             $this->db->query(
                 "SELECT * 
                 FROM cart 
-                WHERE (userID = :userID 
-                AND cartstatus='not checkout')");
+                WHERE userID = :userID 
+                ORDER BY cartID DESC LIMIT 1;");
 
             $this->db->bind(':userID',  $_SESSION['user_id']);
 
@@ -65,19 +65,19 @@
             return $this->db->execute();
         }
 
-        /*
-         * Updates a cart status to checkout
-         */
-        public function updateCartStatus($cartID) {
-            $this->db->query(
-                "UPDATE cart
-                SET cartstatus = :cartstatus
-                WHERE cartID = :cartID");
+        // /*
+        //  * Updates a cart status to checkout
+        //  */
+        // public function updateCartStatus($cartID) {
+        //     $this->db->query(
+        //         "UPDATE cart
+        //         SET cartstatus = :cartstatus
+        //         WHERE cartID = :cartID");
 
-            $this->db->bind(':cartstatus', 'checkout');
-            $this->db->bind(':cartID', $cartID);
-            return $this->db->execute();
-        }
+        //     $this->db->bind(':cartstatus', 'checkout');
+        //     $this->db->bind(':cartID', $cartID);
+        //     return $this->db->execute();
+        // }
 
         /*
          * Retrieves all cart items based on the cart ID

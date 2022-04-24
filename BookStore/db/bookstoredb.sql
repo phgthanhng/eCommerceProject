@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 23, 2022 at 10:14 PM
+-- Generation Time: Apr 24, 2022 at 10:15 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -100,16 +100,17 @@ INSERT INTO `book` (`bookID`, `bookname`, `isbn`, `author`, `publisher`, `retail
 CREATE TABLE `cart` (
   `cartID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
-  `totalprice` decimal(10,2) NOT NULL DEFAULT 0.00,
-  `cartstatus` varchar(15) NOT NULL DEFAULT 'not checkout'
+  `totalprice` decimal(10,2) NOT NULL DEFAULT 0.00
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `cart`
 --
 
-INSERT INTO `cart` (`cartID`, `userID`, `totalprice`, `cartstatus`) VALUES
-(3, 5, '0.00', 'not checkout');
+INSERT INTO `cart` (`cartID`, `userID`, `totalprice`) VALUES
+(3, 5, '312.92'),
+(4, 8, '411.50'),
+(5, 8, '0.00');
 
 -- --------------------------------------------------------
 
@@ -125,6 +126,16 @@ CREATE TABLE `cartitem` (
   `cartitemprice` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `cartitem`
+--
+
+INSERT INTO `cartitem` (`cartitemID`, `cartID`, `bookID`, `quantity`, `cartitemprice`) VALUES
+(18, 3, 4, 7, '272.16'),
+(19, 4, 3, 5, '124.95'),
+(20, 4, 6, 5, '99.95'),
+(21, 4, 18, 7, '133.00');
+
 -- --------------------------------------------------------
 
 --
@@ -138,7 +149,7 @@ CREATE TABLE `order` (
   `orderdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `orderstatus` varchar(10) NOT NULL,
   `shippingaddress` varchar(50) NOT NULL,
-  `total price` decimal(10,2) NOT NULL,
+  `totalprice` decimal(10,2) NOT NULL,
   `paymentmethod` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -198,7 +209,8 @@ INSERT INTO `user` (`userID`, `username`, `password`, `firstname`, `lastname`, `
 (2, 'chilcj', 'password', 'Chilka', 'Castro', '438-397-6747', '7704 ruer Verdier Saint Leonard Quebec H12S2H9', 'chilcjcastro@yahoo.ca', 'no'),
 (3, 'jiahui', '123456', 'Jiahui', 'Xia', '438-132-6727', '821 Sainte Croix Ave, Saint-Laurent, Quebec H4L 3X', 'jiahuixia@gmail.com', 'no'),
 (4, 'huizi', '$2y$10$DZoaugi6SaJmxuz6WHDTmuDEIWMYyrSg6Go5bKmz2jR1TGDtnoZdq', 'huizi', 'Xia', '757-868-4367', '1190 Rue Egan', '222@gmail.com', 'yes'),
-(5, 'testuser', '$2y$10$GNixtkeBlGtTdqZiiXwtvuXBeG7UIgSS8F8lcH4NFeha.DyqA897a', 'test', 'user', '438-398-9138', '666 hell bound', 'testuser@email.com', 'yes');
+(5, 'testuser', '$2y$10$GNixtkeBlGtTdqZiiXwtvuXBeG7UIgSS8F8lcH4NFeha.DyqA897a', 'test', 'user', '438-398-9138', '666 hell bound', 'testuser@email.com', 'yes'),
+(8, 'testuser2', '$2y$10$kNEBJjHeKnL7a2DhR7hQLuAtneYtMt4a379adSL0DRtU6XV2SFYWe', 'test', 'user2', '435-133-1231', '666 straigh to hell', 'testuser2@email.com', 'yes');
 
 -- --------------------------------------------------------
 
@@ -306,13 +318,13 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `cartitem`
 --
 ALTER TABLE `cartitem`
-  MODIFY `cartitemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `cartitemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `order`
@@ -336,7 +348,7 @@ ALTER TABLE `review`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `wishlist`

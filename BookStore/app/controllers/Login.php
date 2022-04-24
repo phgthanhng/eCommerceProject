@@ -7,6 +7,7 @@ class Login extends Controller
     public function __construct()
     {
         $this->loginModel = $this->model('loginModel');
+        $this->cartModel = $this->model('cartModel');
     }
 
     /*
@@ -102,7 +103,9 @@ class Login extends Controller
                 ];
                 // validate data first
                 if ($this->validateSignupData($data)) {
-                    if ($this->loginModel->createUser($data)) {
+                    if ($this->loginModel->createUser($data)) { 
+                        $newUser = $this->loginModel->getUser($data['username']);
+                        $this->cartModel->createCart($newUser->userID); //create cart for user
                         echo 'Please wait creating the account for ' . trim($_POST['username']);
                         echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
                     }
@@ -159,7 +162,5 @@ class Login extends Controller
         unset($_SESSION['user_username']);
         session_destroy();
         echo '<meta http-equiv="Refresh" content="1; /eCommerceProject/BookStore/Login/index">';
-        // header('Location: /eCommerceProject/BookStore/Login/index');   // change later if
-        // header('Location: /BookStore/Login/index');   // change later if
     }
 }

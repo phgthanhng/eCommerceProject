@@ -1,13 +1,11 @@
 <?php
 class Cart extends Controller
 {   
-
     public function __construct()
     {
         $this->cartModel = $this->model('cartModel');  
         $this->bookModel = $this->model('bookModel');
         $this->orderModel = $this->model('orderModel');
-     
     }
 
     public function index() 
@@ -21,22 +19,18 @@ class Cart extends Controller
     public function getUserCart() {
         // If there is no cart in the database then create a cart for the user
         if (!$this->cartModel->getUserCart()) { // if return is false then create a cart
-            $this->createCart();  
+            $this->createCart($_SESSION['user_id']);  
         }
-        // else
-        //retrieve, createsession and return the existing cart
-        return $this->cartModel->getUserCart();
+        $cart = $this->cartModel->getUserCart();
+        return $cart;
     }
 
     /*
      * Create a cart object
      */
-    public function createCart() {
-        $this->cartModel->createCart();
+    public function createCart($userID) {
+        $this->cartModel->createCart($userID);
     }
-
-
-// NOTE: Might combine addCartItem method with createCartItem
 
     /*
      * Adds an item to the cart
@@ -176,25 +170,38 @@ class Cart extends Controller
 
     }
 
-    /*
-     * Checks out the cart of the user
-     */
-    public function checkout() {
-        $cart = getUserCart();
-        // if user clicks the checkout button an d the cart item is not empty(uses the session for cartid)
-        if (isset($_POST['checkout']) && !empty($this->cartModel->getAllCartItems($cart->cartID))) {
-            // get cart object
+    // /*
+    //  * Checks out the cart of the user
+    //  */
+    // public function checkout() {
+    //     $cart = $this->getUserCart();
+    //     // if user clicks the checkout button an d the cart item is not empty(uses the session for cartid)
+    //     if (isset($_POST['checkout']) && !empty($this->cartModel->getAllCartItems($cart->cartID))) {
+    //         // get cart object
   
-            $data = [
-                "shippingaddress" => $_POST['shippingaddress'],
-                'totalprice' => $cart->totalprice,
-                'paymentmethod' => $_POST['paymentmethod'],
-            ];
-            $this->cartModel->updateCartStatus($cart->cartID);
-            // create order object
-            $this->orderModel->createOrder($data); // uses session var cartid
-            echo 'Transaction completed successfully';
-        }
+    //         $data = [
+    //             "shippingaddress" => $_POST['shippingaddress'],
+    //             'totalprice' => $cart->totalprice,
+    //             'paymentmethod' => $_POST['paymentmethod'],
+    //         ];
+    //         $this->cartModel->updateCartStatus($cart->cartID);
+    //         // create order object
+    //         $this->orderModel->createOrder($data); // uses session var cartid
+    //         echo 'Transaction completed successfully';
+    //     }
+    // }
+
+    public function checkout($cartID) {
+        // 1. create order
+        $data = [
+            "cartID" => $cartID
+        ];
+        // $this->orderModel->createOrder($data); 
+
+        // 2. create new cart 
+        $this->cartModel->createCart($_SESSION['user_id']);
+        echo '<meta http-equiv="Refresh" content="5; /eCommerceProject/BookStore/Cart/success>';
+        echo "Checkout Successful!";
     }
 }
 

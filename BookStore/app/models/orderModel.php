@@ -10,18 +10,36 @@
          */
         public function createOrder($data) {
             $this->db->query(
-                "INSERT INTO order (userID, cartID, orderdate, orderstatus, shippingaddress, total price, paymentmethod)
-                values (:userID, :cartID, now(), :orderstatus, :shippingaddress, :total price, :paymentmethod)");
+                "INSERT INTO order (userID, cartID, orderdate, orderstatus, shippingaddress, totalprice, paymentmethod)
+                values (:userID, :cartID, now(), :orderstatus, :shippingaddress, :totalprice, :paymentmethod)");
 
             $this->db->bind(':userID', $_SESSION['user_id']);
-            $this->db->bind(':cartID', $_SESSION['cart_id']);
+            $this->db->bind(':cartID', $data['cartID']);
             $this->db->bind(':orderstatus', "unshipped");
-            $this->db->bind(':shippingaddress', $data['shippingaddress']);
-            $this->db->bind(':total price', $data['totalprice']);
-            $this->db->bind(':paymentmethod', $data['paymentmethod']);
+            $this->db->bind(':shippingaddress', '666 hell bound street');
+            $this->db->bind(':total price', '679.92');
+            $this->db->bind(':paymentmethod', 'debit');
 
             return $this->db->execute();
         }
+
+        // /*
+        //  * Creates a new order in the database 
+        //  */
+        // public function createOrder($data) {
+        //     $this->db->query(
+        //         "INSERT INTO order (userID, cartID, orderdate, orderstatus, shippingaddress, total price, paymentmethod)
+        //         values (:userID, :cartID, now(), :orderstatus, :shippingaddress, :total price, :paymentmethod)");
+
+        //     $this->db->bind(':userID', $_SESSION['user_id']);
+        //     $this->db->bind(':cartID', $_SESSION['cart_id']);
+        //     $this->db->bind(':orderstatus', "unshipped");
+        //     $this->db->bind(':shippingaddress', $data['shippingaddress']);
+        //     $this->db->bind(':total price', $data['totalprice']);
+        //     $this->db->bind(':paymentmethod', $data['paymentmethod']);
+
+        //     return $this->db->execute();
+        // }
 
         /*
          * Cancels the order by updating the order status to canceled

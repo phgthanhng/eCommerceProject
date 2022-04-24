@@ -17,7 +17,7 @@
     function getCartCount() {
       $cartModel = new cartModel();
       $cart = $cartModel->getUserCart();
-      return $cartModel->getCartItemCount($cart->cartID);
+      return ($cartModel->getCartItemCount($cart->cartID));
     }
 
 
