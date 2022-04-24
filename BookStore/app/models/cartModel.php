@@ -118,13 +118,11 @@
         /*
          * Count the number of cart items in the cart
          */
-        public function getCartItemCount($cartID) {
-            $this->db->query(
-                "SELECT * 
-                FROM cartitem 
-                WHERE cartID = :cartID");
-
-            $this->db->bind(':cartID', $cartID);
+        public function getCartItemCount() {
+            $this->db->query("SELECT * 
+                    FROM cartitem 
+                    WHERE cartID = :cartID");
+            $this->db->bind(':cartID', $_SESSION['cart_id']);
 
             return count($this->db->getResultSet());
         }
