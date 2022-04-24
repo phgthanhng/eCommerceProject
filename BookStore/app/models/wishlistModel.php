@@ -15,7 +15,7 @@
          * Adds a wishlist item to wishlist
          */
         public function addWishlistItem() {
-
+                
         }
 
         /*

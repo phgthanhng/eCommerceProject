@@ -1,11 +1,13 @@
 <?php
 class Cart extends Controller
-{
+{   
+
     public function __construct()
     {
         $this->cartModel = $this->model('cartModel');  
         $this->bookModel = $this->model('bookModel');
         $this->orderModel = $this->model('orderModel');
+     
     }
 
     public function index() 
@@ -23,9 +25,7 @@ class Cart extends Controller
         }
         // else
         //retrieve, createsession and return the existing cart
-        $cart = $this->cartModel->getUserCart();
-        $this->createSession($cart); // cart object for the user
-        return $cart;
+        return $this->cartModel->getUserCart();
     }
 
     /*
@@ -44,23 +44,20 @@ class Cart extends Controller
     public function addCartItem($quantity, $bookID) {
         // Step 1: Get user cart from the cart table
         $cart = $this->getUserCart();
-
-        $isItemInCart = $cartItem = $this->cartModel->isExistInCartItem($bookID);
+        $data = [
+            'cartID' => $cart->cartID,
+            'bookID' => $bookID
+        ];
+        $isItemInCart = $cartItem = $this->cartModel->isExistInCartItem($data);
         if (!$isItemInCart) { 
             // Step 2: Add item to CartItems table (associate book item with $userID a)
             // Create cartitem first
-            $this->createCartItem($quantity, $bookID);
+            $this->createCartItem($cart->cartID, $quantity, $bookID);
             header('Location: /eCommerceProject/BookStore/Book/bookdetail/'. $bookID);
         }
         else {
             $newQuantity = $cartItem->quantity + $quantity;
-            $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID);  // trying to add the new update number
-            // NOTE: For the cart count beside the icon
-                // $cartCount = $this->cartModel->getCartItemCount();
-                // $data = [
-                //     'count' => $cartCount
-                // ];
-                // $this->view('Cart/index', $data);           
+            $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID);  // trying to add the new update number         
             header('Location: /eCommerceProject/BookStore/Book/bookdetail'. $bookID);
         }
     }
@@ -68,11 +65,11 @@ class Cart extends Controller
     /*
      * Create cartItem 
      */
-    public function createCartItem($quantity, $bookID) {
+    public function createCartItem($cartID, $quantity, $bookID) {
         $subtotal = $this->calcSubtotal($quantity, $bookID);
     
         $data = [
-            'cartID' => $_SESSION['cart_id'],
+            'cartID' => $cartID,
             'bookID' => $bookID,
             'quantity' => $quantity,
             'subtotalPrice' => $subtotal
@@ -94,11 +91,11 @@ class Cart extends Controller
      */
     public function getAllCartItems() {
         // call the getUserCart to create cart and a session 
-        $this->getUserCart();
+        $cart = $this->getUserCart();
 
-        if (!empty($this->cartModel->getAllCartItems())) {
+        if (!empty($this->cartModel->getAllCartItems($cart->cartID))) {
         // will call the view to show all cartitems
-            $items = $this->cartModel->getAllCartItems(); 
+            $items = $this->cartModel->getAllCartItems($cart->cartID); 
             $price = $this->calcTotal($items); 
             
             $data = [  
@@ -123,7 +120,7 @@ class Cart extends Controller
      */
     public function calcTotal($cartItems) {
         // get all cart items of a specific user and get the subtotal of all of them
-        // $cartItems = $this->cartModel->getAllCartItems();
+        $cart = $this->cartModel->getUserCart();
         $noTaxPrice = 0;
         foreach ($cartItems as $item) {
             $noTaxPrice += $item->cartitemprice;
@@ -135,7 +132,11 @@ class Cart extends Controller
         $withTaxPrice = number_format($salesTaxes + $noTaxPrice, 2, '.', '');
         
         // set CART total to with tax price
-        $this->cartModel->updateCartTotalPrice($withTaxPrice);
+        $data = [
+            'withTaxPrice' => $withTaxPrice,
+            'cartID' => $cart->cartID
+        ];
+        $this->cartModel->updateCartTotalPrice($data);
 
         return array($noTaxPrice, $gst, $qst, $salesTaxes, $withTaxPrice);
     }
@@ -156,7 +157,7 @@ class Cart extends Controller
     public function editCartItemQuantity($quantity, $cartitemID) {  
         // recalculate here the pricing
         $item = $this->cartModel->getCartItem($cartitemID);
-
+        $cart = $this->getUserCart();
         $data = [
             'quantity' => $quantity,
             'cartitemID' => $cartitemID,
@@ -164,7 +165,7 @@ class Cart extends Controller
             ];
 
         if($this->cartModel->updateCartItemQuantity($data)){
-            $items = $this->cartModel->getAllCartItems();
+            $items = $this->cartModel->getAllCartItems($cart->$cartID);
             
             $data = [  
                 'items' => $items
@@ -179,36 +180,21 @@ class Cart extends Controller
      * Checks out the cart of the user
      */
     public function checkout() {
+        $cart = getUserCart();
         // if user clicks the checkout button an d the cart item is not empty(uses the session for cartid)
-        if (isset($_POST['checkout']) && !empty($this->cartModel->getAllCartItems())) {
+        if (isset($_POST['checkout']) && !empty($this->cartModel->getAllCartItems($cart->cartID))) {
             // get cart object
-            $cart = $this->cartModel->getUserCart(); 
+  
             $data = [
                 "shippingaddress" => $_POST['shippingaddress'],
                 'totalprice' => $cart->totalprice,
                 'paymentmethod' => $_POST['paymentmethod'],
             ];
-            $this->cartModel->updateCartStatus();
+            $this->cartModel->updateCartStatus($cart->cartID);
             // create order object
             $this->orderModel->createOrder($data); // uses session var cartid
-            destroySession();
             echo 'Transaction completed successfully';
         }
-    }
-
-    /*
-     * Creates a session of the user cart
-     */
-    public function createSession($cart) {
-        $_SESSION['cart_id'] = $cart->cartID;
-    }
-
-    /*
-     * Deletes a session of the user cart
-     */ 
-    public function destroySession() {
-        unset($_SESSION['cart_id']);
-        session_destroy();
     }
 }
 
