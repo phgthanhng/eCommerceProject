@@ -2,49 +2,123 @@
 
 class Wishlist extends Controller
 {
-    
+
     public function __construct()
     {
         $this->wishlistModel = $this->model('wishlistModel');
+        $this->bookModel = $this->model('bookModel');
     }
 
     public function index()
     {
-        $this->view('Wishlist/index');
-        getAllWishlistItems();  
+        $this->getAllWishlistItems();
     }
 
-    public function createWishlist() {
-        
-    }
+
+
 
     /*
      * Retrieves and displays all wishlist items
      */
-    public function getAllWishlistItems() {
+    public function getAllWishlistItems()
+    {
         // use $_SESSION['user_id] so you dont need to pass it as parameter when retrieving 
-        $this->wishlistModel->getWishlistItem();
+        // $this->wishlistModel->getAllWishlistItem();
         // 
+
+        // call the getUserWishlist to create wishlist and a session 
+        $wishlist = $this->getUserWishlist();
+
+        if (!empty($this->wishlistModel->getAllWishlistItems($wishlist->wishlistID))) { //model
+            // will call the view to show all wishlistitems
+            $items = $this->wishlistModel->getAllWishlistItems($wishlist->wishlistID);
+          
+
+            $data = [
+                'items' => $items
+            ];
+        } else {
+            $data = [
+                'msg' => "There is no items in the wishlist"
+            ];
+        }
+        $this->view('Wishlist/index', $data);
+
+        return $data;
     }
 
     /*
-     * Creates a wishlist item
+     * Retrieves the user wishlist 
      */
-    public function addWishlistItem($bookID) {
-        echo "Wishlist added message test";
-        //header('Location: /eCommerceProject/BookStore/Book/bookdetail/'. $bookID);  // redirects to the same page
+    public function getUserWishlist()
+    {
+        // If there is no wishlist in the database then create a wishlist for the user
+        if (!$this->wishlistModel->getUserWishlist()) { // if return is false then create a wishlist
+            $this->createWishlist($_SESSION['user_id']);
+        }
+        $wishlist = $this->wishlistModel->getUserWishlist();
+        return $wishlist;
     }
 
     /*
-     * Removes a specific item from the wishlist
+     * Create a wishlist object
      */
-    public function deleteWishlistItem($bookID) {
-
+    public function createWishlist($userID)
+    {
+        $this->wishlistModel->createWishlist($userID);
     }
 
 
-    public function createWishlistSession() {
-
+    /*
+     * add a wishlist item
+     */
+    public function addWishlistItem($bookID)
+    {
+        // Step 1: Get user wishlist from the wishlist table
+        $wishlist = $this->getUserWishlist();
+        $data = [
+            'wishlistID' => $wishlist->wishlistID,
+            'bookID' => $bookID
+        ];
+        $isItemInWishlist = $this->wishlistModel->isExistInWishlistItem($data);
+        if (!$isItemInWishlist) {
+            // Step 2: Add item to wishlistItems table (associate book item with $userID)
+            // Create wishlistitem first
+            $this->createWishlistItem($wishlist->wishlistID, $bookID);
+            header('Location: /eCommerceProject/BookStore/Book/bookdetail/' . $bookID);
+        } else {
+            header('Location: /eCommerceProject/BookStore/Book/bookdetail' . $bookID);
+        }
     }
+
     
+     /*
+     * Create wishlistitem 
+     */
+    public function createWishlistItem($wishlistID, $bookID) {
+      
+        $data = [
+            'wishlistID' => $wishlistID,
+            'bookID' => $bookID
+        ];
+        
+        return $this->wishlistModel->createwishlistItem($data); // pass the bookID 
+    }
+
+
+
+
+    /*
+     * Removes a specific item from the wishlist iten
+     */
+    public function removeWishlistItem($wishlistitemID)
+    {
+        $this->wishlistModel->deleteWishlistItem($wishlistitemID);
+
+        header('Location: /eCommerceProject/BookStore/Wishlist/index');
+        // NOTE: put msg here to be sent to view
+    }
+
+
+  
 }
