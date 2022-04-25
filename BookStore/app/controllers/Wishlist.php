@@ -87,7 +87,7 @@ class Wishlist extends Controller
             $this->createWishlistItem($wishlist->wishlistID, $bookID);
             header('Location: /eCommerceProject/BookStore/Book/bookdetail/' . $bookID);
         } else {
-            header('Location: /eCommerceProject/BookStore/Book/bookdetail' . $bookID);
+            header('Location: /eCommerceProject/BookStore/Book/bookdetail/' . $bookID);
         }
     }
 
@@ -111,9 +111,9 @@ class Wishlist extends Controller
     /*
      * Removes a specific item from the wishlist iten
      */
-    public function removeWishlistItem($wishlistitemID)
+    public function removeWishlistItem($wishlist_itemID)
     {
-        $this->wishlistModel->deleteWishlistItem($wishlistitemID);
+        $this->wishlistModel->deleteWishlistItem($wishlist_itemID);
 
         header('Location: /eCommerceProject/BookStore/Wishlist/index');
         // NOTE: put msg here to be sent to view
