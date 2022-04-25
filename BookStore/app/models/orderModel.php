@@ -10,15 +10,23 @@
          */
         public function createOrder($data) {
             $this->db->query(
-                "INSERT INTO order (userID, cartID, orderdate, orderstatus, shippingaddress, totalprice, paymentmethod)
-                values (:userID, :cartID, now(), :orderstatus, :shippingaddress, :totalprice, :paymentmethod)");
+                "INSERT INTO order (userID, cartID, firstname, lastname, email, 
+                orderdate, orderstatus, shippingaddress, totalprice, paymentmethod, cardname, cardnumber, cardcvv)
+                values (:userID, :cartID, :firstname, :lastname, :email,  now(), 
+                :orderstatus, :shippingaddress, :totalprice, :paymentmethod, :cardname, :cardnumber, :cardcvv)");
 
             $this->db->bind(':userID', $_SESSION['user_id']);
             $this->db->bind(':cartID', $data['cartID']);
+            $this->db->bind(':firstname', $data['fname']);
+            $this->db->bind(':lasttname', $data['lname']);
+            $this->db->bind(':email', $data['email']);
             $this->db->bind(':orderstatus', "unshipped");
-            $this->db->bind(':shippingaddress', '666 hell bound street');
-            $this->db->bind(':total price', '679.92');
-            $this->db->bind(':paymentmethod', 'debit');
+            $this->db->bind(':shippingaddress', $data['address']);
+            $this->db->bind(':totalprice', $data['totalprice']);
+            $this->db->bind(':paymentmethod', $data['paymentMethod']);
+            $this->db->bind(':cardname', $data['cardname']);
+            $this->db->bind(':cardnumber', $data['cardnumber']);
+            $this->db->bind(':cardcvv', $data['cvv']);
 
             return $this->db->execute();
         }
