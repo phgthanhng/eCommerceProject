@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2022 at 10:15 AM
+-- Generation Time: Apr 25, 2022 at 08:42 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -110,7 +110,13 @@ CREATE TABLE `cart` (
 INSERT INTO `cart` (`cartID`, `userID`, `totalprice`) VALUES
 (3, 5, '312.92'),
 (4, 8, '411.50'),
-(5, 8, '0.00');
+(5, 8, '0.00'),
+(6, 5, '1501.15'),
+(7, 5, '86.20'),
+(8, 5, '0.00'),
+(9, 5, '36.77'),
+(10, 5, '87.36'),
+(11, 5, '0.00');
 
 -- --------------------------------------------------------
 
@@ -134,24 +140,54 @@ INSERT INTO `cartitem` (`cartitemID`, `cartID`, `bookID`, `quantity`, `cartitemp
 (18, 3, 4, 7, '272.16'),
 (19, 4, 3, 5, '124.95'),
 (20, 4, 6, 5, '99.95'),
-(21, 4, 18, 7, '133.00');
+(21, 4, 18, 7, '133.00'),
+(22, 6, 4, 2, '77.76'),
+(23, 6, 3, 6, '149.94'),
+(24, 6, 37, 1, '35.99'),
+(25, 6, 34, 1, '14.00'),
+(26, 6, 12, 2, '31.98'),
+(27, 6, 2, 7, '265.93'),
+(28, 6, 52, 5, '149.40'),
+(29, 6, 16, 5, '114.95'),
+(30, 6, 14, 5, '114.95'),
+(31, 6, 25, 5, '194.95'),
+(32, 6, 21, 4, '111.80'),
+(33, 6, 30, 2, '43.98'),
+(34, 7, 3, 3, '74.97'),
+(35, 9, 12, 2, '31.98'),
+(36, 10, 2, 2, '75.98');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `order`
+-- Table structure for table `ordertbl`
 --
 
-CREATE TABLE `order` (
+CREATE TABLE `ordertbl` (
   `orderID` int(11) NOT NULL,
   `userID` int(11) NOT NULL,
   `cartID` int(11) NOT NULL,
+  `firstname` varchar(50) NOT NULL,
+  `lastname` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `orderdate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `orderstatus` varchar(10) NOT NULL,
   `shippingaddress` varchar(50) NOT NULL,
   `totalprice` decimal(10,2) NOT NULL,
-  `paymentmethod` varchar(10) NOT NULL
+  `paymentmethod` varchar(10) NOT NULL,
+  `cardname` varchar(50) NOT NULL,
+  `cardnumber` varchar(16) NOT NULL,
+  `cardcvv` int(3) NOT NULL,
+  `expiration` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `ordertbl`
+--
+
+INSERT INTO `ordertbl` (`orderID`, `userID`, `cartID`, `firstname`, `lastname`, `email`, `orderdate`, `orderstatus`, `shippingaddress`, `totalprice`, `paymentmethod`, `cardname`, `cardnumber`, `cardcvv`, `expiration`) VALUES
+(4, 5, 9, 'asd', 'weq', 'ywq@ya.ca', '2022-04-25 06:34:28', 'unshipped', '231 sdhadajkd Quebech1s2h9', '36.77', 'on', 'sd sad', '1231-3132-1313-1', 123, 1125),
+(5, 5, 10, 'qq', 'tt', 'sdha@ya.ca', '2022-04-25 06:36:08', 'unshipped', '232 sjdahda dhjad Quebech1s2h9', '87.36', 'on', 'cc ww', '2331-1313-1323-1', 234, 11);
 
 -- --------------------------------------------------------
 
@@ -261,9 +297,9 @@ ALTER TABLE `cartitem`
   ADD KEY `FK_cartitem_book` (`bookID`);
 
 --
--- Indexes for table `order`
+-- Indexes for table `ordertbl`
 --
-ALTER TABLE `order`
+ALTER TABLE `ordertbl`
   ADD PRIMARY KEY (`orderID`),
   ADD KEY `FK_order_customer` (`userID`),
   ADD KEY `FK_order_cart` (`cartID`);
@@ -318,19 +354,19 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `cartitem`
 --
 ALTER TABLE `cartitem`
-  MODIFY `cartitemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `cartitemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `order`
+-- AUTO_INCREMENT for table `ordertbl`
 --
-ALTER TABLE `order`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `ordertbl`
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `return`
@@ -380,9 +416,9 @@ ALTER TABLE `cartitem`
   ADD CONSTRAINT `FK_cartitem_cart` FOREIGN KEY (`cartID`) REFERENCES `cart` (`cartID`);
 
 --
--- Constraints for table `order`
+-- Constraints for table `ordertbl`
 --
-ALTER TABLE `order`
+ALTER TABLE `ordertbl`
   ADD CONSTRAINT `FK_order_cart` FOREIGN KEY (`cartID`) REFERENCES `cart` (`cartID`),
   ADD CONSTRAINT `FK_order_user` FOREIGN KEY (`userID`) REFERENCES `user` (`userID`);
 
@@ -390,7 +426,7 @@ ALTER TABLE `order`
 -- Constraints for table `return`
 --
 ALTER TABLE `return`
-  ADD CONSTRAINT `FK_return_order` FOREIGN KEY (`orderID`) REFERENCES `order` (`orderID`);
+  ADD CONSTRAINT `FK_return_order` FOREIGN KEY (`orderID`) REFERENCES `ordertbl` (`orderID`);
 
 --
 -- Constraints for table `review`
