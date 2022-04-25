@@ -50,7 +50,7 @@
                         </div>
                         <div class="col-12">
                             <label class="form-label" for="address">Address </label>
-                            <input type="text" id="address" class="form-control" required>
+                            <input type="text" id="address" name="address" class="form-control" required>
                         </div>
 
                         <div class="col-4">
@@ -102,8 +102,10 @@
                             <input type="password" name="cvv" id="cvv" class="form-control" required min="3" max="3">
                         </div>
                     </div>
-                    <hr>      
+                    <hr>     
+                  
                     <button type="submit" class="btn btn-primary btn-block mb-4" name="orderButton">PLACE ORDER</button>
+                    
                 </form>
             </div>
         </div>

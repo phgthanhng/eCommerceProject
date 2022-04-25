@@ -174,9 +174,9 @@ class Cart extends Controller
     /* 
      * Displays the checkout page
      */
-    public function checkout() {
+    public function checkout() {    
         $cart = $this->getUserCart();
-
+        if (!isset($_POST['orderButton'])) {
         // if (!empty($this->cartModel->getAllCartItems($cart->cartID))) { 
             $items = $this->cartModel->getAllCartItems($cart->cartID); 
             $price = $this->calcTotal($items); 
@@ -189,10 +189,27 @@ class Cart extends Controller
                 'salesTaxes' => $price[3],
                 'finalPrice' =>  $price[4]
             ];  
-        $this->view('Cart/checkout', $data); // returns a $data
-
-        if (isset($_POST['orderButton'])) {
-            $this->placeOrder($cart);
+            $this->view('Cart/checkout', $data); // returns a $data
+        }
+        else {
+            $province = $_POST['province'];
+            $address = $_POST['address'];
+            $postalcode = $_POST['postalcode'];
+            $address = $address . $province . $postalcode;
+            $data = [
+                'cartID' => $cart->cartID,
+                'fname' => $_POST['firstname'],
+                'lname' => $_POST['lastname'],
+                'email' => $_POST['email'],
+                'totalprice' => $cart->totalprice,
+                'paymentMethod' => $_POST['paymentMethod'],
+                'address' => $address,
+                'cardname' => $_POST['cardname'],
+                'cardnumber' => $_POST['cardnumber'],
+                'expiration' => $_POST['expiration'],
+                'cvv' => $_POST['cvv']
+            ];
+            $this->placeOrder($cart, $data);
         }
           
     }
@@ -200,30 +217,13 @@ class Cart extends Controller
     /*
      * Creates an order
      */
-    public function placeOrder($cart) {
-        $data = [
-            'cartID' => $cart->cartID,
-            'fname' => $_POST['firstname'],
-            'lname' => $_POST['lastname'],
-            'email' => $_POST['email'],
-            'totalprice' => $cart->totalPrice,
-            'paymentMethod' => $_POST['paymentMethod'],
-            'address' => $_POST['address'] . ', ' .$_POST['province'] . ', ' . $_POST['postalcode'],
-            'cardname' => $_POST['cardname'],
-            'expiration' => $_POST['expiration'],
-            'cvv' => $_POST['cvv']
-        ];
-        
+    public function placeOrder($cart, $data) {
         // create order
         if ($this->orderModel->createOrder($data)) {
             // create a new cart
             $this->cartModel->createCart($_SESSION['user_id']);
-            $this->view('Order/success');  
-        }
-        else {
-            echo 'hello';
-        }
-         
+            $this->view('Order/success');
+        }   
     }
 }
 

@@ -93,9 +93,10 @@
                 else {
                     // if users -> show the Add to Cart
                     if (!isAdmin()) {
-                        echo '<p><button>Add to Cart</button></p>';
-                    }
-                    
+                        echo '<p>
+                        <a href="' .URLROOT. '/Book/bookdetail/'.$id.'"><button>Add to Cart</button></a>
+                        </p>';
+                    }           
                 }
                 echo '</div>';
             }

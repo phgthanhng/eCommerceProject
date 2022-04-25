@@ -96,9 +96,8 @@
                 else {
                     // if users -> show the Add to Cart
                     if (!isAdmin()) {
-                        $singleBook = 1;
                         echo '<p>
-                            <a href="' .URLROOT. '/Cart/addCartItem/'.$singleBook.'/'.$id.'"><button>Add to Cart</button></a>
+                            <a href="' .URLROOT. '/Book/bookdetail/'.$id.'"><button>Add to Cart</button></a>
                             </p>';
                     }
                 }
