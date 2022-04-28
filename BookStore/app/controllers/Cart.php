@@ -66,7 +66,7 @@ class Cart extends Controller
             // ];
             // $this->view('Book/bookdetail', $data);
             header(
-                'Location: /eCommerceProject/BookStore/Book/bookdetail' .
+                'Location: /eCommerceProject/BookStore/Book/bookdetail/' .
                     $bookID
             );
         }
@@ -196,9 +196,10 @@ class Cart extends Controller
             $data = [
                 'items' => $items,
             ];
-            header('Location: /eCommerceProject/BookStore/Cart/index');
-            $this->view('Cart/index', $data);
+            // header('Location: /eCommerceProject/BookStore/Cart/index');
+            // $this->view('Cart/index', $data);
         }
+        return;
     }
 
     /*
