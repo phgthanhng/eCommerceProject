@@ -6,14 +6,14 @@ class Book extends Controller
         $this->bookModel = $this->model('bookModel');
     }
 
-    /* 
+    /*
      *  Takes all the books and dislay it
      */
     public function index()
     {
         $books = $this->bookModel->getAllBooks();
         $data = [
-            "books" => $books
+            'books' => $books,
         ];
         $this->view('Book/viewBooks', $data);
     }
@@ -27,10 +27,10 @@ class Book extends Controller
         $book = $this->bookModel->getSingleBook($bookID);
 
         $data = [
-            'book' => $book
+            'book' => $book,
         ];
 
-        $this->view('Book/bookdetail',  $data);
+        $this->view('Book/bookdetail', $data);
     }
 
     /*
@@ -39,17 +39,15 @@ class Book extends Controller
     public function searchBook()
     {
         if (isset($_POST['submit'])) {
-
             // get the keyword
             $keywords = trim($_POST['keywords']);
 
-            $books = $this -> bookModel->getBooksByAuthorOrTitle($keywords);
+            $books = $this->bookModel->getBooksByAuthorOrTitle($keywords);
 
             $data = [
-                'books' => $books
+                'books' => $books,
             ];
             $this->view('Book/viewBooks', $data);
-
         }
     }
 }
