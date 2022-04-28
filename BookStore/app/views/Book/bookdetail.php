@@ -7,11 +7,7 @@
             <div class="col-md-6 _boxzoom">
                 <div class="_product-images">
                     <div class="picZoomer">
-                        <a href="<?php echo URLROOT .
-                            '/Book/bookdetail/' .
-                            $book->bookID; ?>">
                         <img class="my_img" src="http://localhost/eCommerceProject/BookStore/public/img/<?php echo $book->image; ?>" alt="">
-                        </a>
                     </div>
                 </div>
             </div>

@@ -54,7 +54,10 @@ class Login extends Controller
                         $data = [
                             'msg' => "Welcome, $user->username!",
                         ];
-                        header('Location: /eCommerceProject/BookStore/User/index');
+                        if (!$this->cartModel->getUserCart()) {
+                            $this->cartModel->createCart($_SESSION['user_id']); //create cart for user
+                        }
+                        // header('Location: /eCommerceProject/BookStore/User/index');
                         $this->view('User/index',$data);
                     }
                     // if user password incorrect
