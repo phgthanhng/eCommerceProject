@@ -70,6 +70,9 @@
             return $this->db->getResultSet();
         }
 
+        /**
+         * retrieve a specific order
+         */
         public function getOneOrder($data) {
             $this->db->query("SELECT * 
                 FROM ordertbl JOIN cart
