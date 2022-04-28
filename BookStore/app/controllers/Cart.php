@@ -65,9 +65,7 @@ class Cart extends Controller
             //     'msg' => 'Book Quantity in Cart updated',
             // ];
             // $this->view('Book/bookdetail', $data);
-            header(
-                'Location: /eCommerceProject/BookStore/Book/bookdetail/' .
-                    $bookID
+            header('Location: /eCommerceProject/BookStore/Book/bookdetail/' .$bookID
             );
         }
     }
