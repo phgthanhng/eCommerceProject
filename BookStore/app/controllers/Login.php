@@ -106,6 +106,7 @@ class Login extends Controller
                     if ($this->loginModel->createUser($data)) { 
                         $newUser = $this->loginModel->getUser($data['username']);
                         $this->cartModel->createCart($newUser->userID); //create cart for user
+                        
                         echo 'Please wait creating the account for ' . trim($_POST['username']);
                         echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
                     }

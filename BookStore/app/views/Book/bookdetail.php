@@ -38,12 +38,14 @@ $book = $data['book'];
                                     // if users -> show the wishlist heart icon
                                     if (!isAdmin()) {
                                         echo '
-                                            <button class="btn-wishlist" tabindex="0">
-                                                <a href="' . URLROOT . '/Wishlist/addBook/' . $book->bookID . '">
+                                        <a href="' . URLROOT . '/Wishlist/addWishlistItem/' . $book->bookID . '">
+
+                                            <button class="btn-wishlist" tabindex="0" type="button">
                                                     <i class="fa fa-heart" style="color:red;">
                                                     Add to Wish List</i>
-                                                 </a>
                                             </button>  
+                                            </a>
+
                                         ';
                                     } else {
                                         echo '<p><a href="' . URLROOT . '/Admin/editBook/' . $book->bookID . '"> Edit Book </a></p>';

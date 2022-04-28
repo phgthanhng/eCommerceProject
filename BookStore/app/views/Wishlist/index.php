@@ -28,8 +28,8 @@
                     </td>';
                 echo '<td>
                         
-                        <input type="hidden" id="wishlist_item_id" value="' . $item->wishlistitemID . '">
-                        <a href="' . URLROOT . '/Wishlist/removeWishlistItem/' . $item->wishlistitemID . '" style="text-decoration:none;">
+                        <input type="hidden" id="wishlist_item_id" value="' . $item->wishlist_itemID . '">
+                        <a href="' . URLROOT . '/Wishlist/removeWishlistItem/' . $item->wishlist_itemID . '" style="text-decoration:none;">
                             <i class="fa fa-window-close fa-lg" aria-hidden="true"></i>
                         </a>
                     </td>';

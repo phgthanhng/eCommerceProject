@@ -10,7 +10,7 @@
         public function createWishlist($userID) {
             $this->db->query(
                 "INSERT INTO wishlist(userID)
-                values(:userID");
+                values(:userID)");
 
             $this->db->bind(':userID', $userID);
             
@@ -53,7 +53,7 @@
         public function getAllWishlistItems($wishlistID) {
             $this->db->query(
                 "SELECT wishlist.wishlistID, 
-                wishlistitem.wishlistitemID, wishlistitem.wishlistID, wishlistitem.bookID, 
+                wishlistitem.wishlist_itemID, wishlistitem.wishlistID, wishlistitem.bookID, 
                 book.bookID, book.bookname, book.retailprice, book.image
                 FROM wishlist
                 JOIN wishlistitem
@@ -87,13 +87,13 @@
         /*
          * Deletes a wishlist item from a specific wishlist 
          */
-        public function deleteWishlistItem($wishlistitemID) {
+        public function deleteWishlistItem($wishlist_itemID) {
             $this->db->query(
                 "DELETE 
                 FROM wishlistitem 
-                WHERE wishlistitemID=:wishlistitemID");
+                WHERE wishlist_itemID=:wishlist_itemID");
 
-        $this->db->bind(':wishlistitemID', $wishlistitemID);
+        $this->db->bind(':wishlist_itemID', $wishlist_itemID);
 
         return $this->db->execute();
         }
