@@ -18,17 +18,13 @@
                         <form action="" method="post">
                             <div class="_p-add-cart">
                                 <?php if (!isLoggedIn()) {
-                                    echo '
-                                            <button class="btn-wishlist" tabindex="0">
-                                                <a href="' .
-                                        URLROOT .
-                                        '/Login/index">
-                                                <i class="fa fa-heart" style="color:red;">
-                                                 Add to Wish List</i>
-                                                 </a>
-                                            </button>
-                                            
-                                      ';
+                                    echo '<a href="' .
+                                        URLROOT . '/Login/index">
+                                    <button class="btn-wishlist" tabindex="0" type="button">
+                                        <i class="fa fa-heart" style="color:red;">
+                                             Add to Wish List</i>
+                                    </button>  
+                                        </a>';
                                 }
                                 // if is logged in
                                 else {
@@ -124,13 +120,34 @@
                 </div>
 
             </div>
-          
-            <p>test when to show the review fhgejvefbgnrfbdhgrfbbnggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
-                fjdbhndffffffffffffffffffffffffffffffffffffffffffffffffffffffuuuuuuuuuuuuuuuuuuuuuuuuuuuu
-                ggggggggggggggggggggggggggggggggggggfkjgvf</p>
-       
-        
-    </div>
+
+
+
+
+            <!-- ----------review ----------------- -->
+            <div class="review_div">
+                <h5 class="review_header">Review</h5>
+                <?php
+                if ($data["reviews"] == null) {
+                    echo '<p class="review_message">No review yet</p>';
+                }
+
+                foreach ($data["reviews"] as $review) {
+                    echo "<hr>";
+                    echo $review->firstname . ' ' . $review->lastname . ' ' . date(" m/d/Y H:i:s", strtotime($review->reviewdate)) . ' Mark:' . $review->reviewmark . '/5';
+                   
+                    echo "<br>$review->reviewcontent";
+                }
+
+                ?>
+
+
+
+            </div>
+
+
+
+        </div>
 
 </section>
 

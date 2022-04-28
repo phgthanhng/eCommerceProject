@@ -34,7 +34,7 @@ class reviewModel
     {
         $this->db->query(
             "SELECT review.reviewID, review.bookID, review.userID, review.reviewdate, review.reviewcontent, review.reviewmark,
-            book.bookID, user.userID
+            user.userID, user.firstname, user.lastname
             FROM review INNER JOIN user on 
             review.userID = user.userID
             WHERE bookID = :bookID"
