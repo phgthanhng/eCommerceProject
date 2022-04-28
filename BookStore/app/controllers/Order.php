@@ -52,7 +52,7 @@ class Order extends Controller {
             // Step 1: Retrieve order first
             $order = $this->orderModel->getSingleOrder($orderID);
             // Step 2: Use the CartID to get access to all the cart items
-            $cartItems = $this->$cartModel->getAllCartItems($order->cartID);
+            $cartItems = $this->cartModel->getAllCartItems($order->cartID);
 
             // return all the books so update all the book's quantity in the cart 
             foreach ($cartItems as $item) {
@@ -79,7 +79,7 @@ class Order extends Controller {
      * to return an order
      */
     public function return() {
-        
+
     }
 
     /**
