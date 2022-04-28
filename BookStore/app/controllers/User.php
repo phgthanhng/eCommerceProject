@@ -85,33 +85,7 @@ class User extends Controller
         }
     }
 
-    /**
-     * function called when users cancel order
-     */
-    public function cancel() {
-
-    }
-
-    /**
-     * to return an order
-     */
-    public function return() {
-
-    }
-
-    /**
-     * view details of an order
-     */
-    public function details() {
-
-    }
-
-    /**
-     * to mark orders as shipped
-     */
-    public function markAsShipped() {
-
-    }
+    
   
     }
 // }

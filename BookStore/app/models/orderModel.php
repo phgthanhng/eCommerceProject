@@ -68,12 +68,12 @@
         /*
          * Deletes an order
          */
-        public function deleteOrder($orderID) {
+        public function deleteOrder($data) {
             $this->db->query(
                 "DELETE 
-                FROM order 
+                FROM ordertbl 
                 WHERE orderID=:orderID");
-            $this->db->bind(':orderID', $orderID);
+            $this->db->bind(':orderID', $data['orderID']);
 
             return $this->db->execute();
         }
@@ -84,7 +84,7 @@
         public function getSingleOrder($orderID) {
             $this->db->query(
                 "SELECT * 
-                FROM order 
+                FROM ordertbl 
                 WHERE orderID = :orderID");
 
             $this->db->bind(':orderID', $orderID);
@@ -98,7 +98,7 @@
         public function getAllUserOrders() {
             $this->db->query(
                     "SELECT * 
-                    FROM order 
+                    FROM ordertbl 
                     WHERE userID = :userID");
             $this->db->bind(':userID', $_SESSION['user_id']);
             return $this->db->getResultSet();
@@ -119,7 +119,7 @@
          */
         public function updateOrderStatus($data) {
             $this->db->query(
-                "UPDATE order 
+                "UPDATE ordertbl 
                 SET orderstatus=:orderstatus
                 WHERE orderID=:orderID");
             $this->db->bind(':orderstatus', $data['orderstatus']);
