@@ -1,25 +1,27 @@
 <?php
 class Cart extends Controller
-{   
+{
     public function __construct()
     {
-        $this->cartModel = $this->model('cartModel');  
+        $this->cartModel = $this->model('cartModel');
         $this->bookModel = $this->model('bookModel');
         $this->orderModel = $this->model('orderModel');
     }
 
-    public function index() 
+    public function index()
     {
         $this->getAllCartItems();
     }
 
     /*
-     * Retrieves the user cart 
+     * Retrieves the user cart
      */
-    public function getUserCart() {
+    public function getUserCart()
+    {
         // If there is no cart in the database then create a cart for the user
-        if (!$this->cartModel->getUserCart()) { // if return is false then create a cart
-            $this->createCart($_SESSION['user_id']);  
+        if (!$this->cartModel->getUserCart()) {
+            // if return is false then create a cart
+            $this->createCart($_SESSION['user_id']);
         }
         $cart = $this->cartModel->getUserCart();
         return $cart;
@@ -28,54 +30,63 @@ class Cart extends Controller
     /*
      * Create a cart object
      */
-    public function createCart($userID) {
+    public function createCart($userID)
+    {
         $this->cartModel->createCart($userID);
     }
 
     /*
      * Adds an item to the cart
      */
-    public function addCartItem($quantity, $bookID) {
+    public function addCartItem($quantity, $bookID)
+    {
         // Step 1: Get user cart from the cart table
         $cart = $this->getUserCart();
         $data = [
             'cartID' => $cart->cartID,
-            'bookID' => $bookID
+            'bookID' => $bookID,
         ];
         $isItemInCart = $cartItem = $this->cartModel->isExistInCartItem($data);
-        if (!$isItemInCart) { 
+        if (!$isItemInCart) {
             // Step 2: Add item to CartItems table (associate book item with $userID a)
             // Create cartitem first
             $this->createCartItem($cart->cartID, $quantity, $bookID);
-            header('Location: /eCommerceProject/BookStore/Book/bookdetail/'. $bookID);
-        }
-        else {
+            header(
+                'Location: /eCommerceProject/BookStore/Book/bookdetail/' .
+                    $bookID
+            );
+        } else {
             $newQuantity = $cartItem->quantity + $quantity;
-            $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID);  // trying to add the new update number         
-            header('Location: /eCommerceProject/BookStore/Book/bookdetail'. $bookID);
+            $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID); // trying to add the new update number
+            header(
+                'Location: /eCommerceProject/BookStore/Book/bookdetail' .
+                    $bookID
+            );
         }
     }
 
     /*
-     * Create cartItem 
+     * Create cartItem
      */
-    public function createCartItem($cartID, $quantity, $bookID) {
+    public function createCartItem($cartID, $quantity, $bookID)
+    {
         $subtotal = $this->calcSubtotal($quantity, $bookID);
-    
+
         $data = [
             'cartID' => $cartID,
             'bookID' => $bookID,
             'quantity' => $quantity,
-            'subtotalPrice' => $subtotal
+            'subtotalPrice' => $subtotal,
         ];
-        
-        return $this->cartModel->createCartItem($data); // pass the bookID 
+
+        return $this->cartModel->createCartItem($data); // pass the bookID
     }
 
     /*
      * Calculates subtotal of an item
      */
-    public function calcSubtotal($quantity, $bookID) {
+    public function calcSubtotal($quantity, $bookID)
+    {
         $book = $this->bookModel->getSingleBook($bookID);
         return number_format($quantity * $book->retailprice, 2, '.', '');
     }
@@ -83,27 +94,28 @@ class Cart extends Controller
     /*
      * Retrieves all items of user in the database
      */
-    public function getAllCartItems() {
-        // call the getUserCart to create cart and a session 
+    public function getAllCartItems()
+    {
+        // call the getUserCart to create cart and a session
         $cart = $this->getUserCart();
 
-        if (!empty($this->cartModel->getAllCartItems($cart->cartID))) { //model
-        // will call the view to show all cartitems
-            $items = $this->cartModel->getAllCartItems($cart->cartID); 
-            $price = $this->calcTotal($items); 
-            
-            $data = [  
+        if (!empty($this->cartModel->getAllCartItems($cart->cartID))) {
+            //model
+            // will call the view to show all cartitems
+            $items = $this->cartModel->getAllCartItems($cart->cartID);
+            $price = $this->calcTotal($items);
+
+            $data = [
                 'items' => $items,
                 'cartTotal' => $price[0],
                 'gst' => $price[1],
                 'qst' => $price[2],
                 'salesTaxes' => $price[3],
-                'finalPrice' =>  $price[4]
-            ];  
-        }
-        else {
+                'finalPrice' => $price[4],
+            ];
+        } else {
             $data = [
-             'msg' => "There is no items in the cart"
+                'msg' => 'There is no items in the cart',
             ];
         }
         $this->view('Cart/index', $data);
@@ -114,7 +126,8 @@ class Cart extends Controller
     /*
      * Calculates the total price
      */
-    public function calcTotal($cartItems) {
+    public function calcTotal($cartItems)
+    {
         // get all cart items of a specific user and get the subtotal of all of them
         $cart = $this->cartModel->getUserCart();
         $noTaxPrice = 0;
@@ -123,24 +136,26 @@ class Cart extends Controller
         }
 
         $gst = number_format($noTaxPrice * 0.05, 2, '.', '');
-        $qst = number_format($noTaxPrice *  0.09975, 2, '.', '');
+        $qst = number_format($noTaxPrice * 0.09975, 2, '.', '');
         $salesTaxes = number_format($qst + $gst, 2, '.', '');
         $withTaxPrice = number_format($salesTaxes + $noTaxPrice, 2, '.', '');
-        
+
         // set CART total to with tax price
         $data = [
             'withTaxPrice' => $withTaxPrice,
-            'cartID' => $cart->cartID
+            'cartID' => $cart->cartID,
         ];
         $this->cartModel->updateCartTotalPrice($data);
 
-        return array($noTaxPrice, $gst, $qst, $salesTaxes, $withTaxPrice);
+        return [$noTaxPrice, $gst, $qst, $salesTaxes, $withTaxPrice];
     }
 
     /*
      * Removes a specific cart item based on the cart item ID
-     */ 
-    public function removeCartItem($cartitemID) {
+     */
+
+    public function removeCartItem($cartitemID)
+    {
         $this->cartModel->deleteCartItem($cartitemID);
 
         header('Location: /eCommerceProject/BookStore/Cart/index');
@@ -150,48 +165,49 @@ class Cart extends Controller
     /*
      * Updates the cart item's quantity and recalculates the price too
      */
-    public function editCartItemQuantity($quantity, $cartitemID) {  
+    public function editCartItemQuantity($quantity, $cartitemID)
+    {
         // recalculate here the pricing
         $item = $this->cartModel->getCartItem($cartitemID);
         $cart = $this->getUserCart();
         $data = [
             'quantity' => $quantity,
             'cartitemID' => $cartitemID,
-            'subtotal' => $this->calcSubtotal($quantity, $item->bookID)
-            ];
+            'subtotal' => $this->calcSubtotal($quantity, $item->bookID),
+        ];
 
-        if($this->cartModel->updateCartItemQuantity($data)){
+        if ($this->cartModel->updateCartItemQuantity($data)) {
             $items = $this->cartModel->getAllCartItems($cart->$cartID);
-            $data = [  
-                'items' => $items
+            $data = [
+                'items' => $items,
             ];
             header('Location: /eCommerceProject/BookStore/Cart/index');
             $this->view('Cart/index', $data);
-        }  
-
+        }
     }
 
-    /* 
+    /*
      * Displays the checkout page
      */
-    public function checkout() {    
+    public function checkout()
+    {
         $cart = $this->getUserCart();
+        $items = $this->cartModel->getAllCartItems($cart->cartID);
+
         if (!isset($_POST['orderButton'])) {
-        // if (!empty($this->cartModel->getAllCartItems($cart->cartID))) { 
-            $items = $this->cartModel->getAllCartItems($cart->cartID); 
-            $price = $this->calcTotal($items); 
-            
-            $data = [  
+            // if (!empty($this->cartModel->getAllCartItems($cart->cartID))) {
+            $price = $this->calcTotal($items);
+
+            $data = [
                 'items' => $items,
                 'cartTotal' => $price[0],
                 'gst' => $price[1],
                 'qst' => $price[2],
                 'salesTaxes' => $price[3],
-                'finalPrice' =>  $price[4]
-            ];  
+                'finalPrice' => $price[4],
+            ];
             $this->view('Cart/checkout', $data); // returns a $data
-        }
-        else {
+        } else {
             $province = $_POST['province'];
             $address = $_POST['address'];
             $postalcode = $_POST['postalcode'];
@@ -207,25 +223,50 @@ class Cart extends Controller
                 'cardname' => $_POST['cardname'],
                 'cardnumber' => $_POST['cardnumber'],
                 'expiration' => $_POST['expiration'],
-                'cvv' => $_POST['cvv']
+                'cvv' => $_POST['cvv'],
+                'items' => $items,
             ];
+
             $this->placeOrder($cart, $data);
         }
-          
     }
 
     /*
      * Creates an order
      */
-    public function placeOrder($cart, $data) {
+    public function placeOrder($cart, $data)
+    {
         // create order
         if ($this->orderModel->createOrder($data)) {
+            // update the book quantity
+            $this->updateBookQuantity($data['items']); // send the items to be updated
+
             // create a new cart
             $this->cartModel->createCart($_SESSION['user_id']);
+            // show the success page
             $this->view('Order/success');
-        }   
+        }
     }
-}
 
-?>
+    /*
+     * Updates the book quantity
+     */
+    public function updateBookQuantity($items)
+    {
+        foreach ($items as $item) {
+            $availableQty = $item->availablequantity; // available quantity of the book
+            $cartItemQty = $item->quantity; // get quantity chosen by the user
+
+            // subtract the bought quantity from teh available quantity
+            $updatedQuantity = $availableQty - $cartItemQty;
+
+            $data = [
+                'bookID' => $item->bookID,
+                'updatedQuantity' => $updatedQuantity,
+            ];
+
+            $this->bookModel->updateBookQuantity($data); // call method of bookModel
+        }
+    }
+} ?>
 

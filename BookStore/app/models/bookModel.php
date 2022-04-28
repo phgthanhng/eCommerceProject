@@ -3,7 +3,7 @@ class bookModel
 {
     public function __construct()
     {
-        $this->db = new Model;
+        $this->db = new Model();
     }
 
     /*
@@ -13,19 +13,21 @@ class bookModel
     {
         $this->db->query(
             "SELECT * 
-            FROM book");
+            FROM book"
+        );
         return $this->db->getResultSet();
     }
 
-    
     /*
      *  Retrieves a specific book from the database based on the bookID
      */
-    public function getSingleBook($bookID) {
+    public function getSingleBook($bookID)
+    {
         $this->db->query(
             "SELECT * 
             FROM book 
-            WHERE bookID = :bookID");
+            WHERE bookID = :bookID"
+        );
 
         $this->db->bind(':bookID', $bookID);
 
@@ -35,10 +37,12 @@ class bookModel
     /*
      * Creates a new book that will be inserted into the database
      */
-    public function addBook($data){
+    public function addBook($data)
+    {
         $this->db->query(
             "INSERT INTO book (bookname, isbn, author, publisher, retailprice, availablequantity, image, description, category)
-            values  (:bookname, :isbn, :author, :publisher, :retailprice, :availablequantity, :image, :description, :category)");
+            values  (:bookname, :isbn, :author, :publisher, :retailprice, :availablequantity, :image, :description, :category)"
+        );
 
         $this->db->bind(':bookname', $data['bookname']);
         $this->db->bind(':isbn', $data['isbn']);
@@ -57,40 +61,45 @@ class bookModel
      * Retrieves all books depending on the category
      */
     public function getAllBooksByCategory($category)
-    {   
+    {
         $this->db->query(
             "SELECT * 
             FROM book
-            WHERE category = :category");
+            WHERE category = :category"
+        );
 
         $this->db->bind(':category', $category);
 
-        return $this->db->getResultSet(); 
+        return $this->db->getResultSet();
     }
 
     /*
      * Retrieves a book based on the keywords
      */
-    public function getBooksByAuthorOrTitle($keyword){
+    public function getBooksByAuthorOrTitle($keyword)
+    {
         $this->db->query(
             "SELECT * 
             FROM book
             WHERE lower(author) like '%$keyword%' 
-            OR lower(bookname) like '%$keyword%' ;");
+            OR lower(bookname) like '%$keyword%' ;"
+        );
 
-        return $this->db->getResultSet(); 
+        return $this->db->getResultSet();
     }
 
     /*
-     * Updates a specific book 
+     * Updates a specific book
      */
-    public function editBook($data){
+    public function editBook($data)
+    {
         $this->db->query(
             "UPDATE book 
             SET bookname=:bookname, isbn=:isbn, author=:author, publisher=:publisher, 
             retailprice=:retailprice, availablequantity=:availablequantity, 
             image =:image,  description=:description, category=:category
-            WHERE bookID=:bookID");
+            WHERE bookID=:bookID"
+        );
 
         $this->db->bind(':bookname', $data['bookname']);
         $this->db->bind(':isbn', $data['isbn']);
@@ -109,14 +118,32 @@ class bookModel
     /*
      * Deletes a specific book
      */
-    public function delete($data){
+    public function delete($data)
+    {
         $this->db->query(
             "DELETE 
             FROM book 
-            WHERE bookID=:bookID");
+            WHERE bookID=:bookID"
+        );
 
         $this->db->bind('bookID', $data['bookID']);
 
+        return $this->db->execute();
+    }
+
+    /*
+     * Updates the book quantity in the database
+     */
+    public function updateBookQuantity($data)
+    {
+        $this->db->query(
+            "UPDATE book 
+            SET availablequantity=:availablequantity, 
+            WHERE bookID=:bookID"
+        );
+
+        $this->db->bind(':availablequantity', $data['updatedQuantity']);
+        $this->db->bind(':bookID', $data['bookID']);
         return $this->db->execute();
     }
 }
