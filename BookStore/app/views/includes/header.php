@@ -48,7 +48,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="<?php echo URLROOT; ?>/Contact/contactUs">Contact us</a>
                     </li>
-
+                    
                     <!-- Check if logged in | Still havent implemented the code here -->
                     <?php
                     if (!isLoggedIn()) {
