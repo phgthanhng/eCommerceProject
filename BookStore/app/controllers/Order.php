@@ -14,12 +14,8 @@ class Order extends Controller {
      * function called when users cancel order
      */
     public function cancel($orderID) {
-        // delete oder
-        $data = [
-            'orderID' => $orderID,
-        ];
-
-        if ($this->orderModel->deleteOrder($data)) {
+  
+      
             // Update the quantity again in the Database
             // Step 1: Retrieve order first
             $order = $this->orderModel->getSingleOrder($orderID);
@@ -41,9 +37,11 @@ class Order extends Controller {
                 $this->bookModel->updateBookQuantity($data);
 
             }
-
-            echo 'Please wait we are canceling the order for you!';
-            echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/User/index">';
+            // delete it after updating the database
+            if ($this->orderModel->deleteOrder($orderID)) {
+                echo 'Please wait we are canceling the order for you!';
+                echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/User/index">';
+            }
         }
     }
 
