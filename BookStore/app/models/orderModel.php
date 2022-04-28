@@ -68,12 +68,12 @@
         /*
          * Deletes an order
          */
-        public function deleteOrder($data) {
+        public function deleteOrder($orderID) {
             $this->db->query(
                 "DELETE 
                 FROM ordertbl 
                 WHERE orderID=:orderID");
-            $this->db->bind(':orderID', $data['orderID']);
+            $this->db->bind(':orderID', $orderID);
 
             return $this->db->execute();
         }

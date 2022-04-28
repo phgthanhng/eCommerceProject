@@ -11,43 +11,11 @@ class Order extends Controller {
     }
 
     /*
-     * Creates an order
-     */
-    public function placeOrder() {
-        // $cart = $this->cartModel->getUserCart();
-        // $data = [
-        //     'cartID' => $cart->cartID,
-        //     'fname' => $_POST['firstname'],
-        //     'lname' => $_POST['lastname'],
-        //     'email' => $_POST['email'],
-        //     'totalprice' => $cart->totalPrice,
-        //     'paymentMethod' => $_POST['paymentMethod'],
-        //     'address' => $_POST['address'] . ', ' .$_POST['province'] . ', ' . $_POST['postalcode'],
-        //     'cardname' => $_POST['cardname'],
-        //     'expiration' => $_POST['expiration'],
-        //     'cvv' => $_POST['cvv']
-        // ];
-        
-        // // create order
-        // if ($this->orderModel->createOrder($data)) {
-        //     // create a new cart
-        //     $this->cartModel->createCart($_SESSION['user_id']);
-        //     $this->view('Order/success');  
-        // }
-         
-        
-    }
-
-    /*
      * function called when users cancel order
      */
     public function cancel($orderID) {
-        // delete oder
-        $data = [
-            'orderID' => $orderID,
-        ];
-
-        if ($this->orderModel->deleteOrder($data)) {
+  
+      
             // Update the quantity again in the Database
             // Step 1: Retrieve order first
             $order = $this->orderModel->getSingleOrder($orderID);
@@ -69,9 +37,11 @@ class Order extends Controller {
                 $this->bookModel->updateBookQuantity($data);
 
             }
-
-            echo 'Please wait we are canceling the order for you!';
-            echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/User/index">';
+            // delete it after updating the database
+            if ($this->orderModel->deleteOrder($orderID)) {
+                echo 'Please wait we are canceling the order for you!';
+                echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/User/index">';
+            }
         }
     }
 
