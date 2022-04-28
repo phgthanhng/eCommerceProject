@@ -138,7 +138,7 @@ class bookModel
     {
         $this->db->query(
             "UPDATE book 
-            SET availablequantity=:availablequantity, 
+            SET availablequantity=:availablequantity
             WHERE bookID=:bookID"
         );
 
