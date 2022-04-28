@@ -190,7 +190,7 @@ class Cart extends Controller
         ];
 
         if ($this->cartModel->updateCartItemQuantity($data)) {
-            $items = $this->cartModel->getAllCartItems($cart->$cartID);
+            $items = $this->cartModel->getAllCartItems($cart->cartID);
             $data = [
                 'items' => $items,
             ];

@@ -11,34 +11,6 @@ class Order extends Controller {
     }
 
     /*
-     * Creates an order
-     */
-    public function placeOrder() {
-        // $cart = $this->cartModel->getUserCart();
-        // $data = [
-        //     'cartID' => $cart->cartID,
-        //     'fname' => $_POST['firstname'],
-        //     'lname' => $_POST['lastname'],
-        //     'email' => $_POST['email'],
-        //     'totalprice' => $cart->totalPrice,
-        //     'paymentMethod' => $_POST['paymentMethod'],
-        //     'address' => $_POST['address'] . ', ' .$_POST['province'] . ', ' . $_POST['postalcode'],
-        //     'cardname' => $_POST['cardname'],
-        //     'expiration' => $_POST['expiration'],
-        //     'cvv' => $_POST['cvv']
-        // ];
-        
-        // // create order
-        // if ($this->orderModel->createOrder($data)) {
-        //     // create a new cart
-        //     $this->cartModel->createCart($_SESSION['user_id']);
-        //     $this->view('Order/success');  
-        // }
-         
-        
-    }
-
-    /*
      * function called when users cancel order
      */
     public function cancel($orderID) {
@@ -76,26 +48,22 @@ class Order extends Controller {
     }
 
     /**
-     * to return an order
-     */
-    public function return() {
-
-    }
-
-    /**
      * view details of an order
      */
-    public function details() {
+    public function details($orderID) {
+        $data1 = [
+            'orderID' => $orderID,
+        ];
+        $order = $this->orderModel->getOneOrder($data1);
+        if (!empty($order)) {
+            $data = [
+                'orders' => $order
+            ];
+            $this->view('User/orderDetails', $data);        
 
+        }
+        // $this->view('User/orderDetails', $data);        
     }
-
-    /**
-     * to mark orders as shipped
-     */
-    public function markAsShipped() {
-
-    }
-
 }
 
 
