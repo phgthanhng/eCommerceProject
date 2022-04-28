@@ -20,9 +20,9 @@ class User extends Controller
      */
     public function index()
     {
-        $processingOrder = $this->orderModel->getAllUnshippedOrders();
-        $completedOrder = $this->orderModel->getAllCompletedOrders();
-        $returnedOrder = $this->orderModel->getAllReturnedOrders();
+        $processingOrder = $this->orderModel->getUserUnshippedOrders();
+        $completedOrder = $this->orderModel->getUserCompletedOrders();
+        $returnedOrder = $this->orderModel->getUserReturnedOrders();
         $reviews = $this->reviewModel->getAllReviews();
         $data = [  
             "processingOrders" => $processingOrder,

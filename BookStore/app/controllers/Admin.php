@@ -3,6 +3,7 @@ class Admin extends Controller
 {
     public function __construct()
     {
+        $this->orderModel = $this->model('orderModel');
         $this->bookModel = $this->model('bookModel');
         $this->userModel = $this->model('userModel');
         if (!isLoggedIn()) {
@@ -137,7 +138,7 @@ class Admin extends Controller
 
             if ($this->bookModel->editBook($data)) {
                 echo 'Update book successfull!';
-                echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Admin/index">';
+                echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Admin/manageProducts">';
             }
         }
     }
@@ -149,8 +150,88 @@ class Admin extends Controller
             $data = [
                 "users" => $users,
             ];
-
             $this->view('Admin/displayUsers', $data);
         }
     }
-}
+
+    /**
+     * display view for manageOrders
+     */
+    public function manageOrders() {
+        $orders = $this->orderModel->getAllOrders();
+
+        if (!empty($orders)) {
+            $data = [
+                "orders" => $orders
+            ];
+        }
+        $this->view('Admin/manageOrders', $data);
+    }
+
+    /**
+     * view details of a specific order
+     */
+    public function orderDetails($orderID) {
+
+    }
+
+    /**
+     * mark order as shipped
+     */
+    public function markAsShipped($orderID) {
+        $status = 'shipped';
+        $data = [
+            "status" => $status,
+            "orderID" => $orderID
+        ];
+        if ($this->orderModel->updateOrderStatus($data)) {
+            echo 'Updating the status of the order';
+            echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/Admin/manageOrders/">';
+        }
+       
+    }
+
+    /**
+     * mark order as completed
+     */
+    public function markAsCompleted($orderID) {
+        $status = 'completed';
+        $data = [
+            "status" => $status,
+            "orderID" => $orderID
+        ];
+        if ($this->orderModel->updateOrderStatus($data)) {
+            echo 'Updating the status of the order';
+            echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/Admin/manageOrders/">';
+        }
+    }
+
+    /**
+     * to get the view of completedOrders.php
+     */
+    public function completedOrders() {
+        $orders = $this->orderModel->getAllCompletedOrders();
+
+        // if (!empty($orders)) {
+            $data = [
+                "orders" => $orders
+            ];
+        // }
+        $this->view('Admin/completedOrders', $data);
+    }
+
+    /**
+     * to delete a completed order
+     */
+    public function deleteCompletedOrder($orderID)
+    {
+        $data = [
+            'orderID' => $orderID,
+        ];
+        if ($this->orderModel->deleteOrder($data)) {
+            echo 'Please wait we are deleting the book for you!';
+            echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/Admin/completedOrders/">';
+        }
+
+    }
+  }

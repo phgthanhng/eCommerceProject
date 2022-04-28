@@ -110,7 +110,8 @@
         public function getAllOrders() {
             $this->db->query(
                 "SELECT * 
-                FROM book");
+                FROM ordertbl INNER JOIN user
+                WHERE ordertbl.userID = user.userID");
             return $this->db->getResultSet();
         }
 
@@ -120,15 +121,18 @@
         public function updateOrderStatus($data) {
             $this->db->query(
                 "UPDATE ordertbl 
-                SET orderstatus=:orderstatus
+                SET orderstatus=:status
                 WHERE orderID=:orderID");
-            $this->db->bind(':orderstatus', $data['orderstatus']);
+            $this->db->bind(':status', $data['status']);
             $this->db->bind(':orderID', $data['orderID']);
 
             return $this->db->execute();
         }
 
-        public function getAllUnshippedOrders() {
+        /**
+         * for user
+         */
+        public function getUserUnshippedOrders() {
             $this->db->query(
                 "SELECT * 
                 FROM ordertbl
@@ -138,7 +142,10 @@
             return $this->db->getResultSet();
         }
     
-        public function getAllCompletedOrders() {
+        /**
+         * for user
+         */
+        public function getUserCompletedOrders() {
             $this->db->query(
                 "SELECT * 
                 FROM ordertbl
@@ -147,7 +154,11 @@
             return $this->db->getResultSet();
         }
 
-        public function getAllReturnedOrders() {
+        /**
+         * for user
+         * to get all returned orders
+         */
+        public function getUserReturnedOrders() {
             $this->db->query(
                 "SELECT * 
                 FROM ordertbl
@@ -155,6 +166,42 @@
             $this->db->bind(':userID', $_SESSION['user_id']);
             return $this->db->getResultSet();
         }
+        /**
+         * for admin
+         * to get all unshipped orders
+         */
+        public function getAllUnshippedOrders() {
+            $this->db->query(
+                "SELECT * 
+                FROM ordertbl
+                WHERE orderstatus = 'unshipped'"
+                );
+            return $this->db->getResultSet();
+        }
+    
+        /**
+         * for admin
+         */
+        public function getAllCompletedOrders() {
+            $this->db->query(
+                "SELECT * 
+                FROM ordertbl INNER JOIN user
+                WHERE ordertbl.userID = user.userID AND orderstatus = 'completed'");
+            return $this->db->getResultSet();
+        }
+
+        /**
+         * for admin
+         */
+        public function getAllReturnedOrders() {
+            $this->db->query(
+                "SELECT * 
+                FROM ordertbl INNER JOIN user
+                WHERE ordertbl.userID = user.userID AND orderstatus = 'returned'");
+            return $this->db->getResultSet();
+        }
     }
+
+    // to return order
 
 ?>

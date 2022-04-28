@@ -14,7 +14,7 @@
                     <th>Order placed</th>
                     <th>Total Price</th>
                     <th>Order Status</th>
-                    <th colspan="3">Action</th>
+                    <th colspan="3" style="text-align: center;">Action</th>
 
 
                     </tr>
@@ -48,6 +48,7 @@
             </table>
         </div>
     </div>
+    
     <div class="container">
         <h1 style="margin-bottom: 25px;margin-top: 50px;text-align: center;">Past orders</h1>
         <div class="table-responsive">
@@ -58,7 +59,7 @@
                     <th>Order placed</th>
                     <th>Total Price</th>
                     <th>Order Status</th>
-                    <th colspan="3">Action</th>
+                    <th colspan="3" style="text-align: center;">Action</th>
 
 
                     </tr>
@@ -82,7 +83,7 @@
                         <a href='/eCommerceProject/BookStore/Order/details/$order->orderID'>Details</a>
                         </td>";
                         echo "<td>
-                        <a href='/eCommerceProject/BookStore/Order/cancel/$order->orderID'>Cancel</a>
+                        <a href='/eCommerceProject/BookStore/Order/return/$order->orderID'>Return</a>
                         </td>";
                         echo "<td>
                         <a href='/eCommerceProject/BookStore/Order/reviewOrder/$order->orderID'>Review Order</a>
@@ -104,7 +105,7 @@
                         <th>Column 1</th>
                         <th>Column 1</th>
                         <th>Column 2</th>
-                        <th colspan="3">Action</th>
+                        <th colspan="3" style="text-align: center;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
