@@ -45,6 +45,7 @@ class Cart extends Controller
         $data = [
             'cartID' => $cart->cartID,
             'bookID' => $bookID,
+            // 'msg' => '',
         ];
         $isItemInCart = $cartItem = $this->cartModel->isExistInCartItem($data);
         if (!$isItemInCart) {
@@ -52,12 +53,18 @@ class Cart extends Controller
             // Create cartitem first
             $this->createCartItem($cart->cartID, $quantity, $bookID);
             header(
-                'Location: /eCommerceProject/BookStore/Book/bookdetail/' .
-                    $bookID
-            );
+                'Location: /eCommerceProject/BookStore/Book/bookdetail/' . $bookID);
+            // $data = [
+            //     'msg' => 'Book Added',
+            // ];
+            // $this->view('Book/bookdetail', $data);
         } else {
             $newQuantity = $cartItem->quantity + $quantity;
             $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID); // trying to add the new update number
+            // $data = [
+            //     'msg' => 'Book Quantity in Cart updated',
+            // ];
+            // $this->view('Book/bookdetail', $data);
             header(
                 'Location: /eCommerceProject/BookStore/Book/bookdetail' .
                     $bookID
@@ -71,15 +78,23 @@ class Cart extends Controller
     public function createCartItem($cartID, $quantity, $bookID)
     {
         $subtotal = $this->calcSubtotal($quantity, $bookID);
+        $bookQuantity = $this->bookModel->getSingleBook($bookID)
+            ->availablequantity;
 
-        $data = [
-            'cartID' => $cartID,
-            'bookID' => $bookID,
-            'quantity' => $quantity,
-            'subtotalPrice' => $subtotal,
-        ];
+        if ($quantity <= $bookQuantity) {
+            $data = [
+                'cartID' => $cartID,
+                'bookID' => $bookID,
+                'quantity' => $quantity,
+                'subtotalPrice' => $subtotal,
+            ];
 
-        return $this->cartModel->createCartItem($data); // pass the bookID
+            $this->cartModel->createCartItem($data); // pass the bookID
+        } else {
+            $data = [
+                'msg' => 'Low stock',
+            ];
+        }
     }
 
     /*
@@ -239,7 +254,7 @@ class Cart extends Controller
         // create order
         if ($this->orderModel->createOrder($data)) {
             // update the book quantity
-            $this->updateBookQuantity($data['items']); // send the items to be updated
+            $this->updateBookQuantity($data); // send the items to be updated
 
             // create a new cart
             $this->cartModel->createCart($_SESSION['user_id']);
@@ -251,9 +266,9 @@ class Cart extends Controller
     /*
      * Updates the book quantity
      */
-    public function updateBookQuantity($items)
+    public function updateBookQuantity($data)
     {
-        foreach ($items as $item) {
+        foreach ($data['items'] as $item) {
             $availableQty = $item->availablequantity; // available quantity of the book
             $cartItemQty = $item->quantity; // get quantity chosen by the user
 
