@@ -65,10 +65,10 @@
                         </form>
 
                         <p class="author"> <?php echo 'By: ' .
-                            $book->author; ?></p>
+                                                $book->author; ?></p>
                         <div class="_p-price-box">
                             <span class="price"> <?php echo '$' .
-                                $book->retailprice; ?> </span>
+                                                        $book->retailprice; ?> </span>
                         </div>
                         <div class="_p-add-cart">
                             <div class="_p-qty">
@@ -98,7 +98,7 @@
                                 <?php // if NOT logged in
                                 if (!isLoggedIn()) {
                                     echo '<a href="' .
-                                        URLROOT .'/Login/index">
+                                        URLROOT . '/Login/index">
                                                 <button class="btn-theme btn btn-success" tabindex="0">
                                                     <i class="fa fa-shopping-cart"></i> 
                                                     Add to Cart
@@ -122,10 +122,16 @@
                         </div>
                     </div>
                 </div>
+
             </div>
-        </div>
+          
+            <p>test when to show the review fhgejvefbgnrfbdhgrfbbnggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg
+                fjdbhndffffffffffffffffffffffffffffffffffffffffffffffffffffffuuuuuuuuuuuuuuuuuuuuuuuuuuuu
+                ggggggggggggggggggggggggggggggggggggfkjgvf</p>
+       
+        
     </div>
-    </div>
+
 </section>
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>

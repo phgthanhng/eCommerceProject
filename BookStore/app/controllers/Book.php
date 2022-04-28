@@ -30,6 +30,8 @@ class Book extends Controller
             'book' => $book,
         ];
 
+        // show book reviews
+
         $this->view('Book/bookdetail', $data);
     }
 
