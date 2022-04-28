@@ -53,17 +53,17 @@
         /*
          * Cancels the order by updating the order status to canceled
          */
-        public function cancelOrder($orderID) {
-            $this->db->query(
-                "UPDATE order 
-                SET orderstatus=:orderstatus
-                WHERE orderID=:orderID");
+        // public function cancelOrder($orderID) {
+        //     $this->db->query(
+        //         "UPDATE order 
+        //         SET orderstatus=:orderstatus
+        //         WHERE orderID=:orderID");
                 
-            $this->db->bind(':orderstatus', "cancelled");
-            $this->db->bind(':orderID', $data['orderID']);
+        //     $this->db->bind(':orderstatus', "cancelled");
+        //     $this->db->bind(':orderID', $data['orderID']);
 
-            return $this->db->execute();
-        }
+        //     return $this->db->execute();
+        // }
 
         /*
          * Deletes an order
@@ -126,6 +126,34 @@
             $this->db->bind(':orderID', $data['orderID']);
 
             return $this->db->execute();
+        }
+
+        public function getAllUnshippedOrders() {
+            $this->db->query(
+                "SELECT * 
+                FROM ordertbl
+                WHERE userID = :userID AND orderstatus = 'unshipped'"
+                );
+            $this->db->bind(':userID', $_SESSION['user_id']);
+            return $this->db->getResultSet();
+        }
+    
+        public function getAllCompletedOrders() {
+            $this->db->query(
+                "SELECT * 
+                FROM ordertbl
+                WHERE userID = :userID AND orderstatus = 'completed'");
+            $this->db->bind(':userID', $_SESSION['user_id']);
+            return $this->db->getResultSet();
+        }
+
+        public function getAllReturnedOrders() {
+            $this->db->query(
+                "SELECT * 
+                FROM ordertbl
+                WHERE userID = :userID AND orderstatus = 'returned'");
+            $this->db->bind(':userID', $_SESSION['user_id']);
+            return $this->db->getResultSet();
         }
     }
 

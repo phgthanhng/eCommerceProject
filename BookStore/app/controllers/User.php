@@ -7,7 +7,9 @@ class User extends Controller
      */
     public function __construct()
     {
+        $this->orderModel = $this->model('orderModel');
         $this->userModel = $this->model('userModel');
+        $this->reviewModel = $this->model('reviewModel');
         if (!isLoggedIn()) {
             header('Location: /eCommerceProject/BookStore/Login');
         }
@@ -18,7 +20,17 @@ class User extends Controller
      */
     public function index()
     {
-        $this->view('User/index');
+        $processingOrder = $this->orderModel->getAllUnshippedOrders();
+        $completedOrder = $this->orderModel->getAllCompletedOrders();
+        $returnedOrder = $this->orderModel->getAllReturnedOrders();
+        $reviews = $this->reviewModel->getAllReviews();
+        $data = [  
+            "processingOrders" => $processingOrder,
+            "completedOrders" => $completedOrder,
+            "returnedOrders" => $returnedOrder,
+            "reviews" => $reviews
+        ];
+        $this->view('User/index', $data);
     }
 
     /*
@@ -48,7 +60,7 @@ class User extends Controller
     }
 
     /*
-     * Updates user credentials: username and password
+     * Updates user credentials: password
      */
     public function editCredentials($userID)
     {
@@ -73,15 +85,33 @@ class User extends Controller
         }
     }
 
-    // public function validateEditCredentialsData($data)
-    // {
-    //     if ($data['password'] != $data['pass_verify']) {
-    //         $data['edit_password_match_error'] = 'Password does not match';
-    //     }
-    //     if (empty($data['edit_password_match_error'])) {
-    //         return true;
-    //     } else {
-    //         $this->view('User/editCredentials', $data);
-    //     }
+    /**
+     * function called when users cancel order
+     */
+    public function cancel() {
+
+    }
+
+    /**
+     * to return an order
+     */
+    public function return() {
+
+    }
+
+    /**
+     * view details of an order
+     */
+    public function details() {
+
+    }
+
+    /**
+     * to mark orders as shipped
+     */
+    public function markAsShipped() {
+
+    }
+  
     }
 // }
