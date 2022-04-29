@@ -135,7 +135,7 @@
                 <?php
                 if (isLoggedIn()) {
                     if (!isAdmin()) {
-                        echo '<li class="nav-item"><a class="nav-link" href="/MVC/TwoFA/Setup"><i class="fa fa-key" aria-hidden="true"></i> 2FA </a></li>';
+                        echo '<li class="nav-item"><a class="nav-link" href="'. URLROOT . '/TwoFA/Setup"><i class="fa fa-key" aria-hidden="true"></i> 2FA </a></li>';
                     }
                     echo '<span class="navbar-text"> <a class="login" href="' . URLROOT . '/Login/logout" style="margin: 10px;text-decoration: none;"><i class="fa fa-sign-out" aria-hidden="true"></i>
                     Logout  ' . $_SESSION['user_username'] . '</a></span>';

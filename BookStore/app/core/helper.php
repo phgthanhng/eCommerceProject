@@ -9,6 +9,7 @@ include_once dirname(APPROOT) .
     '/vendor/sonata-project/google-authenticator/src/GoogleQrUrl.php';
 session_start();
 require_once '../app/models/cartModel.php';
+require_once '../app/models/userModel.php';
 
 function isLoggedIn()
 {
@@ -32,10 +33,7 @@ function getCartCount()
 function check($secret, $code)
 {
     $g = new \Sonata\GoogleAuthenticator\GoogleAuthenticator();
-    if ($g->checkCode($secret, $code)) {
-        return true;
-    } else {
-        return false;
-    }
+    return $g->checkCode($secret, $code);
 }
+
 ?>

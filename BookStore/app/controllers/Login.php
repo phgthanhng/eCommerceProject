@@ -148,6 +148,8 @@ class Login extends Controller
                         $this->cartModel->createCart($newUser->userID); //create cart for user
                         
                         echo 'Please wait creating the account for ' . trim($_POST['username']);
+                        $this->createSession($newUser);
+                        echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
                        
                     }
                 }
