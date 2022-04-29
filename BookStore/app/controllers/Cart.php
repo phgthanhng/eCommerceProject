@@ -103,30 +103,6 @@ class Cart extends Controller
         header("Location: /eCommerceProject/BookStore/Book/bookdetail/$bookID?variable=$msg&newVariable=$color");
     }
 
-    // /*
-    //  * Create cartItem
-    //  */
-    // public function createCartItem($cartID, $quantity, $bookID)
-    // {
-    //     $subtotal = $this->calcSubtotal($quantity, $bookID);
-    //     $bookQuantity = $this->bookModel->getSingleBook($bookID)->availablequantity;
-
-    //     if ($quantity <= $bookQuantity) {
-    //         $data = [
-    //             'cartID' => $cartID,
-    //             'bookID' => $bookID,
-    //             'quantity' => $quantity,
-    //             'subtotalPrice' => $subtotal,
-    //         ];
-
-    //         $this->cartModel->createCartItem($data); // pass the bookID     
-    //     } else {
-          
-    
-    //     }
-    //     header("Location: /eCommerceProject/BookStore/Book/bookdetail/$bookID?variable=$msg&newVariable=$color");
-    // }
-
     /*
      * Calculates subtotal of an item
      */

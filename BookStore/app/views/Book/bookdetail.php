@@ -115,14 +115,14 @@
                                     // if not admin-> customer only
                                     if (!isAdmin()) {
                                         echo '
-                                                <button class="btn-theme btn btn-success" tabindex="0" onclick="addcartitem()">
+                                                <button class="btn-theme btn btn-success mb-3" tabindex="0" onclick="addcartitem()">
                                                     <i class="fa fa-shopping-cart"></i> 
                                                         Add to Cart
                                                 </button>';?>
-                                        <span id="message">
+                                        <span></span>
+                                        <span id="message"">
                                         
                                         </span>
-                                        </>
                                     <?php     
                                     } 
                                 }
