@@ -20,14 +20,6 @@
       return ($cartModel->getCartItemCount($cart->cartID));
     }
 
-    /**
-     * if order is completed or no
-     */
-    function isCompleted() {
-
-    }
-
-
     // function check($secret, $code){
     //     $g = new \Sonata\GoogleAuthenticator\GoogleAuthenticator();
     //     if($g->checkCode($secret, $code)){

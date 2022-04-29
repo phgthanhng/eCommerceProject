@@ -1,9 +1,9 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 
 <script>
-function addtocart() {
-  alert("Item is added to cart!");
-}
+    function addtocart() {
+        alert("Item is added to cart!");
+    }
 </script>
 
 <?php $book = $data['book']; ?>
@@ -72,7 +72,27 @@ function addtocart() {
                             <span class="price"> <?php echo '$' .
                                                         $book->retailprice; ?> </span>
                         </div>
-                        <div class="_p-add-cart">
+
+                        <?php
+                        if ($book->availablequantity == 0) {
+                            echo '<br>';
+                            echo '<div class="_p-price-box">
+                                <span class="price"> Out of Stock </span>
+                                </div>';
+                            echo '<br>';
+                        } else {
+                            echo '<div class="_p-add-cart">
+                                <div class="_p-qty">
+                                    <span>Add Quantity</span>
+                                    <input type="hidden" id="bookId" value="' . $book->bookID . '">
+                                    <div class="value-button decrease_" id="" value="Decrease Value">-</div>
+                                    <input type="text" name="qty" id="number" value="1" onkeypress="onlyNum(this.evt)" />
+                                    <div class="value-button increase_" id="" value="Increase Value">+</div>
+                                </div>
+                            </div>';
+                        }
+                        ?>
+                        <!-- <div class="_p-add-cart">
                             <div class="_p-qty">
                                 <span>Add Quantity</span>
                                 <input type="hidden" id="bookId" value="<?php echo $book->bookID; ?>">
@@ -80,7 +100,7 @@ function addtocart() {
                                 <input type="text" name="qty" id="number" value="1" onkeypress="onlyNum(this.evt)" />
                                 <div class="value-button increase_" id="" value="Increase Value">+</div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="_p-features">
                             <details>
                                 <summary>
@@ -98,6 +118,7 @@ function addtocart() {
                         <div class="_p-qty-and-cart">
                             <div class="_p-add-cart">
                                 <?php // if NOT logged in
+                                if ($book->availablequantity != 0) {
                                 if (!isLoggedIn()) {
                                     echo '<a href="' .
                                         URLROOT . '/Login/index">
@@ -116,6 +137,7 @@ function addtocart() {
                                                         Add to Cart
                                                 </button>';
                                     }
+                                }
                                 } ?>
                                 <input type="hidden" name="pid" value="18" />
                                 <input type="hidden" name="price" value="850" />
