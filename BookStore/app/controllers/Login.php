@@ -66,7 +66,9 @@ class Login extends Controller
                         // if admin doest not have a secret yet then throw admin to 2FA
                         else {
                             $this->createSession($user);
-                            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                            // echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                            $this->view('Admin/index'); 
+
                         }
                     }
                     
@@ -120,9 +122,11 @@ class Login extends Controller
                                 $this->view('Login/index',$data); 
                             }
                         }
+                        // user didnt set up 2FA 
                         else {
                             $this->createSession($user);
-                            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                            // echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                            $this->view('User/index'); 
                         }
                     }
                     // if user password incorrect
@@ -176,11 +180,8 @@ class Login extends Controller
                     if ($this->loginModel->createUser($data)) { 
                         $newUser = $this->loginModel->getUser($data['username']);
                         $this->cartModel->createCart($newUser->userID); //create cart for user
-                        
                         echo 'Please wait creating the account for ' . trim($_POST['username']);
-                        $this->createSession($newUser);
-                        echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
-                       
+                        echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
                     }
                 }
             // if user exists in the system
