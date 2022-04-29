@@ -69,7 +69,12 @@ class Cart extends Controller
             }
             // no sufficient quantity
             else {
-                $msg = "Low stock! Adding to Cart failed";   
+                if ($bookQuantity == 0) {
+                    $msg = "Out of stock";   
+                }
+                else {
+                    $msg = "Low stock! adding to cart failed";   
+                }
                 $color = "danger";
             }
         
@@ -82,11 +87,16 @@ class Cart extends Controller
 
                 // add successful message to be printed in the view
                 $msg = "Book Quantity Updated ";   
-                $color = "sucess";
+                $color = "success";
             }
             // cannot update the cart because of low stock
             else {
-                $msg = "Low stock! adding to cart failed";   
+                if ($bookQuantity == 0) {
+                    $msg = "Out of stock";   
+                }
+                else {
+                    $msg = "Low stock! adding to cart failed";   
+                }
                 $color = "danger";
             }
         }
