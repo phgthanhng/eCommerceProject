@@ -210,6 +210,9 @@ input[type=number]::-webkit-outer-spin-button {
     border-radius: 52px;
 }
 
+
+/* wishlist button */
+
 .btn-wishlist {
     /* text-transform: capitalize; */
     padding: 6px 20px;
@@ -223,14 +226,15 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 
-/*====== wist list=====  */
+/* review */
 
-.wishlist {
-    /* default */
-    color: #adb5bd;
-    font-size: 30px;
+.review_header,
+.review_message {
+    text-align: center;
 }
 
-.wishlist i:hover {
-    color: #fe0000;
+.review_div {
+    margin-top: 30px;
+    margin-left: 100px;
+    width: 90%;
 }

@@ -18,17 +18,13 @@
                         <form action="" method="post">
                             <div class="_p-add-cart">
                                 <?php if (!isLoggedIn()) {
-                                    echo '
-                                            <button class="btn-wishlist" tabindex="0">
-                                                <a href="' .
-                                        URLROOT .
-                                        '/Login/index">
-                                                <i class="fa fa-heart" style="color:red;">
-                                                 Add to Wish List</i>
-                                                 </a>
-                                            </button>
-                                            
-                                      ';
+                                    echo '<a href="' .
+                                        URLROOT . '/Login/index">
+                                    <button class="btn-wishlist" tabindex="0" type="button">
+                                        <i class="fa fa-heart" style="color:red;">
+                                             Add to Wish List</i>
+                                    </button>  
+                                        </a>';
                                 }
                                 // if is logged in
                                 else {
@@ -65,10 +61,10 @@
                         </form>
 
                         <p class="author"> <?php echo 'By: ' .
-                            $book->author; ?></p>
+                                                $book->author; ?></p>
                         <div class="_p-price-box">
                             <span class="price"> <?php echo '$' .
-                                $book->retailprice; ?> </span>
+                                                        $book->retailprice; ?> </span>
                         </div>
                         <div class="_p-add-cart">
                             <div class="_p-qty">
@@ -98,7 +94,7 @@
                                 <?php // if NOT logged in
                                 if (!isLoggedIn()) {
                                     echo '<a href="' .
-                                        URLROOT .'/Login/index">
+                                        URLROOT . '/Login/index">
                                                 <button class="btn-theme btn btn-success" tabindex="0">
                                                     <i class="fa fa-shopping-cart"></i> 
                                                     Add to Cart
@@ -122,10 +118,37 @@
                         </div>
                     </div>
                 </div>
+
             </div>
+
+
+
+
+            <!-- ----------review ----------------- -->
+            <div class="review_div">
+                <h5 class="review_header">Review</h5>
+                <?php
+                if ($data["reviews"] == null) {
+                    echo '<p class="review_message">No review yet</p>';
+                }
+
+                foreach ($data["reviews"] as $review) {
+                    echo "<hr>";
+                    echo $review->firstname . ' ' . $review->lastname . ' ' . date(" m/d/Y H:i:s", strtotime($review->reviewdate)) . ' Mark:' . $review->reviewmark . '/5';
+                   
+                    echo "<br>$review->reviewcontent";
+                }
+
+                ?>
+
+
+
+            </div>
+
+
+
         </div>
-    </div>
-    </div>
+
 </section>
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>

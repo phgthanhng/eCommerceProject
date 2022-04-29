@@ -4,6 +4,7 @@ class Book extends Controller
     public function __construct()
     {
         $this->bookModel = $this->model('bookModel');
+        $this->reviewModel = $this->model('reviewModel');
     }
 
     /*
@@ -23,11 +24,18 @@ class Book extends Controller
      */
     public function bookdetail($bookID)
     {
-        // For the publication part
+        // For the book part
         $book = $this->bookModel->getSingleBook($bookID);
 
+
+        // show book reviews
+        $reviews = $this->reviewModel->getBookReviews($bookID);
+        $userInfo = $this->reviewModel->getReviewProfile();
         $data = [
             'book' => $book,
+            "reviews" => $reviews,
+            "currentUser" => $userInfo
+           
         ];
 
         $this->view('Book/bookdetail', $data);
