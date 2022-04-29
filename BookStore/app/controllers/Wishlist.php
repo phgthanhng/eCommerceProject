@@ -14,9 +14,6 @@ class Wishlist extends Controller
         $this->getAllWishlistItems();
     }
 
-
-
-
     /*
      * Retrieves and displays all wishlist items
      */
@@ -32,8 +29,6 @@ class Wishlist extends Controller
         if (!empty($this->wishlistModel->getAllWishlistItems($wishlist->wishlistID))) { //model
             // will call the view to show all wishlistitems
             $items = $this->wishlistModel->getAllWishlistItems($wishlist->wishlistID);
-          
-
             $data = [
                 'items' => $items
             ];

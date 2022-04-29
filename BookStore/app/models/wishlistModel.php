@@ -54,7 +54,7 @@
             $this->db->query(
                 "SELECT wishlist.wishlistID, 
                 wishlistitem.wishlist_itemID, wishlistitem.wishlistID, wishlistitem.bookID, 
-                book.bookID, book.bookname, book.retailprice, book.image
+                book.bookID, book.bookname, book.retailprice, book.image, book.availablequantity
                 FROM wishlist
                 JOIN wishlistitem
                 ON wishlistitem.wishlistID = wishlist.wishlistID

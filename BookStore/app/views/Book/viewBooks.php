@@ -1,8 +1,5 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
-<!DOCTYPE html>
-<html lang="en">
 
-<body>
     <!-- <div class="container"> -->
     <h1 style="margin-bottom: 25px;margin-top: 30px;text-align: center;">ALL BOOKS</h1>
     <div class="parent">
@@ -45,10 +42,4 @@
             }
         } ?>
     </div>
-
-    <!-- </div> -->
-
-</body>
-
-</html>
 <?php require APPROOT . '/views/includes/footer.php';  ?>

@@ -9,8 +9,9 @@
                 <tr>
                 <th scope="col">Image</th>
                 <th scope="col">Book Name</th>
+                <th scope="col"></th>
                 <th scope="col">Price</th>
-                
+                <th scope="col">Add to Cart</th>
                 </tr>
             </thead>
             <tbody>';
@@ -30,10 +31,20 @@
                         
                         <input type="hidden" id="wishlist_item_id" value="' . $item->wishlist_itemID . '">
                         <a href="' . URLROOT . '/Wishlist/removeWishlistItem/' . $item->wishlist_itemID . '" style="text-decoration:none;">
-                            <i class="fa fa-window-close fa-lg" aria-hidden="true"></i>
+                            <i class="fa fa-window-close fa-lg"  aria-hidden="true"></i>
                         </a>
                     </td>';
                 echo '<td>$ ' . $item->retailprice . ' CAD </td>';
+                if ($item->availablequantity > 0) {
+                    echo '<td>
+                            <a href="' . URLROOT . '/Book/bookdetail/' . $item->bookID . '" style="text-decoration:none;">
+                            <button class="btn btn-primary" type="button">ADD TO CART</button>
+                            </a>
+                        </td>';
+                }
+                else {
+                    echo '<td>CURRENTLY OUT OF STOCK</td>';
+                }
             }
 
             echo '</tbody>';
@@ -46,5 +57,13 @@
         ?>
     </div>
 </section>
+
+<script>
+    function removeWishListItem() {
+        alert("Wishlist item removed!");
+    }
+    // setTimeout(removeWishlistItem, 2000);
+
+</script>
 
 <?php require APPROOT . '/views/includes/footer.php';  ?>

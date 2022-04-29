@@ -14,6 +14,7 @@
                     <th scope="col">Image</th>
                     <th scope="col">Product Name</th>
                     <th scope="col">Quantity</th>
+                    <th scope="col"></th>
                     <th scope="col">Unit Price</th>
                     <th scope="col">Sub total</th>
                 </tr>
@@ -33,10 +34,11 @@
                     ' . $item->bookname . '
                     </a>
                     </td>';
-                        echo '<td>
-                        <input type="number" name="qty" id="number" value="' . $item->quantity . '" readonly style="width: 50px;"/>
+                    echo '<td>&nbsp&nbsp&nbsp&nbsp
+                        '. $item->quantity .'
                         <input type="hidden" id="cart_item_id" value="' . $item->cartitemID . '">
                     </td>';
+                     echo '<td> X </td>';
                         echo '<td>$ ' . $item->retailprice . ' CAD </td>';
                         echo '<td>$ ' . $item->cartitemprice . ' CAD</td>';
                     }
