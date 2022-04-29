@@ -48,18 +48,20 @@ class Order extends Controller
     /*
      * view details of an order
      */
-    public function details($orderID)
+    public function orderDetails($orderID)
     {
-        $data1 = [
-            'orderID' => $orderID,
+        $data = [
+            'orderID' => $orderID
         ];
-        $order = $this->orderModel->getOneOrder($data1);
-        if (!empty($order)) {
+        
+        $items = $this->orderModel->getOneOrderDetails($data);
+        $order = $this->orderModel->getOneOrder($orderID);
+        if (!empty($items) && !empty($order)) {
             $data = [
-                'orders' => $order
+                'items' => $items,
+                'order' => $order
             ];
-            $this->view('User/orderDetails', $data);
+            $this->view('Order/orderDetails', $data);
         }
-        // $this->view('User/orderDetails', $data);        
     }
 }

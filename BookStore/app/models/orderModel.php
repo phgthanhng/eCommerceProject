@@ -71,9 +71,22 @@
         }
 
         /**
+         * get details of a order from the ordertbl
+         */
+        public function getOneOrder($orderID) {
+            $this->db->query(
+                "SELECT * 
+                FROM ordertbl
+                WHERE orderID = :orderID"
+                );
+            $this->db->bind(':orderID', $orderID);
+
+            return $this->db->getResultSet();
+        }
+        /**
          * retrieve a specific order
          */
-        public function getOneOrder($data) {
+        public function getOneOrderDetails($data) {
             $this->db->query("SELECT * 
                 FROM ordertbl JOIN cart
                 ON ordertbl.cartID = cart.cartID
@@ -84,7 +97,7 @@
                 WHERE ordertbl.orderID = :orderID
                 ");
             $this->db->bind(':orderID', $data['orderID']);
-
+            return $this->db->getResultSet();
         }
 
         /*
@@ -149,19 +162,5 @@
                 WHERE ordertbl.userID = user.userID AND orderstatus = 'completed'");
             return $this->db->getResultSet();
         }
-
-        /**
-         * for admin
-         */
-        public function getAllReturnedOrders() {
-            $this->db->query(
-                "SELECT * 
-                FROM ordertbl INNER JOIN user
-                WHERE ordertbl.userID = user.userID AND orderstatus = 'returned'");
-            return $this->db->getResultSet();
-        }
     }
-
-    // to return order
-
 ?>

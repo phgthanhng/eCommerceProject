@@ -68,12 +68,21 @@
                         </div>
                         <div class="_p-add-cart">
                             <div class="_p-qty">
+                                <?php
+                                if ($book->availablequantity > 0) {?>
                                 <span>Add Quantity</span>
                                 <input type="hidden" id="bookId" value="<?php echo $book->bookID; ?>">
-                                <div class="value-button decrease_" id="" value="Decrease Value">-</div>
-                                <input type="text" name="qty" id="number" value="1" onkeypress="onlyNum(this.evt)" />
-                                <div class="value-button increase_" id="" value="Increase Value">+</div>
+                               
+                                    <div class="value-button decrease_" id="" value="Decrease Value">-</div>
+                                    <input type="number" name="qty" id="number" value="1" onkeypress="onlyNum(this.evt)" />
+                                    <div class="value-button increase_" id="" value="Increase Value">+</div>
+
+                                <?php }
+                                else {
+                                    echo '<h3>Out of stock<h3>';
+                                } ?>
                             </div>
+                               
                         </div>
                         <div class="_p-features">
                             <details>
@@ -92,6 +101,7 @@
                         <div class="_p-qty-and-cart">
                             <div class="_p-add-cart">
                                 <?php // if NOT logged in
+                            if ($book->availablequantity > 0) {
                                 if (!isLoggedIn()) {
                                     echo '<a href="' .
                                         URLROOT . '/Login/index">
@@ -115,6 +125,7 @@
                                         </>
                                     <?php     
                                     } 
+                                }
                                 }?>
                                 <input type="hidden" name="pid" value="18" />
                                 <input type="hidden" name="price" value="850" />
@@ -125,10 +136,6 @@
                 </div>
 
             </div>
-
-
-
-
             <!-- ----------review ----------------- -->
             <div class="review_div">
                 <h5 class="review_header">Review</h5>
@@ -172,5 +179,4 @@
 
 </script>
                                         
-
 <?php require APPROOT . '/views/includes/footer.php'; ?>

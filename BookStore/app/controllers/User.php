@@ -22,11 +22,11 @@ class User extends Controller
     {
         $processingOrder = $this->orderModel->getUserIncompletedOrders();
         $completedOrder = $this->orderModel->getUserCompletedOrders();
-        $reviews = $this->reviewModel->getUserReviews();
+        // $reviews = $this->reviewModel->getAllReviews();
         $data = [  
             "processingOrders" => $processingOrder,
             "completedOrders" => $completedOrder,
-            "reviews" => $reviews
+            // "reviews" => $reviews
         ];
         $this->view('User/index', $data);
     }
@@ -74,7 +74,6 @@ class User extends Controller
                 'userID' => $userID
                 // 'pass_verify' => $_POST['verify_password']
             ];
-            // if ($this->validateEditCredentialsData($data)) {
                 if ($this->userModel->editCredentials($data)) {
                     echo 'Please wait we are editing your information!';
                     echo '<meta http-equiv="Refresh" content="2; url=/EcommerceProject/Bookstore/User/index">';
@@ -82,8 +81,5 @@ class User extends Controller
             // }
         }
     }
-
-    
-  
-    }
+}
 // }
