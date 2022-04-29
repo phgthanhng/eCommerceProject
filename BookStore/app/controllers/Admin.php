@@ -169,13 +169,6 @@ class Admin extends Controller
     }
 
     /**
-     * view details of a specific order
-     */
-    public function orderDetails($orderID) {
-
-    }
-
-    /**
      * mark order as shipped
      */
     public function markAsShipped($orderID) {

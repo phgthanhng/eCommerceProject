@@ -80,7 +80,7 @@
                         </td>";
 
                         echo "<td>
-                        <a href='/eCommerceProject/BookStore/Order/details/$order->orderID'>Details</a>
+                        <a href='/eCommerceProject/BookStore/Order/orderDetails/$order->orderID'>Details</a>
                         </td>";
                         echo "<td>
                         <a href='/eCommerceProject/BookStore/Order/reviewOrder/$order->orderID'>Review Order</a>

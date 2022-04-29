@@ -1,5 +1,11 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
 
+<script>
+function addtocart() {
+  alert("Item is added to cart!");
+}
+</script>
+
 <?php $book = $data['book']; ?>
 <section id="services" class="services section-bg">
     <div class="container-fluid">
@@ -105,7 +111,7 @@
                                     // if not admin-> customer only
                                     if (!isAdmin()) {
                                         echo '
-                                                <button class="btn-theme btn btn-success" tabindex="0" onclick="addcartitem()">
+                                                <button onclick="addtocart()" class="btn-theme btn btn-success" tabindex="0">
                                                     <i class="fa fa-shopping-cart"></i> 
                                                         Add to Cart
                                                 </button>';
@@ -135,7 +141,7 @@
                 foreach ($data["reviews"] as $review) {
                     echo "<hr>";
                     echo $review->firstname . ' ' . $review->lastname . ' ' . date(" m/d/Y H:i:s", strtotime($review->reviewdate)) . ' Mark:' . $review->reviewmark . '/5';
-                   
+
                     echo "<br>$review->reviewcontent";
                 }
 
