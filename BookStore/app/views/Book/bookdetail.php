@@ -1,9 +1,4 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
-<script>
-    function wishlistAlert() {
-        alert("Wishlist is added!");
-}
-</script>
 <?php $book = $data['book']; ?>
 <section id="services" class="services section-bg">
     <div class="container-fluid">
@@ -41,12 +36,11 @@
                                             $book->bookID .
                                             '">
 
-                                            <button class="btn-wishlist" tabindex="0" type="button" onclick="wishlistAlert()">
+                                            <button class="btn-wishlist" tabindex="0" type="button">
                                                     <i class="fa fa-heart" style="color:red;">
                                                     Add to Wish List</i>
                                             </button>  
                                             </a>
-
                                         ';
                                     } else {
                                         echo '<p><a href="' .
@@ -180,7 +174,6 @@
             var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
             window.history.pushState({},'', newurl);
         }
-
 </script>
                                         
 <?php require APPROOT . '/views/includes/footer.php'; ?>

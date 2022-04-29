@@ -145,8 +145,6 @@ class Login extends Controller
                 ];
                 $this->view('Login/index',$data);
             }
-      
-
         }
     }
 
