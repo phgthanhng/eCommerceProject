@@ -29,15 +29,45 @@ class Login extends Controller
                 if ($user->userID == 1 || $user->userID == 2 || $user->userID == 3) {
                     $hashed_pass = $user->password;
                     $password = $_POST['password'];
+                    $secret = $user->secret;  // user has a secret that is created ONE TIME
+                    $code = $_POST['code'];
                    
                     // if admin password correct
-                    if ($password == $hashed_pass){
-                        $this->createSession($user);
-                        $data = [
-                            'msg' => "Welcome, $user->username!",
-                        ];
-                        header('Location: /eCommerceProject/BookStore/Admin/index');
-                        $this->view('Admin/index',$data);
+                    if (password_verify($password, $hashed_pass)) {
+                        // check if secret is not null
+                        if ($user->secret != null) {
+                            // and code is not empty
+                            if (!empty($code)) {
+                                // if secret and code matches
+                                if (check($secret, $code)) {
+                                    $this->createSession($user);
+                                    $data = [
+                                        'msg' => "Welcome, $user->username!",
+                                    ];
+                                    header('Location: /eCommerceProject/BookStore/Admin/index');
+                                    $this->view('Admin/index',$data);
+                                }
+                                // if secret and code does not match
+                                else{
+                                    $data = [
+                                        'msg' => "2FA Code incorect/expired for $user->username",
+                                    ];
+                                    $this->view('Login/index',$data); 
+                                }
+                            }
+                            // and code is not empty
+                            else {
+                                 $data = [
+                                        'msg' => "2FA Code incorect/expired for $user->username",
+                                    ];
+                                $this->view('Login/index',$data); 
+                            }
+                        }
+                        // if admin doest not have a secret yet then throw admin to 2FA
+                        else {
+                            $this->createSession($user);
+                            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                        }
                     }
                     
                     // if admin password incorrect
