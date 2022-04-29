@@ -22,11 +22,11 @@ class User extends Controller
     {
         $processingOrder = $this->orderModel->getUserIncompletedOrders();
         $completedOrder = $this->orderModel->getUserCompletedOrders();
-        $reviews = $this->reviewModel->getAllReviews();
+        // $reviews = $this->reviewModel->getAllReviews();
         $data = [  
             "processingOrders" => $processingOrder,
             "completedOrders" => $completedOrder,
-            "reviews" => $reviews
+            // "reviews" => $reviews
         ];
         $this->view('User/index', $data);
     }

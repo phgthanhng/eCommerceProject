@@ -70,6 +70,9 @@
             return $this->db->getResultSet();
         }
 
+        /**
+         * get details of a order from the ordertbl
+         */
         public function getOneOrder($orderID) {
             $this->db->query(
                 "SELECT * 
