@@ -70,7 +70,7 @@
                         </div>
                         <div class="col-4">
                             <label class="form-label" for="postalcode">Postal Code </label>
-                            <input type="text" pattern="/^[ABCEGHJ-NPRSTVXY][0-9][ABCEGHJ-NPRSTV-Z] [0-9][ABCEGHJ-NPRSTV-Z][0-9]$/" id="postalcode" name="postalcode" class="form-control">
+                            <input type="text" id="postalcode" name="postalcode" class="form-control">
                         </div>
                     </div>
                     <hr>
@@ -95,11 +95,11 @@
                         </div>
                         <div class="col-3">
                             <label class="form-label" for="expiration">Expiration </label>
-                            <input type="text" name="expiration" pattern="/^(0\d|1[0-2])\/\d{2}$/" id="expiration" class="form-control" required>
+                            <input type="text" name="expiration" id="expiration" class="form-control" required>
                         </div>
                         <div class="col-3">
                             <label class="form-label" for="cvv">CVV </label>
-                            <input type="password" name="cvv" id="cvv"  pattern="[0-1][0-9]-[0-9][0-9]" class="form-control" required min="3" max="3">
+                            <input type="password" name="cvv" id="cvv" class="form-control" required min="3" max="3">
                         </div>
                     </div>
                     <hr>     

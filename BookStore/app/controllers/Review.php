@@ -13,6 +13,12 @@ class Review extends Controller
     {
     }
 
+    public function addReview($bookID){
+        
+
+    }
+    
+
 
   
 }

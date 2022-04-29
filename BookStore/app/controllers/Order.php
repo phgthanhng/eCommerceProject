@@ -7,6 +7,7 @@ class Order extends Controller
         $this->orderModel = $this->model('orderModel');
         $this->cartModel = $this->model('cartModel');
         $this->bookModel = $this->model('bookModel');
+        $this->reviewModel = $this->model('reviewModel');
     }
 
     public function index()
@@ -53,7 +54,7 @@ class Order extends Controller
         $data = [
             'orderID' => $orderID
         ];
-        
+
         $items = $this->orderModel->getOneOrderDetails($data);
         $order = $this->orderModel->getOneOrder($orderID);
         if (!empty($items) && !empty($order)) {
@@ -63,5 +64,28 @@ class Order extends Controller
             ];
             $this->view('Order/orderDetails', $data);
         }
+    }
+
+
+
+    public function addReview($bookID)
+    {
+
+        if (isset($_POST['reviewSubmit'])) {
+            $reviewmark = trim($_POST['review_mark']);
+            echo $reviewmark;
+            echo trim($_POST['reviewTextArea']);
+
+            $data = [
+
+                "bookID" => $bookID,
+                "reviewcontent" => trim($_POST['reviewTextArea']),
+                "reviewmark" => $reviewmark
+
+            ];
+            $this->reviewModel->createReview($data); // add review to the database
+        }
+        echo "success";
+        $this->view('Order/addReview');
     }
 }

@@ -17,6 +17,7 @@
                     <th scope="col"></th>
                     <th scope="col">Unit Price</th>
                     <th scope="col">Sub total</th>
+                    <th colspan="3" style="text-align: center;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,6 +42,9 @@
                      echo '<td> X </td>';
                         echo '<td>$ ' . $item->retailprice . ' CAD </td>';
                         echo '<td>$ ' . $item->cartitemprice . ' CAD</td>';
+                        echo "<td>
+                        <a href='/eCommerceProject/BookStore/Order/addReview/$item->bookID'>Add Review</a>
+                        </td>";
                     }
 
                     echo '</tbody>';

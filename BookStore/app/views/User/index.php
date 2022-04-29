@@ -80,10 +80,10 @@
                         </td>";
 
                         echo "<td>
-                        <a href='/eCommerceProject/BookStore/Order/orderDetails/$order->orderID'>Details</a>
+                        <a href='/eCommerceProject/BookStore/Order/orderDetails/$order->orderID'>Order Details</a>
                         </td>";
                         echo "<td>
-                        <a href='/eCommerceProject/BookStore/Order/reviewOrder/$order->orderID'>Review Order</a>
+                        <a href='/eCommerceProject/BookStore/Order/orderDetails/$order->orderID'>Review Order</a>
                         </td>";
                         echo "</tr>";
                       } 
@@ -100,27 +100,38 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Column 1</th>
-                        <th>Column 1</th>
-                        <th>Column 2</th>
+                    <th>Book title</th>
+                    <th>Review</th>
+                    <th>Review Mark</th>
+                    <th>Data</th>
+                    <th colspan="3" style="text-align: center;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 1</td>
-                        <td>Cell 2</td>
-                    </tr>
-                    <tr>
-                        <td>Cell 1</td>
-                        <td>Cell 1</td>
-                        <td>Cell 2</td>
-                    </tr>
-                    <tr>
-                        <td>Cell 3</td>
-                        <td>Cell 3</td>
-                        <td>Cell 4</td>
-                    </tr>
+                <?php
+                    if (!empty($data["reviews"])) {
+                      foreach($data["reviews"] as $review) {
+                        echo "<tr>";
+                        echo "<td>
+                       $review->bookname
+                        </td>";
+
+                        echo "<td>
+                        $review->reviewcontent
+                        </td>";
+                        
+                        echo "<td>
+                        $review->reviewmark
+                        </td>";
+
+                        echo "<td>
+                        $review->reviewdate
+                        </td>";
+                        
+                        echo "</tr>";
+                      } 
+                    }
+                  ?>
                 </tbody>
             </table>
         </div>

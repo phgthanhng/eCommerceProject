@@ -10,19 +10,18 @@ class reviewModel
 
     public function createReview($data)
     {
+        $userID = $_SESSION['user_id'];
 
         $this->db->query(
             "INSERT INTO review (bookID , userID, reviewdate, reviewcontent, reviewmark) 
-                values (:bookID, :userID, now(), reviewcontent, reviewmark)"
+                values (:bookID, $userID, now(), :reviewcontent, :reviewmark)"
         );
         $this->db->bind(':bookID', $data['bookID']);
-        $this->db->bind(':userID', $_SESSION['user_id']);
-
         $this->db->bind(':reviewcontent', $data['reviewcontent']);
         $this->db->bind(':reviewmark', $data['reviewmark']);
 
 
-        return $this->db->execute(); // returns true if success and false if failure
+        return $this->db->execute(); 
 
     }
 
