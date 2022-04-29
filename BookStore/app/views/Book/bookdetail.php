@@ -83,17 +83,16 @@
                                
                         </div>
                         <div class="_p-features">
-                            <details>
-                                <summary>
-                                    <p class="p_detail"> Detail:</p>
-                                    <p class="p_detail"> ISBN: <?php echo $book->isbn; ?> </p>
+                            <p class="p_detail">BOOK INFORMATION:</p>
+                          
+                                    <p class="p_detail" style="list-style: none;"> ISBN: <?php echo $book->isbn; ?> </p>
                                     <p class="p_detail"> Publisher: <?php echo $book->publisher; ?> </p>
-                                </summary>
-                                <span class=>
-                                    <p class="p_detail"> ABOUT:</p>
-                                    <p class="about"> <?php print $book->description; ?> </p>
-                                </span>
-                            </details>
+                                    <details>
+                                    <summary>About</summary>
+                                    <p class="p_detail">
+                                        <p class="about"> <?php print $book->description; ?> </p>
+                                    </p>
+                                    </details>
                         </div>
                         <ul class="spe_ul"></ul>
                         <div class="_p-qty-and-cart">

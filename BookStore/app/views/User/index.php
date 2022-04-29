@@ -10,13 +10,10 @@
             <table class="table">
                 <thead>
                     <tr>
-                        
                     <th>Order placed</th>
                     <th>Total Price</th>
                     <th>Order Status</th>
                     <th colspan="3" style="text-align: center;">Action</th>
-
-
                     </tr>
                 </thead>
                 <tbody>

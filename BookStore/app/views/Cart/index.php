@@ -41,8 +41,8 @@
         echo '</table>';
         
         echo '<div class="d-flex justify-content-end">
-                <p>PRICE
-                <br>GST (5%): $ '.$data['gst'].'<br>
+                <h3><strong>ORDER PRICE: </strong></h3>
+                <p>GST (5%): $ '.$data['gst'].'<br>
                 QST (9.975%): $ '.$data['qst'].'<br>
                 Sales Taxes (14.975%): $ '.$data['salesTaxes'].'<br>
                 Total Price: $ '.$data['finalPrice'].' CAD
