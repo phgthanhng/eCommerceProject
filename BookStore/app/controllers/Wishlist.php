@@ -19,11 +19,6 @@ class Wishlist extends Controller
      */
     public function getAllWishlistItems()
     {
-        // use $_SESSION['user_id] so you dont need to pass it as parameter when retrieving 
-        // $this->wishlistModel->getAllWishlistItem();
-        // 
-
-        // call the getUserWishlist to create wishlist and a session 
         $wishlist = $this->getUserWishlist();
 
         if (!empty($this->wishlistModel->getAllWishlistItems($wishlist->wishlistID))) { //model
@@ -80,9 +75,13 @@ class Wishlist extends Controller
             // Step 2: Add item to wishlistItems table (associate book item with $userID)
             // Create wishlistitem first
             $this->createWishlistItem($wishlist->wishlistID, $bookID);
-            header('Location: /eCommerceProject/BookStore/Book/bookdetail/' . $bookID);
+            $msg = "Book added in the wishlist";
+            $color = "success";
+            header("Location: /eCommerceProject/BookStore/Book/bookdetail/$bookID?variable=$msg&newVariable=$color");
         } else {
-            header('Location: /eCommerceProject/BookStore/Book/bookdetail/' . $bookID);
+            $msg = "Book already in the wishlist";
+            $color = "warning";
+            header("Location: /eCommerceProject/BookStore/Book/bookdetail/$bookID?variable=$msg&newVariable=$color");
         }
     }
 

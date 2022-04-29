@@ -66,7 +66,9 @@ class Login extends Controller
                         // if admin doest not have a secret yet then throw admin to 2FA
                         else {
                             $this->createSession($user);
-                            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                            // echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                            $this->view('Admin/index'); 
+
                         }
                     }
                     
@@ -120,9 +122,11 @@ class Login extends Controller
                                 $this->view('Login/index',$data); 
                             }
                         }
+                        // user didnt set up 2FA 
                         else {
                             $this->createSession($user);
-                            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                            // echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                            $this->view('User/index'); 
                         }
                     }
                     // if user password incorrect
@@ -141,8 +145,6 @@ class Login extends Controller
                 ];
                 $this->view('Login/index',$data);
             }
-      
-
         }
     }
 
@@ -176,11 +178,8 @@ class Login extends Controller
                     if ($this->loginModel->createUser($data)) { 
                         $newUser = $this->loginModel->getUser($data['username']);
                         $this->cartModel->createCart($newUser->userID); //create cart for user
-                        
                         echo 'Please wait creating the account for ' . trim($_POST['username']);
-                        $this->createSession($newUser);
-                        echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
-                       
+                        echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
                     }
                 }
             // if user exists in the system
@@ -200,6 +199,8 @@ class Login extends Controller
         if ($data['pass'] != $data['pass_verify']) {
             $data['password_match_error'] = 'Password does not match';
         } 
+
+
         if (empty($data['password_match_error'])) {
             return true;
         }
@@ -207,6 +208,28 @@ class Login extends Controller
             $this->view('Login/signup', $data);
         }
     }
+    
+    // planning to improve validation for signup
+    // public function validateSignUpData($data)
+    // {
+    //     if (empty($data['username'])) {
+    //         $data['username_error'] = 'Username can not be empty';
+    //     }
+    //     if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
+    //         $data['email_error'] = 'Please check your email and try again';
+    //     }
+    //     if (strlen($data['pass']) < 6) {
+    //         $data['password_len_error'] = 'Password can not be less than 6 characters';
+    //     }
+    //     if ($data['pass'] != $data['pass_verify']) {
+    //         $data['password_match_error'] = 'Password does not match';
+    //     }
+    //     if (empty($data['username_error']) && empty($data['password_error']) && empty($data['password_len_error']) && empty($data['password_match_error'])) {
+    //         return true;
+    //     } else {
+    //         $this->view('Login/create', $data);
+    //     }
+    // }
 
     /*
      * Create a session of a specific user

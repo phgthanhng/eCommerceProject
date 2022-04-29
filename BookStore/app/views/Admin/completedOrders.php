@@ -6,6 +6,7 @@
 
 <div class="table-responsive" style="transform: scale(1);transform-origin: top;opacity: 0.88;filter: contrast(92%);margin-top: 60px;">
         <table class="table">
+          <h1>Completed Orders</h1>
             <thead>
                 <tr>
                     <th style="background: #ffffff;border-color: #000000;">Username</th>
@@ -33,12 +34,12 @@
                     echo "<td style='background: #ffffff;'>
                     $order->orderstatus</a>
                     </td>";
-                    echo "<td style='background: #ffffff;'>
+                    echo "<td style='background: #ffffff;'>$ 
                     $order->totalprice</a>
                     </td>";
 
                     echo "<td style='background: #ffffff;'>
-                    <a href='/eCommerceProject/BookStore/Admin/orderDetails/$order->orderID'>Details</a>
+                    <a href='/eCommerceProject/BookStore/Order/orderDetails/$order->orderID'>Details</a>
                     </td>";
                     echo "<td style='background: #ffffff;'>
                     <a href='/eCommerceProject/BookStore/Admin/deleteCompletedOrder/$order->orderID'>Delete</a>

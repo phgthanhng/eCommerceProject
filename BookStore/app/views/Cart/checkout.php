@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
-
-    <div class="container col-8 my-5 br-2 rounded" style="background: #E8F0F9">
+       <h4 class="text-center mt-4 mb-2" style="color: red;">We do not do returns/refunds once a product is shipped</h4>
+    
+    <div class="container col-8 my-3 br-2 rounded" style="background: #E8F0F9">
         <div class="row g-3">
             <div class="col-4 order-md-last">
                 <h4 class="d-flex justify-content-between align-item-center">

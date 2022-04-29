@@ -6,6 +6,7 @@
 
 <div class="table-responsive" style="transform: scale(1);transform-origin: top;opacity: 0.88;filter: contrast(92%);margin-top: 60px;">
         <table class="table">
+            <h1>Manage Orders</h1>
             <thead>
                 <tr>
                     <th style="background: #ffffff;border-color: #000000;">Username</th>

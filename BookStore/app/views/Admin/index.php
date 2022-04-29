@@ -17,9 +17,6 @@
         <a href="<?php echo URLROOT; ?>/Admin/manageOrders" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
         <button class="btn btn-primary" type="button" style="background: #ffffff;margin: 0px;width: 192px; font-weight:bolder; color:#3e6259;"><p style="margin:auto; font-weight:900; color:#3e6259;">Manage orders</p></button>
         </a>
-        <a href="<?php echo URLROOT; ?>/Admin/returns" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
-        <button class="btn btn-primary" type="button" style="background: #ffffff;margin: 0px;width: 192px; font-weight:bolder; color:#3e6259;"><p style="margin:auto; font-weight:900; color:#3e6259;">return orders</p></button>
-        </a>
         <a href="<?php echo URLROOT; ?>/Admin/completedOrders" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
         <button class="btn btn-primary" type="button" style="background: #ffffff;margin: 0px;width: 192px; font-weight:bolder; color:#3e6259;"><p style="margin:auto; font-weight:900; color:#3e6259;">completed orders</p></button>
         </a>

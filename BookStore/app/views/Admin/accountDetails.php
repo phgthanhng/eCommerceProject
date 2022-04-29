@@ -6,5 +6,4 @@
         margin: 0px;
         padding: 0px;">
 </div>
-
 <?php require APPROOT . '/views/includes/footer.php';  ?>
