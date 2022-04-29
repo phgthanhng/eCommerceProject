@@ -7,7 +7,7 @@
             </div>
 
             <div class="email-login" style="background-color:#ffffff;">
-            <input type="email" name="email" id="email" class="email-imput form-control" style="margin-top:10px;" required="" placeholder="Email">
+            <input type="email" name="email" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="email-imput form-control" style="margin-top:10px;" required="" placeholder="Email">
             <input type="text" name="username" id="username" class="email-imput form-control" style="margin-top:10px;" required="" placeholder="Username" minlength="4">
             <input type="password" name="password" id="password" class="password-input form-control" style="margin-top:10px;" required="" placeholder="Password" minlength="6">
             <input type="password" name="verify_password" id="verify_password" class="password-input form-control <?php echo (!empty($data['password_match_error'])) ? 'is-invalid' : ''; ?>"  style="margin-top:10px;" required="" placeholder="Re-enter password" minlength="6">

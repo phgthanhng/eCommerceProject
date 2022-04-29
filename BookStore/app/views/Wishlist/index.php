@@ -9,9 +9,9 @@
                 <tr>
                 <th scope="col">Image</th>
                 <th scope="col">Book Name</th>
-                <th scope="col"></th>
                 <th scope="col">Price</th>
                 <th scope="col">Add to Cart</th>
+                <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>';
@@ -27,13 +27,7 @@
                     ' . $item->bookname . '
                     </a>
                     </td>';
-                echo '<td>
-                        
-                        <input type="hidden" id="wishlist_item_id" value="' . $item->wishlist_itemID . '">
-                        <a href="' . URLROOT . '/Wishlist/removeWishlistItem/' . $item->wishlist_itemID . '" style="text-decoration:none;">
-                            <i class="fa fa-window-close fa-lg"  aria-hidden="true"></i>
-                        </a>
-                    </td>';
+             
                 echo '<td>$ ' . $item->retailprice . ' CAD </td>';
                 if ($item->availablequantity > 0) {
                     echo '<td>
@@ -45,6 +39,12 @@
                 else {
                     echo '<td>CURRENTLY OUT OF STOCK</td>';
                 }
+                echo '<td>
+                        <a href="' . URLROOT . '/Wishlist/removeWishlistItem/' . $item->wishlist_itemID . '" style="text-decoration:none;">
+                            <i class="fa fa-window-close fa-lg"  aria-hidden="true"></i>
+                        </a>
+                        <input type="hidden" id="wishlist_item_id" value="' . $item->wishlist_itemID . '">
+                    </td>';
             }
 
             echo '</tbody>';

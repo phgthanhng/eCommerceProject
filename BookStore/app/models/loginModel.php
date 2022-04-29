@@ -37,5 +37,17 @@
 
             return ($this->db->execute());
         }
+
+        /*
+         * Updates a user secret
+         */
+        public function updateUser($data){
+            $this->db->query("UPDATE user SET secret = :secret WHERE userID = :userid");
+            $this->db->bind(':userid', $_SESSION['user_id']);
+            $this->db->bind(':secret', $data['secret']);
+
+           return $this->db->execute();
+        }
+
     }
 ?>

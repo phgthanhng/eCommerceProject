@@ -15,17 +15,21 @@ class Login extends Controller
      */
     public function index()
     {
+        // if button is clicked
         if(!isset($_POST['login'])){
             $this->view('Login/index');
         }
+
         else{
             $user = $this->loginModel->getUser($_POST['username']);
+            
             // user exists
             if($user != null){
-                // if user is admin
+                // ADMIN: if user is admin
                 if ($user->userID == 1 || $user->userID == 2 || $user->userID == 3) {
                     $hashed_pass = $user->password;
                     $password = $_POST['password'];
+                   
                     // if admin password correct
                     if ($password == $hashed_pass){
                         $this->createSession($user);
@@ -35,30 +39,61 @@ class Login extends Controller
                         header('Location: /eCommerceProject/BookStore/Admin/index');
                         $this->view('Admin/index',$data);
                     }
+                    
                     // if admin password incorrect
                     else {
                         $data = [
                             'msg' => "Password incorrect! for $user->username",
                         ];
                         $this->view('Login/index',$data);
-                    }
+                    }   
                 }
-                // if not admin
+                // USER: if not admin
                 else {
                     $hashed_pass = $user->password;
                     $password = $_POST['password'];
-                    
+                    $secret = $user->secret;  // user has a secret that is created ONE TIME
+                    $code = $_POST['code']; 
                     // if user password correct
                     if (password_verify($password,$hashed_pass)){
-                        $this->createSession($user);
-                        $data = [
-                            'msg' => "Welcome, $user->username!",
-                        ];
-                        if (!$this->cartModel->getUserCart()) {
-                            $this->cartModel->createCart($_SESSION['user_id']); //create cart for user
+
+                        // check if secret is not null
+                        if ($user->secret != null) {
+                            // and code is not empty
+                            if (!empty($code)) {
+                                // if secret and code matches
+                                if (check($secret, $code)) {
+                                    $this->createSession($user);
+                                    $data = [
+                                        'msg' => "Welcome, $user->username!",
+                                    ];
+                                    // if no cart for user when logged in
+                                    if (!$this->cartModel->getUserCart()) {
+                                        $this->cartModel->createCart($_SESSION['user_id']); //create cart for user
+                                    }
+                                    // header('Location: /eCommerceProject/BookStore/User/index');
+                                    $this->view('User/index',$data);
+                                }
+                                
+                                // if secret and code does not match
+                                else{
+                                    $data = [
+                                        'msg' => "2FA Code incorect/expired for $user->username",
+                                    ];
+                                    $this->view('Login/index',$data); 
+                                }
+                            }
+                            else {
+                                 $data = [
+                                        'msg' => "2FA Code incorect/expired for $user->username",
+                                    ];
+                                $this->view('Login/index',$data); 
+                            }
                         }
-                        // header('Location: /eCommerceProject/BookStore/User/index');
-                        $this->view('User/index',$data);
+                        else {
+                            $this->createSession($user);
+                            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                        }
                     }
                     // if user password incorrect
                     else {
@@ -76,6 +111,8 @@ class Login extends Controller
                 ];
                 $this->view('Login/index',$data);
             }
+      
+
         }
     }
 
@@ -111,7 +148,7 @@ class Login extends Controller
                         $this->cartModel->createCart($newUser->userID); //create cart for user
                         
                         echo 'Please wait creating the account for ' . trim($_POST['username']);
-                        echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Home/index">';
+                       
                     }
                 }
             // if user exists in the system

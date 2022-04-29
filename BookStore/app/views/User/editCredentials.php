@@ -15,7 +15,6 @@ function validateForm() {
             <div class="login-box-header">
                 <h4 style="color:rgb(139,139,139);margin-bottom:0px;font-weight:400;font-size:27px;">Edit Password</h4>
             </div>
-
             <div class="email-login" style="background-color:#ffffff;">
                 <input type="text" name="username" id="username" class="email-imput form-control" style="margin-top:10px;" required="" placeholder="Username" minlength="4" readonly value="<?php echo $data->username?>">
                 <input type="password" name="password" id="password" class="password-input form-control" style="margin-top:10px;" required="" placeholder="New Password" minlength="6">

@@ -1,4 +1,4 @@
-<?php require APPROOT . '/views/includes/header.php';  ?>
+<?php require APPROOT . '/views/includes/header.php'; ?>
 <!-- <form class="px-4 py-3" method="post" action=""> -->
 <div class="container" style="margin-top: 50px; margin-bottom:50px; min-height: 50vh;">
     <div class="d-flex flex-column justify-content-center" id="login-box" style="margin-top: 100px;">
@@ -10,7 +10,10 @@
             <div class="email-login" style="background-color:#ffffff;">
                 <input class="email-imput form-control" id="username" name="username" style="margin-top:10px;" required="" placeholder="Username">
                 <input type="password" id="password" name="password" class="password-input form-control" style="margin-top:10px;" required="" placeholder="Password" minlength="6">
+                <input type="numeber" style="margin-top:10px;" class="form-control" id="code" name="code" placeholder="Code">
+
             </div>
+            
             <div class="submit-row" style="margin-bottom:8px;padding-top:0px;">
                 <button name="login" type="submit" class="btn btn-primary d-block box-shadow w-100" id="submit-id-submit">Login</button>
                 <div class="d-flex justify-content-between">
@@ -18,14 +21,11 @@
                     </div>
                 </div>
             </div>
-            <?php
-
-            if (!empty($data['msg'])) {
+            <?php if (!empty($data['msg'])) {
                 echo '<div class="alert alert-danger" role="alert">' .
-                    $data['msg'] . '
-                             </div>';
-            }
-            ?>
+                    $data['msg'] .
+                    '</div>';
+            } ?>
             <div id="login-box-footer" style="padding:10px 20px;padding-bottom:23px;padding-top:18px;">
                 <p style="margin-bottom:0px;">Don't you have an account?<a id="register-link" href="<?php echo URLROOT; ?>/Login/signup">Sign Up!</a></p>
             </div>
@@ -33,4 +33,4 @@
     </div>
 </div>
 
-<?php require APPROOT . '/views/includes/footer.php';  ?>
+<?php require APPROOT . '/views/includes/footer.php'; ?>
