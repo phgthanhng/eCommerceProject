@@ -1,5 +1,9 @@
 <?php require APPROOT . '/views/includes/header.php'; ?>
-
+<script>
+    function wishlistAlert() {
+        alert("Wishlist is added!");
+}
+</script>
 <?php $book = $data['book']; ?>
 <section id="services" class="services section-bg">
     <div class="container-fluid">
@@ -37,7 +41,7 @@
                                             $book->bookID .
                                             '">
 
-                                            <button class="btn-wishlist" tabindex="0" type="button">
+                                            <button class="btn-wishlist" tabindex="0" type="button" onclick="wishlistAlert()">
                                                     <i class="fa fa-heart" style="color:red;">
                                                     Add to Wish List</i>
                                             </button>  
