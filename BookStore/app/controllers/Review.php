@@ -11,7 +11,6 @@ class Review extends Controller
 
     public function index()
     {
-        
     }
 
 

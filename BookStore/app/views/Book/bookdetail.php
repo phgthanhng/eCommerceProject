@@ -108,9 +108,14 @@
                                                 <button class="btn-theme btn btn-success" tabindex="0" onclick="addcartitem()">
                                                     <i class="fa fa-shopping-cart"></i> 
                                                         Add to Cart
-                                                </button>';
-                                    }
-                                } ?>
+                                                </button>';?>
+                                        <span id="message">
+                                        
+                                        </span>
+                                        </>
+                                    <?php     
+                                    } 
+                                }?>
                                 <input type="hidden" name="pid" value="18" />
                                 <input type="hidden" name="price" value="850" />
                                 <input type="hidden" name="url" value="" />
@@ -150,5 +155,22 @@
         </div>
 
 </section>
+<script>
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const a = urlParams.get('variable');
+        const b = urlParams.get('newVariable');
+        if (a) {
+            document.getElementById('message').innerHTML = 
+                `<div class='alert-dismissible fade show alert alert-${b}' role='alert'>
+                  ${a}
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+             </div>`
+            var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname;
+            window.history.pushState({},'', newurl);
+        }
+
+</script>
+                                        
 
 <?php require APPROOT . '/views/includes/footer.php'; ?>

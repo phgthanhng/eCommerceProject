@@ -22,7 +22,7 @@ class User extends Controller
     {
         $processingOrder = $this->orderModel->getUserIncompletedOrders();
         $completedOrder = $this->orderModel->getUserCompletedOrders();
-        $reviews = $this->reviewModel->getAllReviews();
+        $reviews = $this->reviewModel->getUserReviews();
         $data = [  
             "processingOrders" => $processingOrder,
             "completedOrders" => $completedOrder,

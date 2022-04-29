@@ -4,7 +4,7 @@ function validateForm() {
   let password = document.forms["edidtCredentials"]["password"].value;
   let verify_password = document.forms["edidtCredentials"]["verify_password"].value;
   if (password != verify_password) {
-      alert("Passwords don't match!");
+        alert("Passwords don't match!");
     return false;
   }
 }
@@ -13,7 +13,7 @@ function validateForm() {
     <div class="container">
         <div class="d-flex flex-column justify-content-center" id="login-box">
             <div class="login-box-header">
-                <h4 style="color:rgb(139,139,139);margin-bottom:0px;font-weight:400;font-size:27px;">Edit editCredentials</h4>
+                <h4 style="color:rgb(139,139,139);margin-bottom:0px;font-weight:400;font-size:27px;">Edit Password</h4>
             </div>
 
             <div class="email-login" style="background-color:#ffffff;">

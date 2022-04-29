@@ -9,6 +9,7 @@
     </title>
     <!-- added this line because it will not show the icons in firefox -->
     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+    
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600&amp;display=swap" />
     <link rel="stylesheet" href="<?php echo URLROOT; ?>/fonts/font-awesome.min.css" />

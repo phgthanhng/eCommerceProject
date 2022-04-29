@@ -19,7 +19,6 @@ class Order extends Controller
     public function cancel($orderID)
     {
 
-
         // Update the quantity again in the Database
         // Step 1: Retrieve order first
         $order = $this->orderModel->getSingleOrder($orderID);
@@ -36,7 +35,6 @@ class Order extends Controller
                 'updatedQuantity' => $availableQty + $returnQty,
                 'bookID' => $item->bookID
             ];
-
             // update the database
             $this->bookModel->updateBookQuantity($data);
         }
@@ -47,7 +45,7 @@ class Order extends Controller
         }
     }
 
-    /**
+    /*
      * view details of an order
      */
     public function details($orderID)

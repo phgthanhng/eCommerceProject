@@ -35,7 +35,6 @@ class Book extends Controller
             'book' => $book,
             "reviews" => $reviews,
             "currentUser" => $userInfo
-           
         ];
 
         $this->view('Book/bookdetail', $data);

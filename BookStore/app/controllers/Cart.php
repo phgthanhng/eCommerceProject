@@ -45,55 +45,77 @@ class Cart extends Controller
         $data = [
             'cartID' => $cart->cartID,
             'bookID' => $bookID,
-            // 'msg' => '',
         ];
+
         $isItemInCart = $cartItem = $this->cartModel->isExistInCartItem($data);
-        if (!$isItemInCart) {
-            // Step 2: Add item to CartItems table (associate book item with $userID a)
-            // Create cartitem first
-            $this->createCartItem($cart->cartID, $quantity, $bookID);
-            header(
-                'Location: /eCommerceProject/BookStore/Book/bookdetail/' . $bookID);
-            // $data = [
-            //     'msg' => 'Book Added',
-            // ];
-            // $this->view('Book/bookdetail', $data);
-        } else {
-            $newQuantity = $cartItem->quantity + $quantity;
-            $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID); // trying to add the new update number
-            // $data = [
-            //     'msg' => 'Book Quantity in Cart updated',
-            // ];
-            // $this->view('Book/bookdetail', $data);
-            header('Location: /eCommerceProject/BookStore/Book/bookdetail/' .$bookID
-            );
-        }
-    }
-
-    /*
-     * Create cartItem
-     */
-    public function createCartItem($cartID, $quantity, $bookID)
-    {
+        $bookQuantity = $this->bookModel->getSingleBook($bookID)->availablequantity; // quantity in database
         $subtotal = $this->calcSubtotal($quantity, $bookID);
-        $bookQuantity = $this->bookModel->getSingleBook($bookID)
-            ->availablequantity;
-
-        if ($quantity <= $bookQuantity) {
-            $data = [
-                'cartID' => $cartID,
+        if (!$isItemInCart) {
+            // check if theres sufficient available quantity
+            if ($quantity <= $bookQuantity) {
+                $data = [
+                'cartID' => $cart->cartID,
                 'bookID' => $bookID,
                 'quantity' => $quantity,
                 'subtotalPrice' => $subtotal,
             ];
+                // create a cart item 
+                $this->cartModel->createCartItem($data); 
 
-            $this->cartModel->createCartItem($data); // pass the bookID
+                // add successful message to be printed in the view
+                $msg = "Book Added ";
+                $color = "success";
+        
+            }
+            // no sufficient quantity
+            else {
+                $msg = "Low stock! Adding to Cart failed";   
+                $color = "danger";
+            }
+        
+        // item not in cart yet
         } else {
-            $data = [
-                'msg' => 'Low stock',
-            ];
+            // check if quantity is available
+            if ($quantity <= $bookQuantity) {
+                $newQuantity = $cartItem->quantity + $quantity;
+                $this->editCartItemQuantity($newQuantity, $cartItem->cartitemID); // trying to add the new update number
+
+                // add successful message to be printed in the view
+                $msg = "Book Quantity Updated ";   
+                $color = "sucess";
+            }
+            // cannot update the cart because of low stock
+            else {
+                $msg = "Low stock! adding to cart failed";   
+                $color = "danger";
+            }
         }
+        header("Location: /eCommerceProject/BookStore/Book/bookdetail/$bookID?variable=$msg&newVariable=$color");
     }
+
+    // /*
+    //  * Create cartItem
+    //  */
+    // public function createCartItem($cartID, $quantity, $bookID)
+    // {
+    //     $subtotal = $this->calcSubtotal($quantity, $bookID);
+    //     $bookQuantity = $this->bookModel->getSingleBook($bookID)->availablequantity;
+
+    //     if ($quantity <= $bookQuantity) {
+    //         $data = [
+    //             'cartID' => $cartID,
+    //             'bookID' => $bookID,
+    //             'quantity' => $quantity,
+    //             'subtotalPrice' => $subtotal,
+    //         ];
+
+    //         $this->cartModel->createCartItem($data); // pass the bookID     
+    //     } else {
+          
+    
+    //     }
+    //     header("Location: /eCommerceProject/BookStore/Book/bookdetail/$bookID?variable=$msg&newVariable=$color");
+    // }
 
     /*
      * Calculates subtotal of an item
