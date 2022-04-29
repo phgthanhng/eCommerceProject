@@ -38,7 +38,7 @@
                     </td>";
 
                     echo "<td style='background: #ffffff;'>
-                    <a href='/eCommerceProject/BookStore/Admin/orderDetails/$order->orderID'>Details</a>
+                    <a href='/eCommerceProject/BookStore/Order/orderDetails/$order->orderID'>Details</a>
                     </td>";
                     echo "<td style='background: #ffffff;'>
                     <a href='/eCommerceProject/BookStore/Admin/markAsShipped/$order->orderID'>Mark As Shipped</a>
