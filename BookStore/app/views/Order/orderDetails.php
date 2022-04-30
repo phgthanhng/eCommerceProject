@@ -3,12 +3,11 @@
     <div>
         <?php
         if (!empty($data["order"])) {
-            foreach ($data["order"] as $order) {
-                echo '<h2 style="margin:30px">Order Status: ' . $order->orderstatus . ' </h2>';
+                echo '<h2 style="margin:30px">Order Status: ' . $data["order"]->orderstatus . ' </h2>';
             }
-        }
+        
         ?>
-        <table class="table" style="margin: 30px;">
+        <table class="table" style="margin: 50px;">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Image</th>
@@ -53,10 +52,9 @@
                 ?>
                 <?php
                 if (!empty($data["order"])) {
-                    foreach ($data["order"] as $order) {
-                        echo '<h2 style="position: relative; overflow: hidden;float:right; margin:30px">Total Price: ' . $order->totalprice . ' </h2>';
+                        echo '<h2 style="position: relative; overflow: hidden;float:right; margin:30px">Total Price: ' . $data["order"]->totalprice . ' </h2>';
                     }
-                }
+                
                 ?>
     </div>
 
