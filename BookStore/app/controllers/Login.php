@@ -103,27 +103,27 @@ class Login extends Controller
                                     if (!$this->cartModel->getUserCart()) {
                                         $this->cartModel->createCart($_SESSION['user_id']); //create cart for user
                                     }
-                                    // header('Location: /eCommerceProject/BookStore/User/index');
-                                    $this->view('User/index',$data);
+                                    $this->view('User/index', $data);
                                 }
                                 
                                 // if secret and code does not match
-                                else{
+                                else {
                                     $data = [
                                         'msg' => "2FA Code incorect/expired for $user->username",
                                     ];
                                     $this->view('Login/index',$data); 
                                 }
                             }
+                            // empty code
                             else {
                                  $data = [
                                         'msg' => "2FA Code incorect/expired for $user->username",
                                     ];
-                                $this->view('Login/index',$data); 
+                                $this->view('User/index',$data);
                             }
                         }
                         // user didnt set up 2FA 
-                        else {
+                        else {// user secret is null
                             $this->createSession($user);
                             // echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
                             $this->view('User/index'); 
@@ -134,7 +134,7 @@ class Login extends Controller
                         $data = [
                             'msg' => "Password incorrect! for $user->username",
                         ];
-                        $this->view('Login/index',$data);
+                        $this->view('Login/index', $data);
                     }
                 }
             }
@@ -145,6 +145,16 @@ class Login extends Controller
                 ];
                 $this->view('Login/index',$data);
             }
+        }
+        
+        // Added this line because the user when logging in lands on the Login/index instead of the User/index page
+        if (isLoggedIn()) {
+            if (!isAdmin())
+                echo '<meta http-equiv="Refresh" content="1; url=/eCommerceProject/BookStore/User/index">';
+            else {
+                echo '<meta http-equiv="Refresh" content="1; url=/eCommerceProject/BookStore/Admin/index">';
+            }
+
         }
     }
 
