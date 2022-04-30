@@ -81,7 +81,7 @@
                 );
             $this->db->bind(':orderID', $orderID);
 
-            return $this->db->getResultSet();
+            return $this->db->getSingle();
         }
         /**
          * retrieve a specific order

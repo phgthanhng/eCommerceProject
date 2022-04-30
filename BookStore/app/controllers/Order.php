@@ -15,14 +15,14 @@ class Order extends Controller
     }
 
     /*
-     * function called when users cancel order
+     * Cancels an order
      */
     public function cancel($orderID)
     {
 
         // Update the quantity again in the Database
         // Step 1: Retrieve order first
-        $order = $this->orderModel->getSingleOrder($orderID);
+        $order = $this->orderModel->getOneOrder($orderID);
         // Step 2: Use the CartID to get access to all the cart items
         $cartItems = $this->cartModel->getAllCartItems($order->cartID);
 
@@ -41,13 +41,20 @@ class Order extends Controller
         }
         // delete it after updating the database
         if ($this->orderModel->deleteOrder($orderID)) {
-            echo 'Please wait we are canceling the order for you!';
+            echo '
+            <div style="position: absolute;
+                top: 50%;
+                width: 100%;
+                text-align: center;
+                font-size: 18px;">
+                <h1>Please wait we are canceling the order for you!<h1>
+            </div>';
             echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/User/index">';
         }
     }
 
     /*
-     * view details of an order
+     * View details of an order
      */
     public function orderDetails($orderID)
     {
