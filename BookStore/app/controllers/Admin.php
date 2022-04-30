@@ -16,6 +16,9 @@ class Admin extends Controller
         $this->view('Admin/index');
     }
 
+    /*
+     * Uploads an image 
+     */
     public function imageUpload()
     {
         //default value for the picture
@@ -29,16 +32,14 @@ class Admin extends Controller
             'image/png' => 'png'];
         //validate the file
 
-        if (empty($file['tmp_name'])) {
+        if (empty($file['tmp_name'])) 
             return false;
-        }
-
+        
         $fileData = getimagesize($file['tmp_name']);
 
         if ($fileData != false && in_array($fileData['mime'], array_keys($acceptedTypes))) {
 
             //save the file to its permanent location
-
             $folder = dirname(APPROOT) . '/public/img';
             $filename = uniqid() . '.' . $acceptedTypes[$fileData['mime']];
             move_uploaded_file($file['tmp_name'], "$folder/$filename");
@@ -47,6 +48,9 @@ class Admin extends Controller
 
     }
 
+    /*
+     * Adds a book to the database 
+     */
     public function addBook()
     {
         if (!isset($_POST['addBook'])) {
@@ -73,10 +77,11 @@ class Admin extends Controller
 
     }
 
+    /*
+     * Retrieves all the books and calls the view of the manage products 
+     */
     public function manageProducts()
     {
-
-        // $this->view('Admin/manageProducts');
         $books = $this->bookModel->getAllBooks();
 
         if (!empty($books)) {
@@ -91,14 +96,11 @@ class Admin extends Controller
 
     public function details($bookID)
     {
-
     }
 
-    // public function editBook($bookID) {
-    //     $book = $this->bookMdel->getSingleBook($bookID) ;
-    //     if
-    // }
-
+    /*
+     * Deletes a specific book 
+     */
     public function delete($bookID)
     {
         $data = [
@@ -111,6 +113,9 @@ class Admin extends Controller
 
     }
 
+    /*
+     * Edits a specific book 
+     */
     public function editBook($bookID)
     {
         $book = $this->bookModel->getSingleBook($bookID);
@@ -143,6 +148,9 @@ class Admin extends Controller
         }
     }
 
+    /*
+     * Retrieves all users from the database and calls the display view
+     */
     public function displayUsers()
     {
         $users = $this->userModel->getUsers();
@@ -154,8 +162,8 @@ class Admin extends Controller
         }
     }
 
-    /**
-     * display view for manageOrders
+    /*
+     * Displays view for manageOrders
      */
     public function manageOrders() {
         $orders = $this->orderModel->getAllOrders();
@@ -168,8 +176,8 @@ class Admin extends Controller
         $this->view('Admin/manageOrders', $data);
     }
 
-    /**
-     * mark order as shipped
+    /*
+     * Marks order as shipped
      */
     public function markAsShipped($orderID) {
         $status = 'shipped';
@@ -184,8 +192,8 @@ class Admin extends Controller
        
     }
 
-    /**
-     * mark order as completed
+    /*
+     * Marks order as completed
      */
     public function markAsCompleted($orderID) {
         $status = 'completed';
@@ -199,22 +207,21 @@ class Admin extends Controller
         }
     }
 
-    /**
-     * to get the view of completedOrders.php
+    /*
+     * Calls the view of completedOrders.php
      */
     public function completedOrders() {
         $orders = $this->orderModel->getAllCompletedOrders();
 
-        // if (!empty($orders)) {
             $data = [
                 "orders" => $orders
             ];
-        // }
+
         $this->view('Admin/completedOrders', $data);
     }
 
-    /**
-     * to delete a completed order
+    /*
+     * Deletes a completed order
      */
     public function deleteCompletedOrder($orderID)
     {
