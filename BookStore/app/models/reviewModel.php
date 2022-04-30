@@ -7,7 +7,9 @@ class reviewModel
     }
 
 
-
+    /*
+    *   create a review
+    */
     public function createReview($data)
     {
         $userID = $_SESSION['user_id'];
@@ -27,8 +29,10 @@ class reviewModel
 
 
 
-    //  Retrieves all comments based on book
-
+    
+    /*
+     * Retrieves all the reviews based on the book id 
+     */
     public function getBookReviews($bookID)
     {
         $this->db->query(
@@ -73,7 +77,7 @@ class reviewModel
      /*
      * Deletes a book review based on the review id
      */
-    public function deletePublicationComment($reviewID)
+    public function deleteReview($reviewID)
     {
         $this->db->query("DELETE FROM review WHERE reviewID = :reviewID");
         $this->db->bind(':reviewID', $reviewID);
@@ -93,21 +97,12 @@ class reviewModel
         );
         $this->db->bind(':reviewcontent', $data['reviewcontent']);
         $this->db->bind(':reviewmark', $data['reviewmark']);
+        $this->db->bind(':reviewID', $data['reviewID']);
         return $this->db->execute();
     }
 
-     /*
-     * Gets the user profile information(user name)
-     */
-    public function getReviewProfile()
-    {
-        if (isset($_SESSION['user_id'])) {
-            $userID = $_SESSION['user_id'];
-            $this->db->query("SELECT * FROM user WHERE userID = :userID");
-            $this->db->bind(':userID', $userID);
-        }
-        return $this->db->getSingle();
-    }
+    
+
 
    
 }

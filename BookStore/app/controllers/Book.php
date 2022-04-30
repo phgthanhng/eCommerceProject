@@ -27,14 +27,12 @@ class Book extends Controller
         // For the book part
         $book = $this->bookModel->getSingleBook($bookID);
 
-
         // show book reviews
         $reviews = $this->reviewModel->getBookReviews($bookID);
-        $userInfo = $this->reviewModel->getReviewProfile();
+        
         $data = [
             'book' => $book,
-            "reviews" => $reviews,
-            "currentUser" => $userInfo
+            "reviews" => $reviews
         ];
 
         $this->view('Book/bookdetail', $data);

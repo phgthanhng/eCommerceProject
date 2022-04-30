@@ -68,13 +68,16 @@ class Order extends Controller
 
 
 
+    /**
+     * create a book review
+     */
     public function addReview($bookID)
     {
+        
 
         if (isset($_POST['reviewSubmit'])) {
+
             $reviewmark = trim($_POST['review_mark']);
-            echo $reviewmark;
-            echo trim($_POST['reviewTextArea']);
 
             $data = [
 
@@ -83,9 +86,52 @@ class Order extends Controller
                 "reviewmark" => $reviewmark
 
             ];
-            $this->reviewModel->createReview($data); // add review to the database
+
+            // add review to the database
+            if($this->reviewModel->createReview($data)){
+                echo "Please wait we are creating your review";
+                echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/User/index">';
+            }
+
+            $this->view('Order/addReview');
+            
+           
         }
-        echo "success";
-        $this->view('Order/addReview');
+
+       
+    }
+
+    /**
+     * edit review (update review)
+     */
+    public function editReview($reviewID)
+    {
+        $existing_review = $this->reviewModel->getSigleReview($reviewID);
+
+        if (!isset($_POST['editReview'])) {
+            $this->view('Order/editReview', $existing_review);
+        } else {
+            $data = [
+                "reviewcontent" => trim($_POST['reviewText']),
+                "reviewID" => $reviewID,
+                "reviewmark" => trim($_POST['review_mark'])
+
+            ];
+            if ($this->reviewModel->editReview($data)) {
+                echo "Please wait we are editing your review";
+                echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/User/index">';
+            }
+        }
+    }
+
+    /**
+     * delete a review based on review id
+     */
+    public function deleteReview($reviewID) {
+        if ($this->reviewModel->deleteReview($reviewID)) {
+
+            echo "Please wait we are removing your review";
+            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/User/index">';
+        }
     }
 }

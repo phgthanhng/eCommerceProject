@@ -30,7 +30,7 @@
             h: opts.zoomHeight / 2
         };
 
-        //intinial zoom cantainer size 初始化zoom容器大小
+        //intinial zoom cantainer size 
         $zoomWP.css({
             'width': opts.zoomWidth + 'px',
             'height': opts.zoomHeight + 'px'
@@ -39,13 +39,13 @@
             top: 0,
             left: opts.picWidth + 30 + 'px'
         });
-        //intinial zoom image size 初始化zoom图片大小 
+        //intinial zoom image size 
         $zoomPic.css({
             'width': opts.picWidth * opts.scale + 'px',
             'height': opts.picHeight * opts.scale + 'px'
         });
 
-        //intinial even 初始化事件
+        //intinial even 
         $picBD.on('mouseenter', function(event) {
             $cursor.show();
             $zoomWP.show();
