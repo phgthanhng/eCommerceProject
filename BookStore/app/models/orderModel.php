@@ -70,7 +70,7 @@
             return $this->db->getResultSet();
         }
 
-        /**
+        /*
          * get details of a order from the ordertbl
          */
         public function getOneOrder($orderID) {
@@ -83,7 +83,7 @@
 
             return $this->db->getSingle();
         }
-        /**
+        /*
          * retrieve a specific order
          */
         public function getOneOrderDetails($data) {
@@ -91,7 +91,7 @@
                 FROM ordertbl JOIN cart
                 ON ordertbl.cartID = cart.cartID
                 JOIN cartitem
-                On cart.cartID = cartitem.cartID
+                ON cart.cartID = cartitem.cartID
                 JOIN book 
                 ON book.bookID = cartitem.bookID
                 WHERE ordertbl.orderID = :orderID

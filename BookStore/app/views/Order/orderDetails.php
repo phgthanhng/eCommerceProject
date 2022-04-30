@@ -3,7 +3,7 @@
     <div>
         <?php
         if (!empty($data["order"])) {
-            foreach ($data["order"] as $order) {
+            foreach ($data["items"] as $order) {
                 echo '<h2 style="margin:30px">Order Status: ' . $order->orderstatus . ' </h2>';
             }
         }

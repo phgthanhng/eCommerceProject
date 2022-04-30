@@ -267,6 +267,7 @@ class Cart extends Controller
             $this->cartModel->createCart($_SESSION['user_id']);
             // show the success page
             $this->view('Order/success');
+            echo '<meta http-equiv="Refresh" content="8; url=/EcommerceProject/Bookstore/User/index">';
         }
     }
 

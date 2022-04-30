@@ -49,7 +49,7 @@ class Order extends Controller
                 font-size: 18px;">
                 <h1>Please wait we are canceling the order for you!<h1>
             </div>';
-            echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/User/index">';
+            echo '<meta http-equiv="Refresh" content="4; url=' . URLROOT . '/User/index">';
         }
     }
 
@@ -73,15 +73,11 @@ class Order extends Controller
         }
     }
 
-
-
-    /**
-     * create a book review
+    /*
+     * Create a book review
      */
     public function addReview($bookID)
     {
-        
-
         if (isset($_POST['reviewSubmit'])) {
 
             $reviewmark = trim($_POST['review_mark']);
@@ -99,16 +95,11 @@ class Order extends Controller
                 echo "Please wait we are creating your review";
                 echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/User/index">';
             }
-
             $this->view('Order/addReview');
-            
-           
         }
-
-       
     }
 
-    /**
+    /*
      * edit review (update review)
      */
     public function editReview($reviewID)
@@ -131,7 +122,7 @@ class Order extends Controller
         }
     }
 
-    /**
+    /*
      * delete a review based on review id
      */
     public function deleteReview($reviewID) {
