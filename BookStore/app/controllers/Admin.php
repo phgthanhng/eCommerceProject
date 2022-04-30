@@ -94,10 +94,6 @@ class Admin extends Controller
 
     }
 
-    public function details($bookID)
-    {
-    }
-
     /*
      * Deletes a specific book 
      */
@@ -232,6 +228,20 @@ class Admin extends Controller
             echo 'Please wait we are deleting the book for you!';
             echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/Admin/completedOrders/">';
         }
+
+    }
+
+    /**
+     * view processing order list of a customer
+     */
+    public function userProcessingOrderList($userID) {
+        
+    }
+
+    /**
+     * view past order list of a customer
+     */
+    public function userPastOrderList($userID) {
 
     }
   }

@@ -47,10 +47,10 @@
                         </td>";
 
                         echo "<td style='background: #ffffff;'>
-                        <a href='/eCommerceProject/BookStore/Admin/details/$user->userID'>Details</a>
+                        <a href='/eCommerceProject/BookStore/Admin/userProcessingOrderList/$user->userID'>Details</a>
                         </td>";
                         echo "<td style='background: #ffffff;'>
-                        <a href='/eCommerceProject/BookStore/Admin/details/$user->userID'>Details</a>
+                        <a href='/eCommerceProject/BookStore/Admin/userPastOrderList/$user->userID'>Details</a>
                         </td>";
                       } 
                     }

@@ -162,5 +162,35 @@
                 WHERE ordertbl.userID = user.userID AND orderstatus = 'completed'");
             return $this->db->getResultSet();
         }
+
+        /**
+         * get user's processing order list
+         */
+        public function userProcessingOrderList($userID) {
+            $this->db->query(
+                "SELECT * 
+                FROM ordertbl INNER JOIN user
+                ON ordertbl.userID = user.userID
+                WHERE ordertbl.userID = :userID
+                AND ordertbl.orderstatus = 'unshipped' 
+                OR ordertbl.orderstatus = 'shipped'
+                ");
+            $this->db->bind(':userID', $_SESSION['user_id']);
+            return $this->db->getResultSet();
+        }
+
+        /**
+         * get user's past order list
+         */
+        public function userPastOrderList($userID) {
+            $this->db->query(
+                "SELECT * 
+                FROM ordertbl INNER JOIN user
+                ON ordertbl.userID = user.userID
+                WHERE ordertbl.userID = :userID
+                AND ordertbl.orderstatus = 'completed' 
+                ");
+            $this->db->bind(':userID', $_SESSION['user_id']);
+            return $this->db->getResultSet();
+        }
     }
-?>
