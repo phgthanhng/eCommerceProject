@@ -103,6 +103,7 @@ class Login extends Controller
                                     if (!$this->cartModel->getUserCart()) {
                                         $this->cartModel->createCart($_SESSION['user_id']); //create cart for user
                                     }
+                                    header('Location: /eCommerceProject/BookStore/User/index');
                                     $this->view('User/index', $data);
                                 }
                                 
@@ -125,7 +126,7 @@ class Login extends Controller
                         // user didnt set up 2FA 
                         else {// user secret is null
                             $this->createSession($user);
-                            // echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/TwoFA/setup">';
+                            header('Location: /eCommerceProject/BookStore/User/index');
                             $this->view('User/index'); 
                         }
                     }
@@ -145,16 +146,6 @@ class Login extends Controller
                 ];
                 $this->view('Login/index',$data);
             }
-        }
-        
-        // Added this line because the user when logging in lands on the Login/index instead of the User/index page
-        if (isLoggedIn()) {
-            if (!isAdmin())
-                echo '<meta http-equiv="Refresh" content="1; url=/eCommerceProject/BookStore/User/index">';
-            else {
-                echo '<meta http-equiv="Refresh" content="1; url=/eCommerceProject/BookStore/Admin/index">';
-            }
-
         }
     }
 
