@@ -9,6 +9,7 @@ class User extends Controller
     {
         $this->orderModel = $this->model('orderModel');
         $this->userModel = $this->model('userModel');
+        $this->loginModel = $this->model('loginModel');
         $this->reviewModel = $this->model('reviewModel');
         if (!isLoggedIn()) {
             header('Location: /eCommerceProject/BookStore/Login');
@@ -23,7 +24,7 @@ class User extends Controller
         $processingOrder = $this->orderModel->getUserIncompletedOrders();
         $completedOrder = $this->orderModel->getUserCompletedOrders();
         $reviews = $this->reviewModel->getUserReviews();
-        $data = [  
+        $data = [
             "processingOrders" => $processingOrder,
             "completedOrders" => $completedOrder,
             "reviews" => $reviews
@@ -41,18 +42,29 @@ class User extends Controller
         if (!isset($_POST['editProfile'])) {
             $this->view('/User/editProfile', $user);
         } else {
-            $data = [
-                'email' => $_POST['email'],
-                'fname' => $_POST['fname'],
-                'lname' => $_POST['lname'],
-                'phone' => $_POST['phone'],
-                'address' => $_POST['address'],
-                'newsletter' => isset($_POST['newsletter']) ? $_POST['newsletter'] : 'no',
-                'userID' => $userID
-            ];
-            if ($this->userModel->editProfile($data)) {
-                echo 'Please wait we are uploading your publication!';
-                echo '<meta http-equiv="Refresh" content="2; url=/EcommerceProject/Bookstore/User/editProfile/' . $userID . '">';
+            //get user from username
+            $newuser = $this->loginModel->getUser($_POST['username']);
+            // if user does not exist in the system
+            if ($newuser == null || $newuser->username == $user->username) {
+                $data = [
+                    'username' => trim($_POST['username']),
+                    'email' => $_POST['email'],
+                    'fname' => $_POST['fname'],
+                    'lname' => $_POST['lname'],
+                    'phone' => $_POST['phone'],
+                    'address' => $_POST['address'],
+                    'newsletter' => isset($_POST['newsletter']) ? $_POST['newsletter'] : 'no',
+                    'userID' => $userID
+                ];
+                if ($this->userModel->editProfile($data)) {
+                    echo 'Please wait we are updating your profile!';
+                    echo '<meta http-equiv="Refresh" content="2; url=/EcommerceProject/Bookstore/User/editProfile/' . $userID . '">';
+                }
+            } else {
+                $msg = [
+                    'msg' => "User: " . $_POST['username'] . " already exists",
+                ];
+                $this->view('/User/editProfile',$user, $msg);
             }
         }
     }
@@ -60,7 +72,7 @@ class User extends Controller
     /*
      * Updates user credentials: password
      */
-    public function editCredentials($userID)
+    public function editPassword($userID)
     {
         $user = $this->userModel->getUser($userID);
 
@@ -74,12 +86,13 @@ class User extends Controller
                 'userID' => $userID
                 // 'pass_verify' => $_POST['verify_password']
             ];
-                if ($this->userModel->editCredentials($data)) {
-                    echo 'Please wait we are editing your information!';
-                    echo '<meta http-equiv="Refresh" content="2; url=/EcommerceProject/Bookstore/User/index">';
-                }
+            if ($this->userModel->editPassword($data)) {
+                echo 'Please wait we are editing your information!';
+                echo '<meta http-equiv="Refresh" content="2; url=/EcommerceProject/Bookstore/User/index">';
+            }
             // }
         }
+    
     }
 }
 // }

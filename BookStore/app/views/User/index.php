@@ -1,6 +1,6 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
 
-    <div class="text-end" style="margin: 10px;margin-top: 30px;"><a href="<?php echo URLROOT;?>/User/editCredentials/<?php echo $_SESSION['user_id'];?>"
+    <div class="text-end" style="margin: 10px;margin-top: 30px;"><a href="<?php echo URLROOT;?>/User/editPassword/<?php echo $_SESSION['user_id'];?>"
             style="color: #000000;margin-right: 20px;">Change your password</a></div>
     <div class="text-end" style="margin: 10px;margin-top: 10px;"><a href="<?php echo URLROOT;?>/User/editProfile/<?php echo $_SESSION['user_id'];?>"
             style="color: #000000;margin-right: 20px;">Edit profile</a></div>

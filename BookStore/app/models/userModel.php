@@ -25,9 +25,10 @@
          * Updates a user profile of the user
          */
         public function editProfile($data) {
-            $this->db->query("UPDATE user SET email =:email, firstname=:firstname,
+            $this->db->query("UPDATE user SET username = :username, email =:email, firstname=:firstname,
             lastname=:lastname, phone=:phone, address=:address, newsletter=:newsletter WHERE userID=:userID");
             $this->db->bind(':firstname',$data['fname']);
+            $this->db->bind(':username',$data['username']);
             $this->db->bind(':lastname',$data['lname']);
             $this->db->bind(':phone',$data['phone']);
             $this->db->bind(':address',$data['address']);
@@ -38,9 +39,9 @@
         }
 
         /*
-         * Updates a user credentials(username and password)
+         * Updates user password
          */
-        public function editCredentials($data) {
+        public function editPassword($data) {
             $this->db->query("UPDATE user SET password=:password WHERE userID=:userID");
             $this->db->bind(':password', $data['pass_hash']);
             $this->db->bind(':userID',$data['userID']);

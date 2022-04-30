@@ -5,7 +5,7 @@
             It will have two functions - one to invoke views and one to invoke models 
         */
 
-        public function view($name, $data = []){
+        public function view($name, $data = [], $msg = []){
             if(file_exists('../app/views/'.$name.'.php')){
                 require_once('../app/views/'.$name.'.php');
             }

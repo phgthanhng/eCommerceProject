@@ -3,7 +3,7 @@
 
     <div class="text-center d-lg-flex flex-column align-content-center align-items-lg-center" style="min-height: 100vh;background: url('<?php echo URLROOT; ?>/img/admin_dashboard.jpg');margin: 0px;padding: 0px;">
 
-    <div class="table-responsive" style="transform: scale(1);transform-origin: top;opacity: 0.88;filter: contrast(92%);margin-top: 60px;">
+    <div class="table-responsive" style="transform: scale(1);transform-origin: top;opacity: 0.88;filter: contrast(92%);margin-top: 60px; margin: 30px">
             <table class="table">
                  <h1>Users</h1>
                 <thead>
@@ -15,8 +15,8 @@
                         <th style="background: #ffffff;border-color: #000000;">Phone Number</th>
                         <th style="background: #ffffff;border-color: #000000;">Address</th>
                         <th style="background: #ffffff;border-color: #000000;">Newsletter Subscription</th>
+                        <th style="background: #ffffff; border-color: #000000;">Processing Orders</th>
                         <th style="background: #ffffff; border-color: #000000;">Past Orders</th>
-                        <th style="background: #ffffff; border-color: #000000;">Return Orders</th>
                     </tr>
                 </thead>
                 <tbody>
