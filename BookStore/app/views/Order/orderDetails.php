@@ -1,13 +1,13 @@
 <?php require APPROOT . '/views/includes/header.php';  ?>
 <section>
-    <div>
+    <div style="padding: 30px" >
         <?php
         if (!empty($data["order"])) {
                 echo '<h2 style="margin:30px">Order Status: ' . $data["order"]->orderstatus . ' </h2>';
             }
         
         ?>
-        <table class="table" style="margin: 50px;">
+        <table class="table">
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">Image</th>
@@ -16,7 +16,12 @@
                     <th scope="col"></th>
                     <th scope="col">Unit Price</th>
                     <th scope="col">Sub total</th>
-                    <th colspan="3" style="text-align: center;">Action</th>
+                   
+                    <?php
+                    if (!isAdmin()) {
+                        echo '<th ">Action</th> ';
+                    }
+                    ?>
                 </tr>
             </thead>
             <tbody>
@@ -41,9 +46,11 @@
                      echo '<td> X </td>';
                         echo '<td>$ ' . $item->retailprice . ' CAD </td>';
                         echo '<td>$ ' . $item->cartitemprice . ' CAD</td>';
+                        if (!isAdmin()) {
                         echo "<td>
                         <a href='/eCommerceProject/BookStore/Order/addReview/$item->bookID'>Add Review</a>
                         </td>";
+                    }
                     }
 
                     echo '</tbody>';

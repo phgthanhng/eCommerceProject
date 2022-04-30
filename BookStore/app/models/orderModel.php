@@ -166,7 +166,7 @@
         /**
          * get user's processing order list
          */
-        public function userProcessingOrderList($userID) {
+        public function getUserProcessingOrderList($userID) {
             $this->db->query(
                 "SELECT * 
                 FROM ordertbl INNER JOIN user
@@ -175,14 +175,14 @@
                 AND ordertbl.orderstatus = 'unshipped' 
                 OR ordertbl.orderstatus = 'shipped'
                 ");
-            $this->db->bind(':userID', $_SESSION['user_id']);
+            $this->db->bind(':userID', $userID);
             return $this->db->getResultSet();
         }
 
         /**
          * get user's past order list
          */
-        public function userPastOrderList($userID) {
+        public function getUserPastOrderList($userID) {
             $this->db->query(
                 "SELECT * 
                 FROM ordertbl INNER JOIN user
@@ -190,7 +190,7 @@
                 WHERE ordertbl.userID = :userID
                 AND ordertbl.orderstatus = 'completed' 
                 ");
-            $this->db->bind(':userID', $_SESSION['user_id']);
+            $this->db->bind(':userID', $userID);
             return $this->db->getResultSet();
         }
     }

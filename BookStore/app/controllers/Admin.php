@@ -27,14 +27,16 @@ class Admin extends Controller
         //save the file that gets sent as a picture
         $file = $_FILES['image'];
 
-        $acceptedTypes = ['image/jpeg' => 'jpg',
+        $acceptedTypes = [
+            'image/jpeg' => 'jpg',
             'image/gif' => 'gif',
-            'image/png' => 'png'];
+            'image/png' => 'png'
+        ];
         //validate the file
 
-        if (empty($file['tmp_name'])) 
+        if (empty($file['tmp_name']))
             return false;
-        
+
         $fileData = getimagesize($file['tmp_name']);
 
         if ($fileData != false && in_array($fileData['mime'], array_keys($acceptedTypes))) {
@@ -45,7 +47,6 @@ class Admin extends Controller
             move_uploaded_file($file['tmp_name'], "$folder/$filename");
         }
         return $filename;
-
     }
 
     /*
@@ -74,7 +75,6 @@ class Admin extends Controller
                 echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Admin/index">';
             }
         }
-
     }
 
     /*
@@ -91,7 +91,6 @@ class Admin extends Controller
 
             $this->view('Admin/manageProducts', $data);
         }
-
     }
 
     /*
@@ -106,7 +105,6 @@ class Admin extends Controller
             echo 'Please wait we are deleting the book for you!';
             echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/Admin/manageProducts">';
         }
-
     }
 
     /*
@@ -120,8 +118,7 @@ class Admin extends Controller
         } else {
             if (is_uploaded_file($_FILES['image']['tmp_name'])) {
                 $filename = $this->imageUpload();
-            }
-            else{
+            } else {
                 $filename = $book->image;
             }
             $data = [
@@ -161,7 +158,8 @@ class Admin extends Controller
     /*
      * Displays view for manageOrders
      */
-    public function manageOrders() {
+    public function manageOrders()
+    {
         $orders = $this->orderModel->getAllOrders();
 
         if (!empty($orders)) {
@@ -175,7 +173,8 @@ class Admin extends Controller
     /*
      * Marks order as shipped
      */
-    public function markAsShipped($orderID) {
+    public function markAsShipped($orderID)
+    {
         $status = 'shipped';
         $data = [
             "status" => $status,
@@ -185,13 +184,13 @@ class Admin extends Controller
             echo 'Updating the status of the order';
             echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/Admin/manageOrders/">';
         }
-       
     }
 
     /*
      * Marks order as completed
      */
-    public function markAsCompleted($orderID) {
+    public function markAsCompleted($orderID)
+    {
         $status = 'completed';
         $data = [
             "status" => $status,
@@ -206,12 +205,13 @@ class Admin extends Controller
     /*
      * Calls the view of completedOrders.php
      */
-    public function completedOrders() {
+    public function completedOrders()
+    {
         $orders = $this->orderModel->getAllCompletedOrders();
 
-            $data = [
-                "orders" => $orders
-            ];
+        $data = [
+            "orders" => $orders
+        ];
 
         $this->view('Admin/completedOrders', $data);
     }
@@ -228,20 +228,30 @@ class Admin extends Controller
             echo 'Please wait we are deleting the book for you!';
             echo '<meta http-equiv="Refresh" content=".2; url=' . URLROOT . '/Admin/completedOrders/">';
         }
-
     }
 
     /**
      * view processing order list of a customer
      */
-    public function userProcessingOrderList($userID) {
-        
+    public function userProcessingOrderList($userID)
+    {
+        $orders = $this->orderModel->getUserProcessingOrderList($userID);
+            $data = [
+                "orders" => $orders,
+            ];
+            $this->view('Admin/userProcessingOrderList', $data);
     }
 
     /**
      * view past order list of a customer
      */
-    public function userPastOrderList($userID) {
+    public function userPastOrderList($userID)
+    {
+        $orders = $this->orderModel->getUserPastOrderList($userID);
+        $data = [
+            "orders" => $orders
+        ];
 
+        $this->view('Admin/userPastOrderList', $data);
     }
-  }
+}

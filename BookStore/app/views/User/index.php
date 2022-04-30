@@ -13,7 +13,7 @@
                     <th>Order placed</th>
                     <th>Total Price</th>
                     <th>Order Status</th>
-                    <th colspan="3" style="text-align: center;">Action</th>
+                    <th colspan="1" style="text-align: center;">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -34,9 +34,11 @@
             echo "<td>
                         <a href='/eCommerceProject/BookStore/Order/orderDetails/$order->orderID'>Details</a>
                         </td>";
+                        if (!($order->orderstatus == 'shipped')){
             echo "<td>
                         <a href='/eCommerceProject/BookStore/Order/cancel/$order->orderID'>Cancel</a>
                         </td>";
+                        }
             echo "</tr>";
           }
         }
