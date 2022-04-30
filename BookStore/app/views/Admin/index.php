@@ -20,7 +20,7 @@
         <a href="<?php echo URLROOT; ?>/Admin/completedOrders" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
         <button class="btn btn-primary" type="button" style="background: #ffffff;margin: 0px;width: 192px; font-weight:bolder; color:#3e6259;"><p style="margin:auto; font-weight:900; color:#3e6259;">completed orders</p></button>
         </a>
-        <a href="<?php echo URLROOT; ?>/Admin/reviews" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
+        <a href="<?php echo URLROOT; ?>/Book/viewBooks" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
         <button class="btn btn-primary" type="button" style="background: #ffffff;margin: 0px;width: 192px; font-weight:bolder; color:#3e6259;"><p style="margin:auto; font-weight:900; color:#3e6259;">View reviews</p></button>
         </a>
         <a href="<?php echo URLROOT; ?>/Admin/displayUsers" style="margin: auto;margin-top: 0px;margin-bottom: 30px;">
