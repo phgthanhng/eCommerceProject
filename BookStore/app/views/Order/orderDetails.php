@@ -3,7 +3,8 @@
     <div style="padding: 30px" >
         <?php
         if (!empty($data["order"])) {
-                echo '<h2 style="margin:30px">Order Status: ' . $data["order"]->orderstatus . ' </h2>';
+                echo '<h3 style="margin:30px">Order Status: ' . $data["order"]->orderstatus . ' </h2>';
+                echo '<h3 style="margin:30px">Shipping address: ' . $data["order"]->shippingaddress . ' </h2>';
             }
         
         ?>
