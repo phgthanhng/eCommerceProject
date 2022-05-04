@@ -77,30 +77,30 @@
                     <hr>
                     <h4>Payment</h4>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" name="paymentMethod"  value="debit" checked>
+                        <input type="radio" class="form-check-input" name="paymentMethod"  value="credit" checked>
                         <label class="form-check-label">Credit Card</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" name="paymentMethod" value="debit">
+                        <input type="radio" class="form-check-input" name="paymentMethod">
                         <label class="form-check-label">Debit Card</label>
                     </div>
                     <div class="row">
                         <div class="col-6">
                             <label class="form-label" for="cardname">Name on Card </label>
-                            <input type="text" name="cardname" id="cardname" class="form-control" required>
+                            <input type="text" name="cardname" id="cardname" class="form-control" required="" pattern="^[a-zA-Z ]*$" title="Invalid name">
                             <small class="text-muted">Full name as displayed on card</small>
                         </div>
                         <div class="col-6">
                             <label class="form-label" for="cardnumber">Card Number </label>
-                            <input type="text" name="cardnumber" id="cardnumber" class="form-control" required>
+                            <input type="text" name="cardnumber" id="cardnumber" class="form-control" required="" alue="debit" pattern="^\d{4} \d{4} \d{4} \d{4}$" title="Not a valid Visa Card number">
                         </div>
                         <div class="col-3">
                             <label class="form-label" for="expiration">Expiration </label>
-                            <input type="text" name="expiration" id="expiration" class="form-control" required>
+                            <input type="text" name="expiration" id="expiration" class="form-control" pattern="^(0[1-9]|1[0-2])\/?([0-9]{4}|[0-9]{2})$" title="Please put a valid expiry date" required="">
                         </div>
                         <div class="col-3">
                             <label class="form-label" for="cvv">CVV </label>
-                            <input type="password" name="cvv" id="cvv" class="form-control" required min="3" max="3">
+                            <input type="password" name="cvv" id="cvv" class="form-control" required="" pattern="^[0-9]{3}$" title="Please put a valid CVV number">
                         </div>
                     </div>
                     <hr>     

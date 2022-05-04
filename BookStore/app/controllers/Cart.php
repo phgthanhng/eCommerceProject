@@ -233,7 +233,7 @@ class Cart extends Controller
             $province = $_POST['province'];
             $address = $_POST['address'];
             $postalcode = $_POST['postalcode'];
-            $address = $address . $province . $postalcode;
+            $address = $address .", ". $province . ", " . $postalcode;
             $data = [
                 'cartID' => $cart->cartID,
                 'fname' => $_POST['firstname'],
