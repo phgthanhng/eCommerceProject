@@ -202,8 +202,8 @@ class Cart extends Controller
             $data = [
                 'items' => $items,
             ];
-            // header('Location: /eCommerceProject/BookStore/Cart/index');
-            // $this->view('Cart/index', $data);
+            header('Location: /eCommerceProject/BookStore/Cart/index');
+            $this->view('Cart/index', $data);
         }
         return;
     }
