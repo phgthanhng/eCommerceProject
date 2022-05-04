@@ -55,4 +55,39 @@ class Book extends Controller
             $this->view('Book/viewBooks', $data);
         }
     }
+
+    /*
+     * edit review (update review)
+     */
+    public function editReview($reviewID)
+    {
+        $existing_review = $this->reviewModel->getSigleReview($reviewID);
+
+        if (!isset($_POST['editReview'])) {
+            $this->view('Order/editReview', $existing_review);
+        } else {
+            $data = [
+                "reviewcontent" => trim($_POST['reviewText']),
+                "reviewID" => $reviewID,
+                "reviewmark" => trim($_POST['review_mark'])
+
+            ];
+            if ($this->reviewModel->editReview($data)) {
+                echo "Please wait we are editing your review";
+                echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Book/bookdetail/'.$existing_review->bookID.'">';
+            }
+        }
+    }
+
+    /*
+     * delete a review based on review id
+     */
+    public function deleteReview($reviewID) {
+        $existing_review = $this->reviewModel->getSigleReview($reviewID);
+        if ($this->reviewModel->deleteReview($reviewID)) {
+
+            echo "Please wait we are removing your review";
+            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Book/bookdetail/'.$existing_review->bookID.'">';
+        }
+    }
 }
