@@ -3,9 +3,9 @@
 
     <div class="text-center d-lg-flex flex-column align-content-center align-items-lg-center" style="min-height: 100vh;background: url('<?php echo URLROOT; ?>/img/admin_dashboard.jpg');margin: 0px;padding: 0px;">
 
-    <div class="table-responsive" style="transform: scale(1);transform-origin: top;opacity: 0.88;filter: contrast(92%);margin-top: 60px; margin: 30px">
+    <div class="table-responsive" style="transform: scale(1);transform-origin: top;opacity: 0.88;filter: contrast(92%);margin: 60px;">
             <table class="table">
-                 <h1>Users</h1>
+                 <h1 style="margin: 20px;">Users</h1>
                 <thead>
                     <tr>
                         <th style="background: #ffffff;border-color: #000000;">Users</th>
