@@ -78,6 +78,7 @@ class Order extends Controller
      */
     public function addReview($bookID)
     {
+        $this->view('Order/addReview');
         if (isset($_POST['reviewSubmit'])) {
 
             $reviewmark = trim($_POST['review_mark']);
@@ -93,9 +94,8 @@ class Order extends Controller
             // add review to the database
             if($this->reviewModel->createReview($data)){
                 echo "Please wait we are creating your review";
-                echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/User/index">';
+                echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/User/index">';
             }
-            $this->view('Order/addReview');
         }
     }
 
@@ -117,7 +117,7 @@ class Order extends Controller
             ];
             if ($this->reviewModel->editReview($data)) {
                 echo "Please wait we are editing your review";
-                echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/User/index">';
+                echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/User/index">';
             }
         }
     }
@@ -129,7 +129,7 @@ class Order extends Controller
         if ($this->reviewModel->deleteReview($reviewID)) {
 
             echo "Please wait we are removing your review";
-            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/User/index">';
+            echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/User/index">';
         }
     }
 }
