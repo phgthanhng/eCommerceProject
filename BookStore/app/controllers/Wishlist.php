@@ -2,13 +2,18 @@
 
 class Wishlist extends Controller
 {
-
+    /*
+     * Default wishlist constructor
+     */
     public function __construct()
     {
         $this->wishlistModel = $this->model('wishlistModel');
         $this->bookModel = $this->model('bookModel');
     }
 
+    /*
+     * Retrieves all the wishlist items
+     */ 
     public function index()
     {
         $this->getAllWishlistItems();
@@ -86,7 +91,7 @@ class Wishlist extends Controller
     }
 
     
-     /*
+    /*
      * Create wishlistitem 
      */
     public function createWishlistItem($wishlistID, $bookID) {
@@ -99,9 +104,6 @@ class Wishlist extends Controller
         return $this->wishlistModel->createwishlistItem($data); // pass the bookID 
     }
 
-
-
-
     /*
      * Removes a specific item from the wishlist iten
      */
@@ -112,7 +114,4 @@ class Wishlist extends Controller
         header('Location: /eCommerceProject/BookStore/Wishlist/index');
         // NOTE: put msg here to be sent to view
     }
-
-
-  
 }

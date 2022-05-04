@@ -78,6 +78,7 @@
                                 <?php }
                                 else {
                                     echo '<h3>Out of stock<h3>';
+
                                 } ?>
                             </div>
                                
@@ -144,18 +145,19 @@
                 foreach ($data["reviews"] as $review) {
                     echo "<hr>";
                     echo $review->firstname . ' ' . $review->lastname . ' ' . date(" m/d/Y H:i:s", strtotime($review->reviewdate)) . ' Mark:' . $review->reviewmark . '/5';
-                   
+                    echo '<span>  </span>';
+
+                    if (isLoggedIn() && $review->userID == $_SESSION['user_id'])   { 
+                        echo '<a href="' .URLROOT.'/Book/editReview/'.$review->reviewID.'"><button>Edit</button></a>';
+                        echo '<span>  </span>';
+                        echo '<a href="' .URLROOT.'/Book/deleteReview/'.$review->reviewID.'"><button>Delete</button></a> ';
+                    }
+
                     echo "<br>$review->reviewcontent";
                 }
 
                 ?>
-
-
-
             </div>
-
-
-
         </div>
 
 </section>

@@ -24,9 +24,9 @@
                         echo "<td>
                        $order->orderdate
                         </td>";
-            echo "<td>
+            echo "<td>$
                         $order->totalprice
-                        </td>";
+                       CAD </td>";
             echo "<td>
                         $order->orderstatus
                         </td>";

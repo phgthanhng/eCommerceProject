@@ -22,7 +22,6 @@ class reviewModel
         $this->db->bind(':reviewcontent', $data['reviewcontent']);
         $this->db->bind(':reviewmark', $data['reviewmark']);
 
-
         return $this->db->execute(); 
 
     }
