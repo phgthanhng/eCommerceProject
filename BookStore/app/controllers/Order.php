@@ -95,7 +95,7 @@ class Order extends Controller
             // add review to the database
             if($this->reviewModel->createReview($data)){
                 echo "Please wait we are creating your review";
-                echo '<meta http-equiv="Refresh" content="; url=/eCommerceProject/BookStore/User/index">';
+                echo '<meta http-equiv="Refresh" content="4; url=' . URLROOT . '/User/index">';
             }
            
         }
@@ -128,6 +128,8 @@ class Order extends Controller
      * delete a review based on review id
      */
     public function deleteReview($reviewID) {
+        $existing_review = $this->reviewModel->getSigleReview($reviewID);
+
         if ($this->reviewModel->deleteReview($reviewID)) {
 
             echo "Please wait we are removing your review";

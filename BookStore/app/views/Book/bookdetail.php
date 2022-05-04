@@ -44,7 +44,7 @@
                                             </a>
                                         ';
                                     }
-                                     else {
+                                     else if ( isLoggedIn() && isAdmin()) {
                                         echo '<p><a href="' .
                                             URLROOT .
                                             '/Admin/editBook/' .
