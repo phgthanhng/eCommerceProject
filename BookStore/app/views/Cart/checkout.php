@@ -77,11 +77,11 @@
                     <hr>
                     <h4>Payment</h4>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" name="paymentMethod" checked>
+                        <input type="radio" class="form-check-input" name="paymentMethod"  value="debit" checked>
                         <label class="form-check-label">Credit Card</label>
                     </div>
                     <div class="form-check">
-                        <input type="radio" class="form-check-input" name="paymentMethod">
+                        <input type="radio" class="form-check-input" name="paymentMethod" value="debit">
                         <label class="form-check-label">Debit Card</label>
                     </div>
                     <div class="row">
