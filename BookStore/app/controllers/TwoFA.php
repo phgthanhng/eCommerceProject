@@ -10,12 +10,17 @@ include_once dirname(APPROOT) .
 
 class TwoFA extends Controller
 {
+    /*
+     * Default constructor 
+     */
     public function __construct()
     {
         $this->loginModel = $this->model('loginModel');
     }
 
-    // generates a code for the first time
+    /*
+     * Generates a secret for the first time and display it
+     */
     function generateQRCode()
     {
         $g = new \Google\Authenticator\GoogleAuthenticator();
@@ -34,7 +39,9 @@ class TwoFA extends Controller
             '" class="rounded mx-auto d-block"/>';
     }
 
-    //
+    /*
+     * Retrieves secret and display it
+     */
     function generateQRCodewithSecret($secret)
     {
         $g = new \Google\Authenticator\GoogleAuthenticator();
@@ -48,7 +55,9 @@ class TwoFA extends Controller
             '" class="rounded mx-auto d-block"/>';
     }
 
-    // check if the code that gets updated all the time and the secret matches
+    /*
+     * Checks if the secret and code matches 
+     */
     function check($secret, $code)
     {
         $g = new \Sonata\GoogleAuthenticator\GoogleAuthenticator();
@@ -59,7 +68,9 @@ class TwoFA extends Controller
         }
     }
 
-    // metho runs this
+    /*
+     * Setup method that calls the method that will be needed for the 2 factor authenthication
+     */
     public function Setup()
     {
         $user = $this->loginModel->getUser($_SESSION['user_username']);

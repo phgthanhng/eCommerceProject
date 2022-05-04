@@ -84,15 +84,14 @@ class User extends Controller
                 'password' => $_POST['password'],
                 'pass_hash' => password_hash($_POST['password'], PASSWORD_DEFAULT),
                 'userID' => $userID
-                // 'pass_verify' => $_POST['verify_password']
             ];
             if ($this->userModel->editPassword($data)) {
                 echo 'Please wait we are editing your information!';
                 echo '<meta http-equiv="Refresh" content="2; url=/EcommerceProject/Bookstore/User/index">';
             }
-            // }
+        
         }
     
     }
 }
-// }
+

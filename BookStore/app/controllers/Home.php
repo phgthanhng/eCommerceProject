@@ -1,6 +1,9 @@
 <?php
 class Home extends Controller
 {
+    /*
+     * Default constructor for the Home
+     */ 
     public function __construct()
     {
     }

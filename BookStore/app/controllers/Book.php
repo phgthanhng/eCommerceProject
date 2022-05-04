@@ -1,6 +1,9 @@
 <?php
 class Book extends Controller
 {
+    /*
+     * Default constructor 
+     */
     public function __construct()
     {
         $this->bookModel = $this->model('bookModel');
@@ -57,7 +60,7 @@ class Book extends Controller
     }
 
     /*
-     * edit review (update review)
+     * Edit review (update review)
      */
     public function editReview($reviewID)
     {
@@ -80,7 +83,7 @@ class Book extends Controller
     }
 
     /*
-     * delete a review based on review id
+     * Delete a review based on review id
      */
     public function deleteReview($reviewID) {
         $existing_review = $this->reviewModel->getSigleReview($reviewID);

@@ -63,9 +63,8 @@ class Wishlist extends Controller
         $this->wishlistModel->createWishlist($userID);
     }
 
-
     /*
-     * add a wishlist item
+     * Adds a wishlist item
      */
     public function addWishlistItem($bookID)
     {
@@ -90,9 +89,8 @@ class Wishlist extends Controller
         }
     }
 
-    
     /*
-     * Create wishlistitem 
+     * Creates a wishlistitem 
      */
     public function createWishlistItem($wishlistID, $bookID) {
       

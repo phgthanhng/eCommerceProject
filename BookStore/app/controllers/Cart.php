@@ -1,6 +1,9 @@
 <?php
 class Cart extends Controller
 {
+    /*
+     * Default constructor for the cart
+     */ 
     public function __construct()
     {
         $this->cartModel = $this->model('cartModel');

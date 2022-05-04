@@ -1,15 +1,17 @@
 <?php
 class reviewModel
 {
+    /*
+     * Default constructor of reviewModel 
+     */
     public function __construct()
     {
         $this->db = new Model;
     }
 
-
     /*
-    *   create a review
-    */
+     * Creates a review   
+     */
     public function createReview($data)
     {
         $userID = $_SESSION['user_id'];
@@ -26,11 +28,8 @@ class reviewModel
 
     }
 
-
-
-    
     /*
-     * Retrieves all the reviews based on the book id 
+     * Retrieves all the reviews based on the bookID
      */
     public function getBookReviews($bookID)
     {
@@ -45,8 +44,8 @@ class reviewModel
         return $this->db->getResultSet();
     }
 
-     /*
-     * Retrieves a single review of the user based on the review id
+    /*
+     * Retrieves a single review of the user based on the reviewID
      */
     public function getSigleReview($reviewID)
     {
@@ -56,8 +55,7 @@ class reviewModel
         return $this->db->getSingle();
     }
 
-
-     /*
+    /*
      * Retrieves all the reviews of the user
      */
     public function getUserReviews() {
@@ -74,7 +72,7 @@ class reviewModel
     }
 
      /*
-     * Deletes a book review based on the review id
+     * Deletes a book review based on the reviewID
      */
     public function deleteReview($reviewID)
     {
@@ -83,8 +81,8 @@ class reviewModel
         return $this->db->execute();
     }
 
-     /*
-     * Updates a review 
+    /*
+     * Updates a specific review 
      */
     public function editReview($data)
     {
@@ -98,10 +96,5 @@ class reviewModel
         $this->db->bind(':reviewmark', $data['reviewmark']);
         $this->db->bind(':reviewID', $data['reviewID']);
         return $this->db->execute();
-    }
-
-    
-
-
-   
+    }   
 }

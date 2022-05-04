@@ -1,6 +1,9 @@
 <?php
 class Contact extends Controller
 {
+    /*
+     * Default constructor for the Contact
+     */ 
     public function __construct()
     {
     }

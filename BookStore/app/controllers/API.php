@@ -1,6 +1,9 @@
 <?php
 class API extends Controller
 {
+    /*
+     * Default constructor for the API 
+     */
     public function __construct()
     {
     }

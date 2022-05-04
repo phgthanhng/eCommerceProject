@@ -1,5 +1,9 @@
 <?php
-    class userModel{
+    class userModel {
+
+        /*
+         * Default construtor of the userModel class
+         */
         public function __construct(){
             $this->db = new Model;
         }
@@ -61,8 +65,5 @@
             return $this->db->execute();
 
         }
-
-       
     }
-
 ?>

@@ -1,6 +1,9 @@
 <?php
 class bookModel
 {
+    /*
+     * Default constructor for the bookModel class
+     */
     public function __construct()
     {
         $this->db = new Model();

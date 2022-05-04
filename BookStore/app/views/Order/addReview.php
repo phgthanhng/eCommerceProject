@@ -27,8 +27,4 @@
         </div>
     </div>
 </div>
-
-
-
-
 <?php require APPROOT . '/views/includes/footer.php';  ?>

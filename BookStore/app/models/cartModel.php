@@ -1,6 +1,9 @@
 <?php
 class cartModel
 {
+    /*
+     * Default constructor 
+     */
     public function __construct()
     {
         $this->db = new Model();
@@ -73,20 +76,6 @@ class cartModel
 
         return $this->db->execute();
     }
-
-    // /*
-    //  * Updates a cart status to checkout
-    //  */
-    // public function updateCartStatus($cartID) {
-    //     $this->db->query(
-    //         "UPDATE cart
-    //         SET cartstatus = :cartstatus
-    //         WHERE cartID = :cartID");
-
-    //     $this->db->bind(':cartstatus', 'checkout');
-    //     $this->db->bind(':cartID', $cartID);
-    //     return $this->db->execute();
-    // }
 
     /*
      * Retrieves all cart items based on the cart ID

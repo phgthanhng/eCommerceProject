@@ -1,7 +1,9 @@
 <?php
 class Order extends Controller
 {
-
+    /*
+     * Default constructor for the order
+     */ 
     public function __construct()
     {
         $this->orderModel = $this->model('orderModel');
@@ -10,9 +12,11 @@ class Order extends Controller
         $this->reviewModel = $this->model('reviewModel');
     }
 
+     /*
+     * Default index method
+     */ 
     public function index()
-    {
-    }
+    {} //empty
 
     /*
      * Cancels an order
@@ -102,7 +106,7 @@ class Order extends Controller
     }
 
     /*
-     * edit review (update review)
+     * Edit review (update review)
      */
     public function editReview($reviewID)
     {
@@ -125,7 +129,7 @@ class Order extends Controller
     }
 
     /*
-     * delete a review based on review id
+     * Delete a review based on review id
      */
     public function deleteReview($reviewID) {
         $existing_review = $this->reviewModel->getSigleReview($reviewID);

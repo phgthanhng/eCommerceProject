@@ -1,6 +1,9 @@
 <?php
 class Categories extends Controller
 {
+    /*
+     * Default constructor for the cart
+     */ 
     public function __construct()
     {
         $this->bookModel = $this->model('bookModel');

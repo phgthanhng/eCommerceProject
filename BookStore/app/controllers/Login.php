@@ -16,7 +16,7 @@ class Login extends Controller
     public function index()
     {
         // if button is clicked
-        if(!isset($_POST['login'])){
+        if(!isset($_POST['login'])) {
             $this->view('Login/index');
         }
 

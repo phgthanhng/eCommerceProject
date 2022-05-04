@@ -1,5 +1,9 @@
 <?php
-    class orderModel{
+    class orderModel {
+
+        /*
+         * Default constructor of orderModel class 
+         */
         public function __construct()
         {
             $this->db = new Model;
@@ -32,7 +36,6 @@
             return $this->db->execute();
         }
 
-    
         /*
          * Deletes an order
          */
@@ -45,7 +48,6 @@
 
             return $this->db->execute();
         }
-
 
         /*
          * Retrives all orders of a specific user
@@ -67,11 +69,12 @@
                 "SELECT * 
                 FROM ordertbl INNER JOIN user
                 WHERE ordertbl.userID = user.userID");
+
             return $this->db->getResultSet();
         }
 
         /*
-         * get details of a order from the ordertbl
+         * Retrieves details of an order from the ordertbl
          */
         public function getOneOrder($orderID) {
             $this->db->query(
@@ -83,8 +86,9 @@
 
             return $this->db->getSingle();
         }
+
         /*
-         * retrieve a specific order
+         * Retrieves a specific order
          */
         public function getOneOrderDetails($data) {
             $this->db->query("SELECT * 
@@ -114,8 +118,8 @@
             return $this->db->execute();
         }
 
-        /**
-         * for user
+        /*
+         * Retrieves all user's incomplete orders
          */
         public function getUserIncompletedOrders() {
             $this->db->query(
@@ -127,8 +131,8 @@
             return $this->db->getResultSet();
         }
     
-        /**
-         * for user
+        /*
+         * Retrieves a user's completed orders
          */
         public function getUserCompletedOrders() {
             $this->db->query(
@@ -139,9 +143,8 @@
             return $this->db->getResultSet();
         }
 
-        /**
-         * for admin
-         * to get all unshipped orders
+        /*
+         * Retrieves all unshipped orders (for both)
          */
         public function getAllUnshippedOrders() {
             $this->db->query(
@@ -152,8 +155,8 @@
             return $this->db->getResultSet();
         }
     
-        /**
-         * for admin
+        /*
+         * Retrieves all the completed orders
          */
         public function getAllCompletedOrders() {
             $this->db->query(
@@ -162,35 +165,5 @@
                 WHERE ordertbl.userID = user.userID AND orderstatus = 'completed'");
             return $this->db->getResultSet();
         }
-
-        /**
-         * get user's processing order list
-         */
-        public function getUserProcessingOrderList($userID) {
-            $this->db->query(
-                "SELECT * 
-                FROM ordertbl INNER JOIN user
-                ON ordertbl.userID = user.userID
-                WHERE ordertbl.userID = :userID
-                AND ordertbl.orderstatus = 'unshipped' 
-                OR ordertbl.orderstatus = 'shipped'
-                ");
-            $this->db->bind(':userID', $userID);
-            return $this->db->getResultSet();
-        }
-
-        /**
-         * get user's past order list
-         */
-        public function getUserPastOrderList($userID) {
-            $this->db->query(
-                "SELECT * 
-                FROM ordertbl INNER JOIN user
-                ON ordertbl.userID = user.userID
-                WHERE ordertbl.userID = :userID
-                AND ordertbl.orderstatus = 'completed' 
-                ");
-            $this->db->bind(':userID', $userID);
-            return $this->db->getResultSet();
-        }
     }
+?>

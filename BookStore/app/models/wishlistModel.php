@@ -1,5 +1,9 @@
 <?php
     class wishlistModel {
+
+        /*
+         * Default constructor of the wishlistModel class 
+         */
         public function __construct(){
             $this->db = new Model;
         }
@@ -14,12 +18,10 @@
 
             $this->db->bind(':userID', $userID);
             
-
             return $this->db->execute();
-            
         }
 
-         /*
+        /*
          * Retrieves wishlist based on the userID
          */
         public function getUserWishlist() {
@@ -66,7 +68,6 @@
 
             return $this->db->getResultSet(); 
         }
-
 
         /*
          * Checks if a wishlistitem exist already in the wishlistitem table

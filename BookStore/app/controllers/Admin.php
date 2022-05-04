@@ -1,6 +1,9 @@
 <?php
 class Admin extends Controller
 {
+    /*
+     * Default constructor of Admin class 
+     */
     public function __construct()
     {
         $this->orderModel = $this->model('orderModel');
@@ -11,6 +14,9 @@ class Admin extends Controller
         }
     }
 
+    /*
+     * Calls the index page 
+     */
     public function index()
     {
         $this->view('Admin/index');
@@ -230,8 +236,8 @@ class Admin extends Controller
         }
     }
 
-    /**
-     * view processing order list of a customer
+    /*
+     *  Retrieves anad displays processing order list of a customer
      */
     public function userProcessingOrderList($userID)
     {
@@ -242,8 +248,8 @@ class Admin extends Controller
             $this->view('Admin/userProcessingOrderList', $data);
     }
 
-    /**
-     * view past order list of a customer
+    /*
+     * Retrieves and displays past order list of a customer
      */
     public function userPastOrderList($userID)
     {

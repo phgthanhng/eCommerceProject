@@ -1,5 +1,8 @@
 <?php
     class loginModel{
+        /*
+         * Default constructor of loginModel 
+         */
         public function __construct(){
             $this->db = new Model;
         }
@@ -46,8 +49,7 @@
             $this->db->bind(':userid', $_SESSION['user_id']);
             $this->db->bind(':secret', $data['secret']);
 
-           return $this->db->execute();
+             return $this->db->execute();
         }
-
     }
 ?>
