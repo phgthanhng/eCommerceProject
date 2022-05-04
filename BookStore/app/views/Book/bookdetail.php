@@ -16,19 +16,20 @@
                         <p class="_p-name"> <?php echo $book->bookname; ?></p>
                         <form action="" method="post">
                             <div class="_p-add-cart">
-                                <?php if (!isLoggedIn()) {
-                                    echo '<a href="' .
-                                        URLROOT . '/Login/index">
-                                    <button class="btn-wishlist" tabindex="0" type="button">
-                                        <i class="fa fa-heart" style="color:red;">
-                                             Add to Wish List</i>
-                                    </button>  
-                                        </a>';
-                                }
+                                <?php 
+                                // if (!isLoggedIn()) {
+                                //     echo '<a href="' .
+                                //         URLROOT . '/Login/index">
+                                //     <button class="btn-wishlist" tabindex="0" type="button">
+                                //         <i class="fa fa-heart" style="color:red;">
+                                //              Add to Wish List</i>
+                                //     </button>  
+                                //         </a>';
+                                // }
                                 // if is logged in
-                                else {
+                                // else {
                                     // if users -> show the wishlist heart icon
-                                    if (!isAdmin()) {
+                                    if (isLoggedIn() && !isAdmin()) {
                                         echo '
                                         <a href="' .
                                             URLROOT .
@@ -42,19 +43,20 @@
                                             </button>  
                                             </a>
                                         ';
-                                    } else {
-                                        echo '<p><a href="' .
-                                            URLROOT .
-                                            '/Admin/editBook/' .
-                                            $book->bookID .
-                                            '"> Edit Book </a></p>';
-                                        echo '<p><a href="' .
-                                            URLROOT .
-                                            '/Admin/delete/' .
-                                            $book->bookID .
-                                            '"> Delete Book </a></p>';
                                     }
-                                } ?>
+                                    // } else {
+                                    //     echo '<p><a href="' .
+                                    //         URLROOT .
+                                    //         '/Admin/editBook/' .
+                                    //         $book->bookID .
+                                    //         '"> Edit Book </a></p>';
+                                    //     echo '<p><a href="' .
+                                    //         URLROOT .
+                                    //         '/Admin/delete/' .
+                                    //         $book->bookID .
+                                    //         '"> Delete Book </a></p>';
+                                    // }
+                                 ?>
                             </div>
                         </form>
 
@@ -118,7 +120,7 @@
                                                         Add to Cart
                                                 </button>';?>
                                         <span></span>
-                                        <span id="message"">
+                                        <span id="message">
                                         
                                         </span>
                                     <?php     
