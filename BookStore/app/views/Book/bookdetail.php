@@ -36,12 +36,17 @@
                                             $book->bookID .
                                             '">
 
-                                            <button class="btn-wishlist" tabindex="0" type="button">
+                                            <button class="btn-wishlist mb-4" tabindex="0" type="button">
                                                     <i class="fa fa-heart" style="color:red;">
                                                     Add to Wish List</i>
                                             </button>  
                                             </a>
                                         ';
+                                        if ($book->availablequantity < 0) {
+                                            echo '<br>
+                                            <span class="mt-2" id="message"">
+                                            </span>';
+                                        }
                                     } else {
                                         echo '<p><a href="' .
                                             URLROOT .
@@ -67,7 +72,7 @@
                         <div class="_p-add-cart">
                             <div class="_p-qty">
                                 <?php
-                                if ($book->availablequantity > 0) {?>
+                                if ($book->availablequantity > 0) { ?>
                                 <span>Add Quantity</span>
                                 <input type="hidden" id="bookId" value="<?php echo $book->bookID; ?>">
                                
@@ -77,7 +82,7 @@
 
                                 <?php }
                                 else {
-                                    echo '<h3>Out of stock<h3>';
+                                    echo '<h3 class="mt-2" style="color:red;">Out of stock<h3>';
 
                                 } ?>
                             </div>
@@ -113,10 +118,10 @@
                                     // if not admin-> customer only
                                     if (!isAdmin()) {
                                         echo '
-                                                <button class="btn-theme btn btn-success mb-3" tabindex="0" onclick="addcartitem()">
-                                                    <i class="fa fa-shopping-cart"></i> 
-                                                        Add to Cart
-                                                </button>';?>
+                                            <button class="btn-theme btn btn-success mb-3" tabindex="0" onclick="addcartitem()">
+                                                <i class="fa fa-shopping-cart"></i> 
+                                                    Add to Cart
+                                            </button>';?>
                                         <span></span>
                                         <span id="message"">
                                         

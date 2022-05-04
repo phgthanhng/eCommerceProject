@@ -79,10 +79,7 @@ class Order extends Controller
     public function addReview($bookID)
     {
         $this->view('Order/addReview');
-<<<<<<< Updated upstream
-=======
         
->>>>>>> Stashed changes
         if (isset($_POST['reviewSubmit'])) {
 
             $reviewmark = trim($_POST['review_mark']);
@@ -96,19 +93,11 @@ class Order extends Controller
             ];
 
             // add review to the database
-<<<<<<< Updated upstream
             if($this->reviewModel->createReview($data)){
                 echo "Please wait we are creating your review";
-                echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/User/index">';
+                echo '<meta http-equiv="Refresh" content="; url=/eCommerceProject/BookStore/User/index">';
             }
-=======
-            $this->reviewModel->createReview($data);
-                echo 'SSSS';
-            
-              // echo "Please wait we are creating your review";
-                // echo '<meta http-equiv="Refresh" content="4; url=/eCommerceProject/BookStore/User/index">';
-            
->>>>>>> Stashed changes
+           
         }
     }
 
@@ -130,7 +119,7 @@ class Order extends Controller
             ];
             if ($this->reviewModel->editReview($data)) {
                 echo "Please wait we are editing your review";
-                echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/User/index">';
+                echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Book/bookdetail/'.$existing_review->bookID.'">';
             }
         }
     }
@@ -142,7 +131,7 @@ class Order extends Controller
         if ($this->reviewModel->deleteReview($reviewID)) {
 
             echo "Please wait we are removing your review";
-            echo '<meta http-equiv="Refresh" content="2; url=' . URLROOT . '/User/index">';
+            echo '<meta http-equiv="Refresh" content="2; url=/eCommerceProject/BookStore/Book/bookdetail/'.$existing_review->bookID.'">';
         }
     }
 }
