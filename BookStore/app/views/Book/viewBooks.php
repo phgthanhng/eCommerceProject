@@ -26,7 +26,7 @@
                 // if not logged in 
                 if (!isLoggedIn()) {
                     echo '<p>
-                        <a href="' .URLROOT. '/Login/index/"><button>View</button></a>
+                       <a href="' .URLROOT. '/Book/bookdetail/'.$id.'"><button>View</button></a>
                         </p>';
                 }
                 // if is logged in
