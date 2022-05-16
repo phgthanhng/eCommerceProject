@@ -27,6 +27,9 @@ function getCartCount()
 {
     $cartModel = new cartModel();
     $cart = $cartModel->getUserCart();
+    if ($cart == null) {
+        $cartModel->createCart($_SESSION['user_id']);
+    }
     return $cartModel->getCartItemCount($cart->cartID);
 }
 

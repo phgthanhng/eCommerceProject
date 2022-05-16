@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2022 at 04:26 AM
+-- Generation Time: May 16, 2022 at 09:04 PM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -45,10 +45,10 @@ CREATE TABLE `book` (
 --
 
 INSERT INTO `book` (`bookID`, `bookname`, `isbn`, `author`, `publisher`, `retailprice`, `availablequantity`, `image`, `description`, `category`) VALUES
-(2, 'AGAIN, RACHEL', '9780385675376', 'Marian Keyes', 'Doubleday Canada', '37.99', 10, '624d0a4576b25.png', 'From internationally bestselling author Marian Keyes comes the eagerly awaited sequel to Rachel\'\'s Holiday.\r\n\r\nBack in the long ago nineties, Rachel Walsh was a mess.\r\n \r\nBut a spell in rehab transformed everything. Life became very good, very quickly. These days, Rachel has love, family, a great job as an addiction counsellor, she even gardens. Her only bad habit is a fondness for expensive sneakers.\r\n \r\nBut with the sudden reappearance of a man she\'\'d once loved, her life wobbles.\r\n \r\nShe\'\'d thought she was settled. Fixed forever. Is she about to discover that no matter what our age, everything can change?\r\n \r\nIs it time to think again, Rachel?\"', 'fiction'),
-(3, 'BE A TRIANGLE (SIGNED EDITION): HOW I WENT FROM BE', '9780385684194', 'Lilly Singh', 'Doubleday Canada', '24.99', 54, '6262e4a0d25d7.jpg', 'From the New York Times bestselling author of How to Be a Bawse comes an honest, funny, and inspiring primer on learning to come home to your truest and happiest self.\r\n\r\n“It’s time to flip right side up. It’s time for this book title to make sense. It’s time to be a triangle.”\r\n \r\nEveryone knows that sometimes, life just sucks—even world-famous actress, author, and creator Lilly Singh. In this book, Lilly provides a safe space where readers can learn how to create a sense of peace within themselves. Without sugarcoating what it’s like to face adversity—including Lilly’s intensely personal struggles with identity, success, and self-doubt—she teaches readers to “unsubscribe” from cookie-cutter ideals.\r\n \r\nWith her signature blend of vulnerability, insight, and humor, Lilly instructs readers to “be a triangle”: You must build a solid foundation for your life, one that can be built upon, but never fundamentally changed or destroyed. As she puts it, we must always find a way to come home to ourselves—“we must create a place, a set of beliefs, a simple set of priorities to come back to should life lead us astray, which it will.”\r\n \r\nLike a wise, empathetic friend who always keeps you honest, Lilly pushes you to adjust your mindset and change the conversations you have with yourself. The result is a deeply humane, entertaining, and uplifting guide to befriending yourself and becoming a true “miracle for the world.”\"', 'non-fiction'),
-(4, 'Freezing Order: A True Story Of Money Laundering, ', '9781982153281', 'Bill Browder', 'Simon & Schuster', '38.88', 61, '624d085dac16b.png', 'Following his explosive New York Times bestseller Red Notice, Bill Browder returns with another gripping thriller chronicling how he became Vladimir Putin’s number one enemy by exposing Putin’s campaign to steal and launder hundreds of billions of dollars and kill anyone who stands in his way.\r\n\r\nWhen Bill Browder’s young Russian lawyer, Sergei Magnitsky, was beaten to death in a Moscow jail, Browder made it his life’s mission to go after his killers and make sure they faced justice. The first step of that mission was to uncover who was behind the $230 million tax refund scheme that Magnitsky was killed over. As Browder and his team tracked the money as it flowed out of Russia through the Baltics and Cyprus and on to Western Europe and the Americas, they were shocked to discover that Vladimir Putin himself was a beneficiary of the crime.', 'non-fiction'),
-(6, 'Hook, Line, And Sinker: A Novel', '9780063045699', 'Tessa Bailey', 'HarperCollins', '19.99', 28, '624d315967bca.png', 'In the follow-up to It Happened One Summer, Tessa Bailey delivers another deliciously fun rom-com about a former player who accidentally falls for his best friend while trying to help her land a different man…\r\n\r\nKing crab fisherman Fox Thornton has a reputation as a sexy, carefree flirt. Everyone knows he’s a guaranteed good time—in bed and out—and that’s exactly how he prefers it. Until he meets Hannah Bellinger. She’s immune to his charm and looks, but she seems to enjoy his… personality? And wants to be friends? Bizarre. But he likes her too much to risk a fling, so platonic pals it is.\r\n\r\nNow, Hannah\'\'s in town for work, crashing in Fox’s spare bedroom. She knows he’s a notorious ladies’ man, but they’re definitely just friends. In fact, she\'\'s nursing a hopeless crush on a colleague and Fox is just the person to help with her lackluster love life. Armed with a few tips from Westport’s resident Casanova, Hannah sets out to catch her coworker’s eye… yet the more time she spends with Fox, the more she wants him instead. As the line between friendship and flirtation begins to blur, Hannah can\'\'t deny she loves everything about Fox, but she refuses to be another notch on his bedpost. \r\n\r\nLiving with his best friend should have been easy. Except now she’s walking around in a towel, sleeping right across the hall, and Fox is fantasizing about waking up next to her for the rest of his life and… and… man overboard! He’s fallen for her, hook, line, and sinker. Helping her flirt with another guy is pure torture, but maybe if Fox can tackle his inner demons and show Hannah he’s all in, she\'\'ll choose him instead?', 'romance'),
+(2, 'AGAIN, RACHEL', '9780385675376', 'Marian Keyes', 'Doubleday Canada', '37.99', 0, '624d0a4576b25.png', 'From internationally bestselling author Marian Keyes comes the eagerly awaited sequel to Rachel\'\'s Holiday.\r\n\r\nBack in the long ago nineties, Rachel Walsh was a mess.\r\n \r\nBut a spell in rehab transformed everything. Life became very good, very quickly. These days, Rachel has love, family, a great job as an addiction counsellor, she even gardens. Her only bad habit is a fondness for expensive sneakers.\r\n \r\nBut with the sudden reappearance of a man she\'\'d once loved, her life wobbles.\r\n \r\nShe\'\'d thought she was settled. Fixed forever. Is she about to discover that no matter what our age, everything can change?\r\n \r\nIs it time to think again, Rachel?\"', 'fiction'),
+(3, 'BE A TRIANGLE (SIGNED EDITION): HOW I WENT FROM BE', '9780385684194', 'Lilly Singh', 'Doubleday Canada', '24.99', 5, '6262e4a0d25d7.jpg', 'From the New York Times bestselling author of How to Be a Bawse comes an honest, funny, and inspiring primer on learning to come home to your truest and happiest self.\r\n\r\n“It’s time to flip right side up. It’s time for this book title to make sense. It’s time to be a triangle.”\r\n \r\nEveryone knows that sometimes, life just sucks—even world-famous actress, author, and creator Lilly Singh. In this book, Lilly provides a safe space where readers can learn how to create a sense of peace within themselves. Without sugarcoating what it’s like to face adversity—including Lilly’s intensely personal struggles with identity, success, and self-doubt—she teaches readers to “unsubscribe” from cookie-cutter ideals.\r\n \r\nWith her signature blend of vulnerability, insight, and humor, Lilly instructs readers to “be a triangle”: You must build a solid foundation for your life, one that can be built upon, but never fundamentally changed or destroyed. As she puts it, we must always find a way to come home to ourselves—“we must create a place, a set of beliefs, a simple set of priorities to come back to should life lead us astray, which it will.”\r\n \r\nLike a wise, empathetic friend who always keeps you honest, Lilly pushes you to adjust your mindset and change the conversations you have with yourself. The result is a deeply humane, entertaining, and uplifting guide to befriending yourself and becoming a true “miracle for the world.”\"', 'non-fiction'),
+(4, 'Freezing Order: A True Story Of Money Laundering, ', '9781982153281', 'Bill Browder', 'Simon & Schuster', '38.88', 55, '624d085dac16b.png', 'Following his explosive New York Times bestseller Red Notice, Bill Browder returns with another gripping thriller chronicling how he became Vladimir Putin’s number one enemy by exposing Putin’s campaign to steal and launder hundreds of billions of dollars and kill anyone who stands in his way.\r\n\r\nWhen Bill Browder’s young Russian lawyer, Sergei Magnitsky, was beaten to death in a Moscow jail, Browder made it his life’s mission to go after his killers and make sure they faced justice. The first step of that mission was to uncover who was behind the $230 million tax refund scheme that Magnitsky was killed over. As Browder and his team tracked the money as it flowed out of Russia through the Baltics and Cyprus and on to Western Europe and the Americas, they were shocked to discover that Vladimir Putin himself was a beneficiary of the crime.', 'non-fiction'),
+(6, 'Hook, Line, And Sinker: A Novel', '9780063045699', 'Tessa Bailey', 'HarperCollins', '19.99', 24, '624d315967bca.png', 'In the follow-up to It Happened One Summer, Tessa Bailey delivers another deliciously fun rom-com about a former player who accidentally falls for his best friend while trying to help her land a different man…\r\n\r\nKing crab fisherman Fox Thornton has a reputation as a sexy, carefree flirt. Everyone knows he’s a guaranteed good time—in bed and out—and that’s exactly how he prefers it. Until he meets Hannah Bellinger. She’s immune to his charm and looks, but she seems to enjoy his… personality? And wants to be friends? Bizarre. But he likes her too much to risk a fling, so platonic pals it is.\r\n\r\nNow, Hannah\'\'s in town for work, crashing in Fox’s spare bedroom. She knows he’s a notorious ladies’ man, but they’re definitely just friends. In fact, she\'\'s nursing a hopeless crush on a colleague and Fox is just the person to help with her lackluster love life. Armed with a few tips from Westport’s resident Casanova, Hannah sets out to catch her coworker’s eye… yet the more time she spends with Fox, the more she wants him instead. As the line between friendship and flirtation begins to blur, Hannah can\'\'t deny she loves everything about Fox, but she refuses to be another notch on his bedpost. \r\n\r\nLiving with his best friend should have been easy. Except now she’s walking around in a towel, sleeping right across the hall, and Fox is fantasizing about waking up next to her for the rest of his life and… and… man overboard! He’s fallen for her, hook, line, and sinker. Helping her flirt with another guy is pure torture, but maybe if Fox can tackle his inner demons and show Hannah he’s all in, she\'\'ll choose him instead?', 'romance'),
 (12, 'THE NO-SHOW', '9780593438442', 'Beth O\'leary', 'Penguin Publishing Group', '15.99', 50, '6262e413e5a07.jpg', 'Three women who seemingly have nothing in common find that they\'\'re involved with the same man in this smart new rom-com by Beth O\'\'Leary, bestselling author of The Flatshare.\r\n\r\nSiobhan is a quick-tempered life coach with way too much on her plate. Miranda is a tree surgeon used to being treated as just one of the guys on the job. Jane is a soft-spoken volunteer for the local charity shop with zero sense of self-worth.\r\n \r\nThese three women are strangers who have only one thing in common: they’ve all been stood up on the same day, the very worst day to be stood up—Valentine’s Day. And, unbeknownst to them, they’ve all been stood up by the same man.\r\n \r\nOnce they\'\'ve each forgiven him for standing them up, they are all in serious danger of falling in love with a man who may have not just one or two but three women on the go....\r\n \r\nIs there more to him than meets the eye? Where was he on Valentine’s Day? And will they each untangle the truth before they all get their hearts broken?', 'fiction'),
 (13, 'WHY HAS NOBODY TOLD ME THIS BEFORE?', '9780063227934', 'Julie Smith', 'HarperCollins', '34.99', 28, '6262e66956f14.jpg', 'International bestseller\r\n\r\n“Smart, insightful, and warm. Dr. Julie is both the expert and wise friend we all need.” –Lori Gottlieb, New York Times bestselling author of Maybe You Should Talk to Someone and co-host of the \"Dear Therapists\" podcast?\r\n\r\nDrawing on years of experience as a clinical psychologist, online sensation Dr Julie Smith provides the skills you need to navigate common life challenges and take charge of your emotional and mental health in her debut book.\r\n\r\nFilled with secrets from a therapist\'\'s toolkit, Why Has Nobody Told Me This Before teaches you how to fortify and maintain your mental health, even in the most trying of times. Dr Julie Smith’s expert advice and powerful coping techniques will help you stay resilient, whether you want to manage anxiety, deal with criticism, cope with depression, build self-confidence, find motivation, or learn to forgive yourself. Why Has Nobody Told Me This Before tackles everyday issues and offers practical solutions in bite-sized, easy-to-digest entries which make it easy to quickly find specific information and guidance. \r\n\r\nYour mental well-being is just as important as your physical well-being. Packed with proven strategies, Dr. Julie’s empathetic guide offers a deeper understanding of how your mind works and gives you the insights and help you need to nurture your mental health every day. Wise and practical, Why Has Nobody Told Me This Before might just change your life.', 'self-help'),
 (14, 'WHEN YOU\'RE READY, THIS IS HOW YOU HEAL', '9781949759440', 'Brianna Wiest', 'Thought Catalog Books', '22.99', 99, '6262e740e7dbe.jpg', 'Healing is not a one-time event. It can begin with a one-time event - typically some form of sudden loss that disrupts our projection of what the future might be. However, the true work of healing is allowing that disruption to wake us from a deep state of unconsciousness, to release the personas we adapted into, and begin consciously piecing together the full truth of who we were meant to be.', 'self-help'),
@@ -63,7 +63,7 @@ INSERT INTO `book` (`bookID`, `bookname`, `isbn`, `author`, `publisher`, `retail
 (24, 'Stolen Focus: Why You Can\'t Pay Attention--and How', '9780593138519', 'Johann Hari', 'Crown', '37.00', 294, '6262f23d78961.jpg', 'NEW YORK TIMES BESTSELLER • Our ability to pay attention is collapsing. From the New York Times bestselling author of Chasing the Scream and Lost Connections comes a groundbreaking examination of why this is happening—and how to get our attention back.\r\n\r\n“The book the world needs in order to win the war on distraction.”—Adam Grant, author of Think Again\r\n\r\n“Read this book to save your mind.”—Susan Cain, author of Quiet\r\n \r\nIn the United States, teenagers can focus on one task for only sixty-five seconds at a time, and office workers average only three minutes. Like so many of us, Johann Hari was finding that constantly switching from device to device and tab to tab was a diminishing and depressing way to live. He tried all sorts of self-help solutions—even abandoning his phone for three months—but nothing seemed to work. So Hari went on an epic journey across the world to interview the leading experts on human attention—and he discovered that everything we think we know about this crisis is wrong.\r\n \r\nWe think our inability to focus is a personal failure to exert enough willpower over our devices. The truth is even more disturbing: our focus has been stolen by powerful external forces that have left us uniquely vulnerable to corporations determined to raid our attention for profit. Hari found that there are twelve deep causes of this crisis, from the decline of mind-wandering to rising pollution, all of which have robbed some of our attention. In Stolen Focus, he introduces readers to Silicon Valley dissidents who learned to hack human attention, and veterinarians who diagnose dogs with ADHD. He explores a favela in Rio de Janeiro where everyone lost their attention in a particularly surreal way, and an office in New Zealand that discovered a remarkable technique to restore workers’ productivity.\r\n \r\nCrucially, Hari learned how we can reclaim our focus—as individuals, and as a society—if we are determined to fight for it. Stolen Focus will transform the debate about attention and finally show us how to get it back.', 'self-help'),
 (25, 'How To Win Friends And Influence People: Updated F', '9781982171452', 'Dale Carnegie', 'Simon & Schuster', '38.99', 543, '6262f2a846b8e.jpg', 'Updated for the first time in more than forty years, Dale Carnegie’s timeless bestseller How to Win Friends and Influence People—a classic that has improved and transformed the personal and professional lives of millions.\r\n\r\nThis new edition of the most influential self-help book of the last century has been updated under the care of Dale’s daughter, Donna, introducing changes that keep the book fresh for today’s readers, with priceless material restored from the original 1936 text.\r\n\r\nOne of the best-known motivational guides in history, Dale Carnegie’s groundbreaking publication has sold tens of millions of copies, been translated into almost every known written language, and has helped countless people succeed.\r\n\r\nCarnegie’s rock-solid, experience-tested advice has remained relevant for generations because he addresses timeless questions about the art of getting along with people. How to Win Friends and Influence People teaches you:\r\n-How to communicate effectively\r\n-How to make people like you\r\n-How to increase your ability to get things done\r\n-How to get others to see your side\r\n-How to become a more effective leader\r\n-How to successfully navigate almost any social situation\r\n-And so much more!\r\n\r\nHow to Win Friends and Influence People is a historic bestseller for one simple reason: Its crucial life lessons, conveyed through engaging storytelling, have shown readers how to become who they wish to be. With the newly updated version of this classic, that’s as true now as ever.', 'self-help'),
 (26, 'The Diamond Eye: A Novel', '9780063226142', 'Kate Quinn', 'HarperCollins', '24.99', 875, '6262f354dc271.jpg', 'The New York Times bestselling author of The Rose Code returns with an unforgettable World War II tale of a quiet bookworm who becomes history’s deadliest female sniper. Based on a true story.\r\n\r\n\r\nIn 1937 in the snowbound city of Kiev (now known as Kyiv), wry and bookish history student Mila Pavlichenko organizes her life around her library job and her young son—but Hitler’s invasion of Ukraine and Russia sends her on a different path. Given a rifle and sent to join the fight, Mila must forge herself from studious girl to deadly sniper—a lethal hunter of Nazis known as Lady Death. When news of her three hundredth kill makes her a national heroine, Mila finds herself torn from the bloody battlefields of the eastern front and sent to America on a goodwill tour.\r\n\r\nStill reeling from war wounds and devastated by loss, Mila finds herself isolated and lonely in the glittering world of Washington, DC—until an unexpected friendship with First Lady Eleanor Roosevelt and an even more unexpected connection with a silent fellow sniper offer the possibility of happiness. But when an old enemy from Mila’s past joins forces with a deadly new foe lurking in the shadows, Lady Death finds herself battling her own demons and enemy bullets in the deadliest duel of her life.\r\n\r\nBased on a true story, The Diamond Eye is a haunting novel of heroism born of desperation, of a mother who became a soldier, of a woman who found her place in the world and changed the course of history forever.', 'fiction'),
-(27, 'Sea Of Tranquility: A Novel', '9781443466097', 'Emily St. John Mandel', 'HarperCollins', '29.99', 432, '6262f3e60c05a.jpg', 'From the #1 bestselling author of the Scotiabank Giller Prize–shortlisted The Glass Hotel and the internationally bestselling Station Eleven comes a new novel of dazzling imagination\r\n\r\nIn this captivating tale of imagination and ambition, a seemingly disparate array of people come into contact with a time traveller who must resist the pull to change the past and the future. The cast includes a British exile on the West coast of Canada in the early 1900s; the author of a bestselling novel about a fictional pandemic who embarks on a galaxy-spanning book tour during the outbreak of an actual pandemic; a resident of a moon colony almost 300 years in the future; and a lonely girl who films an old-growth forest and experiences a disruption in the recording. Blurring the lines between reality and fantasy, Emily St. John Mandel’s dazzling story follows these engrossing characters across space and time as their lives ultimately intersect.\r\n\r\nSea of Tranquility is a breathtaking and wondrous examination of the ties that bind us together, by a master storyteller.', 'fiction'),
+(27, 'Sea Of Tranquility: A Novel', '9781443466097', 'Emily St. John Mandel', 'HarperCollins', '29.99', 429, '6262f3e60c05a.jpg', 'From the #1 bestselling author of the Scotiabank Giller Prize–shortlisted The Glass Hotel and the internationally bestselling Station Eleven comes a new novel of dazzling imagination\r\n\r\nIn this captivating tale of imagination and ambition, a seemingly disparate array of people come into contact with a time traveller who must resist the pull to change the past and the future. The cast includes a British exile on the West coast of Canada in the early 1900s; the author of a bestselling novel about a fictional pandemic who embarks on a galaxy-spanning book tour during the outbreak of an actual pandemic; a resident of a moon colony almost 300 years in the future; and a lonely girl who films an old-growth forest and experiences a disruption in the recording. Blurring the lines between reality and fantasy, Emily St. John Mandel’s dazzling story follows these engrossing characters across space and time as their lives ultimately intersect.\r\n\r\nSea of Tranquility is a breathtaking and wondrous examination of the ties that bind us together, by a master storyteller.', 'fiction'),
 (28, 'Lessons In Chemistry', '9780385697378', 'Bonnie Garmus', 'Doubleday Canada', '24.95', 654, '6262f455d450b.jpg', 'A delight for readers of Where\'\'d You Go, Bernadette, this blockbuster debut set in 1960s California features the singular voice of Elizabeth Zott, a scientist whose career takes a detour when she becomes the star of a beloved TV cooking show.\r\n\r\nChemist Elizabeth Zott is not your average woman. In fact, Elizabeth Zott would be the first to point out that there is no such thing as an average woman. But it\'\'s the early 1960s and her all-male team at Hastings Research Institute takes a very unscientific view of equality. Except for one: Calvin Evans, the lonely, brilliant, Nobel Prize–nominated grudge holder who falls in love with—of all things—her mind. True chemistry results. \r\n \r\nLike science, though, life is unpredictable. Which is why a few years later Eizabeth Zott finds herself not only a single mother but also the reluctant star of America\'\'s most beloved cooking show, Supper at Six. Elizabeth\'\'s unusual approach to cooking (\"combine one tablespoon acetic acid with a pinch of sodium chloride\") proves revolutionary. But as her following grows, not everyone is happy. Because, as it turns out, Elizabeth Zott isn\'\'t just teaching women how to cook. She\'\'s daring them to change the status quo.  \r\n \r\nLaugh-out-loud funny, shrewdly observant and studded with a dazzling cast of supporting characters, Lessons in Chemistry is as original and vibrant as its protagonist.', 'fiction'),
 (29, 'Bluebird: A Novel', '9781982156657', 'Genevieve Graham', 'Simon & Schuster', '24.99', 431, '6262f5b95f0ec.jpg', 'A dazzling novel set during the Great War and postwar Prohibition about a young nurse, a soldier, and a family secret that binds them together for generations to come—from USA TODAY and repeat #1 bestselling author Genevieve Graham.\r\n\r\nPresent day\r\n\r\nCassie Simmons, a museum curator, is enthusiastic about solving mysteries from the past, and she has a personal interest in the history of the rumrunners who ferried illegal booze across the Detroit River during Prohibition. So when a cache of whisky labeled Bailey Brothers’ Best is unearthed during a local home renovation, Cassie hopes to find the answers she’s been searching for about the legendary family of bootleggers...\r\n\r\n1918\r\n\r\nCorporal Jeremiah Bailey of the 1st Canadian Tunnelling Company is tasked with planting mines in the tunnels beneath enemy trenches. After Jerry is badly wounded in an explosion, he finds himself in a Belgium field hospital under the care of Adele Savard, one of Canada’s nursing sisters, nicknamed “Bluebirds” for their blue gowns and white caps. As Jerry recovers, he forms a strong connection with Adele, who is from a place near his hometown of Windsor, along the Detroit River. In the midst of war, she’s a welcome reminder of home, and when Jerry is sent back to the front, he can only hope that he’ll see his bluebird again.\r\n\r\nBy war’s end, both Jerry and Adele return home to Windsor, scarred by the horrors of what they endured overseas. When they cross paths one day, they have a chance to start over. But the city is in the grip of Prohibition, which brings exciting opportunities as well as new dangerous conflicts that threaten to destroy everything they have fought for.\r\n\r\nPulled from the pages of history, Bluebird is a compelling, luminous novel about the strength of the human spirit and the power of love to call us home.', 'fiction'),
 (30, 'PART OF YOUR WORLD', '9781538704370', 'Abby Jimenez', 'Grand Central Publishing', '21.99', 543, '6262f6113c8c2.jpg', 'The New York Times bestselling author of Life\'s Too Short delivers a refreshingly modern fairy tale perfect for fans of Casey McQuiston and Emily Henry.\r\n\r\nAfter a wild bet, gourmet grilled-cheese sandwich, and cuddle with a baby goat, Alexis Montgomery has had her world turned upside down. The cause: Daniel Grant, a ridiculously hot carpenter who’s ten years younger than her and as casual as they come—the complete opposite of sophisticated city-girl Alexis. And yet their chemistry is undeniable.\r\n\r\nWhile her ultra-wealthy parents want her to carry on the family legacy of world-renowned surgeons, Alexis doesn’t need glory or fame. She’s fine with being a “mere” ER doctor. And every minute she spends with Daniel and the tight-knit town where he lives, she’s discovering just what’s really important. Yet letting their relationship become anything more than a short-term fling would mean turning her back on her family and giving up the opportunity to help thousands of people.\r\n\r\nBringing Daniel into her world is impossible, and yet she can’t just give up the joy she’s found with him either. With so many differences between them, how can Alexis possibly choose between her world and his?', 'fiction'),
@@ -108,15 +108,10 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`cartID`, `userID`, `totalprice`) VALUES
-(19, 5, '357.62'),
-(20, 5, '120.69'),
-(21, 5, '185.03'),
-(22, 8, '178.81'),
-(23, 9, '0.00'),
-(24, 10, '0.00'),
-(25, 11, '0.00'),
-(26, 12, '504.61'),
-(27, 12, '0.00');
+(1, 5, '268.21'),
+(2, 5, '91.94'),
+(3, 5, '0.00'),
+(4, 14, '0.00');
 
 -- --------------------------------------------------------
 
@@ -137,12 +132,8 @@ CREATE TABLE `cartitem` (
 --
 
 INSERT INTO `cartitem` (`cartitemID`, `cartID`, `bookID`, `quantity`, `cartitemprice`) VALUES
-(50, 19, 4, 8, '311.04'),
-(51, 20, 35, 3, '104.97'),
-(81, 26, 3, 3, '74.97'),
-(82, 26, 34, 1, '14.00'),
-(83, 26, 4, 9, '349.92'),
-(84, 22, 4, 4, '155.52');
+(108, 1, 4, 6, '233.28'),
+(109, 2, 6, 4, '79.96');
 
 -- --------------------------------------------------------
 
@@ -173,9 +164,8 @@ CREATE TABLE `ordertbl` (
 --
 
 INSERT INTO `ordertbl` (`orderID`, `userID`, `cartID`, `firstname`, `lastname`, `email`, `orderdate`, `orderstatus`, `shippingaddress`, `totalprice`, `paymentmethod`, `cardname`, `cardnumber`, `cardcvv`, `expiration`) VALUES
-(13, 5, 19, 'cc xx', 'swq', 'sqw@ya.ca', '2022-04-29 21:08:28', 'completed', '231 wuehwjkdhw Quebech2131', '357.62', 'on', 'cc cc', '1231231232312', 123, 1122),
-(14, 5, 20, 'dsad', 'sadsad', 'sd@ya.ca', '2022-04-29 21:12:49', 'completed', '1221 wjhedj2h32Quebechg2123', '120.69', 'on', 'cc xcs', '2131-1231-2311-1', 133, 1122),
-(15, 12, 26, 'aa', 'aa', 'aa@email.com', '2022-04-30 00:45:48', 'unshipped', '213 jdjsakdsakdasQuebech1h2h9', '504.61', 'on', 'aa aa', '1234-2313-1231-1', 456, 1122);
+(24, 5, 1, 'Cj', 'Castro', 'chi@yahoo.ca', '2022-05-16 18:43:24', 'unshipped', '4438 René-Lévesque Blvd  Montreal, Quebec, H3B 4W8', '268.21', 'on', 'Cj Castro', '4351 2313 1313 1', 312, 1123),
+(25, 5, 2, 'Cj', 'Castro', 'chi@yahoo.ca', '2022-05-16 18:57:27', 'unshipped', '4438 René-Lévesque Blvd  Montreal, Quebec, H3B 4W8', '91.94', 'credit', 'Cj Castro', '1234 1234 1234 1', 212, 1123);
 
 -- --------------------------------------------------------
 
@@ -219,7 +209,7 @@ CREATE TABLE `user` (
   `firstname` varchar(20) NOT NULL,
   `lastname` varchar(20) NOT NULL,
   `phone` varchar(15) NOT NULL,
-  `address` varchar(50) NOT NULL,
+  `address` varchar(100) NOT NULL,
   `email` varchar(40) NOT NULL,
   `newsletter` varchar(5) DEFAULT NULL,
   `secret` varchar(255) DEFAULT NULL
@@ -233,13 +223,10 @@ INSERT INTO `user` (`userID`, `username`, `password`, `firstname`, `lastname`, `
 (1, 'phgthanhng', '$2y$10$LeTrf3wOeCaCliZoqg4jVOqAf.Ych60nSVeUn49gWjT8B2MPyfBEO', 'Phuong Thanh', 'Nguyen', '438-680-289', '5062 Avenue Victoria', 'anc@gmail.com', 'no', NULL),
 (2, 'chilcj', '$2y$10$kRtx/v9WHwzkNDPqKW0FU.emqBuVwyu5fxM2tfAk1.zyz2UnrIhvi', 'Chilka', 'Castro', '438-397-6747', '7704 ruer Verdier Saint Leonard Quebec H12S2H9', 'chilcjcastro@yahoo.ca', 'no', NULL),
 (3, 'jiahui', '$2y$10$VECvY7QXXg7z.Tq4fz4E6.FCLv3m/4gE1KvctBgHPuGTcE.9r2I6e', 'Jiahui', 'Xia', '438-132-6727', '821 Sainte Croix Ave, Saint-Laurent, Quebec H4L 3X', 'jiahuixia@gmail.com', 'no', NULL),
-(4, 'huizi', '$2y$10$DZoaugi6SaJmxuz6WHDTmuDEIWMYyrSg6Go5bKmz2jR1TGDtnoZdq', 'huizi', 'Xia', '757-868-4367', '1190 Rue Egan', '222@gmail.com', 'yes', NULL),
-(5, 'testuser', '$2y$10$GNixtkeBlGtTdqZiiXwtvuXBeG7UIgSS8F8lcH4NFeha.DyqA897a', 'test', 'user', '438-398-9138', '666 hell bound', 'testuser@email.com', 'yes', 'TH4OUN724C52SMJC'),
-(8, 'testuser2', '$2y$10$kNEBJjHeKnL7a2DhR7hQLuAtneYtMt4a379adSL0DRtU6XV2SFYWe', 'test', 'user2', '435-133-1231', '666 straigh to hell', 'testuser2@email.com', 'yes', 'EWPZQD3E3OHH432V'),
-(9, 'ceejck', '$2y$10$eA6Tz9sbAiP2MThCk8.KweP6c1.7YK1emkAmr7TceFN./hTQV1kqi', 'cc', 'cc', '312-213-1321', '888 hjsdsadasdsh djasdhsad jsdh', 'chilcj@ya.ca', 'yes', NULL),
-(10, 'testuser5', '$2y$10$QiX1.MiGaSWENbl18ql9w.Wk7FsEfShVvd01aGs.l/auoZnno0zs6', 'test', 'user5', '438-397-5643', '233 shdsasdj sjdhasjkdah d', 'cc@ya.ca', 'yes', NULL),
-(11, 'testuser6', '$2y$10$pBLkpC9yyAuy/n0v0BNZ7OuZYjb7UYTY0pqyufhnGsUq8ov0UG.La', 'cc', 'cc', '438-397-6746', '2321 sdjsadwd wiuwqi wqiuwqioe', 'testuser6@ya.ca', 'yes', 'BMRWWNED2WDWGWZD'),
-(12, 'testuser8', '$2y$10$72./V8a41e.pY5hEd0nehOsyL6azCBLDAJFqqAgYFLEBXwjWSUwGG', 'test', 'user8', '438-329-3213', '332 sjhdsakd dsaidasjdkas', 'cc@ya.ca', 'yes', NULL);
+(4, 'huizi', '$2y$10$DZoaugi6SaJmxuz6WHDTmuDEIWMYyrSg6Go5bKmz2jR1TGDtnoZdq', 'huizi', 'Xia', '757-868-4367', '1140 Beaumont Ave, Mount Royal, Quebec H3P 3E5, Canada', '222@gmail.com', 'yes', NULL),
+(5, 'testuser', '$2y$10$GNixtkeBlGtTdqZiiXwtvuXBeG7UIgSS8F8lcH4NFeha.DyqA897a', 'Test', 'User', '438-398-9138', '5450 Côte-des-Neiges Rd, Montreal, Quebec H3T 1Y6,', 'testuser@gmail.com', 'yes', NULL),
+(8, 'testuser2', '$2y$10$kNEBJjHeKnL7a2DhR7hQLuAtneYtMt4a379adSL0DRtU6XV2SFYWe', 'Test', 'User2', '435-133-1231', '3755 Chemin de la Côte-Sainte-Catherine, Montréal, QC H3T 1E2, Canada', 'testuser2@gmail.com', 'yes', NULL),
+(14, 'testuser3', '$2y$10$hiWOa0byTSAVuokcMdDVweIIbzpmBpSdrzlY/cuLkSI2N.GeiIYzm', 'Test', 'User3', '450-660-0104', '716 St-Jerome Street  St Jerome, Quebec(QC), S4P 3Y2', 'testuser3@yahoo.ca', 'yes', NULL);
 
 -- --------------------------------------------------------
 
@@ -252,15 +239,6 @@ CREATE TABLE `wishlist` (
   `userID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `wishlist`
---
-
-INSERT INTO `wishlist` (`wishlistID`, `userID`) VALUES
-(1, 5),
-(2, 8),
-(3, 12);
-
 -- --------------------------------------------------------
 
 --
@@ -272,15 +250,6 @@ CREATE TABLE `wishlistitem` (
   `wishlistID` int(11) NOT NULL,
   `bookID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `wishlistitem`
---
-
-INSERT INTO `wishlistitem` (`wishlist_itemID`, `wishlistID`, `bookID`) VALUES
-(9, 1, 2),
-(11, 3, 4),
-(12, 3, 3);
 
 --
 -- Indexes for dumped tables
@@ -365,19 +334,19 @@ ALTER TABLE `book`
 -- AUTO_INCREMENT for table `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `cartitem`
 --
 ALTER TABLE `cartitem`
-  MODIFY `cartitemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `cartitemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=110;
 
 --
 -- AUTO_INCREMENT for table `ordertbl`
 --
 ALTER TABLE `ordertbl`
-  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `orderID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `return`
@@ -389,25 +358,25 @@ ALTER TABLE `return`
 -- AUTO_INCREMENT for table `review`
 --
 ALTER TABLE `review`
-  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `reviewID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `wishlist`
 --
 ALTER TABLE `wishlist`
-  MODIFY `wishlistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `wishlistID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `wishlistitem`
 --
 ALTER TABLE `wishlistitem`
-  MODIFY `wishlist_itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `wishlist_itemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- Constraints for dumped tables
