@@ -4,7 +4,8 @@
 ### Project Idea: Online Book Store
 <br>
 <br>
-### Steps to access project:
+
+Steps to access project:
 1. Download the zip file and extract
 2. Start Xampp
 3. Put the E-commerce folder directly in the htdocs(do not remove the bookstore from the E-commerce folder)
