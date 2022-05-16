@@ -5,7 +5,7 @@
 
 <body>
     <!-- <div class="container"> -->
-    <h1 style="margin-bottom: 25px;margin-top: 30px;text-align: center;">ALL BOOKS</h1>
+    <h1 style="margin-bottom: 25px;margin-top: 30px;text-align: center;">Non-fiction</h1>
     <div class="parent">
         <?php
         if (!empty($data["non_fiction_books"])) {

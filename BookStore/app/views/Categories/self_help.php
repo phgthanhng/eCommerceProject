@@ -5,7 +5,7 @@
 
 <body>
     <!-- <div class="container"> -->
-    <h1 style="margin-bottom: 25px;margin-top: 30px;text-align: center;">SELF-HELP AND WELLNESS</h1>
+    <h1 style="margin-bottom: 25px;margin-top: 30px;text-align: center;">Self-Help and Wellness Books</h1>
     <div class="parent">
         <?php
         if (!empty($data["self_help_books"])) {
